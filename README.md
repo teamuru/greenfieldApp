@@ -1,16 +1,10 @@
-# Boilerplate for MERN stack project
+# Green Field App
 
-Set up for a a boiler plate for a MERN stack using Webpack
+Shopping app built with react and redux.
 
 ## How to start this app
 
 - `npm install`
-- `npm start` - to start the server and watch for changes
+- `npm start` - start the sevrer in production
 - `npm run build` - webpack build the front end
 - `npm run dev` - concurrently start the server and build the front end
-
-### Back-end
-
-> **Pro tip:** Install and use [Postman](https://www.getpostman.com/) to test your API routes for this section
-
-### Front-end
