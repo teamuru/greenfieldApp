@@ -1,11 +1,11 @@
 {
   "name": "greenfieldapp",
   "version": "1.0.0",
-  "description": "Set up for a a boiler plate for a MERN stack using Webpack",
+  "description": "GreenField App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
     "build": "webpack -d --watch",
+    "start": "node index.js",
     "dev": "concurrently \"npm run start\" \"npm run build\""
   },
   "repository": {
@@ -22,26 +22,24 @@
     "@material-ui/core": "^4.2.0",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
-    "concurrently": "^4.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.6.2",
-    "mysql": "^2.17.1",
-    "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "@babel/core": "^7.4.5",
-    "babel-loader": "^8.0.6",
     "@babel/preset-env": "^7.4.5",
-    "babel-preset-env": "^1.7.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
