@@ -1,6 +1,8 @@
-// const reviewAction = prop => ({
-//   type: "ACTION",
-//   review: prop.review
-// });
+import Redux from "redux";
 
-// export default reviewAction;
+const manageReviews = reviews => ({
+  type: "GET_REVIEWS",
+  reviews: reviews
+});
+
+export default manageReviews;
