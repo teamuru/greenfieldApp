@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "redux";
+import { Provider } from "react-redux";
 
 import App from "./components/App";
-
-// test commit
+import { store } from "./store";
 
 ReactDOM.render(
-  // <Provider>
-  <App />, // TODO: fix this
-  // </Provider>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("app")
 );
