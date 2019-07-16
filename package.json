@@ -7,7 +7,8 @@
     "build": "webpack -d --watch",
     "start": "node index.js",
     "dev": "concurrently \"npm run start\" \"npm run build\"",
-    "lint": "eslint client/src/**/*.jsx --fix"
+    "lint": "eslint client/src/**/*.jsx",
+    "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -47,7 +48,9 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
+    "husky": "^3.0.0",
     "nodemon": "^1.19.1",
+    "puppeteer": "^1.18.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
