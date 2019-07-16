@@ -10,5 +10,5 @@ ReactDOM.render(
   // <Provider>
   <App />, // TODO: fix this
   // </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
