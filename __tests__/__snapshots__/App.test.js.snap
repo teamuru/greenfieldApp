@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders App 1`] = `
+<div>
+  <nav>
+    <div
+      className="nav-wrapper"
+    >
+      <div
+        className="brand-logo"
+      >
+        Greenfield Logo
+      </div>
+    </div>
+  </nav>
+</div>
+`;
