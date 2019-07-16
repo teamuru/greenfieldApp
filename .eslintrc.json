@@ -5,6 +5,21 @@
   },
   "rules": {
     "no-console": "off",
-    "quotes": [2, "single", { "avoidEscape": true }]
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
   }
 }
