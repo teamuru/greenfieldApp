@@ -4,6 +4,7 @@
     "browser": true
   },
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "quotes": [2, "single", { "avoidEscape": true }]
   }
 }

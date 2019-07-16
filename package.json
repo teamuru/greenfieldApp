@@ -7,7 +7,7 @@
     "build": "webpack -d --watch",
     "start": "node index.js",
     "dev": "concurrently \"npm run start\" \"npm run build\"",
-    "lint": "eslint client/src/**/*.jsx"
+    "lint": "eslint client/src/**/*.jsx --fix"
   },
   "repository": {
     "type": "git",

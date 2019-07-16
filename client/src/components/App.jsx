@@ -6,14 +6,14 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (
       <div>
         <nav>
-          <div className='nav-wrapper'>
-            <div className='brand-logo'>Greenfield Logo</div>
+          <div className="nav-wrapper">
+            <div className="brand-logo">Greenfield Logo</div>
           </div>
         </nav>
       </div>
