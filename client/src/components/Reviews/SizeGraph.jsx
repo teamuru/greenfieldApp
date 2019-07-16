@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ReviewCounter extends Component {
+class SizeGraphs extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class ReviewCounter extends Component {
   }
 }
 
-export default ReviewCounter
+export default SizeGraphs
