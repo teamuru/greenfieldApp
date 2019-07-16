@@ -17,6 +17,7 @@
       {
         "extensions": [".js", ".jsx"]
       }
-    ]
+    ],
+    "max-len": ["error", { "code": 1000 }]
   }
 }
