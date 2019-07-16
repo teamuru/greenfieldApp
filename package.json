@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "concurrently \"npm run start\" \"npm run build\"",
     "lint": "eslint client/src/**/*.jsx",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
