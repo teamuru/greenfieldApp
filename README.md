@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/teamuru/greenfieldApp.svg?branch=master)](https://travis-ci.org/teamuru/greenfieldApp)
+
 # Green Field App
 
 Shopping app built with react and redux.
