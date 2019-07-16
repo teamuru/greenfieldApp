@@ -21,6 +21,9 @@ Shopping app built with react and redux.
 - `npm install`
 - `npm start` - start the sevrer in production
 - `npm run build` - webpack build the front end
+
+> Alternatively run the following script to simultaneously run the server and build
+
 - `npm run dev` - concurrently start the server and build the front end
 
 * Navigate to http://localhost:4000/
