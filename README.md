@@ -5,6 +5,13 @@ Shopping app built with react and redux.
 <!-- TODO: link to a .gif of the app -->
 <!-- <img src='./snapshot.gif' height='80%' width='80%'> -->
 
+## Table of Contents
+
+1. [Installing Dependencies](#Installing-Dependencies)
+2. [Technologies Used](#Technologies-Used)
+3. [Requirements](#Requirements)
+4. [Notes](#Notes)
+
 ## Installing-Dependencies
 
 > Navigate to the root directory
@@ -15,13 +22,6 @@ Shopping app built with react and redux.
 - `npm run dev` - concurrently start the server and build the front end
 
 * Navigate to http://localhost:4000/
-
-## Table of Contents
-
-1. [Installing Dependencies](#Installing-Dependencies)
-2. [Technologies Used](#Technologies-Used)
-3. [Requirements](#Requirements)
-4. [Notes](#Notes)
 
 ## Technologies-Used
 
