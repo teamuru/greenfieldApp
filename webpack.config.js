@@ -1,23 +1,23 @@
-const path = require('path');
+const path = require("path");
 
 const config = {
-  entry: './client/src/index.js',
+  entry: "./client/src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, "client", "dist"),
+    filename: "bundle.js"
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        use: "babel-loader",
+        exclude: /node_modules/
+      }
+    ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+    extensions: [".js", ".jsx"]
+  }
 };
 
 module.exports = config;
