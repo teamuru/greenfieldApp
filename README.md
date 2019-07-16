@@ -5,10 +5,21 @@ Shopping app built with react and redux.
 <!-- TODO: link to a .gif of the app -->
 <!-- <img src='./snapshot.gif' height='80%' width='80%'> -->
 
+## Installing-Dependencies
+
+> Navigate to the root directory
+
+- `npm install`
+- `npm start` - start the sevrer in production
+- `npm run build` - webpack build the front end
+- `npm run dev` - concurrently start the server and build the front end
+
+* Navigate to http://localhost:4000/
+
 ## Table of Contents
 
-1. [Technologies Used](#Technologies-Used)
-2. [Installing Dependencies](#Installing-Dependencies)
+1. [Installing Dependencies](#Installing-Dependencies)
+2. [Technologies Used](#Technologies-Used)
 3. [Requirements](#Requirements)
 4. [Notes](#Notes)
 
@@ -33,17 +44,6 @@ Shopping app built with react and redux.
 
 - [Puppeteer](https://pptr.dev/)
 - [Jest](https://jestjs.io/docs/en/api)
-
-## Installing-Dependencies
-
-> Navigate to the root directory
-
-- `npm install`
-- `npm start` - start the sevrer in production
-- `npm run build` - webpack build the front end
-- `npm run dev` - concurrently start the server and build the front end
-
-* Navigate to http://localhost:4000/
 
 ## Requirements
 
