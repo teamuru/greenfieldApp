@@ -1,5 +1,3 @@
-import Redux from 'redux';
-
 // const initialState = {
 
 // }
