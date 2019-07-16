@@ -1,12 +1,14 @@
 const intialState = {
-  currentProduct: null
+  currentProduct: null,
 };
 
-export const productReducer = (state = intialState, action) => {
+const productReducer = (state = intialState, action) => {
   switch (action.type) {
-    case "CHANGE_PRODUCT":
+    case 'CHANGE_PRODUCT':
       return { ...state, currentProduct: action.id };
     default:
       return state;
   }
 };
+
+export default productReducer;
