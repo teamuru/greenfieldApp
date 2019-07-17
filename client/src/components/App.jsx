@@ -82,12 +82,11 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProd: (id) => {
-    dispatch(fetchProduct(id));
-  },
-
   fetchRev: (id) => {
     dispatch(fetchReviews(id));
+  },
+  fetchProd: (id) => {
+    dispatch(fetchProduct(id));
   }
 });
 

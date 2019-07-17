@@ -2,7 +2,7 @@ const intialState = {};
 
 const reviewReducer = (state = intialState, action) => {
   switch (action.type) {
-    case 'FETCH_REVIEW_SUCCESS':
+    case 'FETCH_REVIEW_SUCESS':
       return { ...state, data: action.payload };
     case 'FETCH_REVIEW_FAILURE':
       return state;
