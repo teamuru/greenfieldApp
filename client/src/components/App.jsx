@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
+import { fetchReviews } from '../actions/reviewActions';
 
 const Product = ({ match }) => (
   <div>
@@ -24,8 +25,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { fetchProd } = this.props;
+    const { fetchProd, fetchRev } = this.props;
     fetchProd(1);
+    fetchRev(1);
   }
 
   render() {
@@ -46,13 +48,12 @@ class App extends Component {
               </div>
             </nav>
             <ul>
-              {productIds.map(product => (
+              {productIds.map((product) => (
                 <li key={product}>
                   <Link to={`/${product}`}>
                     {' '}
                     Product
-                    {product}
-                    {' '}
+                    {product}{' '}
                   </Link>
                 </li>
               ))}
@@ -71,16 +72,22 @@ Product.propTypes = {
 };
 
 App.propTypes = {
-  fetchProd: PropTypes.func.isRequired
+  fetchProd: PropTypes.func.isRequired,
+  fetchRev: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
-  product: store.product
+const mapStateToProps = (store) => ({
+  product: store.product,
+  reviews: store.reviews
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
+  },
+
+  fetchRev: (id) => {
+    dispatch(fetchReviews(id));
   }
 });
 
