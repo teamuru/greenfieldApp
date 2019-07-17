@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import * as actions from '../actions/productActions';
 
 class App extends Component {
   constructor(props) {
@@ -6,7 +9,10 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount() { }
+  componentDidMount() {
+    const { fetchProducts } = this.props;
+    fetchProducts();
+  }
 
   render() {
     return (
@@ -21,4 +27,17 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  fetchProducts: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  product: state.product,
+  // loading: state.products.loading,
+  // error: state.products.error,
+});
+
+export default connect(
+  mapStateToProps,
+  actions,
+)(App);
