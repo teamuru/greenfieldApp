@@ -29,7 +29,7 @@ describe('Action creator tests', () => {
       { type: 'FETCH_PRODUCT_SUCCESS', payload: fetchProductMock }
     ];
 
-    const store = mockStore({ posts: {} });
+    const store = mockStore({});
 
     return store.dispatch(fetchProduct()).then(() => {
       // return of async actions
