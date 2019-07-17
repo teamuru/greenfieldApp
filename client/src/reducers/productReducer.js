@@ -1,15 +1,13 @@
-const intialState = {
-  product: {}
-};
+const intialState = {};
 
 const productReducer = (state = intialState, action) => {
   switch (action.type) {
     case 'FETCH_PRODUCT_BEGIN':
       return { ...state, currentProductLoading: true };
     case 'FETCH_PRODUCT_SUCCESS':
-      return { product: action.payload };
+      return { ...state, currentProductLoading: false, data: action.payload };
     case 'FETCH_PRODUCT_FAILURE':
-      return { ...state, error: action.payload };
+      return state;
     default:
       return state;
   }
