@@ -1,23 +1,30 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const ProductComponent = () => <h5>Product Component Link </h5>;
-
-const RelatedComponent = () => <h5> Related Component Link</h5>;
-
-const QuestionsComponent = () => <h5> Questions Component Link</h5>;
-
-const ReviewsComponent = () => <h5> Reviews Component Link</h5>;
+const Child = ({ match }) => (
+  <div>
+    <h5>
+      {" "}
+      Render Product with id:
+      {match.params.id}
+    </h5>
+  </div>
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      // FIXME: getProductIds from the store
+      productIds: [1, 2, 3, 4, 5]
+    };
   }
 
   componentDidMount() {}
 
   render() {
+    const { productIds } = this.state;
     return (
       <div className="container">
         <Router>
@@ -27,44 +34,40 @@ class App extends Component {
                 <div className="left brand-logo">Greenfield Logo</div>
                 <ul className="right">
                   <li>
-                    <a> Product </a>
-                  </li>
-                  <li>
-                    <a href="/related"> Related </a>
-                  </li>
-                  <li>
-                    <a href="/questions"> Questions </a>
-                  </li>
-                  <li>
-                    <a href="/reviews"> Reviews </a>
+                    {/* TODO: fix "/" */}
+                    <a href="/"> Products </a>
                   </li>
                 </ul>
               </div>
             </nav>
             <ul>
-              <li>
-                <Link to="/"> link to Product </Link>
-              </li>
-              <li>
-                <Link to="/related"> link to Related </Link>
-              </li>
-              <li>
-                <Link to="/questions"> link to Questions </Link>
-              </li>
-              <li>
-                <Link to="/reviews"> link to Reviews </Link>
-              </li>
+              {/* {this.state.productIds.map(product => ( */}
+              {productIds.map(product => (
+                <li key={product}>
+                  <Link to={`/${product}`}>
+                    {" "}
+                    Product
+                    {product}{" "}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
-            <Route exact path="/" component={ProductComponent} />
-            <Route exact path="/related" component={RelatedComponent} />
-            <Route exact path="/questions" component={QuestionsComponent} />
-            <Route exact path="/reviews" component={ReviewsComponent} />
+            <Route path="/:id" component={Child} />
           </div>
         </Router>
       </div>
     );
   }
 }
+
+// App.propTypes = {
+//   productId: PropTypes.array.isRequired,
+// };
+
+Child.propTypes = {
+  // 'match.params': PropTypes.string.isRequired,
+  match: PropTypes.string.isRequired
+};
 
 export default App;
