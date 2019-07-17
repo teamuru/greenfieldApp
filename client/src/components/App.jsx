@@ -62,7 +62,7 @@ class App extends Component {
 }
 
 Product.propTypes = {
-  match: PropTypes.string.isRequired
+  match: PropTypes.objectOf(Object).isRequired
 };
 
 export default App;
