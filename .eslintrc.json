@@ -20,6 +20,10 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "max-len": ["error", { "code": 1000 }]
+    "max-len": ["error", { "code": 1000 }],
+    "no-underscore-dangle": 0,
+    "no-trailing-spaces": 0,
+    "comma-dangle": 0,
+    "indent": 0
   }
 }
