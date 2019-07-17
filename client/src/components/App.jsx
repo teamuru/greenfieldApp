@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
+
+const Product = ({ match }) => (
+  <div>
+    <h5>
+      {' '}
+      Render Product with id:
+      {match.params.id}
+    </h5>
+  </div>
+);
 
 class App extends Component {
   constructor(props) {
@@ -15,27 +26,55 @@ class App extends Component {
   }
 
   render() {
+    const { productIds } = this.state;
     return (
-      <div>
-        <nav>
-          <div className="nav-wrapper">
-            <div className="brand-logo">Greenfield Logo</div>
+      <div className="container">
+        <Router>
+          <div>
+            <nav>
+              <div className="nav-wrapper">
+                <div className="left brand-logo">Greenfield Logo</div>
+                <ul className="right">
+                  <li>
+                    {/* TODO: fix "/" once products are loaded */}
+                    <a href="/"> Products </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <ul>
+              {productIds.map((product) => (
+                <li key={product}>
+                  <Link to={`/${product}`}>
+                    {' '}
+                    Product
+                    {product}{' '}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <Route path="/:id" component={Product} />
           </div>
-        </nav>
+        </Router>
       </div>
     );
   }
 }
 
+Product.propTypes = {
+  match: PropTypes.objectOf(Object).isRequired
+};
+
 App.propTypes = {
   fetchProd: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
   }
