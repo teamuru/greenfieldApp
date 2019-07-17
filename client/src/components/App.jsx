@@ -34,14 +34,13 @@ class App extends Component {
                 <div className="left brand-logo">Greenfield Logo</div>
                 <ul className="right">
                   <li>
-                    {/* TODO: fix "/" */}
+                    {/* TODO: fix "/" once products are loaded */}
                     <a href="/"> Products </a>
                   </li>
                 </ul>
               </div>
             </nav>
             <ul>
-              {/* {this.state.productIds.map(product => ( */}
               {productIds.map(product => (
                 <li key={product}>
                   <Link to={`/${product}`}>
@@ -61,12 +60,7 @@ class App extends Component {
   }
 }
 
-// App.propTypes = {
-//   productId: PropTypes.array.isRequired,
-// };
-
 Child.propTypes = {
-  // 'match.params': PropTypes.string.isRequired,
   match: PropTypes.string.isRequired
 };
 
