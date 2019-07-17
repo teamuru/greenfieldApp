@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const Child = ({ match }) => (
+// FIXME: this component will be replaced with product sleected on click
+const Product = ({ match }) => (
   <div>
     <h5>
       {" "}
@@ -52,7 +53,7 @@ class App extends Component {
               ))}
             </ul>
 
-            <Route path="/:id" component={Child} />
+            <Route path="/:id" component={Product} />
           </div>
         </Router>
       </div>
@@ -60,7 +61,7 @@ class App extends Component {
   }
 }
 
-Child.propTypes = {
+Product.propTypes = {
   match: PropTypes.string.isRequired
 };
 
