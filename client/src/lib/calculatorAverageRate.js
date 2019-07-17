@@ -6,12 +6,14 @@ function calculatorAverageRate(obj) {
   var rateSum = 0;
   var rateCounter = 0;
   for (var k in obj) {
-    rateSum += Number(k);
+    rateSum += Number(k) * obj[k];
     rateCounter += obj[k];
   }
   var average =rateSum / rateCounter;
-  return (Math.round(average*4)/4).toFixed(2);
+  return Number((Math.round(average*4)/4));
 }
+
+export default calculatorAverageRate;
 
 // test
 // var obj = {2: 1, 3: 1, 4: 2}
