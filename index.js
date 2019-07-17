@@ -1,8 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
+const express = require("express");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
 
-const path = require('path');
+const path = require("path");
 
 // An instance of express
 const app = express();
@@ -10,12 +10,12 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, './client/dist')));
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "./client/dist")));
 
 // For React-Router
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./dist/"));
 });
 
 const PORT = process.env.PORT || 4000;

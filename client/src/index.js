@@ -8,10 +8,7 @@ import App from "./components/App";
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <Router>
-      <Route path="/" component={App} />
-    </Router> */}
-    <App />,
+    <App />
   </Provider>,
   document.getElementById("app")
 );
