@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
+import { BrowserRouter as Router,  Route, Link } from 'react-router-dom';
 
 // FIXME: this component will be replaced with product sleected on click
 const Product = ({ match }) => (
@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       // FIXME: getProductIds from the store
-      productIds: [1, 2, 3, 4, 5],
+      productIds: [1, 2, 3, 4, 5]
     };
   }
 
@@ -47,13 +47,12 @@ class App extends Component {
               </div>
             </nav>
             <ul>
-              {productIds.map(product => (
+              {productIds.map((product) => (
                 <li key={product}>
                   <Link to={`/${product}`}>
                     {' '}
                     Product
-                    {product}
-                    {' '}
+                    {product}{' '}
                   </Link>
                 </li>
               ))}
@@ -68,24 +67,24 @@ class App extends Component {
 }
 
 Product.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired,
+  match: PropTypes.objectOf(Object).isRequired
 };
 
 App.propTypes = {
-  fetchProd: PropTypes.func.isRequired,
+  fetchProd: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
-  product: store.product,
+const mapStateToProps = (store) => ({
+  product: store.product
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
-  },
+  }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App);
