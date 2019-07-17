@@ -19,12 +19,26 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Router>
           <div>
             <nav>
               <div className="nav-wrapper">
-                <div className="brand-logo">Greenfield Logo</div>
+                <div className="left brand-logo">Greenfield Logo</div>
+                <ul className="right">
+                  <li>
+                    <a> Product </a>
+                  </li>
+                  <li>
+                    <a href="/related"> Related </a>
+                  </li>
+                  <li>
+                    <a href="/questions"> Questions </a>
+                  </li>
+                  <li>
+                    <a href="/reviews"> Reviews </a>
+                  </li>
+                </ul>
               </div>
             </nav>
             <ul>
