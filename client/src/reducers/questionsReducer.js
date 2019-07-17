@@ -1,7 +1,9 @@
-const questionsReducer = (state = null, action) => {
+const questionsReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'CHANGE_QUESTIONS':
-      return action.ToDo || null;
+    case 'FETCH_QUESTIONS_SUCCESS':
+      return { ...state, questions: action.payload };
+    case 'FETCH_QUESTIONS_ERROR':
+      return { ...state, questions: action.error };
     default:
       return state;
   }
