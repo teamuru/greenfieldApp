@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// const ProductComponent = () => {
-//   <h1>Product Component Link </h1>;
-// };
+const ProductComponent = () => {
+  <h1>Product Component Link </h1>;
+};
 
+const RelatedComponent = () => {
+  <h1> Related Component Link</h1>;
+};
 // const QuestionsComponent = () => {
 //   <h1> Questions Component Link</h1>;
-// };
-
-// const RelatedComponent = () => {
-//   <h1> Related Component Link</h1>;
 // };
 
 // const ReviewsComponent = () => {
@@ -27,13 +27,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav>
-          <div className="nav-wrapper">
-            <div className="brand-logo">Greenfield Logo</div>
+        <Router>
+          <div>
+            <nav>
+              <div className="nav-wrapper">
+                <div className="brand-logo">Greenfield Logo</div>
+              </div>
+            </nav>
+            {/* <ProductComponent /> */}
+            Test
+            <Route path="/" component={ProductComponent} />
+            <Route path="/related" component={RelatedComponent} />
           </div>
-        </nav>
-        {/* <ProductComponent /> */}
-        Test
+        </Router>
       </div>
     );
   }
