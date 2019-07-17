@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { fetchProduct } from '../actions/productActions';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // FIXME: this component will be replaced with product sleected on click
@@ -18,11 +20,14 @@ class App extends Component {
     super(props);
     this.state = {
       // FIXME: getProductIds from the store
-      productIds: [1, 2, 3, 4, 5],
+      productIds: [1, 2, 3, 4, 5]
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { fetchProd } = this.props;
+    fetchProd(1);
+  }
 
   render() {
     const { productIds } = this.state;
@@ -47,8 +52,7 @@ class App extends Component {
                   <Link to={`/${product}`}>
                     {' '}
                     Product
-                    {product}
-                    {' '}
+                    {product}{' '}
                   </Link>
                 </li>
               ))}
@@ -63,7 +67,24 @@ class App extends Component {
 }
 
 Product.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired,
+  match: PropTypes.objectOf(Object).isRequired
 };
 
-export default App;
+App.propTypes = {
+  fetchProd: PropTypes.func.isRequired
+};
+
+const mapStateToProps = store => ({
+  product: store.product
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchProd: id => {
+    dispatch(fetchProduct(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
