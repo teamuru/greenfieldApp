@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // FIXME: this component will be replaced with product sleected on click
 const Product = ({ match }) => (
   <div>
     <h5>
-      {" "}
+      {' '}
       Render Product with id:
       {match.params.id}
     </h5>
@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       // FIXME: getProductIds from the store
-      productIds: [1, 2, 3, 4, 5]
+      productIds: [1, 2, 3, 4, 5],
     };
   }
 
@@ -45,9 +45,10 @@ class App extends Component {
               {productIds.map(product => (
                 <li key={product}>
                   <Link to={`/${product}`}>
-                    {" "}
+                    {' '}
                     Product
-                    {product}{" "}
+                    {product}
+                    {' '}
                   </Link>
                 </li>
               ))}
@@ -62,7 +63,7 @@ class App extends Component {
 }
 
 Product.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired
+  match: PropTypes.objectOf(Object).isRequired,
 };
 
 export default App;
