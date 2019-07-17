@@ -9,8 +9,9 @@ import App from "./components/App";
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Router path="/" component={App} />
+      <Route path="/" component={App} />
     </Router>
+    ,
   </Provider>,
   document.getElementById("app")
 );
