@@ -1,12 +1,12 @@
-import {
- createStore, combineReducers, applyMiddleware, compose 
-} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import productReducer from './reducers/productReducer';
+import reviewReducer from './reducers/reviewReducer';
 
 // TODO: Add other reducers to rootReducer
 const rootReducer = combineReducers({
-  product: productReducer
+  product: productReducer,
+  reviews: reviewReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
