@@ -17,7 +17,10 @@ const Product = ({ match }) => (
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      // TODO: fixed with live ids later on
+      productIds: [1, 2, 3, 4, 5]
+    };
   }
 
   componentDidMount() {
