@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
-import { BrowserRouter as Router,  Route, Link } from 'react-router-dom';
 
 // FIXME: this component will be replaced with product sleected on click
 const Product = ({ match }) => (
