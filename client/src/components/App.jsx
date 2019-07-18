@@ -6,6 +6,9 @@ import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewActions';
 import { fetchQuestions } from '../actions/questionsActions';
 
+// component imports
+import RevParentComponent from './Reviews/RevParentComponent';
+
 const Product = ({ match }) => (
   <div>
     <h5>
@@ -50,13 +53,12 @@ class App extends Component {
               </div>
             </nav>
             <ul>
-              {productIds.map(product => (
+              {productIds.map((product) => (
                 <li key={product}>
                   <Link to={`/${product}`}>
                     {' '}
                     Product
-                    {product}
-                    {' '}
+                    {product}{' '}
                   </Link>
                 </li>
               ))}
@@ -65,6 +67,8 @@ class App extends Component {
             <Route path="/:id" component={Product} />
           </div>
         </Router>
+
+        <RevParentComponent />
       </div>
     );
   }
@@ -80,13 +84,13 @@ App.propTypes = {
   fetchQuests: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product,
   questions: store.questions,
   reviews: store.reviews
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
   },
