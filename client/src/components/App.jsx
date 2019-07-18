@@ -14,7 +14,7 @@ import {
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
-import SearchQuestions from './Questions/SearchQuestions'
+import SearchQuestions from './Questions/SearchQuestions';
 
 const Product = ({ match }) => (
   <div>
