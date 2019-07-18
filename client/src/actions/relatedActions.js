@@ -38,10 +38,12 @@ export const addProductToOutfit = id => ({
   }
 });
 
-// export const addToOutfitFailure = error => ({
-//   type: 'ADD_TO_OUTFIT_FAILURE',
-//   payload: error
-// });
+export const deleteProductFromOutfit = id => ({
+  type: 'DELETE_FROM_OUTFIT',
+  payload: {
+    id
+  }
+});
 
 export const fetchRelatedIDs = (prodId) => {
   const url = `${API_URL}/products/${prodId}/related`;
@@ -76,3 +78,5 @@ export const fetchStars = (prodId) => {
 
 // This cannot run until relatedProducts dispatches success
 export const addToOutfit = prodId => addProductToOutfit(prodId);
+
+export const deleteFromOutfit = prodId => deleteProductFromOutfit(prodId);
