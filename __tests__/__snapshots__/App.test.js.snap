@@ -36,7 +36,6 @@ exports[`It renders App 1`] = `
            
           Product
           1
-           
         </a>
       </li>
       <li>
@@ -47,7 +46,6 @@ exports[`It renders App 1`] = `
            
           Product
           2
-           
         </a>
       </li>
       <li>
@@ -58,7 +56,6 @@ exports[`It renders App 1`] = `
            
           Product
           3
-           
         </a>
       </li>
       <li>
@@ -69,7 +66,6 @@ exports[`It renders App 1`] = `
            
           Product
           4
-           
         </a>
       </li>
       <li>
@@ -80,7 +76,6 @@ exports[`It renders App 1`] = `
            
           Product
           5
-           
         </a>
       </li>
     </ul>
