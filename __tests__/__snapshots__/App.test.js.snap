@@ -2,31 +2,19 @@
 
 exports[`It renders App 1`] = `
 <div
-  className="container"
+  className="MuiContainer-root MuiContainer-maxWidthLg"
 >
   <div>
-    <nav>
-      <div
-        className="nav-wrapper"
-      >
-        <div
-          className="left brand-logo"
-        >
+    <header
+      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed"
+    >
+      <div>
+        <div>
           Greenfield Logo
         </div>
-        <ul
-          className="right"
-        >
-          <li>
-            <a
-              href="/"
-            >
-               Products 
-            </a>
-          </li>
-        </ul>
+        <ul />
       </div>
-    </nav>
+    </header>
     <ul>
       <li>
         <a
