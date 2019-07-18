@@ -53,12 +53,13 @@ class App extends Component {
               </div>
             </nav>
             <ul>
-              {productIds.map((product) => (
+              {productIds.map(product => (
                 <li key={product}>
                   <Link to={`/${product}`}>
                     {' '}
                     Product
-                    {product}{' '}
+                    {product}
+                    {' '}
                   </Link>
                 </li>
               ))}
@@ -84,13 +85,13 @@ App.propTypes = {
   fetchQuests: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   product: store.product,
   questions: store.questions,
   reviews: store.reviews
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
   },
