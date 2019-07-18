@@ -42,6 +42,10 @@ const relatedReducer = (state = initialState, action) => {
       }
 
       return state;
+    case 'DELETE_FROM_OUTFIT':
+      return state.relatedProducts.filter(
+        product => product.id !== action.payload.id
+      );
 
     default:
       return state;
