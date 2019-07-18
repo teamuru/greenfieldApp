@@ -31,7 +31,7 @@ export const fetchRelatedIDs = (prodId) => {
 };
 
 export const fetchRelatedProduct = (prodId) => {
-  const url = `${API_URL}/product/${prodId}`;
+  const url = `${API_URL}/products/${prodId}`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
         dispatch(fetchRelatedProductSuccess(data));

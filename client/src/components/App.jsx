@@ -46,6 +46,7 @@ class App extends Component {
     fetchReviews(1);
     fetchRelatedIDs(1);
     fetchRelatedProduct(1);
+    fetchRelatedProduct(2);
   }
 
   render() {
