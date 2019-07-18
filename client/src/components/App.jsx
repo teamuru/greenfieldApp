@@ -8,7 +8,8 @@ import { fetchReviews } from '../actions/reviewActions';
 import { fetchQuestions } from '../actions/questionsActions';
 import {
   fetchRelatedIDs,
-  fetchRelatedProduct
+  fetchRelatedProduct,
+  fetchStars
 } from '../actions/relatedActions';
 
 // component imports
@@ -39,7 +40,8 @@ class App extends Component {
       fetchQuestions,
       fetchReviews,
       fetchRelatedIDs,
-      fetchRelatedProduct
+      fetchRelatedProduct,
+      fetchStars
     } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
@@ -47,6 +49,8 @@ class App extends Component {
     fetchRelatedIDs(1);
     fetchRelatedProduct(1);
     fetchRelatedProduct(2);
+    fetchStars(1);
+    fetchStars(2);
   }
 
   render() {
@@ -97,7 +101,8 @@ App.propTypes = {
   fetchReviews: PropTypes.func.isRequired,
   fetchQuestions: PropTypes.func.isRequired,
   fetchRelatedIDs: PropTypes.func.isRequired,
-  fetchRelatedProduct: PropTypes.func.isRequired
+  fetchRelatedProduct: PropTypes.func.isRequired,
+  fetchStars: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -105,7 +110,8 @@ const mapStateToProps = store => ({
   questions: store.questions,
   reviews: store.reviews,
   related: store.related,
-  relatedProducts: store.relatedProducts
+  relatedProducts: store.relatedProducts,
+  stars: store.stars
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -123,6 +129,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchRelatedProduct: (id) => {
     dispatch(fetchRelatedProduct(id));
+  },
+  fetchStars: (id) => {
+    dispatch(fetchStars(id));
   }
 });
 

@@ -1,6 +1,7 @@
 const initialState = {
   relatedProducts: [],
-  relatedIDs: []
+  relatedIDs: [],
+  stars: []
 };
 
 const relatedReducer = (state = initialState, action) => {
@@ -14,8 +15,14 @@ const relatedReducer = (state = initialState, action) => {
         ...state,
         relatedProducts: [...state.relatedProducts, action.payload]
       };
-
     case 'FETCH_RELATED_PRODUCT_FAILURE':
+      return state;
+    case 'FETCH_STARS_SUCCESS':
+      return {
+        ...state,
+        stars: [...state.stars, action.payload]
+      };
+    case 'FETCH_STARS_FAILURE':
       return state;
     default:
       return state;
