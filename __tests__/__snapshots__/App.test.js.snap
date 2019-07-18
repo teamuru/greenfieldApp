@@ -80,5 +80,10 @@ exports[`It renders App 1`] = `
       </li>
     </ul>
   </div>
+  <div>
+    <h5>
+       Reviews Section 
+    </h5>
+  </div>
 </div>
 `;

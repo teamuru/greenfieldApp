@@ -8,6 +8,9 @@ import { fetchReviews } from '../actions/reviewActions';
 import { fetchQuestions } from '../actions/questionsActions';
 import { fetchRelatedIDs } from '../actions/relatedActions';
 
+// component imports
+import RevParentComponent from './Reviews/RevParentComponent';
+
 const Product = ({ match }) => (
   <div>
     <h5>
@@ -72,6 +75,8 @@ class App extends Component {
             <Route path="/:id" component={Product} />
           </div>
         </Router>
+
+        <RevParentComponent />
       </div>
     );
   }
