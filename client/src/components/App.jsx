@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewActions';
+import { fetchQuestions } from '../actions/questionsActions';
 
 const Product = ({ match }) => (
   <div>
@@ -25,8 +26,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { fetchProd, fetchRev } = this.props;
+    const { fetchProd, fetchQuests, fetchRev } = this.props;
     fetchProd(1);
+    fetchQuests(1);
     fetchRev(1);
   }
 
@@ -74,20 +76,25 @@ Product.propTypes = {
 
 App.propTypes = {
   fetchProd: PropTypes.func.isRequired,
-  fetchRev: PropTypes.func.isRequired
+  fetchRev: PropTypes.func.isRequired,
+  fetchQuests: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
   product: store.product,
+  questions: store.questions,
   reviews: store.reviews
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchRev: (id) => {
-    dispatch(fetchReviews(id));
-  },
   fetchProd: (id) => {
     dispatch(fetchProduct(id));
+  },
+  fetchQuests: (id) => {
+    dispatch(fetchQuestions(id));
+  },
+  fetchRev: (id) => {
+    dispatch(fetchReviews(id));
   }
 });
 
