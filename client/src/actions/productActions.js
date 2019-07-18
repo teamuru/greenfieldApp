@@ -12,10 +12,12 @@ export const fetchProductFailure = error => ({
 });
 
 export const fetchProduct = (prodId) => {
-  const url = `https://cors-anywhere.herokuapp.com/${API_URL}/Products/${prodId}`;
+  const url = `${API_URL}/Products/${prodId}`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
         dispatch(fetchProductSuccess(data));
       })
-      .catch(error => dispatch(fetchProductFailure(error)));
+      .catch(err => dispatch(fetchProductFailure(err)));
 };
+
+export default fetchProduct;
