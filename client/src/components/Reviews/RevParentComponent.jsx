@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-// import theme from '../../../src/theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +30,6 @@ const RevParentComponent = () => {
           <Paper className={classes.paper}>Recommendation</Paper>
           <Paper className={classes.paper}>Stars List</Paper>
           <Paper className={classes.paper}>Slider</Paper>
-          {/* <Paper className={classes.paper}>Recommendation</Paper> */}
         </Grid>
         <Grid item xs={9}>
           <Paper className={classes.paper}>Sort By Relevance</Paper>
@@ -66,9 +64,6 @@ const RevParentComponent = () => {
             </Grid>
           </Paper>
         </Grid>
-        {/* <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid> */}
       </Grid>
     </div>
   );
