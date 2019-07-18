@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import { fetchRelatedIDs } from '../actions/relatedActions';
+import {
+  fetchRelatedIDs,
+  fetchRelatedProduct
+} from '../actions/relatedActions';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
@@ -35,12 +38,15 @@ class App extends Component {
       fetchProduct,
       fetchQuestions,
       fetchReviews,
-      fetchRelatedIDs
+      fetchRelatedIDs,
+      fetchRelatedProduct
     } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
     fetchReviews(1);
     fetchRelatedIDs(1);
+    fetchRelatedProduct(1);
+    fetchRelatedProduct(2);
   }
 
   render() {
@@ -90,14 +96,16 @@ App.propTypes = {
   fetchProduct: PropTypes.func.isRequired,
   fetchReviews: PropTypes.func.isRequired,
   fetchQuestions: PropTypes.func.isRequired,
-  fetchRelatedIDs: PropTypes.func.isRequired
+  fetchRelatedIDs: PropTypes.func.isRequired,
+  fetchRelatedProduct: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
   product: store.product,
   questions: store.questions,
   reviews: store.reviews,
-  related: store.related
+  related: store.related,
+  relatedProducts: store.relatedProducts
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -112,6 +120,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchRelatedIDs: (id) => {
     dispatch(fetchRelatedIDs(id));
+  },
+  fetchRelatedProduct: (id) => {
+    dispatch(fetchRelatedProduct(id));
   }
 });
 
