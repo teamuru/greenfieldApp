@@ -3,20 +3,15 @@ import { createMuiTheme } from '@material-ui/core';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: 'FF3433',
-      main: '#FF0200',
-      dark: '#B20100',
-      contrastText: '#FFFFFF'
-    },
-    secondary: {
-      light: '#333333',
-      main: '#000000',
-      dark: '#000000',
-      contrastText: '#FFFFFF'
+      light: '#7BDFF2',
+      main: '#7BDFF2',
+      dark: '#7BDFF2',
+      contrastText: '#fff'
     }
   },
   typography: {
-    // TODO: fill
+    fontFamily: ['-apple-system', 'Roboto', 'sans-serif'].join(','),
+    htmlFontSize: 10
   }
 });
 
