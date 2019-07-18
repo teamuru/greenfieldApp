@@ -1,8 +1,8 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 
-export const fetchReviewsSucess = reviews => ({
-  type: 'FETCH_REVIEW_SUCESS',
+export const fetchReviewsSuccess = reviews => ({
+  type: 'FETCH_REVIEW_SUCCESS',
   payload: reviews
 });
 
@@ -15,7 +15,7 @@ export const fetchReviews = (productId) => {
   const url = `${API_URL}/reviews/${productId}/list`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
-        dispatch(fetchReviewsSucess(data));
+        dispatch(fetchReviewsSuccess(data));
       })
       .catch((err) => {
         dispatch(fetchReviewFailure(err));
