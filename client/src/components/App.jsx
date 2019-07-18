@@ -10,7 +10,11 @@ import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import { fetchRelatedIDs, fetchRelatedProduct, fetchStars } from '../actions/relatedActions';
+import {
+  fetchRelatedIDs,
+  fetchRelatedProduct,
+  fetchStars
+} from '../actions/relatedActions';
 import theme from '../theme';
 
 // component imports
@@ -30,8 +34,13 @@ const Product = ({ match }) => (
 class App extends Component {
   componentDidMount() {
     const {
- fetchProduct, fetchQuestions, fetchReviews, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
-} = this.props;
+      fetchProduct,
+      fetchQuestions,
+      fetchReviews,
+      fetchRelatedIDs,
+      fetchRelatedProduct,
+      fetchStars
+    } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
     fetchReviews(1);
@@ -79,7 +88,7 @@ App.propTypes = {
   fetchStars: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product,
   questions: store.questions,
   reviews: store.reviews,
@@ -89,7 +98,7 @@ const mapStateToProps = store => ({
   outfit: store.outfit
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProduct: (id) => {
     dispatch(fetchProduct(id));
   },
