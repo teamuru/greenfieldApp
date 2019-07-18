@@ -27,10 +27,137 @@ Array [
         </form>
       </main>
     </div>
-    <div>
-      <h5>
-         Reviews Section 
-      </h5>
+    <div
+      className="makeStyles-root-44"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Ratings and Reviews
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Rating and Star
+          </div>
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Recommendation
+          </div>
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Stars List
+          </div>
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Slider
+          </div>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
+        >
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            Sort By Relevance
+          </div>
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            <div
+              className="MuiGrid-root"
+            >
+              <div
+                className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between"
+              >
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  stars
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  User
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root"
+              >
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  Summary Bold
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  Body
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  Recommend Y/N
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-baseline"
+                >
+                  <div
+                    className="MuiGrid-root MuiGrid-item"
+                  >
+                    Response
+                  </div>
+                  <div
+                    className="MuiGrid-root MuiGrid-item"
+                  >
+                    Response Summary
+                  </div>
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                >
+                  Helpful | yes?
+                </div>
+              </div>
+              <div
+                className="MuiGrid-root"
+              >
+                <div
+                  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6 MuiGrid-align-items-xs-baseline"
+                >
+                  <div
+                    className="MuiGrid-root MuiGrid-item"
+                  >
+                    stars
+                  </div>
+                  <div
+                    className="MuiGrid-root MuiGrid-item"
+                  >
+                    User
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>,
 ]
