@@ -1,7 +1,6 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
-
 import { fetchReviews } from '../client/src/actions/reviewActions';
 import fetchReviewsMock from '../mocks/fetchReviewsMock';
 
