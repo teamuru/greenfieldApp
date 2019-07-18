@@ -1,3 +1,4 @@
+/* eslint no-shadow: "off" */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -28,12 +29,15 @@ class App extends Component {
 
   componentDidMount() {
     const {
- fetchProd, fetchQuests, fetchRev, fetchRelated 
-} = this.props;
-    fetchProd(1);
-    fetchQuests(1);
-    fetchRev(1);
-    fetchRelated(1);
+      fetchProduct,
+      fetchQuestions,
+      fetchReviews,
+      fetchRelatedIDs
+    } = this.props;
+    fetchProduct(1);
+    fetchQuestions(1);
+    fetchReviews(1);
+    fetchRelatedIDs(1);
   }
 
   render() {
@@ -78,10 +82,10 @@ Product.propTypes = {
 };
 
 App.propTypes = {
-  fetchProd: PropTypes.func.isRequired,
-  fetchRev: PropTypes.func.isRequired,
-  fetchQuests: PropTypes.func.isRequired,
-  fetchRelated: PropTypes.func.isRequired
+  fetchProduct: PropTypes.func.isRequired,
+  fetchReviews: PropTypes.func.isRequired,
+  fetchQuestions: PropTypes.func.isRequired,
+  fetchRelatedIDs: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -92,16 +96,16 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProd: (id) => {
+  fetchProduct: (id) => {
     dispatch(fetchProduct(id));
   },
-  fetchQuests: (id) => {
+  fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
   },
-  fetchRev: (id) => {
+  fetchReviews: (id) => {
     dispatch(fetchReviews(id));
   },
-  fetchRelated: (id) => {
+  fetchRelatedIDs: (id) => {
     dispatch(fetchRelatedIDs(id));
   }
 });
