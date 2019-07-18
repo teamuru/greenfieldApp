@@ -13,7 +13,19 @@ Array [
     className="MuiContainer-root MuiContainer-maxWidthLg"
   >
     <div>
-      <main />
+      <main>
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            onChange={[Function]}
+            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+            size="100"
+            type="text"
+            value=""
+          />
+        </form>
+      </main>
     </div>
     <div>
       <h5>
