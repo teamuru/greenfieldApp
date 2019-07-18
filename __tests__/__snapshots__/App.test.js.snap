@@ -1,77 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`It renders App 1`] = `
-<div
-  className="MuiContainer-root MuiContainer-maxWidthLg"
->
-  <div>
+Array [
+  <header>
     <header
-      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed"
+      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary"
     >
-      <div>
-        <div>
-          Greenfield Logo
-        </div>
-        <ul />
-      </div>
+      Greenfield Logo
     </header>
-    <ul>
-      <li>
-        <a
-          href="/1"
-          onClick={[Function]}
-        >
-           
-          Product
-          1
-        </a>
-      </li>
-      <li>
-        <a
-          href="/2"
-          onClick={[Function]}
-        >
-           
-          Product
-          2
-        </a>
-      </li>
-      <li>
-        <a
-          href="/3"
-          onClick={[Function]}
-        >
-           
-          Product
-          3
-        </a>
-      </li>
-      <li>
-        <a
-          href="/4"
-          onClick={[Function]}
-        >
-           
-          Product
-          4
-        </a>
-      </li>
-      <li>
-        <a
-          href="/5"
-          onClick={[Function]}
-        >
-           
-          Product
-          5
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div>
-    <h5>
-       Reviews Section 
-    </h5>
-  </div>
-</div>
+  </header>,
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div>
+      <main />
+    </div>
+    <div>
+      <h5>
+         Reviews Section 
+      </h5>
+    </div>
+  </div>,
+]
 `;

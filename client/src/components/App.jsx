@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
@@ -26,14 +27,6 @@ const Product = ({ match }) => (
 );
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // TODO: fixed with live ids later on
-      productIds: [1, 2, 3, 4, 5]
-    };
-  }
-
   componentDidMount() {
     const {
  fetchProduct, fetchQuestions, fetchReviews, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
@@ -49,36 +42,23 @@ class App extends Component {
   }
 
   render() {
-    const { productIds } = this.state;
     return (
       <MuiThemeProvider theme={theme}>
-        <Container>
+        <CssBaseline>
           <Router>
-            <div>
-              <AppBar>
-                <div>
-                  <div>Greenfield Logo</div>
-                  <ul />
-                </div>
-              </AppBar>
-              <ul>
-                {productIds.map(product => (
-                  <li key={product}>
-                    <Link to={`/${product}`}>
-                      {' '}
-                      Product
-                      {product}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              <Route path="/:id" component={Product} />
-            </div>
+            <header>
+              <AppBar position="sticky">Greenfield Logo</AppBar>
+            </header>
+            <Container>
+              <div>
+                <main>
+                  <Route path="/:id" component={Product} />
+                </main>
+              </div>
+              <RevParentComponent />
+            </Container>
           </Router>
-
-          <RevParentComponent />
-        </Container>
+        </CssBaseline>
       </MuiThemeProvider>
     );
   }
