@@ -1,28 +1,28 @@
 import reducer from '../client/src/reducers/productReducer';
-import fetchProductMock from '../mocks/fetchProductMock';
+import fetchReviewsMock from '../mocks/fetchReviewsMock';
 
-describe('Product reducer', () => {
+describe('Reviews reducer ', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({});
   });
 
-  it('should handle FETCH_PRODUCT_SUCCESS', () => {
+  it('should handle FETCH_REVIEWS_SUCCESS', () => {
     expect(
       reducer([], {
-        type: 'FETCH_PRODUCT_SUCCESS',
-        payload: fetchProductMock
+        type: 'FETCH_REVIEWS_SUCCESS',
+        payload: fetchReviewsMock
       })
     ).toEqual({
-      data: fetchProductMock
+      data: fetchReviewsMock
     });
   });
 
-  it('Should handle FETCH_PRODUCT_FAILURE', () => {
+  it('Should handle FETCH_REVIEWS_FAILURE', () => {
     expect(
       reducer(
         {},
         {
-          type: 'FETCH_PRODUCT_FAILURE'
+          type: 'FETCH_REVIEWS_FAILURE'
         }
       )
     ).toEqual({});
