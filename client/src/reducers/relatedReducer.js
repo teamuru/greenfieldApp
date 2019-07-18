@@ -1,10 +1,13 @@
+/* eslint consistent-return: "off" */
 const initialState = {
   relatedProducts: [],
   relatedIDs: [],
-  stars: []
+  stars: [],
+  outfit: []
 };
 
 const relatedReducer = (state = initialState, action) => {
+  let outfitItem;
   switch (action.type) {
     case 'FETCH_RELATED_SUCCESS':
       return { ...state, relatedIDs: action.payload };
@@ -24,6 +27,22 @@ const relatedReducer = (state = initialState, action) => {
       };
     case 'FETCH_STARS_FAILURE':
       return state;
+    case 'ADD_TO_OUTFIT':
+      state.relatedProducts.forEach((item) => {
+        if (item.id === action.payload.id) {
+          outfitItem = item;
+        }
+      });
+
+      if (outfitItem) {
+        return {
+          ...state,
+          outfit: [...state.outfit, outfitItem]
+        };
+      }
+
+      return state;
+
     default:
       return state;
   }

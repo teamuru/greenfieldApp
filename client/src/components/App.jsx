@@ -111,7 +111,8 @@ const mapStateToProps = store => ({
   reviews: store.reviews,
   related: store.related,
   relatedProducts: store.relatedProducts,
-  stars: store.stars
+  stars: store.stars,
+  outfit: store.outfit
 });
 
 const mapDispatchToProps = dispatch => ({
