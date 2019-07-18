@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import {
-  fetchRelatedIDs,
-  fetchRelatedProduct
-} from '../actions/relatedActions';
+import { fetchRelatedIDs, fetchRelatedProduct } from '../actions/relatedActions';
+import theme from '../theme';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
@@ -35,12 +36,8 @@ class App extends Component {
 
   componentDidMount() {
     const {
-      fetchProduct,
-      fetchQuestions,
-      fetchReviews,
-      fetchRelatedIDs,
-      fetchRelatedProduct
-    } = this.props;
+ fetchProduct, fetchQuestions, fetchReviews, fetchRelatedIDs, fetchRelatedProduct 
+} = this.props;
     fetchProduct(1);
     fetchQuestions(1);
     fetchReviews(1);
@@ -52,38 +49,35 @@ class App extends Component {
   render() {
     const { productIds } = this.state;
     return (
-      <div className="container">
-        <Router>
-          <div>
-            <nav>
-              <div className="nav-wrapper">
-                <div className="left brand-logo">Greenfield Logo</div>
-                <ul className="right">
-                  <li>
-                    {/* TODO: fix "/" once products are loaded */}
-                    <a href="/"> Products </a>
+      <MuiThemeProvider theme={theme}>
+        <Container>
+          <Router>
+            <div>
+              <AppBar>
+                <div>
+                  <div>Greenfield Logo</div>
+                  <ul />
+                </div>
+              </AppBar>
+              <ul>
+                {productIds.map(product => (
+                  <li key={product}>
+                    <Link to={`/${product}`}>
+                      {' '}
+                      Product
+                      {product}
+                    </Link>
                   </li>
-                </ul>
-              </div>
-            </nav>
-            <ul>
-              {productIds.map(product => (
-                <li key={product}>
-                  <Link to={`/${product}`}>
-                    {' '}
-                    Product
-                    {product}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </ul>
 
-            <Route path="/:id" component={Product} />
-          </div>
-        </Router>
+              <Route path="/:id" component={Product} />
+            </div>
+          </Router>
 
-        <RevParentComponent />
-      </div>
+          <RevParentComponent />
+        </Container>
+      </MuiThemeProvider>
     );
   }
 }
