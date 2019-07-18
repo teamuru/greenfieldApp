@@ -1,16 +1,14 @@
-import {
- createStore, combineReducers, applyMiddleware, compose 
-} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import productReducer from './reducers/productReducer';
-import reviewReducer from './reducers/reviewReducer';
+import reviewsReducer from './reducers/reviewsReducer';
 import questionsReducer from './reducers/questionsReducer';
 import relatedReducer from './reducers/relatedReducer';
 
 const rootReducer = combineReducers({
   product: productReducer,
   questions: questionsReducer,
-  reviews: reviewReducer,
+  reviews: reviewsReducer,
   related: relatedReducer
 });
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { fetchProduct } from '../actions/productActions';
-import { fetchReviews } from '../actions/reviewActions';
+import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
 import {
   fetchRelatedIDs,
@@ -71,7 +71,7 @@ class App extends Component {
               </div>
             </nav>
             <ul>
-              {productIds.map(product => (
+              {productIds.map((product) => (
                 <li key={product}>
                   <Link to={`/${product}`}>
                     {' '}
@@ -105,7 +105,7 @@ App.propTypes = {
   fetchStars: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product,
   questions: store.questions,
   reviews: store.reviews,
@@ -114,7 +114,7 @@ const mapStateToProps = store => ({
   stars: store.stars
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProduct: (id) => {
     dispatch(fetchProduct(id));
   },
