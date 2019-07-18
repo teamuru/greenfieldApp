@@ -11,7 +11,23 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, './client/dist')));
+
+app.get('*/bundle.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'bundle.js'), (err) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+  });
+});
+
+// Catch all incase user refreshes on react-router handled url
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'), (err) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+  });
+});
 
 const PORT = process.env.PORT || 4000;
 
