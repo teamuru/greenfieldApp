@@ -31,6 +31,18 @@ export const fetchStarsFailure = error => ({
   payload: error
 });
 
+export const addProductToOutfit = id => ({
+  type: 'ADD_TO_OUTFIT',
+  payload: {
+    id
+  }
+});
+
+// export const addToOutfitFailure = error => ({
+//   type: 'ADD_TO_OUTFIT_FAILURE',
+//   payload: error
+// });
+
 export const fetchRelatedIDs = (prodId) => {
   const url = `${API_URL}/products/${prodId}/related`;
   return dispatch => Axios.get(url)
@@ -61,3 +73,6 @@ export const fetchStars = (prodId) => {
         dispatch(fetchStarsFailure(error));
       });
 };
+
+// This cannot run until relatedProducts dispatches success
+export const addToOutfit = prodId => addProductToOutfit(prodId);
