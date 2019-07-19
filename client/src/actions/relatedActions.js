@@ -38,6 +38,13 @@ export const addProductToOutfit = id => ({
   }
 });
 
+export const fetchAllRelatedProducts = id => ({
+  type: 'FETCH_ALL_RELATED',
+  payload: {
+    id
+  }
+});
+
 export const deleteProductFromOutfit = id => ({
   type: 'DELETE_FROM_OUTFIT',
   payload: {
@@ -45,19 +52,20 @@ export const deleteProductFromOutfit = id => ({
   }
 });
 
-export const fetchRelatedIDs = (prodId) => {
+export async function fetchRelatedIDs(prodId) {
   const url = `${API_URL}/products/${prodId}/related`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
         dispatch(fetchRelatedSuccess(data));
       })
       .catch(error => dispatch(fetchRelatedFailure(error)));
-};
+}
 
 export const fetchRelatedProduct = (prodId) => {
   const url = `${API_URL}/products/${prodId}`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
+        console.log(data);
         dispatch(fetchRelatedProductSuccess(data));
       })
       .catch((error) => {
@@ -74,6 +82,28 @@ export const fetchStars = (prodId) => {
       .catch((error) => {
         dispatch(fetchStarsFailure(error));
       });
+};
+
+export const fetchAllRelated = (prodId) => {
+  const promises = [];
+
+  return (dispatch) => {
+    Axios.get(`${API_URL}/products/${prodId}/related`)
+      .then(({ data }) => {
+        data.forEach((item) => {
+          promises.push(Axios.get(`${API_URL}/products/${item}`));
+        });
+      })
+      .then(() => {
+        Axios.all(promises).then(
+          Axios.spread((...args) => {
+            args.forEach((item) => {
+              dispatch(fetchRelatedProductSuccess(item.data));
+            });
+          })
+        );
+      });
+  };
 };
 
 // This cannot run until relatedProducts dispatches success
