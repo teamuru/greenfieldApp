@@ -25,21 +25,22 @@ class ProductOverview extends Component {
   render() {
     const { selectedStyle } = this.state;
     const { product } = this.props;
-    return !product.data || !product.styles ? (
+    const { data, styles } = product;
+    return !data || !styles ? (
       <h1>Loading Product</h1>
     ) : (
       <React.Fragment>
         <Grid container xs={12}>
           <Grid container xs={7} justify="center">
-            <Carousel styles={product.styles} selectedStyle={selectedStyle} />
+            <Carousel styles={styles} selectedStyle={selectedStyle} />
           </Grid>
           <Grid container xs={5} justify="flex-start">
-            <Details styles={product.styles} />
+            <Details styles={styles} />
           </Grid>
         </Grid>
         <Grid container xs={12}>
           <Grid container xs={7} justify="center">
-            <Description />
+            <Description slogan={data.slogan} description={data.description} />
           </Grid>
           <Grid container xs={5} justify="flex-start">
             <Checklist />
