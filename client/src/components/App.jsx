@@ -15,7 +15,7 @@ import theme from '../theme';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
-import SearchQuestions from './Questions/SearchQuestions';
+import Questions from './Questions/Question'
 
 const Product = ({ match }) => (
   <div>
@@ -54,7 +54,7 @@ class App extends Component {
               <div>
                 <main>
                   <Route path="/:id" component={Product} />
-                  <SearchQuestions />
+                  <Questions />
                 </main>
               </div>
               <RevParentComponent />

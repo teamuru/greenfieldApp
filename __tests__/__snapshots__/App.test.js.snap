@@ -14,17 +14,32 @@ Array [
   >
     <div>
       <main>
-        <form
-          onSubmit={[Function]}
-        >
-          <input
-            onChange={[Function]}
-            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-            size="100"
-            type="text"
-            value=""
-          />
-        </form>
+        <div>
+          <h6>
+            QUESTIONS
+             & 
+            ANSWERS
+          </h6>
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              onChange={[Function]}
+              placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+              size="100"
+              type="text"
+              value=""
+            />
+          </form>
+          <div />
+          <div>
+            <button
+              onClick={[Function]}
+            >
+              MORE ANSWERED QUESTIONS
+            </button>
+          </div>
+        </div>
       </main>
     </div>
     <div>
