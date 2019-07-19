@@ -31,10 +31,10 @@ export const postReviewFailure = (error) => ({
   payload: error
 });
 
-export const postReview = (review, prodId) => {
+export const postReview = (reviewObj, prodId) => {
   const url = `${API_URL}/reviews/${prodId}`;
   return (dispatch) =>
-    Axios.post(url, review)
+    Axios.post(url, reviewObj)
       .then(({ data }) => {
         dispatch(postReviewSucess(data));
       })
@@ -43,19 +43,20 @@ export const postReview = (review, prodId) => {
       });
 };
 
-export const markReviewSuccess = (review) => ({
-  type: 'PUT_REVIEW_SUCCESS',
-  payload: review
-});
+// export const markReviewSuccess = (review) => ({
+//   type: 'PUT_REVIEW_SUCCESS',
+//   payload: review
+// });
 
-export const markReviewFailure = (error) => ({
-  type: 'PUT_REVIEW_FAILURE',
-  payload: error
-});
+// export const markReviewFailure = (error) => ({
+//   type: 'PUT_REVIEW_FAILURE',
+//   payload: error
+// });
 
-export const markReview = (prodId) => (dispatch) =>
-  Axios.put(`${API_URL}/reviews/report/${prodId}`)
-    .then(({ data }) => dispatch(markReviewSuccess(data)))
-    .catch((err) => dispatch(markReviewFailure(err)));
+// export const markReview = (prodId) => (dispatch) =>
+//   Axios.put(`${API_URL}/reviews/report/${prodId}`)
+//     // TODO: fix put request so that it gets thte helpfullness rating and increments it up
+//     .then(({ data }) => dispatch(markReviewSuccess(data)))
+//     .catch((err) => dispatch(markReviewFailure(err)));
 
-export default fetchReviews;
+export default { fetchReviews, postReview };
