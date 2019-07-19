@@ -52,14 +52,14 @@ export const deleteProductFromOutfit = id => ({
   }
 });
 
-export async function fetchRelatedIDs(prodId) {
-  const url = `${API_URL}/products/${prodId}/related`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchRelatedSuccess(data));
-      })
-      .catch(error => dispatch(fetchRelatedFailure(error)));
-}
+// export async function fetchRelatedIDs(prodId) {
+//   const url = `${API_URL}/products/${prodId}/related`;
+//   return dispatch => Axios.get(url)
+//       .then(({ data }) => {
+//         dispatch(fetchRelatedSuccess(data));
+//       })
+//       .catch(error => dispatch(fetchRelatedFailure(error)));
+// }
 
 export const fetchRelatedProduct = (prodId) => {
   const url = `${API_URL}/products/${prodId}`;
