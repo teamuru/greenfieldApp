@@ -8,6 +8,8 @@ import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal.jsx';
 import Recommended from './Recommended.jsx';
 import ComfortGraph from './ComfortGraph.jsx';
+import SizeGraph from './SizeGraph.jsx'
+import StarGraph from './StarGraph.jsx'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +38,17 @@ const RevParentComponent = () => {
           <Paper className={classes.paper}>
             <Recommended />
           </Paper>
-          <Paper className={classes.paper}>Stars List</Paper>
+          <Paper className={classes.paper}> 
+          {/* Star */}
+          <StarGraph 
+              variant="determinate"
+              // value={normalized}
+          />
+          
+           </Paper>
+          <Paper className={classes.paper}>
+            <SizeGraph />
+          </Paper>
           <Paper className={classes.paper}>
             <ComfortGraph />
           </Paper>
