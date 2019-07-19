@@ -3,7 +3,8 @@ const initialState = {
   relatedProducts: [],
   relatedIDs: [],
   stars: [],
-  outfit: []
+  outfit: [],
+  photos: []
 };
 
 const relatedReducer = (state = initialState, action) => {
@@ -46,6 +47,11 @@ const relatedReducer = (state = initialState, action) => {
       return state.relatedProducts.filter(
         product => product.id !== action.payload.id
       );
+    case 'FETCH_PHOTO_SUCCESS':
+      return {
+        ...state,
+        photos: [...state.photos, action.payload]
+      };
 
     default:
       return state;

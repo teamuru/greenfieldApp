@@ -7,39 +7,20 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
-import { fetchProduct } from '../actions/productActions';
-import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import { fetchRelatedIDs, fetchRelatedProduct, fetchStars } from '../actions/relatedActions';
 import theme from '../theme';
+import Related from './Related/Related';
 
 // component imports
+import ProductOverview from './Product/ProductOverview';
 import RevParentComponent from './Reviews/RevParentComponent';
 import Questions from './Questions/Question';
-
-const Product = ({ match }) => (
-  <div>
-    <h5>
-      {' '}
-      Render Product with id:
-      {match.params.id}
-    </h5>
-  </div>
-);
+import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
 
 class App extends Component {
   componentDidMount() {
-    const {
- fetchProduct, fetchQuestions, fetchReviews, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
-} = this.props;
-    fetchProduct(1);
+    const { fetchQuestions } = this.props;
     fetchQuestions(1);
-    fetchReviews(1);
-    fetchRelatedIDs(1);
-    fetchRelatedProduct(1);
-    fetchRelatedProduct(2);
-    fetchStars(1);
-    fetchStars(2);
   }
 
   render() {
@@ -47,17 +28,17 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <CssBaseline>
           <Router>
-            <header>
-              <AppBar position="sticky">Greenfield Logo</AppBar>
-            </header>
             <Container>
-              <div>
-                <main>
-                  <Route path="/:id" component={Product} />
-                  <Questions />
-                </main>
-              </div>
-              <RevParentComponent />
+              <header>
+                <AppBar position="sticky">Greenfield Logo</AppBar>
+              </header>
+              <main>
+                <Route path="/:id" component={ProductOverview} />
+                <Route path="/:id" component={Related} />
+                <Questions />
+                <ReviewsAPICalls />
+                <RevParentComponent />
+              </main>
             </Container>
           </Router>
         </CssBaseline>
@@ -66,23 +47,12 @@ class App extends Component {
   }
 }
 
-Product.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired
-};
-
 App.propTypes = {
-  fetchProduct: PropTypes.func.isRequired,
-  fetchReviews: PropTypes.func.isRequired,
-  fetchQuestions: PropTypes.func.isRequired,
-  fetchRelatedIDs: PropTypes.func.isRequired,
-  fetchRelatedProduct: PropTypes.func.isRequired,
-  fetchStars: PropTypes.func.isRequired
+  fetchQuestions: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
-  product: store.product,
   questions: store.questions,
-  reviews: store.reviews,
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
@@ -90,23 +60,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProduct: (id) => {
-    dispatch(fetchProduct(id));
-  },
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
-  },
-  fetchReviews: (id) => {
-    dispatch(fetchReviews(id));
-  },
-  fetchRelatedIDs: (id) => {
-    dispatch(fetchRelatedIDs(id));
-  },
-  fetchRelatedProduct: (id) => {
-    dispatch(fetchRelatedProduct(id));
-  },
-  fetchStars: (id) => {
-    dispatch(fetchStars(id));
   }
 });
 
