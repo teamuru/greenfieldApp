@@ -8,7 +8,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
-import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
 import {
   fetchRelatedIDs,
@@ -20,6 +19,7 @@ import theme from '../theme';
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
 import SearchQuestions from './Questions/SearchQuestions';
+import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
 
 const Product = ({ match }) => (
   <div>
@@ -36,14 +36,13 @@ class App extends Component {
     const {
       fetchProduct,
       fetchQuestions,
-      fetchReviews,
       fetchRelatedIDs,
       fetchRelatedProduct,
       fetchStars
     } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
-    fetchReviews(1);
+    // fetchReviews(1);
     fetchRelatedIDs(1);
     fetchRelatedProduct(1);
     fetchRelatedProduct(2);
@@ -66,6 +65,7 @@ class App extends Component {
                   <SearchQuestions />
                 </main>
               </div>
+              <ReviewsAPICalls />
               <RevParentComponent />
             </Container>
           </Router>
@@ -81,32 +81,27 @@ Product.propTypes = {
 
 App.propTypes = {
   fetchProduct: PropTypes.func.isRequired,
-  fetchReviews: PropTypes.func.isRequired,
   fetchQuestions: PropTypes.func.isRequired,
   fetchRelatedIDs: PropTypes.func.isRequired,
   fetchRelatedProduct: PropTypes.func.isRequired,
   fetchStars: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product,
   questions: store.questions,
-  reviews: store.reviews,
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
   outfit: store.outfit
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProduct: (id) => {
     dispatch(fetchProduct(id));
   },
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
-  },
-  fetchReviews: (id) => {
-    dispatch(fetchReviews(id));
   },
   fetchRelatedIDs: (id) => {
     dispatch(fetchRelatedIDs(id));
