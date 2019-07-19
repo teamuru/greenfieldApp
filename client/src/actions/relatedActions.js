@@ -52,6 +52,13 @@ export const deleteProductFromOutfit = id => ({
   }
 });
 
+export const fetchPhotoSuccess = photo => ({
+  type: 'FETCH_PHOTO_SUCCESS',
+  payload: {
+    photo
+  }
+});
+
 export const fetchRelatedIDs = (prodId) => {
   const url = `${API_URL}/products/${prodId}/related`;
   return dispatch => Axios.get(url)
@@ -99,6 +106,28 @@ export const fetchAllRelated = (prodId) => {
           Axios.spread((...args) => {
             args.forEach((item) => {
               dispatch(fetchRelatedProductSuccess(item.data));
+            });
+          })
+        );
+      });
+  };
+};
+
+export const fetchAllPhotos = (prodId) => {
+  const promises = [];
+  return (dispatch) => {
+    // Can this be replaced with await store.getState?
+    Axios.get(`${API_URL}/products/${prodId}/related`)
+      .then(({ data }) => {
+        data.forEach((item) => {
+          promises.push(Axios.get(`${API_URL}/products/${item}/styles`));
+        });
+      })
+      .then(() => {
+        Axios.all(promises).then(
+          Axios.spread((...args) => {
+            args.forEach((item) => {
+              dispatch(fetchPhotoSuccess(item.data));
             });
           })
         );
