@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-// import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import ReviewForm from './ReviewForm';
@@ -13,7 +12,6 @@ function getModalStyle() {
     top: `${top}%`,
     margin: 'auto',
     left: `${left}%`
-    // transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
@@ -66,7 +64,6 @@ AddReviewModal.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-// We need an intermediary variable for handling the recursive nesting.
 const SimpleModalWrapped = withStyles(styles)(AddReviewModal);
 
 export default SimpleModalWrapped;

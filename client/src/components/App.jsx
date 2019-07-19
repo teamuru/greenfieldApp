@@ -60,6 +60,7 @@ class App extends Component {
                 </main>
               </div>
               <ReviewsAPICalls />
+              {/* <Route path=":/id" component={RevParentComponent} /> */}
               <RevParentComponent />
             </Container>
           </Router>
@@ -78,7 +79,7 @@ App.propTypes = {
   fetchQuestions: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   product: store.product,
   questions: store.questions,
   related: store.related,
@@ -87,7 +88,7 @@ const mapStateToProps = store => ({
   outfit: store.outfit
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchProduct: (id) => {
     dispatch(fetchProduct(id));
   },
