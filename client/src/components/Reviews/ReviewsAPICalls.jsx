@@ -33,4 +33,3 @@ export default connect(
   mapDispatchToProps
 )(ReviewsAPICalls);
 
-// export default ReviewsAPICalls
