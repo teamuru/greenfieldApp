@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
-import { fetchAllRelated } from '../../actions/relatedActions';
+import { fetchAllRelated, fetchAllPhotos } from '../../actions/relatedActions';
 
 class Related extends Component {
   constructor(props) {
@@ -16,10 +16,12 @@ class Related extends Component {
   componentDidMount() {
     const {
       fetchAllRelated,
+      fetchAllPhotos,
       location: { pathname }
     } = this.props;
 
     fetchAllRelated(pathname);
+    fetchAllPhotos(pathname);
   }
 
   render() {
@@ -44,15 +46,20 @@ class Related extends Component {
 const mapDispatchToProps = dispatch => ({
   fetchAllRelated: (id) => {
     dispatch(fetchAllRelated(id));
+  },
+  fetchAllPhotos: (id) => {
+    dispatch(fetchAllPhotos(id));
   }
 });
 
 const mapStateToProps = state => ({
-  relatedProducts: state.related.relatedProducts
+  relatedProducts: state.related.relatedProducts,
+  photos: state.related.photos
 });
 
 Related.propTypes = {
-  fetchAllRelated: PropTypes.func.isRequired
+  fetchAllRelated: PropTypes.func.isRequired,
+  fetchAllPhotos: PropTypes.func.isRequired
 };
 
 export default connect(
