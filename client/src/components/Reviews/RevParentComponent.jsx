@@ -8,6 +8,7 @@ import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal.jsx';
 import Recommended from './Recommended.jsx';
 import ComfortGraph from './ComfortGraph.jsx';
+import ReviewForm from './ReviewForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +81,7 @@ const RevParentComponent = () => {
             </Grid>
             <Grid item>
               <AddReviewModal />
+              <ReviewForm />
             </Grid>
           </Grid>
         </Grid>
