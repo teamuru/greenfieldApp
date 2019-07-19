@@ -68,60 +68,85 @@ Array [
             <div>
               1  
               <div
+                aria-valuenow={5}
                 className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
                 role="progressbar"
               >
                 <div
                   className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "translateX(-95%)",
+                    }
+                  }
                 />
               </div>
             </div>
             <div>
               2  
               <div
+                aria-valuenow={5}
                 className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
                 role="progressbar"
               >
                 <div
                   className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "translateX(-95%)",
+                    }
+                  }
                 />
               </div>
             </div>
             <div>
               3  
               <div
+                aria-valuenow={5}
                 className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
                 role="progressbar"
               >
                 <div
                   className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "translateX(-95%)",
+                    }
+                  }
                 />
               </div>
             </div>
             <div>
               4  
               <div
+                aria-valuenow={5}
                 className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
                 role="progressbar"
               >
                 <div
                   className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "translateX(-95%)",
+                    }
+                  }
                 />
               </div>
             </div>
             <div>
               5  
               <div
+                aria-valuenow={5}
                 className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
                 role="progressbar"
               >
                 <div
                   className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "translateX(-95%)",
+                    }
+                  }
                 />
               </div>
             </div>
