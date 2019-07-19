@@ -12,37 +12,6 @@ exports[`It renders App 1`] = `
     </header>
   </header>
   <main>
-    <div>
-      <h6>
-        QUESTIONS
-         & 
-        ANSWERS
-      </h6>
-      <form
-        onSubmit={[Function]}
-      >
-        <input
-          onChange={[Function]}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          size="90"
-          style={
-            Object {
-              "fontSize": 16,
-            }
-          }
-          type="text"
-          value=""
-        />
-      </form>
-      <div />
-      <div>
-        <button
-          onClick={[Function]}
-        >
-          MORE ANSWERED QUESTIONS
-        </button>
-      </div>
-    </div>
     <div />
     <div
       className="makeStyles-root-44"

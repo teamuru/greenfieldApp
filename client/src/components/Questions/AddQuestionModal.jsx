@@ -4,10 +4,10 @@ import AnswerModal from "./AnswerModal";
 class AddQuestionModal extends Component {
   render() {
     let questions = this.props.questions;
-    console.log("question ", questions);
+    // console.log("question ", questions);
 
     if (questions) {
-      questions = questionModal(questions, this.props.count)
+      questions = questionModal(questions, this.props.count);
       return (
         <div>
           {questions.map(question => {
@@ -50,13 +50,12 @@ class AddQuestionModal extends Component {
   }
 }
 
-const questionModal = (questions, count) =>{
-  let newQues = []
-  for(let i = 0; i< count; i++){
-    newQues.push(questions[i])
+const questionModal = (questions, count) => {
+  let newQues = [];
+  for (let i = 0; i < count; i++) {
+    newQues.push(questions[i]);
   }
   return newQues;
-}
-
+};
 
 export default AddQuestionModal;

@@ -13,7 +13,7 @@ class MoreAnsweredQuestions extends Component {
     let count = this.props.questions.length;
     this.props.setCount(count);
   }
-  
+
   render() {
     return (
       <div>
