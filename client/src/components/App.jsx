@@ -46,10 +46,10 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <CssBaseline>
           <Router>
-            <header>
-              <AppBar position="sticky">Greenfield Logo</AppBar>
-            </header>
             <Container>
+              <header>
+                <AppBar position="sticky">Greenfield Logo</AppBar>
+              </header>
               <div>
                 <main>
                   <Route path="/:id" component={ProductOverview} />
