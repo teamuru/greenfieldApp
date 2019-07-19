@@ -5,7 +5,11 @@ const productReducer = (state = intialState, action) => {
     case 'FETCH_PRODUCT_SUCCESS':
       return { ...state, data: action.payload };
     case 'FETCH_PRODUCT_FAILURE':
-      return state;
+      return { ...state, productError: action.payload };
+    case 'FETCH_STYLES_SUCCESS':
+      return { ...state, styles: action.payload.results };
+    case 'FETCH_STYLES_FAILURE':
+      return { ...state, stylesError: action.payload };
     default:
       return state;
   }
