@@ -12,7 +12,7 @@ export default class Carousel extends Component {
     const { styles, selectedStyle } = this.props;
     return (
       <React.Fragment>
-        <img src={styles[selectedStyle].photos[selectedPhoto].url} alt="product" />
+        <img style={{ width: '100%', height: 'auto' }} src={styles[selectedStyle].photos[selectedPhoto].url} alt="product" />
       </React.Fragment>
     );
   }
