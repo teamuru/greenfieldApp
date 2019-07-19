@@ -8,8 +8,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { fetchQuestions } from '../actions/questionsActions';
-import { fetchRelatedIDs, fetchRelatedProduct, fetchStars } from '../actions/relatedActions';
 import theme from '../theme';
+import Related from './Related/Related';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
@@ -29,16 +29,8 @@ const Product = ({ match }) => (
 
 class App extends Component {
   componentDidMount() {
-    const {
- fetchQuestions, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
-} = this.props;
+    const { fetchQuestions } = this.props;
     fetchQuestions(1);
-    // fetchReviews(1);
-    fetchRelatedIDs(1);
-    fetchRelatedProduct(1);
-    fetchRelatedProduct(2);
-    fetchStars(1);
-    fetchStars(2);
   }
 
   render() {
@@ -53,6 +45,7 @@ class App extends Component {
               <div>
                 <main>
                   <Route path="/:id" component={ProductOverview} />
+                  <Route path="/:id" component={Related} />
                   <SearchQuestions />
                 </main>
               </div>
@@ -71,10 +64,7 @@ Product.propTypes = {
 };
 
 App.propTypes = {
-  fetchQuestions: PropTypes.func.isRequired,
-  fetchRelatedIDs: PropTypes.func.isRequired,
-  fetchRelatedProduct: PropTypes.func.isRequired,
-  fetchStars: PropTypes.func.isRequired
+  fetchQuestions: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -88,15 +78,6 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
-  },
-  fetchRelatedIDs: (id) => {
-    dispatch(fetchRelatedIDs(id));
-  },
-  fetchRelatedProduct: (id) => {
-    dispatch(fetchRelatedProduct(id));
-  },
-  fetchStars: (id) => {
-    dispatch(fetchStars(id));
   }
 });
 
