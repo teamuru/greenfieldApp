@@ -43,31 +43,31 @@ const RevParentComponent = () => {
           <div >
           1  <StarGraph 
               variant="determinate"
-              // value={normalized}
+              value={5}
           />
           </div>
           <div >
           2  <StarGraph 
               variant="determinate"
-              // value={normalized}
+              value={5}
           />
           </div>
           <div >
           3  <StarGraph 
               variant="determinate"
-              // value={normalized}
+              value={5}
           />
           </div>
           <div >
           4  <StarGraph 
               variant="determinate"
-              // value={normalized}
+              value={5}
           />
           </div>
           <div >
           5  <StarGraph 
               variant="determinate"
-              // value={normalized}
+              value={5}
           />
           </div>
 
