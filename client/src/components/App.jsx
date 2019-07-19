@@ -15,6 +15,7 @@ import {
   fetchStars
 } from '../actions/relatedActions';
 import theme from '../theme';
+import Related from './Related/Related';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
@@ -33,13 +34,7 @@ const Product = ({ match }) => (
 
 class App extends Component {
   componentDidMount() {
-    const {
-      fetchProduct,
-      fetchQuestions,
-      fetchRelatedIDs,
-      fetchRelatedProduct,
-      fetchStars
-    } = this.props;
+    const { fetchProduct, fetchQuestions } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
     // fetchReviews(1);
@@ -61,6 +56,7 @@ class App extends Component {
             <Container>
               <div>
                 <main>
+                  <Related />
                   <Route path="/:id" component={Product} />
                   <SearchQuestions />
                 </main>
@@ -81,10 +77,7 @@ Product.propTypes = {
 
 App.propTypes = {
   fetchProduct: PropTypes.func.isRequired,
-  fetchQuestions: PropTypes.func.isRequired,
-  fetchRelatedIDs: PropTypes.func.isRequired,
-  fetchRelatedProduct: PropTypes.func.isRequired,
-  fetchStars: PropTypes.func.isRequired
+  fetchQuestions: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -102,15 +95,6 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
-  },
-  fetchRelatedIDs: (id) => {
-    dispatch(fetchRelatedIDs(id));
-  },
-  fetchRelatedProduct: (id) => {
-    dispatch(fetchRelatedProduct(id));
-  },
-  fetchStars: (id) => {
-    dispatch(fetchStars(id));
   }
 });
 
