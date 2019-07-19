@@ -6,16 +6,17 @@ import Carousel from './Carousel';
 import Details from './Details';
 import Description from './Description';
 import Checklist from './Checklist';
-import { fetchProduct } from '../../actions/productActions';
+import { fetchProduct, fetchStyles } from '../../actions/productActions';
 
 class ProductOverview extends Component {
   componentDidMount() {
-    const { fetchProd, location } = this.props;
-    fetchProd(location.pathname);
+    const { getProducts, getStyles, location } = this.props;
+    getProducts(location.pathname);
+    getStyles(location.pathname);
   }
 
   render() {
-    const { product } = this.props;
+    const { product, styles } = this.props;
     return !product.data ? (
       <h1>Loading Product</h1>
     ) : (
@@ -25,7 +26,7 @@ class ProductOverview extends Component {
             <Carousel img="https://unsplash.com/photos/SxAXphIPWeg" />
           </Grid>
           <Grid container xs={5} justify="flex-start">
-            <Details />
+            <Details styles={styles} />
           </Grid>
         </Grid>
         <Grid container xs={12}>
@@ -42,17 +43,21 @@ class ProductOverview extends Component {
 }
 
 ProductOverview.propTypes = {
-  fetchProd: PropTypes.func.isRequired,
+  getProducts: PropTypes.func.isRequired,
+  getStyles: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
 const mapStateToProps = store => ({
-  product: store.product
+  product: store.product,
+  styles: store.styles
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProd: id => dispatch(fetchProduct(id))
+  getProducts: id => dispatch(fetchProduct(id)),
+  getStyles: id => dispatch(fetchStyles(id))
 });
 
 export default connect(
