@@ -20,6 +20,7 @@ export const fetchReviews = (prodId) => {
       .catch(err => dispatch(fetchReviewsFailure(err)));
 };
 
+
 export const postReviewSucess = review => ({
   type: 'POST_REVIEW_SUCCESS',
   payload: review
