@@ -60,7 +60,6 @@ class App extends Component {
                 </main>
               </div>
               <ReviewsAPICalls />
-              {/* <Route path=":/id" component={RevParentComponent} /> */}
               <RevParentComponent />
             </Container>
           </Router>
