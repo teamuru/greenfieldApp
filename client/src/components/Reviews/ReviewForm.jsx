@@ -15,8 +15,6 @@ import {
 } from '@material-ui/core';
 
 const onSubmit = (values) => {
-  // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  // await sleep(300);
   window.alert(JSON.stringify(values, 0, 2));
   console.log(' values from form ', values);
 };
@@ -45,7 +43,6 @@ class ReviewForm extends Component {
         </Typography>
         <Form
           onSubmit={onSubmit}
-          // initialValues={{ employed: true, stooge: 'larry' }}
           validate={validate}
           render={({ handleSubmit, submitting, values }) => (
             <form onSubmit={handleSubmit} noValidate>
