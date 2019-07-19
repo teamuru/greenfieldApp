@@ -1,6 +1,4 @@
-import {
- createStore, combineReducers, applyMiddleware, compose 
-} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import productReducer from './reducers/productReducer';
 import reviewsReducer from './reducers/reviewsReducer';
