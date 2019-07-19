@@ -10,8 +10,9 @@ import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
 import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import { fetchRelatedIDs, fetchRelatedProduct, fetchStars } from '../actions/relatedActions';
+import { fetchAllRelated } from '../actions/relatedActions';
 import theme from '../theme';
+import Related from './Related/Related';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
@@ -29,16 +30,15 @@ const Product = ({ match }) => (
 class App extends Component {
   componentDidMount() {
     const {
- fetchProduct, fetchQuestions, fetchReviews, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
-} = this.props;
+      fetchProduct,
+      fetchQuestions,
+      fetchReviews,
+      fetchAllRelated
+    } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
     fetchReviews(1);
-    fetchRelatedIDs(1);
-    fetchRelatedProduct(1);
-    fetchRelatedProduct(2);
-    fetchStars(1);
-    fetchStars(2);
+    fetchAllRelated(1);
   }
 
   render() {
@@ -52,6 +52,7 @@ class App extends Component {
             <Container>
               <div>
                 <main>
+                  <Related />
                   <Route path="/:id" component={Product} />
                 </main>
               </div>
@@ -72,9 +73,7 @@ App.propTypes = {
   fetchProduct: PropTypes.func.isRequired,
   fetchReviews: PropTypes.func.isRequired,
   fetchQuestions: PropTypes.func.isRequired,
-  fetchRelatedIDs: PropTypes.func.isRequired,
-  fetchRelatedProduct: PropTypes.func.isRequired,
-  fetchStars: PropTypes.func.isRequired
+  fetchAllRelated: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -97,14 +96,8 @@ const mapDispatchToProps = dispatch => ({
   fetchReviews: (id) => {
     dispatch(fetchReviews(id));
   },
-  fetchRelatedIDs: (id) => {
-    dispatch(fetchRelatedIDs(id));
-  },
-  fetchRelatedProduct: (id) => {
-    dispatch(fetchRelatedProduct(id));
-  },
-  fetchStars: (id) => {
-    dispatch(fetchStars(id));
+  fetchAllRelated: (id) => {
+    dispatch(fetchAllRelated(id));
   }
 });
 
