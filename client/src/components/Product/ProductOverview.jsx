@@ -9,6 +9,13 @@ import Checklist from './Checklist';
 import { fetchProduct, fetchStyles } from '../../actions/productActions';
 
 class ProductOverview extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStyle: 0
+    };
+  }
+
   componentDidMount() {
     const { getProducts, getStyles, location } = this.props;
     getProducts(location.pathname);
@@ -16,17 +23,18 @@ class ProductOverview extends Component {
   }
 
   render() {
-    const { product, styles } = this.props;
-    return !product.data ? (
+    const { selectedStyle } = this.state;
+    const { product } = this.props;
+    return !product.data || !product.styles ? (
       <h1>Loading Product</h1>
     ) : (
       <React.Fragment>
         <Grid container xs={12}>
           <Grid container xs={7} justify="center">
-            <Carousel img="https://unsplash.com/photos/SxAXphIPWeg" />
+            <Carousel styles={product.styles} selectedStyle={selectedStyle} />
           </Grid>
           <Grid container xs={5} justify="flex-start">
-            <Details styles={styles} />
+            <Details styles={product.styles} />
           </Grid>
         </Grid>
         <Grid container xs={12}>
@@ -46,7 +54,6 @@ ProductOverview.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getStyles: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
-  styles: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
