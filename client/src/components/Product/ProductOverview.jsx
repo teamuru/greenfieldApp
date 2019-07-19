@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import Carousel from './Carousel';
+import Details from './Details';
+import Description from './Description';
+import Checklist from './Checklist';
 import { fetchProduct } from '../../actions/productActions';
 
 class ProductOverview extends Component {
@@ -15,14 +19,24 @@ class ProductOverview extends Component {
     return !product.data ? (
       <h1>Loading Product</h1>
     ) : (
-      <Grid container xs={12}>
-        <Grid container xs={6} justify="center">
-          <h3>{product.data.name}</h3>
+      <React.Fragment>
+        <Grid container xs={12}>
+          <Grid container xs={7} justify="center">
+            <Carousel img="https://unsplash.com/photos/SxAXphIPWeg" />
+          </Grid>
+          <Grid container xs={5} justify="flex-start">
+            <Details />
+          </Grid>
         </Grid>
-        <Grid container xs={6} justify="center">
-          <h6>{product.data.slogan}</h6>
+        <Grid container xs={12}>
+          <Grid container xs={7} justify="center">
+            <Description />
+          </Grid>
+          <Grid container xs={5} justify="flex-start">
+            <Checklist />
+          </Grid>
         </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Description() {
+export default function Details() {
   return (
     <React.Fragment>
-      <h1>Description</h1>
+      <h1>details</h1>
     </React.Fragment>
   );
 }
