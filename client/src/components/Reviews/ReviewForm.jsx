@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField, Radio, Select } from 'final-form-material-ui';
+import { TextField, Radio } from 'final-form-material-ui';
+
 import {
   Typography,
   Paper,
-  // Link,
   Grid,
   Button,
   CssBaseline,
   RadioGroup,
   FormLabel,
-  MenuItem,
-  // FormGroup,
   FormControl,
   FormControlLabel
 } from '@material-ui/core';
+
+const onSubmit = (values) => {
+  // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  // await sleep(300);
+  window.alert(JSON.stringify(values, 0, 2));
+  console.log(' values from form ', values);
+};
 
 const validate = (values) => {
   const errors = {};
@@ -33,14 +38,12 @@ const validate = (values) => {
 class ReviewForm extends Component {
   render() {
     return (
-      // <div> TEST </div>
-
       <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
         <CssBaseline />
         <Typography variant="h4" align="center" component="h1" gutterBottom>
           Create A Review
         </Typography>
-        {/* <Form
+        <Form
           onSubmit={onSubmit}
           // initialValues={{ employed: true, stooge: 'larry' }}
           validate={validate}
@@ -140,22 +143,8 @@ class ReviewForm extends Component {
                       </RadioGroup>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      fullWidth
-                      name="rating"
-                      component={Select}
-                      label="Select a Rating"
-                      formControlProps={{ fullWidth: true }}
-                    >
-                      <MenuItem value="1">1</MenuItem>
-                      <MenuItem value="2">2</MenuItem>
-                      <MenuItem value="3">3</MenuItem>
-                      <MenuItem value="4">4</MenuItem>
-                      <MenuItem value="5">5</MenuItem>
-                    </Field>
-                  </Grid>
-                  <Grid item style={{ marginTop: 16 }}>
+
+                  <Grid item xs={9} style={{ marginTop: 1 }}>
                     <Button
                       variant="contained"
                       color="primary"
@@ -167,8 +156,9 @@ class ReviewForm extends Component {
                   </Grid>
                 </Grid>
               </Paper>
-            {/* </form> */}
-        {/* )} /> */}
+            </form>
+          )}
+        />
       </div>
     );
   }

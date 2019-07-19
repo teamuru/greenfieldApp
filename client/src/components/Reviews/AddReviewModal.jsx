@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import ReviewForm from './ReviewForm';
 
 function getModalStyle() {
-  const top = 25;
+  const top = 1;
   const left = 25;
   return {
     top: `${top}%`,
-    margin: 'auto'
-    // left: `${left}%`,
+    margin: 'auto',
+    left: `${left}%`
     // transform: `translate(-${top}%, -${left}%)`,
   };
 }
@@ -52,7 +53,7 @@ class AddReviewModal extends Component {
         <div>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div style={getModalStyle()} className={classes.paper}>
-              <Typography>Form Placeholder</Typography>{' '}
+              <ReviewForm />
             </div>
           </Modal>
         </div>
