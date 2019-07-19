@@ -7,16 +7,12 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
-import { fetchProduct } from '../actions/productActions';
 import { fetchQuestions } from '../actions/questionsActions';
-import {
-  fetchRelatedIDs,
-  fetchRelatedProduct,
-  fetchStars
-} from '../actions/relatedActions';
+import { fetchRelatedIDs, fetchRelatedProduct, fetchStars } from '../actions/relatedActions';
 import theme from '../theme';
 
 // component imports
+import ProductOverview from './Product/ProductOverview';
 import RevParentComponent from './Reviews/RevParentComponent';
 import SearchQuestions from './Questions/SearchQuestions';
 import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
@@ -34,13 +30,8 @@ const Product = ({ match }) => (
 class App extends Component {
   componentDidMount() {
     const {
-      fetchProduct,
-      fetchQuestions,
-      fetchRelatedIDs,
-      fetchRelatedProduct,
-      fetchStars
-    } = this.props;
-    fetchProduct(1);
+ fetchQuestions, fetchRelatedIDs, fetchRelatedProduct, fetchStars 
+} = this.props;
     fetchQuestions(1);
     // fetchReviews(1);
     fetchRelatedIDs(1);
@@ -62,6 +53,7 @@ class App extends Component {
               <div>
                 <main>
                   <Route path="/:id" component={Product} />
+                  <ProductOverview />
                   <SearchQuestions />
                 </main>
               </div>
@@ -80,7 +72,6 @@ Product.propTypes = {
 };
 
 App.propTypes = {
-  fetchProduct: PropTypes.func.isRequired,
   fetchQuestions: PropTypes.func.isRequired,
   fetchRelatedIDs: PropTypes.func.isRequired,
   fetchRelatedProduct: PropTypes.func.isRequired,
@@ -88,7 +79,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  product: store.product,
   questions: store.questions,
   related: store.related,
   relatedProducts: store.relatedProducts,
@@ -97,9 +87,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProduct: (id) => {
-    dispatch(fetchProduct(id));
-  },
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
   },
