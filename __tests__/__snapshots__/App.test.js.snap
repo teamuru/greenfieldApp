@@ -81,7 +81,168 @@ exports[`It renders App 1`] = `
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
           >
-            Stars List
+            <div>
+              1  
+              <div
+                className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+                role="progressbar"
+              >
+                <div
+                  className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+                  style={Object {}}
+                />
+              </div>
+            </div>
+            <div>
+              2  
+              <div
+                className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+                role="progressbar"
+              >
+                <div
+                  className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+                  style={Object {}}
+                />
+              </div>
+            </div>
+            <div>
+              3  
+              <div
+                className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+                role="progressbar"
+              >
+                <div
+                  className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+                  style={Object {}}
+                />
+              </div>
+            </div>
+            <div>
+              4  
+              <div
+                className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+                role="progressbar"
+              >
+                <div
+                  className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+                  style={Object {}}
+                />
+              </div>
+            </div>
+            <div>
+              5  
+              <div
+                className="MuiLinearProgress-root WithStyles(ForwardRef(LinearProgress))-root-149 MuiLinearProgress-colorPrimary MuiLinearProgress-determinate"
+                role="progressbar"
+              >
+                <div
+                  className="MuiLinearProgress-bar WithStyles(ForwardRef(LinearProgress))-bar-150 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+                  style={Object {}}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
+          >
+            <div>
+              Size Graph
+              <div
+                className="rc-slider"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                onTouchStart={[Function]}
+              >
+                <div
+                  className="rc-slider-rail"
+                  style={Object {}}
+                />
+                <div
+                  className="rc-slider-track"
+                  style={
+                    Object {
+                      "left": "0%",
+                      "width": "100%",
+                    }
+                  }
+                />
+                <div
+                  className="rc-slider-step"
+                >
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "0%",
+                      }
+                    }
+                  />
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "20%",
+                      }
+                    }
+                  />
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "40%",
+                      }
+                    }
+                  />
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "60%",
+                      }
+                    }
+                  />
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "80%",
+                      }
+                    }
+                  />
+                  <span
+                    className="rc-slider-dot rc-slider-dot-active"
+                    style={
+                      Object {
+                        "left": "100%",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  aria-disabled={false}
+                  aria-valuemax={100}
+                  aria-valuemin={0}
+                  aria-valuenow={100}
+                  className="rc-slider-handle"
+                  onBlur={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseDown={[Function]}
+                  role="slider"
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                  tabIndex={0}
+                />
+                <div
+                  className="rc-slider-mark"
+                />
+              </div>
+            </div>
           </div>
           <div
             className="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-45 MuiPaper-rounded"
