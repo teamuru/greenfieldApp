@@ -42,8 +42,8 @@ class ProductOverview extends Component {
           <Grid container xs={7} justify="center">
             <Description slogan={data.slogan} description={data.description} />
           </Grid>
-          <Grid container xs={5} justify="flex-start">
-            <Checklist />
+          <Grid container xs={5} justify="flex-start" direction="column">
+            <Checklist features={data.features} />
           </Grid>
         </Grid>
       </React.Fragment>
