@@ -37,7 +37,6 @@ class App extends Component {
     const { fetchProduct, fetchQuestions } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
-    // fetchReviews(1);
     fetchRelatedIDs(1);
     fetchRelatedProduct(1);
     fetchRelatedProduct(2);
@@ -56,8 +55,7 @@ class App extends Component {
             <Container>
               <div>
                 <main>
-                  <Related />
-                  <Route path="/:id" component={Product} />
+                  <Route path="/:id" component={Related} />
                   <SearchQuestions />
                 </main>
               </div>

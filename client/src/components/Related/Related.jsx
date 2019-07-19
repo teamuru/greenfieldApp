@@ -1,7 +1,11 @@
+/* eslint no-shadow: "off" */
+/* eslint react/prop-types: "off" */
+
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
-// import { fetchRelatedProduct } from '../../actions/relatedActions';
+import { fetchAllRelated } from '../../actions/relatedActions';
 
 class Related extends Component {
   constructor(props) {
@@ -9,25 +13,49 @@ class Related extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const {
+      fetchAllRelated,
+      location: { pathname }
+    } = this.props;
+
+    fetchAllRelated(pathname);
+  }
 
   render() {
-    return <ProductCard />;
+    const { relatedProducts } = this.props;
+
+    return (
+      <div>
+        {relatedProducts.map(product => (
+          <ProductCard
+            key={product.id}
+            name={product.name}
+            defaultPrice={product.default_price}
+            category={product.category}
+          />
+        ))}
+        ;
+      </div>
+    );
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   fetchRelatedIDs: (id) => {
-//     dispatch(fetchRelatedIDs(id));
-//   },
-//   fetchRelatedProduct: (id) => {
-//     dispatch(fetchRelatedProduct(id));
-//   }
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchAllRelated: (id) => {
+    dispatch(fetchAllRelated(id));
+  }
+});
 
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(Related);
+const mapStateToProps = state => ({
+  relatedProducts: state.related.relatedProducts
+});
 
-export default Related;
+Related.propTypes = {
+  fetchAllRelated: PropTypes.func.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Related);

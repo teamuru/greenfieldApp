@@ -1,4 +1,7 @@
+/* eslint react/jsx-indent: "off" */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -15,22 +18,27 @@ const useStyles = makeStyles({
   }
 });
 
-const ProductCard = () => {
+const ProductCard = (props) => {
   const classes = useStyles();
+
+  const { category, name, defaultPrice } = props;
 
   return (
     <>
-      <br />
-      <br />
-      <br />
       <Card className={classes.card}>
         <CardActionArea>
-          {/* <CardMedia className={classes.media} image="" title="" /> */}
+          {/* <CardMedia className={classes.media} title={name} /> */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2" />
             <Typography variant="body2" color="textSecondary" component="p">
-              camo onsie camo onsie camo onsie camo onsie camo onsie camo onsie
-              camo onsie camo onsie
+              {category} 
+{' '}
+<br />
+              {name}
+              <br />
+              {defaultPrice} 
+{' '}
+<br />
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -39,6 +47,10 @@ const ProductCard = () => {
   );
 };
 
-// }
+ProductCard.propTypes = {
+  category: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  defaultPrice: PropTypes.string.isRequired
+};
 
 export default ProductCard;
