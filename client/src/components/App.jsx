@@ -8,14 +8,16 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { fetchProduct } from '../actions/productActions';
-import { fetchReviews } from '../actions/reviewsActions';
 import { fetchQuestions } from '../actions/questionsActions';
 import { fetchAllRelated } from '../actions/relatedActions';
+
+
 import theme from '../theme';
 import Related from './Related/Related';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
+import SearchQuestions from './Questions/SearchQuestions';
 
 const Product = ({ match }) => (
   <div>
@@ -34,6 +36,7 @@ class App extends Component {
       fetchQuestions,
       fetchReviews,
       fetchAllRelated
+
     } = this.props;
     fetchProduct(1);
     fetchQuestions(1);
@@ -54,6 +57,7 @@ class App extends Component {
                 <main>
                   <Related />
                   <Route path="/:id" component={Product} />
+                  <SearchQuestions />
                 </main>
               </div>
               <RevParentComponent />
