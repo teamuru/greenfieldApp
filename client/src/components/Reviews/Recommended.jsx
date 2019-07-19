@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-class Recommended extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-}
+const Recommended = () => {
+  // TODO: add some calculation for % of rec users
+  return <div>xxx% of users recommend this product</div>;
+};
 
-export default Recommended
+export default Recommended;

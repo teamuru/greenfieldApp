@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
 class MoreReviews extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
-    )
+      <Button size="large" variant="outlined">
+        MORE REVIEWS
+      </Button>
+    );
   }
 }
 
-export default MoreReviews
+export default MoreReviews;

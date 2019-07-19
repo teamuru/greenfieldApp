@@ -33,6 +33,7 @@
     "fetch": "^1.1.0",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
+    "rc-slider": "^8.6.13",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
