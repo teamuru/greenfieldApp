@@ -25,6 +25,7 @@
     "no-trailing-spaces": 0,
     "comma-dangle": 0,
     "indent": 0,
-    "react/prefer-stateless-function": false
+    "react/prefer-stateless-function": false,
+    "react/forbid-prop-types": false
   }
 }

@@ -52,8 +52,7 @@ class App extends Component {
             <Container>
               <div>
                 <main>
-                  <Route path="/:id" component={Product} />
-                  <ProductOverview />
+                  <Route path="/:id" component={ProductOverview} />
                   <SearchQuestions />
                 </main>
               </div>

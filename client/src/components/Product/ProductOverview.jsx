@@ -5,22 +5,27 @@ import { fetchProduct } from '../../actions/productActions';
 
 class ProductOverview extends Component {
   componentDidMount() {
-    const { fetchProd } = this.props;
-    fetchProd(1);
+    const { fetchProd, location } = this.props;
+    fetchProd(location.pathname);
   }
 
   render() {
-    console.log(this.state);
-    return (
-      <div>
-        <h1>Product Overview</h1>
-      </div>
+    const { product } = this.props;
+    return !product.data ? (
+      <h1>Loading Product</h1>
+    ) : (
+      <React.Fragment>
+        <h3>{product.data.name}</h3>
+        <h6>{product.data.slogan}</h6>
+      </React.Fragment>
     );
   }
 }
 
 ProductOverview.propTypes = {
-  fetchProd: PropTypes.func.isRequired
+  fetchProd: PropTypes.func.isRequired,
+  product: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 const mapStateToProps = store => ({
