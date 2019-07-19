@@ -40,10 +40,38 @@ const RevParentComponent = () => {
           </Paper>
           <Paper className={classes.paper}> 
           {/* Star */}
-          <StarGraph 
+          <div >
+          1  <StarGraph 
               variant="determinate"
               // value={normalized}
           />
+          </div>
+          <div >
+          2  <StarGraph 
+              variant="determinate"
+              // value={normalized}
+          />
+          </div>
+          <div >
+          3  <StarGraph 
+              variant="determinate"
+              // value={normalized}
+          />
+          </div>
+          <div >
+          4  <StarGraph 
+              variant="determinate"
+              // value={normalized}
+          />
+          </div>
+          <div >
+          5  <StarGraph 
+              variant="determinate"
+              // value={normalized}
+          />
+          </div>
+
+          
           
            </Paper>
           <Paper className={classes.paper}>
