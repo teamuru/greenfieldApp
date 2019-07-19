@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 // Children Components
 import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal.jsx';
-import Recommended from './Recommended.jsx'
+import Recommended from './Recommended.jsx';
+import ComfortGraph from './ComfortGraph.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,10 +34,12 @@ const RevParentComponent = () => {
         <Grid item xs>
           <Paper className={classes.paper}>Rating and Star</Paper>
           <Paper className={classes.paper}>
-          <Recommended />
+            <Recommended />
           </Paper>
           <Paper className={classes.paper}>Stars List</Paper>
-          <Paper className={classes.paper}>Slider</Paper>
+          <Paper className={classes.paper}>
+            <ComfortGraph />
+          </Paper>
         </Grid>
         <Grid item xs={9}>
           <Paper className={classes.paper}>Sort By Relevance</Paper>
