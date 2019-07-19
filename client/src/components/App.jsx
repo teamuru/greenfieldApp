@@ -14,18 +14,8 @@ import Related from './Related/Related';
 // component imports
 import ProductOverview from './Product/ProductOverview';
 import RevParentComponent from './Reviews/RevParentComponent';
-import SearchQuestions from './Questions/SearchQuestions';
+import Questions from './Questions/Question';
 import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
-
-const Product = ({ match }) => (
-  <div>
-    <h5>
-      {' '}
-      Render Product with id:
-      {match.params.id}
-    </h5>
-  </div>
-);
 
 class App extends Component {
   componentDidMount() {
@@ -42,15 +32,13 @@ class App extends Component {
               <header>
                 <AppBar position="sticky">Greenfield Logo</AppBar>
               </header>
-              <div>
-                <main>
-                  <Route path="/:id" component={ProductOverview} />
-                  <Route path="/:id" component={Related} />
-                  <SearchQuestions />
-                </main>
-              </div>
-              <ReviewsAPICalls />
-              <RevParentComponent />
+              <main>
+                <Route path="/:id" component={ProductOverview} />
+                <Route path="/:id" component={Related} />
+                <Questions />
+                <ReviewsAPICalls />
+                <RevParentComponent />
+              </main>
             </Container>
           </Router>
         </CssBaseline>
@@ -58,10 +46,6 @@ class App extends Component {
     );
   }
 }
-
-Product.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired
-};
 
 App.propTypes = {
   fetchQuestions: PropTypes.func.isRequired
