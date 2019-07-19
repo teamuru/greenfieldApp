@@ -15,7 +15,7 @@ import theme from '../theme';
 
 // component imports
 import RevParentComponent from './Reviews/RevParentComponent';
-import Questions from './Questions/Question'
+import Questions from './Questions/Question';
 
 const Product = ({ match }) => (
   <div>

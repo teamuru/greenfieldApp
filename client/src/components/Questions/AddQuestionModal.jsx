@@ -29,7 +29,7 @@ class AddQuestionModal extends Component {
                 <label style={{ textDecorationLine: "underline", fontSize: 8 }}>
                   Yes
                 </label>
-                <label style={{ textAlign: "right", fontSize: 8 }}>
+                <label style={{ fontSize: 8 }}>
                   {`(${question_helpfulness})`}
                   {"    "}|{"    "}
                 </label>

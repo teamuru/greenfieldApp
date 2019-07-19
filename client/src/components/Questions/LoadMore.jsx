@@ -15,6 +15,7 @@ class LoadMore extends Component {
     return (
       <div>
         <button
+          style={{ fontSize: 8 }}
           onClick={() => {
             this.hangelLoadMore(answers);
           }}
