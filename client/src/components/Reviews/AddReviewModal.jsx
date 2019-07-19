@@ -6,23 +6,21 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
+  const top = 25;
+  const left = 25;
   return {
     top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    margin: 'auto'
+    // left: `${left}%`,
+    // transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
 const styles = (theme) => ({
   paper: {
     position: 'absolute',
-    // width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5]
-    // padding: theme.spacing.unit * 4
   }
 });
 class AddReviewModal extends Component {
@@ -45,6 +43,7 @@ class AddReviewModal extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Button onClick={this.handleOpen} size="large" variant="outlined">
@@ -52,14 +51,8 @@ class AddReviewModal extends Component {
         </Button>
         <div>
           <Modal open={this.state.open} onClose={this.handleClose}>
-            <div
-            // style={getModalStyle()} className={classes.paper}
-            >
-              <Typography
-              // variant="title" id="modal-title"
-              >
-                Text in a modal
-              </Typography>{' '}
+            <div style={getModalStyle()} className={classes.paper}>
+              <Typography>Form Placeholder</Typography>{' '}
             </div>
           </Modal>
         </div>
