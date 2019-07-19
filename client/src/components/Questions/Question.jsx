@@ -11,7 +11,7 @@ class Question extends Component {
     this.state = {questionList: [], count: 2}
     this.handleOnClickMoreQuestions =this.handleOnClickMoreQuestions.bind(this);
     this.setQuestionList = this.setQuestionList.bind(this)
-    // this.setCount = this.setCount.bind(this)
+    this.setCount = this.setCount.bind(this)
   }
   // componentDidMount(){
   //   console.log('question on question: ', this.props.questions.data)
@@ -33,8 +33,8 @@ class Question extends Component {
     this.setState({count: this.state.count - 1})
   }
 
-  setCount(){
-    let count = this.state.count -1
+  setCount(count){
+    // let count = this.state.count -1
     this.setState({count: count})
   }
 
@@ -44,8 +44,8 @@ class Question extends Component {
       <div>
         <h6>QUESTIONS{` & `}ANSWERS</h6>
         <SearchQuestions />
-        <AddQuestionModal questions={questions}  />
-        <MoreAnsweredQuestions questions={questions} setQuestionList={this.setQuestionList}/>
+        <AddQuestionModal questions={questions} count={this.state.count} />
+        <MoreAnsweredQuestions questions={questions} setCount={this.setCount}/>
       </div>
     );
   }

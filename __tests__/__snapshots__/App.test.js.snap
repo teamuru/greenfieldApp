@@ -24,7 +24,12 @@ exports[`It renders App 1`] = `
         <input
           onChange={[Function]}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          size="100"
+          size="90"
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
           type="text"
           value=""
         />
@@ -1043,9 +1048,6 @@ exports[`It renders App 1`] = `
                 >
                   MORE REVIEWS
                 </span>
-                <span
-                  className="MuiTouchRipple-root"
-                />
               </button>
             </div>
             <div
@@ -1075,9 +1077,6 @@ exports[`It renders App 1`] = `
                   >
                     ADD A REVIEW +
                   </span>
-                  <span
-                    className="MuiTouchRipple-root"
-                  />
                 </button>
                 <div />
               </div>
