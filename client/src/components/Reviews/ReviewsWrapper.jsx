@@ -36,7 +36,8 @@ class ReviewsWrapper extends Component {
 
 ReviewsWrapper.propTypes = {
   fetchReviews: PropTypes.func.isRequired,
-  fetchMeta: PropTypes.func.isRequired
+  fetchMeta: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (store) => ({
