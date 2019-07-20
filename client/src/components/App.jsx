@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import { fetchQuestions } from '../actions/questionsActions';
 import theme from '../theme';
 import Related from './Related/Related';
+import './App.css';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
@@ -50,7 +51,7 @@ App.propTypes = {
   fetchQuestions: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   questions: store.questions,
   related: store.related,
   relatedProducts: store.relatedProducts,
@@ -58,7 +59,7 @@ const mapStateToProps = (store) => ({
   outfit: store.outfit
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
   }

@@ -28,7 +28,7 @@ class Related extends Component {
     const { relatedProducts, photos } = this.props;
 
     return (
-      <div>
+      <div className="relatedCards">
         {relatedProducts.map((product, index) => (
           <ProductCard
             key={product.id}
@@ -38,7 +38,6 @@ class Related extends Component {
             category={product.category}
           />
         ))}
-        ;
       </div>
     );
   }
