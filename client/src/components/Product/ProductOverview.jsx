@@ -22,19 +22,19 @@ class ProductOverview extends Component {
       <h1>Loading Product</h1>
     ) : (
       <React.Fragment>
-        <Grid container xs={12}>
-          <Grid container xs={7} justify="center">
+        <Grid item container xs={12}>
+          <Grid item container xs={8} justify="center">
             <Carousel />
           </Grid>
-          <Grid container xs={5} justify="flex-start" direction="column">
+          <Grid item container xs={4} justify="flex-start" direction="column">
             <Details name={data.name} category={data.category} />
           </Grid>
         </Grid>
-        <Grid container xs={12}>
-          <Grid container xs={7} justify="center">
+        <Grid item container xs={12}>
+          <Grid item container xs={8} justify="center">
             <Description slogan={data.slogan} description={data.description} />
           </Grid>
-          <Grid container xs={5} justify="flex-start" direction="column">
+          <Grid item container xs={4} justify="flex-start" direction="column">
             <Checklist features={data.features} />
           </Grid>
         </Grid>
