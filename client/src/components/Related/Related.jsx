@@ -25,14 +25,15 @@ class Related extends Component {
   }
 
   render() {
-    const { relatedProducts } = this.props;
+    const { relatedProducts, photos } = this.props;
 
     return (
       <div>
-        {relatedProducts.map(product => (
+        {relatedProducts.map((product, index) => (
           <ProductCard
             key={product.id}
             name={product.name}
+            image={photos[index]}
             defaultPrice={product.default_price}
             category={product.category}
           />

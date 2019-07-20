@@ -13,9 +13,8 @@ import Related from './Related/Related';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
-import RevParentComponent from './Reviews/RevParentComponent';
 import Questions from './Questions/Question';
-import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
+import ReviewsWrapper from './Reviews/ReviewsWrapper';
 
 class App extends Component {
   componentDidMount() {
@@ -36,8 +35,8 @@ class App extends Component {
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
                 <Questions />
-                <ReviewsAPICalls />
-                <RevParentComponent />
+                <Route path="/:id" component={ReviewsWrapper} />
+                {/* <ReviewsWrapper /> */}
               </main>
             </Container>
           </Router>
@@ -51,7 +50,7 @@ App.propTypes = {
   fetchQuestions: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   questions: store.questions,
   related: store.related,
   relatedProducts: store.relatedProducts,
@@ -59,7 +58,7 @@ const mapStateToProps = store => ({
   outfit: store.outfit
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
   }

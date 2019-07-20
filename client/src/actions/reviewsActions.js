@@ -20,6 +20,26 @@ export const fetchReviews = (prodId) => {
       .catch(err => dispatch(fetchReviewsFailure(err)));
 };
 
+// META
+export const fetchMetaSuccess = meta => ({
+  type: 'FETCH_META_SUCCESS',
+  payload: meta
+});
+
+export const fetchMetaFailure = error => ({
+  type: 'FETCH_META_FAILURE',
+  payload: error
+});
+
+export const fetchMeta = (prodId) => {
+  const url = `${API_URL}/reviews/${prodId}/meta`;
+  return dispatch => Axios.get(url)
+      .then(({ data }) => {
+        dispatch(fetchMetaSuccess(data));
+      })
+      .catch(err => dispatch(fetchMetaFailure(err)));
+};
+
 export const postReviewSucess = review => ({
   type: 'POST_REVIEW_SUCCESS',
   payload: review
@@ -57,4 +77,4 @@ export const postReview = (reviewObj, prodId) => {
 //     .then(({ data }) => dispatch(markReviewSuccess(data)))
 //     .catch((err) => dispatch(markReviewFailure(err)));
 
-export default { fetchReviews, postReview };
+export default { fetchReviews, postReview, fetchMeta };
