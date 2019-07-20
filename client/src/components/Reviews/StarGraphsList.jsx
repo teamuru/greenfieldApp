@@ -41,8 +41,8 @@ export class StarGraphsList extends Component {
                 value={element}
                 // value={this.normalize}
               />
-              {console.log(`this.props.reviews.meta`, meta)}
-              {console.log(`totalReviews`, Object.values(meta.ratings))}
+              {/* {console.log(`this.props.reviews.meta`, meta)} */}
+              {/* {console.log(`totalReviews`, Object.values(meta.ratings))} */}
             </div>
           );
         })}
