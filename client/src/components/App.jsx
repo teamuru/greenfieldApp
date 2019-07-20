@@ -35,7 +35,8 @@ class App extends Component {
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
                 <Questions />
-                <ReviewsWrapper />
+                <Route path="/:id" component={ReviewsWrapper} />
+                {/* <ReviewsWrapper /> */}
               </main>
             </Container>
           </Router>
