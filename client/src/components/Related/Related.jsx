@@ -26,6 +26,7 @@ const Related = (props) => {
     <div className="relatedCards">
       {relatedProducts.map((product, index) => (
         <ProductCard
+          id={product.id}
           key={product.id}
           name={product.name}
           image={photos[index]}
