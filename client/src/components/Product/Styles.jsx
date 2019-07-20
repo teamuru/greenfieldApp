@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { changeSelectedStyle } from '../../actions/productActions';
+import { changeSelectedStyle, changeSelectedSku } from '../../actions/productActions';
 
 class Styles extends Component {
   render() {
@@ -40,7 +40,10 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: selectedStyle => dispatch(changeSelectedStyle(selectedStyle))
+  handleClick: (selectedStyle) => {
+    dispatch(changeSelectedStyle(selectedStyle));
+    dispatch(changeSelectedSku(''));
+  }
 });
 
 export default connect(

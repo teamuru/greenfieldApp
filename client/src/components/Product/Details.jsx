@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Styles from './Styles';
+import Sizes from './Sizes';
 
 function Details(props) {
-  const {
- styles, selectedStyle, name, category 
-} = props;
-  const selStyle = styles[selectedStyle];
-  const { sale_price: salePrice, original_price: originalPrice } = selStyle;
+  const { selectedStyle, name, category } = props;
+  const { sale_price: salePrice, original_price: originalPrice } = selectedStyle;
   // css style object NOT product style
   const saleStyle = { color: 'red', textDecoration: 'line-through' };
-  return (
+  return Object.keys(selectedStyle).length ? (
     <React.Fragment>
+      <h6>stars</h6>
       <h6>{category}</h6>
       <h3>{name}</h3>
       {salePrice > 0 ? (
@@ -24,19 +23,20 @@ function Details(props) {
         <p>{`$${originalPrice}`}</p>
       )}
       <Styles />
+      <Sizes />
     </React.Fragment>
+  ) : (
+    <h6>details</h6>
   );
 }
 
 Details.propTypes = {
-  styles: PropTypes.array.isRequired,
-  selectedStyle: PropTypes.number.isRequired,
+  selectedStyle: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired
 };
 
 const mapStateToProps = store => ({
-  styles: store.product.styles,
   selectedStyle: store.product.selectedStyle
 });
 

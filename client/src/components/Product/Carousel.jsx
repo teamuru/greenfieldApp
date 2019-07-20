@@ -11,10 +11,12 @@ class Carousel extends Component {
   render() {
     const { selectedPhoto } = this.state;
     const { selectedStyle } = this.props;
-    return (
+    return Object.keys(selectedStyle).length ? (
       <React.Fragment>
         <img style={{ width: '100%', height: 'auto' }} src={selectedStyle.photos[selectedPhoto].url} alt="product" />
       </React.Fragment>
+    ) : (
+      <h3>Carousel</h3>
     );
   }
 }

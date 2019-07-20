@@ -24,6 +24,9 @@ export const fetchProduct = (prodId) => {
 // Change Selected Style
 export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_STYLE', payload: selectedStyle });
 
+// Change Selected Sku
+export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload: sku });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',
@@ -46,8 +49,11 @@ export const fetchStyles = (prodId) => {
             break;
           }
         }
+        dispatch(fetchStylesSuccess(results));
         dispatch(changeSelectedStyle(results[i]));
-        dispatch(fetchStylesSuccess(data));
       })
-      .catch(err => dispatch(fetchStylesFailure(err)));
+      .catch((err) => {
+        console.log(err);
+        dispatch(fetchStylesFailure(err));
+      });
 };

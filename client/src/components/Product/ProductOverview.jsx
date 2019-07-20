@@ -17,8 +17,8 @@ class ProductOverview extends Component {
   }
 
   render() {
-    const { data, styles } = this.props;
-    return !Object.keys(data).length || !styles.length ? (
+    const { data } = this.props;
+    return !Object.keys(data).length ? (
       <h1>Loading Product</h1>
     ) : (
       <React.Fragment>
@@ -44,16 +44,14 @@ class ProductOverview extends Component {
 }
 
 ProductOverview.propTypes = {
-  location: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
-  styles: PropTypes.array.isRequired,
   getProducts: PropTypes.func.isRequired,
-  getStyles: PropTypes.func.isRequired
+  getStyles: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 const mapStateToProps = store => ({
-  data: store.product.data,
-  styles: store.product.styles
+  data: store.product.data
 });
 
 const mapDispatchToProps = dispatch => ({
