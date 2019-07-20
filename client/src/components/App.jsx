@@ -8,6 +8,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import theme from '../theme';
 import Related from './Related/Related';
+import './App.css';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
@@ -40,6 +41,7 @@ class App extends Component {
     );
   }
 }
+
 
 const mapStateToProps = (store) => ({
   related: store.related,

@@ -1,4 +1,5 @@
 /* eslint react/jsx-indent: "off" */
+/* eslint react/prop-types: "off" */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -43,7 +44,7 @@ const ProductCard = (props) => {
 <br />
                 {name}
                 <br />
-                {defaultPrice} 
+                {`$${defaultPrice}`} 
 {' '}
 <br />
               </Typography>
