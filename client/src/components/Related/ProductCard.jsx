@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -21,30 +21,39 @@ const useStyles = makeStyles({
 const ProductCard = (props) => {
   const classes = useStyles();
 
-  const { category, name, defaultPrice } = props;
+  const {
+ category, name, defaultPrice, image 
+} = props;
 
-  return (
-    <>
-      <Card className={classes.card}>
-        <CardActionArea>
-          {/* <CardMedia className={classes.media} title={name} /> */}
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2" />
-            <Typography variant="body2" color="textSecondary" component="p">
-              {category} 
+  if (image) {
+    return (
+      <>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              title={name}
+              image={image.photo.results[0].photos[0].thumbnail_url}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2" />
+              <Typography variant="body2" color="textSecondary" component="p">
+                {category} 
 {' '}
 <br />
-              {name}
-              <br />
-              {defaultPrice} 
+                {name}
+                <br />
+                {defaultPrice} 
 {' '}
 <br />
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </>
-  );
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </>
+    );
+  }
+  return null;
 };
 
 ProductCard.propTypes = {
