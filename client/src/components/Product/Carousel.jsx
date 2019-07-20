@@ -10,22 +10,20 @@ class Carousel extends Component {
 
   render() {
     const { selectedPhoto } = this.state;
-    const { styles, selectedStyle } = this.props;
+    const { selectedStyle } = this.props;
     return (
       <React.Fragment>
-        <img style={{ width: '100%', height: 'auto' }} src={styles[selectedStyle].photos[selectedPhoto].url} alt="product" />
+        <img style={{ width: '100%', height: 'auto' }} src={selectedStyle.photos[selectedPhoto].url} alt="product" />
       </React.Fragment>
     );
   }
 }
 
 Carousel.propTypes = {
-  styles: PropTypes.array.isRequired,
-  selectedStyle: PropTypes.number.isRequired
+  selectedStyle: PropTypes.object.isRequired
 };
 
 const mapStateToProps = store => ({
-  styles: store.product.styles,
   selectedStyle: store.product.selectedStyle
 });
 

@@ -9,18 +9,17 @@ import { changeSelectedStyle } from '../../actions/productActions';
 class Styles extends Component {
   render() {
     const { styles, selectedStyle, handleClick } = this.props;
-    const selStyle = styles[selectedStyle];
     const avatarStyle = { cursor: 'pointer' };
     return (
       <div>
         <h6>
           STYLE &gt;
-          {` ${selStyle.name.toUpperCase()}`}
+          {` ${selectedStyle.name.toUpperCase()}`}
         </h6>
         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-          {styles.map((style, index) => (
+          {styles.map(style => (
             <Tooltip key={style.style_id} disableFocusListener title={style.name}>
-              <Avatar style={avatarStyle} onClick={() => handleClick(index)} src={style.photos[0].thumbnail_url} alt="product style" />
+              <Avatar style={avatarStyle} onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" />
             </Tooltip>
           ))}
         </div>
@@ -31,7 +30,7 @@ class Styles extends Component {
 
 Styles.propTypes = {
   styles: PropTypes.array.isRequired,
-  selectedStyle: PropTypes.number.isRequired,
+  selectedStyle: PropTypes.object.isRequired,
   handleClick: PropTypes.func.isRequired
 };
 
@@ -41,7 +40,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: prodId => dispatch(changeSelectedStyle(prodId))
+  handleClick: selectedStyle => dispatch(changeSelectedStyle(selectedStyle))
 });
 
 export default connect(

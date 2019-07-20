@@ -1,4 +1,8 @@
-const intialState = { data: {}, styles: [], selectedStyle: -1 };
+const intialState = {
+  data: {},
+  styles: [],
+  selectedStyle: {}
+};
 
 const productReducer = (state = intialState, action) => {
   switch (action.type) {

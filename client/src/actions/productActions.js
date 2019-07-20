@@ -22,7 +22,7 @@ export const fetchProduct = (prodId) => {
 };
 
 // Change Selected Style
-export const changeSelectedStyle = styleId => ({ type: 'CHANGE_SELECTED_STYLE', payload: styleId });
+export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_STYLE', payload: selectedStyle });
 
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
@@ -46,7 +46,7 @@ export const fetchStyles = (prodId) => {
             break;
           }
         }
-        dispatch(changeSelectedStyle(i));
+        dispatch(changeSelectedStyle(results[i]));
         dispatch(fetchStylesSuccess(data));
       })
       .catch(err => dispatch(fetchStylesFailure(err)));
