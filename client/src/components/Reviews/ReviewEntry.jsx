@@ -5,12 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Checklist from '../Product/Checklist.jsx';
 
 const useStyles = makeStyles((theme) => ({
-  font: {
-    fontSize: 15
-  },
-  root: {
-    flexGrow: 1
-  },
+  // font: {
+  //   fontSize: 15
+  // },
+  // root: {
+  //   flexGrow: 1
+  // },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'right-align',
@@ -24,29 +24,22 @@ const style = {
     fontWeight: 'fontWeightBold'
   },
   bg: {
-    backgroundColor: '#364150',
-    color: 'white'
+    backgroundColor: '#E5E5E5'
   }
 };
 
 function ReviewEntry({ review }) {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} style={style.ft}>
       <Grid item xs={9}>
         <Grid container justify="space-between" direction="row">
-          <Grid item>stars</Grid>
-          <Grid item style={{ fontSize: 15 }}>
-            {review.reviewer_name}
-          </Grid>
+          <Grid item> Placeholder Rating: {review.rating}</Grid>
+          <Grid item>{review.reviewer_name}</Grid>
         </Grid>
         <Grid>
-          <Grid item style={{ fontSize: 15 }}>
-            {review.summary}
-          </Grid>
-          <Grid item style={style.ft}>
-            {review.body}
-          </Grid>
+          <Grid item>{review.summary}</Grid>
+          <Grid item>{review.body}</Grid>
           <Grid
             item
             // style={{ fontSize: 15 }}
@@ -63,7 +56,7 @@ function ReviewEntry({ review }) {
             </Grid>
             <Grid item>{review.response}</Grid>
           </Grid>
-          <Grid item>Helpful | Yes? {review.helpfulness} </Grid>
+          <Grid item>Helpful | Yes? ({review.helpfulness}) </Grid>
         </Grid>
         <Grid />
       </Grid>

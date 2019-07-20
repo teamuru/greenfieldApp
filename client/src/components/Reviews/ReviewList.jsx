@@ -14,7 +14,6 @@ const ReviewList = (props) => {
         return (
           <Grid key={review.review_id}>
             <ReviewEntry review={review} />
-            {console.log(`each review`, review)}
           </Grid>
         );
       })}
