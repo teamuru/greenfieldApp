@@ -14,7 +14,7 @@ import Related from './Related/Related';
 // component imports
 import ProductOverview from './Product/ProductOverview';
 import Questions from './Questions/Question';
-import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
+import ReviewsWrapper from './Reviews/ReviewsWrapper';
 
 class App extends Component {
   componentDidMount() {
@@ -35,7 +35,7 @@ class App extends Component {
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
                 <Questions />
-                <ReviewsAPICalls />
+                <ReviewsWrapper />
               </main>
             </Container>
           </Router>
