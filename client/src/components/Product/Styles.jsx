@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { changeSelectedStyle } from '../../actions/productActions';
 
 class Styles extends Component {
   render() {
-    const { styles, selectedStyle } = this.props;
-    console.log(this.props);
+    const { styles, selectedStyle, handleClick } = this.props;
+    const avatarStyle = { cursor: 'pointer' };
     return (
       <div>
         <h6>
@@ -16,8 +17,10 @@ class Styles extends Component {
           {` ${styles[selectedStyle].name.toUpperCase()}`}
         </h6>
         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-          {styles.map(style => (
-            <Avatar src={style.photos[0].thumbnail_url} />
+          {styles.map((style, index) => (
+            <Tooltip disableFocusListener title={style.name}>
+              <Avatar style={avatarStyle} key={style.style_id} onClick={() => handleClick(index)} src={style.photos[0].thumbnail_url} alt="product style" />
+            </Tooltip>
           ))}
         </div>
       </div>
@@ -27,7 +30,8 @@ class Styles extends Component {
 
 Styles.propTypes = {
   styles: PropTypes.array.isRequired,
-  selectedStyle: PropTypes.number.isRequired
+  selectedStyle: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({

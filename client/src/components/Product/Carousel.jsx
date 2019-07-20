@@ -11,7 +11,6 @@ class Carousel extends Component {
   render() {
     const { selectedPhoto } = this.state;
     const { styles, selectedStyle } = this.props;
-    console.log(this.props);
     return (
       <React.Fragment>
         <img style={{ width: '100%', height: 'auto' }} src={styles[selectedStyle].photos[selectedPhoto].url} alt="product" />
