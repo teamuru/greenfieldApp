@@ -12,8 +12,8 @@ const ReviewList = (props) => {
     <div>
       {reviews.data.results.map((review) => {
         return (
-          <Grid>
-            <ReviewEntry key={review.review_id} review={review} />
+          <Grid key={review.review_id}>
+            <ReviewEntry review={review} />
             {console.log(`each review`, review)}
           </Grid>
         );
