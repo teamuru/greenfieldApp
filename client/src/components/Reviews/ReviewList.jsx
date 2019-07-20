@@ -1,26 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReviewEntry from './ReviewEntry';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 
+import ReviewEntry from './ReviewEntry';
+
 const ReviewList = (props) => {
-  // const { reviews } = reviews;
-  const arr = [1, 2, 3];
-  return (
+  const { reviews } = props;
+
+  return reviews.data ? (
     <div>
-      {/* {reviews.results.map((review) => {
-        return console.log('review:', review);
-      })} */}
-      {arr.map((elem, index) => {
+      {reviews.data.results.map((review) => {
         return (
-          <Grid key={index}>
-            <ReviewEntry numbers={elem} />
-            {console.log(`props`, props)}
+          <Grid key={review.review_id}>
+            <ReviewEntry review={review} />
           </Grid>
         );
       })}
     </div>
+  ) : (
+    <h1>... Loading</h1>
   );
 };
 
-export default ReviewList;
+const mapStateToProps = (store) => ({
+  reviews: store.reviews
+});
+
+export default connect(mapStateToProps)(ReviewList);

@@ -1,4 +1,5 @@
 /* eslint react/jsx-indent: "off" */
+/* eslint react/prop-types: "off" */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -8,6 +9,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   card: {
@@ -22,12 +24,12 @@ const ProductCard = (props) => {
   const classes = useStyles();
 
   const {
- category, name, defaultPrice, image 
+ category, name, defaultPrice, image, id 
 } = props;
 
   if (image) {
     return (
-      <>
+      <Link to={`/${id}`}>
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
@@ -43,14 +45,14 @@ const ProductCard = (props) => {
 <br />
                 {name}
                 <br />
-                {defaultPrice} 
+                {`$${defaultPrice}`} 
 {' '}
 <br />
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
-      </>
+      </Link>
     );
   }
   return null;
