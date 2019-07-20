@@ -27,14 +27,11 @@ class ReviewsWrapper extends Component {
     fetchMeta(pathname);
   }
   render() {
-    const { reviews } = this.props;
-    return reviews.data ? (
-      <div>
+    return (
+      <React.Fragment>
         <RevParentComponent />
         {/* {console.log(`results inside wrapper`, reviews.data.results)} */}
-      </div>
-    ) : (
-      <div>...Loading</div>
+      </React.Fragment>
     );
   }
 }
@@ -46,7 +43,7 @@ ReviewsWrapper.propTypes = {
 };
 
 const mapStateToProps = (store) => ({
-  reviews: store.reviews,
+  // reviews: store.reviews,
   meta: store.meta
 });
 
