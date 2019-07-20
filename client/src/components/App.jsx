@@ -8,7 +8,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import theme from '../theme';
 import Related from './Related/Related';
-// import './App.css';
+import './App.css';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
@@ -16,8 +16,6 @@ import Questions from './Questions/Question';
 import ReviewsWrapper from './Reviews/ReviewsWrapper';
 
 class App extends Component {
-  componentDidMount() {}
-
   render() {
     return (
       <MuiThemeProvider theme={theme}>
