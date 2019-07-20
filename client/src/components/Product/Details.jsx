@@ -1,9 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Styles from './Styles';
 
-export default function Details() {
+export default function Details(props) {
+  const {
+ styles, selectedStyle, name, category 
+} = props;
   return (
     <React.Fragment>
-      <h1>details</h1>
+      <h6>{category}</h6>
+      <h3>{name}</h3>
+      <p>{`$${styles[selectedStyle].original_price}`}</p>
+      <Styles styles={styles} selectedStyle={selectedStyle} />
     </React.Fragment>
   );
 }
+
+Details.propTypes = {
+  styles: PropTypes.array.isRequired,
+  selectedStyle: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired
+};

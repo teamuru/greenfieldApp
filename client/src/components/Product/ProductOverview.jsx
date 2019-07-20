@@ -34,8 +34,8 @@ class ProductOverview extends Component {
           <Grid container xs={7} justify="center">
             <Carousel styles={styles} selectedStyle={selectedStyle} />
           </Grid>
-          <Grid container xs={5} justify="flex-start">
-            <Details styles={styles} />
+          <Grid container xs={5} justify="flex-start" direction="column">
+            <Details styles={styles} selectedStyle={selectedStyle} name={data.name} category={data.category} />
           </Grid>
         </Grid>
         <Grid container xs={12}>
