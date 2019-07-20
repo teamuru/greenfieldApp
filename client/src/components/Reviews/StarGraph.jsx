@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
+import { withStyles } from '@material-ui/core/styles';
 
 const StarGraph = withStyles({
   root: {
     height: 12,
-    backgroundColor: '#14213D',
+    backgroundColor: '#E5E5E5',
     marginTop: '4px'
   },
   bar: {

@@ -11,9 +11,8 @@ import Related from './Related/Related';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
-import RevParentComponent from './Reviews/RevParentComponent';
 import Questions from './Questions/Question';
-import ReviewsAPICalls from './Reviews/ReviewsAPICalls';
+import ReviewsWrapper from './Reviews/ReviewsWrapper';
 
 class App extends Component {
   componentDidMount() {}
@@ -30,9 +29,9 @@ class App extends Component {
               <main>
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
-                <Route path="/:id" component={Questions} />
-                <ReviewsAPICalls />
-                <RevParentComponent />
+                <Route path="/:id" component={Questions} />    
+                <Route path="/:id" component={ReviewsWrapper} />
+                {/* <ReviewsWrapper /> */}
               </main>
             </Container>
           </Router>
@@ -42,8 +41,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = store => ({
-  questions: store.questions,
+const mapStateToProps = (store) => ({
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
