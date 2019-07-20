@@ -9,8 +9,8 @@ import AddReviewModal from './AddReviewModal.jsx';
 import Recommended from './Recommended.jsx';
 import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
-import StarGraph from './StarGraph.jsx';
 import ReviewList from './ReviewList.jsx';
+import StarGraphsList from './StarGraphsList.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,22 +41,7 @@ const RevParentComponent = () => {
             <Recommended />
           </Paper>
           <Paper className={classes.paper}>
-            {/* Star */}
-            <div>
-              1 <StarGraph variant="determinate" value={5} />
-            </div>
-            <div>
-              2 <StarGraph variant="determinate" value={5} />
-            </div>
-            <div>
-              3 <StarGraph variant="determinate" value={5} />
-            </div>
-            <div>
-              4 <StarGraph variant="determinate" value={5} />
-            </div>
-            <div>
-              5 <StarGraph variant="determinate" value={5} />
-            </div>
+            <StarGraphsList />
           </Paper>
           <Paper className={classes.paper}>
             <SizeGraph />
