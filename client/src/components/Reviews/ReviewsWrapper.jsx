@@ -6,7 +6,7 @@ import RevParentComponent from './RevParentComponent.jsx';
 
 import { fetchReviews, fetchMeta } from '../../actions/reviewsActions';
 
-class ReviewsAPICalls extends Component {
+class ReviewsWrapper extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ class ReviewsAPICalls extends Component {
   }
 }
 
-ReviewsAPICalls.propTypes = {
+ReviewsWrapper.propTypes = {
   fetchReviews: PropTypes.func.isRequired,
   fetchMeta: PropTypes.func.isRequired
 };
@@ -52,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReviewsAPICalls);
+)(ReviewsWrapper);
