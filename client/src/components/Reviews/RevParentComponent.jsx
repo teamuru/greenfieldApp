@@ -34,6 +34,7 @@ const RevParentComponent = () => {
         </Grid>
       </Grid>
       <Grid container spacing={3}>
+        {/* <Grid item xs> */}
         <Grid item xs>
           <Paper className={classes.paper}>Rating and Star</Paper>
           <Paper className={classes.paper}>

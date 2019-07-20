@@ -20,16 +20,21 @@ class ReviewsWrapper extends Component {
       fetchReviews,
       fetchMeta,
       location: { pathname }
+      // reviews
     } = this.props;
     // FIXME: get id from route
     fetchReviews(pathname);
     fetchMeta(pathname);
   }
   render() {
-    return (
+    const { reviews } = this.props;
+    return reviews.data ? (
       <div>
         <RevParentComponent />
+        {/* {console.log(`results inside wrapper`, reviews.data.results)} */}
       </div>
+    ) : (
+      <div>...Loading</div>
     );
   }
 }

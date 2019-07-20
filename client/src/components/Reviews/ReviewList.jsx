@@ -15,7 +15,8 @@ const ReviewList = (props) => {
         return (
           <Grid key={index}>
             <ReviewEntry numbers={elem} />
-            {console.log(`props`, props)}
+            {/* {console.log(`reviews`, reviews)} */}
+            {/* {console.log(`props`, props)} */}
           </Grid>
         );
       })}
