@@ -1,47 +1,41 @@
 /* eslint no-shadow: "off" */
 /* eslint react/prop-types: "off" */
+/* eslint react/no-unused-prop-types: "off" */
 
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
 import { fetchAllRelated, fetchAllPhotos } from '../../actions/relatedActions';
 
-class Related extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {
+const Related = (props) => {
+  useEffect(() => {
     const {
       fetchAllRelated,
       fetchAllPhotos,
       location: { pathname }
-    } = this.props;
+    } = props;
 
     fetchAllRelated(pathname);
     fetchAllPhotos(pathname);
-  }
+  }, []);
 
-  render() {
-    const { relatedProducts, photos } = this.props;
+  const { relatedProducts, photos } = props;
 
-    return (
-      <div className="relatedCards">
-        {relatedProducts.map((product, index) => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            image={photos[index]}
-            defaultPrice={product.default_price}
-            category={product.category}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="relatedCards">
+      {relatedProducts.map((product, index) => (
+        <ProductCard
+          key={product.id}
+          name={product.name}
+          image={photos[index]}
+          defaultPrice={product.default_price}
+          category={product.category}
+        />
+      ))}
+    </div>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchAllRelated: (id) => {
