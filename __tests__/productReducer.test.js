@@ -3,7 +3,11 @@ import fetchProductMock from '../mocks/fetchProductMock';
 
 describe('Product reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual({});
+    expect(reducer(undefined, {
+ data: {}, styles: [], selectedStyle: {}, selectedSku: '' 
+})).toEqual({
+ data: {}, styles: [], selectedStyle: {}, selectedSku: '' 
+});
   });
 
   it('should handle FETCH_PRODUCT_SUCCESS', () => {

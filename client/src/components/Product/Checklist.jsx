@@ -8,7 +8,7 @@ export default function Checklist(props) {
     <React.Fragment>
       <h6>Features</h6>
       {features.map(feature => (
-        <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end' }} key={feature.feature}>
           <Check />
           {feature.value}
         </div>

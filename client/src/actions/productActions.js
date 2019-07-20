@@ -21,6 +21,12 @@ export const fetchProduct = (prodId) => {
       .catch(err => dispatch(fetchProductFailure(err)));
 };
 
+// Change Selected Style
+export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_STYLE', payload: selectedStyle });
+
+// Change Selected Sku
+export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload: sku });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',
@@ -36,7 +42,18 @@ export const fetchStyles = (prodId) => {
   const url = `${API_URL}/products/${prodId}/styles`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
-        dispatch(fetchStylesSuccess(data));
+        const { results } = data;
+        let i = 0;
+        for (i; i < results.length; i += 1) {
+          if (results[i]['default?']) {
+            break;
+          }
+        }
+        dispatch(fetchStylesSuccess(results));
+        dispatch(changeSelectedStyle(results[i]));
       })
-      .catch(err => dispatch(fetchStylesFailure(err)));
+      .catch((err) => {
+        console.log(err);
+        dispatch(fetchStylesFailure(err));
+      });
 };
