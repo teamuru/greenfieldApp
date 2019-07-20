@@ -8,10 +8,12 @@ import StarGraph from './StarGraph.jsx';
 export class StarGraphsList extends Component {
   // some functtions here
   handleNormalize(current, total) {
+    // gives us the number of ratings
+    // let overall = Object.values(total.ratings);
     return (current / total) * 100;
   }
 
-  render() {
+  renderRatings() {
     const ratings = [1, 2, 3, 4, 5];
     const { meta } = this.props.reviews;
 
@@ -23,18 +25,38 @@ export class StarGraphsList extends Component {
       <React.Fragment>
         {ratings.map((element) => {
           {
-            /* let normalize = this.handleNormalize() */
+            const totalReviews = Object.values(meta.ratings);
+            let normalize = this.handleNormalize(
+              ratings[element],
+              Object.values(meta.ratings).length
+            );
           }
 
           return (
             <div style={{ fontSize: 15 }} key={element}>
               {element} Stars
+              {/* FIXME: get normalize working */}
               <StarGraph variant="determinate" value={element} />
-              {console.log(`this.props.reviews.meta`, meta.ratings)}
+              {console.log(`this.props.reviews.meta`, meta)}
+              {console.log(`totalReviews`, Object.values(meta.ratings))}
             </div>
           );
         })}
       </React.Fragment>
+    );
+  }
+
+  renderRec() {
+    const { meta } = this.props.reviews;
+  }
+
+  render() {
+    return (
+      <div>
+        <span> {} Stars *add renderAverageStars </span>
+        {} *add recommended
+        {this.renderRatings()}
+      </div>
     );
   }
 }
