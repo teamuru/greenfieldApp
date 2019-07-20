@@ -27,7 +27,7 @@ export class StarGraphsList extends Component {
           {
             const totalReviews = Object.values(meta.ratings);
             let normalize = this.handleNormalize(
-              ratings[element],
+              ratings[element] || 0,
               Object.values(meta.ratings).length
             );
           }
@@ -36,7 +36,11 @@ export class StarGraphsList extends Component {
             <div style={{ fontSize: 15 }} key={element}>
               {element} Stars
               {/* FIXME: get normalize working */}
-              <StarGraph variant="determinate" value={element} />
+              <StarGraph
+                variant="determinate"
+                value={element}
+                // value={this.normalize}
+              />
               {console.log(`this.props.reviews.meta`, meta)}
               {console.log(`totalReviews`, Object.values(meta.ratings))}
             </div>
