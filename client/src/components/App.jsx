@@ -8,7 +8,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import theme from '../theme';
 import Related from './Related/Related';
-import './App.css';
+// import './App.css';
 
 // component imports
 import ProductOverview from './Product/ProductOverview';
@@ -30,7 +30,7 @@ class App extends Component {
               <main>
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
-                <Route path="/:id" component={Questions} />    
+                <Route path="/:id" component={Questions} />
                 <Route path="/:id" component={ReviewsWrapper} />
                 {/* <ReviewsWrapper /> */}
               </main>
@@ -42,14 +42,11 @@ class App extends Component {
   }
 }
 
-
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
   outfit: store.outfit
 });
 
-export default connect(
-  mapStateToProps
-)(App);
+export default connect(mapStateToProps)(App);
