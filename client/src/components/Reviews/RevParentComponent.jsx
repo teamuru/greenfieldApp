@@ -9,7 +9,6 @@ import AddReviewModal from './AddReviewModal.jsx';
 import Recommended from './Recommended.jsx';
 import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
-// import StarGraph from './StarGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
 

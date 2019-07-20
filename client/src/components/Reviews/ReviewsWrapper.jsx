@@ -43,7 +43,7 @@ ReviewsWrapper.propTypes = {
 };
 
 const mapStateToProps = (store) => ({
-  // reviews: store.reviews,
+  reviews: store.reviews,
   meta: store.meta
 });
 
