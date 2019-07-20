@@ -50,7 +50,7 @@ App.propTypes = {
   fetchQuestions: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   questions: store.questions,
   related: store.related,
   relatedProducts: store.relatedProducts,
@@ -58,7 +58,7 @@ const mapStateToProps = (store) => ({
   outfit: store.outfit
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchQuestions: (id) => {
     dispatch(fetchQuestions(id));
   }

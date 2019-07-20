@@ -6,18 +6,15 @@ import Grid from '@material-ui/core/Grid';
 import ReviewEntry from './ReviewEntry';
 
 const ReviewList = (props) => {
-  const arr = [1, 2, 3];
   const { reviews } = props;
-  // console.log(this.props);
 
   return reviews.data ? (
     <div>
-      {arr.map((elem, index) => {
+      {reviews.data.results.map((review) => {
         return (
           <Grid>
-            <ReviewEntry key={index} numbers={elem} />
-            {/* {console.log(`reviews inside list`, reviews)} */}
-            {console.log(`reviews`, reviews)}
+            <ReviewEntry key={review.review_id} review={review} />
+            {console.log(`each review`, review)}
           </Grid>
         );
       })}
@@ -32,5 +29,3 @@ const mapStateToProps = (store) => ({
 });
 
 export default connect(mapStateToProps)(ReviewList);
-
-// export default ReviewList;
