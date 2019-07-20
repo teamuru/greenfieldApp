@@ -65,33 +65,16 @@ const RevParentComponent = () => {
           </Paper>
         </Grid>
         <Grid item xs={9}>
-          <Paper className={classes.paper}>Sort By Relevance</Paper>
-          {/* MAP HERE */}
-          <ReviewList />
-          {/* <Paper className={classes.paper}>
-            <Grid>
-              <Grid container justify="space-between" direction="row">
-                <Grid item>stars</Grid>
-                <Grid item>User</Grid>
-              </Grid>
-              <Grid>
-                <Grid item>Summary Bold</Grid>
-                <Grid item>Body</Grid>
-                <Grid item>Recommend Y/N</Grid>
-                <Grid
-                  container
-                  // alignItems="baseline"
-                >
-                  <Grid item xs={9}>
-                    Response
-                  </Grid>
-                  <Grid item>Response Summary</Grid>
-                </Grid>
-                <Grid item>Helpful | yes?</Grid>
-              </Grid>
-              <Grid />
-            </Grid>
-          </Paper> */}
+          <Grid>
+            <Paper className={classes.paper}>Sort By Relevance</Paper>
+          </Grid>
+
+          <Grid
+          // item xs={9}
+          >
+            <ReviewList />
+          </Grid>
+
           <Grid
             container
             alignItems="baseline"

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReviewEntry from './ReviewEntry';
 import Grid from '@material-ui/core/Grid';
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = (props) => {
   // const { reviews } = reviews;
   const arr = [1, 2, 3];
   return (
@@ -12,9 +13,9 @@ const ReviewList = ({ reviews }) => {
       })} */}
       {arr.map((elem, index) => {
         return (
-          <Grid key={index} container>
+          <Grid key={index}>
             <ReviewEntry numbers={elem} />
-            {console.log(`reviews`, reviews)}
+            {console.log(`props`, props)}
           </Grid>
         );
       })}

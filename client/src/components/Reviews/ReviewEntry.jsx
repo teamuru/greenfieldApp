@@ -19,7 +19,7 @@ function ReviewEntry() {
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
-      <Grid>
+      <Grid item xs={9}>
         <Grid container justify="space-between" direction="row">
           <Grid item>stars</Grid>
           <Grid item>User</Grid>
