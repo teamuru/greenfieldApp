@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 
-export default class Styles extends Component {
+import { changeSelectedStyle } from '../../actions/productActions';
+
+class Styles extends Component {
   render() {
     const { styles, selectedStyle } = this.props;
     console.log(this.props);
@@ -26,3 +29,17 @@ Styles.propTypes = {
   styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.number.isRequired
 };
+
+const mapStateToProps = store => ({
+  styles: store.product.styles,
+  selectedStyle: store.product.selectedStyle
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleClick: prodId => dispatch(changeSelectedStyle(prodId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Styles);

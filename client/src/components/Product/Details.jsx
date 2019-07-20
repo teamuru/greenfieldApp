@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Styles from './Styles';
 
-export default function Details(props) {
+function Details(props) {
   const {
  styles, selectedStyle, name, category 
 } = props;
@@ -22,3 +23,10 @@ Details.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired
 };
+
+const mapStateToProps = store => ({
+  styles: store.product.styles,
+  selectedStyle: store.product.selectedStyle
+});
+
+export default connect(mapStateToProps)(Details);

@@ -1,4 +1,4 @@
-const intialState = {};
+const intialState = { data: {}, styles: [], selectedStyle: -1 };
 
 const productReducer = (state = intialState, action) => {
   switch (action.type) {
@@ -10,6 +10,8 @@ const productReducer = (state = intialState, action) => {
       return { ...state, styles: action.payload.results };
     case 'FETCH_STYLES_FAILURE':
       return { ...state, stylesError: action.payload };
+    case 'CHANGE_SELECTED_STYLE':
+      return { ...state, selectedStyle: action.payload };
     default:
       return state;
   }
