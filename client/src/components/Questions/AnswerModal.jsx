@@ -1,41 +1,45 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import LoadMore from "./LoadMore";
+import Paper from "@material-ui/core/Paper";
+import List from "@material-ui/core/List";
+import Photo from "./Photo";
 
 class AddAnswerModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { loadMore: false };
+    this.state = { load: false };
     this.setLoadMore = this.setLoadMore.bind(this);
   }
   setLoadMore() {
-    this.setState({ loadMore: true });
+    let load = this.state.load;
+    load ? this.setState({ load: false }) : this.setState({ load: true });
   }
   render() {
-    // console.log("answers ", this.props.answers);
-    let keys = Object.keys(this.props.answers);
-    const loadMore = () => {
-      if (keys.length > 1) return <LoadMore />;
-      else return <div />;
-    };
+    let answers = this.props.answers;
+    let keys = Object.keys(answers);
+    let load = this.state.load;
+    // console.log("answers ", answers);
 
     if (keys.length > 0) {
-      //TODO: sort answer keys here
-      sortAnswer(keys, this.props.answers);
-      if (this.state.loadMore) {
+      sortAnswer(keys, answers);
+      // return loadFunction(load, answers, keys, this.setLoadMore);
+      if (load) {
         return (
-          <div>
-            {keys.map(key => {
-              return renderItem(key, this.props.answers);
-            })}
-          </div>
+          <React.Fragment>
+            <Paper style={{ maxHeight: 200, overflow: "auto" }}>
+              {keys.map(key => {
+                return renderAnswers(key, answers);
+              })}
+            </Paper>
+            {loadMore(keys, this.setLoadMore, load)}
+          </React.Fragment>
         );
       } else {
         return (
-          <div>
-            {renderItem(keys[0], this.props.answers)}
-            {loadMore()}
-          </div>
+          <React.Fragment>
+            {renderAnswers(keys[0], answers)}
+            {loadMore(keys, this.setLoadMore, load)}
+          </React.Fragment>
         );
       }
     } else {
@@ -45,28 +49,43 @@ class AddAnswerModal extends Component {
 }
 
 // render answer modal
-const renderItem = (key, answers) => {
-  let { id, body, answerer_name, helpfulness, date } = answers[key];
+const renderAnswers = (key, answers) => {
+  let { id, body, answerer_name, helpfulness, date, photos } = answers[key];
   return (
-    <div key={`answerId:${id}`}>
-      <label style={{ fontWeight: "bold", fontSize: 12 }}>A: </label>
-      <label style={{ textAlign: "right", fontSize: 10 }}> {body} </label>
+    <List key={`answerId:${id}`}>
+      <span style={{ fontWeight: "bold", fontSize: 12 }}>A: </span>
+      <span style={{ fontSize: 10 }}> {body} </span>
       <br />
+      <Photo photos={photos} />
+      {subInfo(date, helpfulness, answerer_name)}
+    </List>
+  );
+};
 
-      <label style={{ textAlign: "right", fontSize: 8 }}>
-        by {answerer_name} Helpful? {timeConvert(date)} {"    "}
-      </label>
-      <label style={{ textDecorationLine: "underline", fontSize: 8 }}>
+//
+const subInfo = (date, helpfulness, answerer_name) => {
+  return (
+    <React.Fragment>
+      <span style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
+        {`    by ${answerer_name}, ${timeConvert(
+          date
+        )}      |      Helpful?   `}
+      </span>
+      <span
+        style={{
+          textDecorationLine: "underline",
+          fontSize: 8
+        }}
+      >
         Yes
-      </label>
-      <label style={{ textAlign: "right", fontSize: 8 }}>
-        {`(${helpfulness})`}
-        {"    "}|{"    "}
-      </label>
-      <label style={{ textDecorationLine: "underline", fontSize: 8 }}>
+      </span>
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: 8 }}
+      >{` (${helpfulness})      |      `}</span>
+      <span style={{ textDecorationLine: "underline", fontSize: 8 }}>
         Report
-      </label>
-    </div>
+      </span>
+    </React.Fragment>
   );
 };
 
@@ -111,6 +130,13 @@ const sortAnswer = (keys, answers) => {
     }
   }
   return keys;
+};
+
+//load more function
+const loadMore = (keys, setLoadMore, load) => {
+  if (keys.length > 1)
+    return <LoadMore setLoadMore={setLoadMore} loadMore={load} />;
+  else return <div />;
 };
 
 export default AddAnswerModal;

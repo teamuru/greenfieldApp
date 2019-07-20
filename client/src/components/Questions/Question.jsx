@@ -8,8 +8,9 @@ import { fetchQuestions } from "../../actions/questionsActions";
 class Question extends Component {
   constructor(props) {
     super(props);
-    this.state = { questionList: [], count: 2 };
+    this.state = { questionList: [], count: 2, load: false };
     this.setCount = this.setCount.bind(this);
+    this.setLoadMore = this.setLoadMore.bind(this);
   }
   componentDidMount() {
     const { fetchQuestions, location } = this.props;
@@ -20,6 +21,11 @@ class Question extends Component {
     this.setState({ count: count });
   }
 
+  setLoadMore() {
+    let load = this.state.load;
+    load ? this.setState({ load: false }) : this.setState({ load: true });
+  }
+
   render() {
     let questions = this.props.questions.data;
     return (
@@ -27,7 +33,12 @@ class Question extends Component {
         <h6>QUESTIONS{` & `}ANSWERS</h6>
         <SearchQuestions />
         <AddQuestionModal questions={questions} count={this.state.count} />
-        <MoreAnsweredQuestions questions={questions} setCount={this.setCount} />
+        <MoreAnsweredQuestions
+          questions={questions}
+          setCount={this.setCount}
+          setLoadMore={this.setLoadMore}
+          load={this.state.load}
+        />
       </div>
     );
   }

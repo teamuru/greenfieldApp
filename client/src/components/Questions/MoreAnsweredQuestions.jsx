@@ -3,15 +3,15 @@ import React, { Component } from "react";
 class MoreAnsweredQuestions extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loadMoreQuestions: 2
-    };
-    this.hangelLoadMoreQuestions = this.hangelLoadMoreQuestions.bind(this);
+    this.state = { count: 2 };
+    this.hangelClick = this.hangelClick.bind(this);
   }
 
-  hangelLoadMoreQuestions() {
+  hangelClick() {
     let count = this.props.questions.length;
-    this.props.setCount(count);
+    let load = this.props.load;
+    load ? this.props.setCount(2) : this.props.setCount(count);
+    this.props.setLoadMore();
   }
 
   render() {
@@ -19,7 +19,7 @@ class MoreAnsweredQuestions extends Component {
       <div>
         <button
           onClick={() => {
-            this.hangelLoadMoreQuestions();
+            this.hangelClick();
           }}
         >
           MORE ANSWERED QUESTIONS
