@@ -42,6 +42,7 @@ class App extends Component {
   }
 }
 
+
 const mapStateToProps = store => ({
   related: store.related,
   relatedProducts: store.relatedProducts,
