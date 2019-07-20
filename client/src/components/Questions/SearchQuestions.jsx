@@ -22,7 +22,7 @@ class SearchQuestions extends Component {
         <input
           type="text"
           style={{ fontSize: 16 }}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+          placeholder="🔍   HAVE A QUESTION? SEARCH FOR ANSWERS...     "
           size="90"
           value={this.state.value}
           onChange={this.handleOnChange}
