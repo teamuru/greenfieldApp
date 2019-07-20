@@ -16,10 +16,14 @@ class ReviewsWrapper extends Component {
   }
 
   componentDidMount() {
-    const { fetchReviews, fetchMeta } = this.props;
+    const {
+      fetchReviews,
+      fetchMeta,
+      location: { pathname }
+    } = this.props;
     // FIXME: get id from route
-    fetchReviews(1);
-    fetchMeta(1);
+    fetchReviews(pathname);
+    fetchMeta(pathname);
   }
   render() {
     return (
