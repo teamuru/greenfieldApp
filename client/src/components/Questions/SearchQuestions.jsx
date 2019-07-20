@@ -21,8 +21,9 @@ class SearchQuestions extends Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          size="100"
+          style={{ fontSize: 16 }}
+          placeholder="🔍   HAVE A QUESTION? SEARCH FOR ANSWERS...     "
+          size="90"
           value={this.state.value}
           onChange={this.handleOnChange}
         />
