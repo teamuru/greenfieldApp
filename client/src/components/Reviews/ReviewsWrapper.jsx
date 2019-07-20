@@ -20,6 +20,7 @@ class ReviewsWrapper extends Component {
       fetchReviews,
       fetchMeta,
       location: { pathname }
+      // reviews
     } = this.props;
     // FIXME: get id from route
     fetchReviews(pathname);
@@ -27,9 +28,10 @@ class ReviewsWrapper extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <RevParentComponent />
-      </div>
+        {/* {console.log(`results inside wrapper`, reviews.data.results)} */}
+      </React.Fragment>
     );
   }
 }
@@ -41,7 +43,7 @@ ReviewsWrapper.propTypes = {
 };
 
 const mapStateToProps = (store) => ({
-  reviews: store.reviews,
+  // reviews: store.reviews,
   meta: store.meta
 });
 
