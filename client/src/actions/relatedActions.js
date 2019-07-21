@@ -59,6 +59,14 @@ export const fetchPhotoSuccess = photo => ({
   }
 });
 
+export const clearPhotos = () => ({
+  type: 'CLEAR_PHOTOS'
+});
+
+export const clearRelated = () => ({
+  type: 'CLEAR_RELATED'
+});
+
 export const fetchRelatedIDs = (prodId) => {
   const url = `${API_URL}/products/${prodId}/related`;
   return dispatch => Axios.get(url)
@@ -139,3 +147,7 @@ export const fetchAllPhotos = (prodId) => {
 export const addToOutfit = prodId => addProductToOutfit(prodId);
 
 export const deleteFromOutfit = prodId => deleteProductFromOutfit(prodId);
+
+export const clearAllRelated = () => dispatch => dispatch(clearRelated());
+
+export const clearAllPhotos = () => dispatch => dispatch(clearPhotos());
