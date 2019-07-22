@@ -1,43 +1,44 @@
-import Axios from "axios";
-import API_URL from "../lib/API_URL";
+import Axios from 'axios';
+import API_URL from '../lib/API_URL';
 
 export const fetchQuestionsSuccess = questions => ({
-  type: "FETCH_QUESTIONS_SUCCESS",
+  type: 'FETCH_QUESTIONS_SUCCESS',
   payload: questions
 });
 
 export const fetchQuestionsError = error => ({
-  type: "FETCH_QUESTIONS_ERROR",
+  type: 'FETCH_QUESTIONS_ERROR',
   error
 });
 
-export const fetchQuestions = prodId => {
+export const fetchQuestions = (prodId) => {
   const url = `${API_URL}/qa/${prodId}`;
-  return dispatch =>
-    Axios.get(url)
+  return dispatch => Axios.get(url)
       .then(({ data }) => {
         dispatch(fetchQuestionsSuccess(data.results));
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(fetchQuestionsError(err));
       });
 };
 
 export const postAddAnswer = (answer, name, email, photos, id) => {
-  let url = `${API_URL}/qa/${id}/answers`;
+  const url = `${API_URL}/qa/${id}/answers`;
   // console.log("post add answer answer: ", answer);
   // console.log("post add answer name: ", name);
   // console.log("post add answer email: ", email);
   // console.log("post add answer id: ", id);
   // console.log("post add answer photos[0]: ", photos);
 
-  Axios.post(url, { body: answer, name: name, email: email, photos })
+  Axios.post(url, {
+ body: answer, name, email, photos 
+})
     .then(() => {
-      console.log("Success to post AddAnswer");
+      console.log('Success to post AddAnswer');
     })
     .catch(() => {
-      console.log("Fail to post AddAnswer");
+      console.log('Fail to post AddAnswer');
     });
 };
 
-//export default fetchQuestions;
+// export default fetchQuestions;
