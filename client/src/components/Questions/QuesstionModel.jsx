@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AnswerModal from "./AnswerModal";
 import AddAnswer from "./AddAnswer";
+import Helpful from "./Helpful";
 
 class AddQuestionModal extends Component {
   render() {
@@ -24,16 +25,11 @@ class AddQuestionModal extends Component {
                 <label style={{ fontWeight: "bold", fontSize: 12 }}>
                   Q: {question_body}
                 </label>
-                <label style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
-                  {`     Helpful?    `}
-                </label>
-                <label style={{ textDecorationLine: "underline", fontSize: 8 }}>
-                  Yes
-                </label>
-                <label style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
-                  {`(${question_helpfulness})     |     `}
-                </label>
-                <AddAnswer questionId={question["question_id"]} />
+                <Helpful
+                  questionId={question_id}
+                  helpfulness={question_helpfulness}
+                />
+                <AddAnswer questionId={question_id} />
                 <br />
                 <AnswerModal answers={answers} />
               </div>
