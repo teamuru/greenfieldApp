@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Radio } from 'final-form-material-ui';
 
+import Attachment from '@material-ui/icons/Attachment';
+
+// import IconButton from '@material-ui/icons/IconButton';
+
 import {
   Typography,
   Paper,
@@ -14,8 +18,6 @@ import {
   FormControl,
   FormControlLabel
 } from '@material-ui/core';
-
-// import AddAttachment from './add'
 
 const onSubmit = (values) => {
   window.alert(JSON.stringify(values, 0, 2));
@@ -45,9 +47,9 @@ const style = {
     fontWeight: 700
   },
   formSt: {
-    padding: 16,
+    padding: 20,
     margin: 'auto',
-    maxWidth: '60%',
+    maxWidth: '70%',
     maxHeight: '70%',
     fontSize: 20
   }
@@ -78,7 +80,6 @@ class ReviewForm extends Component {
                       component={TextField}
                       type="text"
                       label="username"
-                      // fontSize={20}
                     />
                   </Grid>
                   <Grid item xs={9}>
@@ -103,7 +104,7 @@ class ReviewForm extends Component {
                   </Grid>
 
                   {/* image upload */}
-                  <div>
+                  <React.Fragment>
                     <input
                       accept="image/*"
                       // className={classes.input}
@@ -118,85 +119,41 @@ class ReviewForm extends Component {
                         component="span"
                         // className={classes.button}
                       >
-                        Upload
+                        Add image {'  '} <Attachment />
                       </Button>
                     </label>
-                  </div>
+                  </React.Fragment>
 
-                  {/* ratings */}
+                  {/* ratings radio */}
                   <br />
-                  <div>
+                  <React.Fragment>
                     <Grid item>
                       <FormControl component="fieldset">
                         <FormLabel component="legend">Select Rating</FormLabel>
                         <RadioGroup row>
-                          <FormControlLabel
-                            label="1"
-                            control={
-                              <Field
-                                name="rating"
-                                component={Radio}
-                                type="radio"
-                                value="1"
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            label="2"
-                            control={
-                              <Field
-                                name="rating"
-                                component={Radio}
-                                type="radio"
-                                value="2"
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            label="3"
-                            control={
-                              <Field
-                                name="rating"
-                                component={Radio}
-                                type="radio"
-                                value="3"
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            label="4"
-                            control={
-                              <Field
-                                name="rating"
-                                component={Radio}
-                                type="radio"
-                                value="4"
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            label="5"
-                            control={
-                              <Field
-                                name="rating"
-                                component={Radio}
-                                type="radio"
-                                value="5"
-                              />
-                            }
-                          />
+                          {ratings.map((rating) => {
+                            return (
+                              <div key={rating}>
+                                <FormControlLabel
+                                  label={`${rating}`}
+                                  control={
+                                    <Field
+                                      name="rating"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${rating}`}
+                                    />
+                                  }
+                                />
+                              </div>
+                            );
+                          })}
                         </RadioGroup>
                       </FormControl>
-
-                      {ratings.map((rating) => {
-                        return (
-                          <div>
-                            <h5>rating</h5>
-                          </div>
-                        );
-                      })}
                     </Grid>
-                  </div>
+                  </React.Fragment>
+
+                  {/* submit button */}
 
                   <Grid item xs={9} style={{ marginTop: 1, align: 'center' }}>
                     <Button
