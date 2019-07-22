@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { postAddAnswer } from "../../actions/questionsActions";
+import isImageUrl from "is-image-url";
 
 export default function AddAnswer(props) {
   const [open, setOpen] = React.useState(false);
@@ -17,7 +18,7 @@ export default function AddAnswer(props) {
   const [photos, setPhotos] = React.useState([]);
   const [fail, setFail] = React.useState("");
 
-  //0: "https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+  //https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 
   function handleClickOpen() {
     setOpen(true);
@@ -44,22 +45,32 @@ export default function AddAnswer(props) {
   }
 
   function LoadMorePhoto() {
-    setPhotos([...photos, photo]);
-    setPhoto("");
+    // console.log("photo ", photo);
+    if (isImageUrl(photo)) {
+      setPhotos([...photos, photo]);
+      setPhoto("");
+      setFail("");
+    } else {
+      setFail("fail image url");
+    }
   }
 
   const handleSubmit = () => {
     let id = props.questionId;
 
-    if (answer.length > 0 && name.length > 0 && email.length > 0) {
-      handleClose();
-      postAddAnswer(answer, name, email, photos, id);
-      setAnswer("");
-      setName("");
-      setEmail("");
-      setPhoto("");
-      setPhotos([]);
-      setFail("");
+    if (answer.length > 0 && name.length > 0) {
+      if (ValidateEmail(email)) {
+        handleClose();
+        postAddAnswer(answer, name, email, photos, id);
+        setAnswer("");
+        setName("");
+        setEmail("");
+        setPhoto("");
+        setPhotos([]);
+        setFail("");
+      } else {
+        setFail("Invalied Eamil");
+      }
     } else {
       setFail("Plase fill all blank with symbol *");
     }
@@ -114,6 +125,10 @@ export default function AddAnswer(props) {
     />
   );
 
+  function ValidateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   return (
     <span>
       <button
@@ -132,8 +147,8 @@ export default function AddAnswer(props) {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle>Add Answer</DialogTitle>
+        <p style={{ whiteSpace: "pre-wrap", color: "red" }}>{`  ${fail}`}</p>
         <DialogContent>
-          <p style={{ color: "red" }}>{fail}</p>
           {answerTextFile()}
           {nameTextFile()}
           {emailTextFile()}
