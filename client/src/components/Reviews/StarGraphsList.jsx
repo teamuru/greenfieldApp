@@ -9,27 +9,43 @@ export class StarGraphsList extends Component {
   // some functtions here
   handleNormalize(current, total) {
     // gives us the number of ratings
-    // let overall = Object.values(total.ratings);
-    return (current / total) * 100;
+    // todo: total is meta
+    let overall = Object.values(total.ratings);
+
+    return (current / overall) * 100;
+  }
+
+  getTotalReviews(ratings) {
+    return Object.values(ratings).length;
   }
 
   renderRatings() {
     const ratings = [1, 2, 3, 4, 5];
     const { meta } = this.props.reviews;
+    // const totalReviews = Object.values(meta.ratings);
 
     return !meta ? (
       <h1> ... Loading</h1>
     ) : (
-      // const totalRatings = Object.values(meta.ratings);
-
       <React.Fragment>
+        {/* {console.log(`meta.ratings`, meta.ratings)} */}
+        {/* {console.log(`ratings length`, this.getTotalReviews(meta.ratings))} */}
         {ratings.map((element) => {
           {
-            const totalReviews = Object.values(meta.ratings);
+            {
+              /* let normalize =  */
+            }
+            {
+              /* console.log(`inside map, meta.ratings => `, meta.ratings); */
+            }
+            {
+              /* console.log(`totalReviews`, totalReviews);
             let normalize = this.handleNormalize(
               ratings[element] || 0,
-              Object.values(meta.ratings).length
+              totalReviews.length
             );
+            console.log('normalize', normalize); */
+            }
           }
 
           return (

@@ -12,9 +12,9 @@ const ReviewList = (props) => {
     <div>
       {reviews.data.results.map((review) => {
         return (
-          <Grid key={review.review_id}>
+          <div key={review.review_id}>
             <ReviewEntry review={review} />
-          </Grid>
+          </div>
         );
       })}
     </div>
