@@ -50,17 +50,23 @@ const RevParentComponent = () => {
             <ComfortGraph />
           </Paper>
         </Grid>
+
+        {/* sortby extends all the way */}
         <Grid item xs={9}>
           <Grid>
-            <Paper className={classes.paper}>Sort By Relevance</Paper>
+            <Paper className={classes.paper}>
+              Sort By Relevance testtesttesttesttesttesttesttesttesttesttesttest
+            </Paper>
           </Grid>
 
           <Grid
-          // item xs={9}
+            item
+            // xs={9}
           >
             <ReviewList />
           </Grid>
 
+          {/* Bottom portion */}
           <Grid
             container
             alignItems="baseline"

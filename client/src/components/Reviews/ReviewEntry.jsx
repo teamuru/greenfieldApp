@@ -29,6 +29,8 @@ const style = {
   },
   bg: {
     backgroundColor: '#E5E5E5'
+    // ,
+    // padding: '30px'
   }
 };
 
@@ -36,39 +38,39 @@ function ReviewEntry({ review }) {
   const classes = useStyles();
   return (
     <Paper className={classes.paper} style={style.ft}>
-      <Grid item xs={9}>
-        <Grid container justify="space-between" direction="row">
-          <Grid item> Placeholder Rating: {review.rating}</Grid>
-          <Grid item letterSpacing={10}>
-            {review.reviewer_name}
-          </Grid>
+      {/* <Grid item xs={9}> */}
+      <Grid container justify="space-between" direction="row">
+        <Grid item> Placeholder Rating: {review.rating}</Grid>
+        <Grid item letterSpacing={10}>
+          {review.reviewer_name}
         </Grid>
-        <Grid>
-          {/* Find lighter color */}
-          <Grid item style={style.sum}>
-            {review.summary}
-          </Grid>
-          <Grid item>{review.body}</Grid>
-          <Grid
-            item
-            // style={{ fontSize: 15 }}
-          >
-            {review.recommend}
-          </Grid>
-          <Grid
-            container
-            // alignItems="baseline"
-            style={style.bg}
-          >
-            <Grid item xs={9}>
-              Response
-            </Grid>
-            <Grid item>{review.response}</Grid>
-          </Grid>
-          <Grid item>Helpful | Yes? ({review.helpfulness}) </Grid>
-        </Grid>
-        <Grid />
       </Grid>
+      <Grid>
+        {/* Find lighter color */}
+        <Grid item style={style.sum}>
+          {review.summary}
+        </Grid>
+        <Grid item>{review.body}</Grid>
+        <Grid
+          item
+          // style={{ fontSize: 15 }}
+        >
+          {review.recommend}
+        </Grid>
+        <Grid
+          container
+          // alignItems="baseline"
+          style={style.bg}
+        >
+          <Grid item xs={9}>
+            Response
+          </Grid>
+          <Grid item>{review.response}</Grid>
+        </Grid>
+        <Grid item>Helpful | Yes? ({review.helpfulness}) </Grid>
+      </Grid>
+      <Grid />
+      {/* </Grid> */}
     </Paper>
   );
 }
