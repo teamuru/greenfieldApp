@@ -1,4 +1,9 @@
 .relatedCards {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.favorite :hover {
+  fill: red;
 }
