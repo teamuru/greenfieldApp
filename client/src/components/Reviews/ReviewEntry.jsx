@@ -2,6 +2,7 @@ import React from 'react';
 import { Paper, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import moment from 'moment';
 
 // import Checklist from '../Product/Checklist.jsx';
 
@@ -17,32 +18,47 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const style = {
-  ft: {
-    fontSize: 15,
-    // fontWeight: 500,
-    spacing: 10
+  userSum: {
+    fontSize: 10,
+    color: '#darkgrey'
+    // ,
+    // spacing: 20
   },
   sum: {
     fontWeight: 700,
     fontSize: 20,
-    padding: '30px 0px'
+    padding: '10px 0px'
+  },
+  bod: {
+    fontSize: 15,
+    padding: '10px 0px'
+  },
+  resHead: {
+    fontSize: 15,
+    fontWeight: 600
+  },
+  resBod: {
+    fontSize: 15
   },
   bg: {
     backgroundColor: '#E5E5E5'
     // ,
-    // padding: '30px'
+    // padding: '5px 0px'
   }
 };
 
 function ReviewEntry({ review }) {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper} style={style.ft}>
+    <Paper className={classes.paper}>
       {/* <Grid item xs={9}> */}
       <Grid container justify="space-between" direction="row">
-        <Grid item> Placeholder Rating: {review.rating}</Grid>
-        <Grid item letterSpacing={10}>
-          {review.reviewer_name}
+        <Grid item style={{ fontSize: 15 }}>
+          {' '}
+          Placeholder Rating: {review.rating}
+        </Grid>
+        <Grid item style={style.userSum}>
+          {review.reviewer_name} {moment(review.date).format('MMM Do YY')}
         </Grid>
       </Grid>
       <Grid>
@@ -50,22 +66,34 @@ function ReviewEntry({ review }) {
         <Grid item style={style.sum}>
           {review.summary}
         </Grid>
-        <Grid item>{review.body}</Grid>
+        <Grid item style={style.bod}>
+          {review.body}
+        </Grid>
         <Grid
           item
           // style={{ fontSize: 15 }}
         >
-          {review.recommend}
+          #recommended: {review.recommend}
         </Grid>
         <Grid
           container
           // alignItems="baseline"
           style={style.bg}
         >
-          <Grid item xs={9}>
-            Response
+          <h6>Response</h6>
+          <br />
+          <div>response body</div>
+          {/* <Grid
+            item
+            xs={9}
+            // style={style.resHead}
+          >
+            <h6>Response</h6>
           </Grid>
-          <Grid item>{review.response}</Grid>
+          <Grid item xs={9} style={style.resBod}>
+            {' '}
+            <div>response body {review.response}</div>
+          </Grid> */}
         </Grid>
         <Grid item>Helpful | Yes? ({review.helpfulness}) </Grid>
       </Grid>

@@ -34,6 +34,7 @@
     "fetch": "^1.1.0",
     "final-form": "^4.18.2",
     "final-form-material-ui": "^0.3.0",
+    "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
     "rc-slider": "^8.6.13",

@@ -55,7 +55,13 @@ const RevParentComponent = () => {
         <Grid item xs={9}>
           <Grid>
             <Paper className={classes.paper}>
-              Sort By Relevance testtesttesttesttesttesttesttesttesttesttesttest
+              sorted by{' '}
+              <span
+              // FIXME: underline true
+              //  style={{ disableUnderline: true }}
+              >
+                relevance
+              </span>
             </Paper>
           </Grid>
 
