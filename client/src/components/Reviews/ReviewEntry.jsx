@@ -24,7 +24,8 @@ const style = {
   },
   sum: {
     fontWeight: 700,
-    fontSize: 30
+    fontSize: 20,
+    padding: '30px 0px'
   },
   bg: {
     backgroundColor: '#E5E5E5'
