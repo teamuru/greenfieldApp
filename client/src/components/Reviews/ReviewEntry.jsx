@@ -1,16 +1,14 @@
 import React from 'react';
 import { Paper, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 // import Checklist from '../Product/Checklist.jsx';
 
 const useStyles = makeStyles((theme) => ({
-  // font: {
-  //   fontSize: 15
-  // },
-  // root: {
-  //   flexGrow: 1
-  // },
+  root: {
+    padding: theme.spacing(30)
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'right-align',
@@ -21,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
 const style = {
   ft: {
     fontSize: 15,
-    fontWeight: 'fontWeightBold'
+    fontWeight: 500,
+    fontStyle: 'italic',
+    padding: 30
   },
   bg: {
     backgroundColor: '#E5E5E5'
@@ -35,7 +35,9 @@ function ReviewEntry({ review }) {
       <Grid item xs={9}>
         <Grid container justify="space-between" direction="row">
           <Grid item> Placeholder Rating: {review.rating}</Grid>
-          <Grid item>{review.reviewer_name}</Grid>
+          <Grid item letterSpacing={10}>
+            {review.reviewer_name}
+          </Grid>
         </Grid>
         <Grid>
           <Grid item>{review.summary}</Grid>
