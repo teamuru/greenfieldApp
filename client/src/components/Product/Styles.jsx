@@ -17,7 +17,7 @@ const StyleDiv = styled.div`
 
 const AvatarDiv = styled.div`
   width: 25%;
-  margin-bottom: 2rem;
+  margin: 1.5rem 0;
 `;
 
 const AvatarStyled = styled(Avatar)`

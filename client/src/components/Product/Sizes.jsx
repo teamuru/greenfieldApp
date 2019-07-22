@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -9,26 +10,32 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { changeSelectedSku, changeSelectedQty } from '../../actions/productActions';
 
+const FormStyled = styled.form`
+  display: flex;
+  justify-content: space-between;
+`;
+
 class Sizes extends Component {
   render() {
     const {
  skus, selectedSku, selectedQty, handleChangeSku, handleChangeQty 
 } = this.props;
-    const inStock = skus[selectedSku] || 0;
-    const qty = new Array(Math.min(inStock, 15)).fill(1);
-    // CSS stlye
-    const formStyle = { display: 'flex', justifyContent: 'space-between' };
+    const skuStock = skus[selectedSku] || 1;
+    const qty = new Array(Math.min(skuStock, 15)).fill(1);
+    for (let i = 0; i < qty.length; i += 1) {
+      qty[i] += i;
+    }
     return (
-      <form style={formStyle}>
+      <FormStyled>
         <div style={{ width: '65%', marginRight: '5%' }}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Select Size</InputLabel>
             <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
-              {Object.keys(skus).map(sku => (
+              {Object.keys(skus).map(sku => (skus[sku] ? (
                 <MenuItem key={sku} value={sku}>
                   {sku}
                 </MenuItem>
-              ))}
+                ) : null))}
             </Select>
           </FormControl>
         </div>
@@ -36,15 +43,15 @@ class Sizes extends Component {
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Qty</InputLabel>
             <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
-              {qty.map((skuQty, index) => (
-                <MenuItem key={skuQty + index} value={skuQty + index}>
-                  {skuQty + index}
+              {qty.map(skuQty => (
+                <MenuItem key={skuQty} value={skuQty}>
+                  {skuQty}
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
         </div>
-      </form>
+      </FormStyled>
     );
   }
 }
@@ -65,7 +72,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   handleChangeSku: (e) => {
-    dispatch(changeSelectedQty(0));
+    dispatch(changeSelectedQty(1));
     dispatch(changeSelectedSku(e.target.value));
   },
   handleChangeQty: (e) => {
