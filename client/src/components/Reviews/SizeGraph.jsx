@@ -51,28 +51,31 @@ const SizeGraph = (props) => {
 
   return meta ? (
     <Grid style={style.head}>
-      {Object.keys(meta.characteristics).map((category) => {
+      {Object.keys(meta.characteristics).map((category, index) => {
         let number = Number(meta.characteristics[category]) * 10;
 
         return (
-          <Box key={category} tyle={style.head} className={classes.category}>
-            <span style={style.head}>{category}</span>
+          <div key={indexg}>
+            <Box key={category} style={style.head} className={classes.category}>
+              <span style={style.head}>{category}</span>
 
-            <Box>
-              <input
-                type="range"
-                min="0"
-                max="50"
-                readOnly
-                // add some css slider later on
-                // className="slider"
-                list="tickmarks"
-                value={number}
-                style={style.ft}
-              />
-              {renderCat(category)}
+              <div>
+                <input
+                  type="range"
+                  min="0"
+                  max="50"
+                  width="100%"
+                  readOnly
+                  // add some css slider later on
+                  // className="slider"
+                  list="tickmarks"
+                  value={number}
+                  style={style.ft}
+                />
+                {renderCat(category)}
+              </div>
             </Box>
-          </Box>
+          </div>
         );
       })}
     </Grid>
