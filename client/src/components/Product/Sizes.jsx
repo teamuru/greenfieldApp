@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -18,12 +17,12 @@ class Sizes extends Component {
     const inStock = skus[selectedSku] || 0;
     const qty = new Array(Math.min(inStock, 15)).fill(1);
     // CSS stlye
-    // const formStyle = { display: 'flex', justifyContent: 'space-between' };
+    const formStyle = { display: 'flex', justifyContent: 'space-between' };
     return (
-      <Grid item container xs={4}>
-        <form>
-          <FormControl variant="outlined" autoComplete="off">
-            <InputLabel htmlFor="outlined-age-simple">Select Size</InputLabel>
+      <form style={formStyle}>
+        <div style={{ width: '65%', marginRight: '5%' }}>
+          <FormControl variant="outlined" fullWidth margin="normal">
+            <InputLabel>Select Size</InputLabel>
             <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
               {Object.keys(skus).map(sku => (
                 <MenuItem key={sku} value={sku}>
@@ -32,22 +31,20 @@ class Sizes extends Component {
               ))}
             </Select>
           </FormControl>
-          {inStock ? (
-            <FormControl variant="outlined" autoComplete="off">
-              {/* <InputLabel htmlFor="outlined-age-simple">Qty</InputLabel> */}
-              <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
-                {qty.map((skuQty, index) => (
-                  <MenuItem key={skuQty + index} value={skuQty + index}>
-                    {skuQty + index}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          ) : (
-            <React.Fragment />
-          )}
-        </form>
-      </Grid>
+        </div>
+        <div style={{ width: '35%' }}>
+          <FormControl variant="outlined" fullWidth margin="normal">
+            <InputLabel>Qty</InputLabel>
+            <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
+              {qty.map((skuQty, index) => (
+                <MenuItem key={skuQty + index} value={skuQty + index}>
+                  {skuQty + index}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+      </form>
     );
   }
 }
