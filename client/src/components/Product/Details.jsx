@@ -1,32 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 import Styles from './Styles';
 import Sizes from './Sizes';
+
+const OriginalPrice = styled(Typography)`
+  padding-bottom: 2rem;
+`;
+
+const SalePrice = styled(Typography)`
+  color: red;
+`;
+
+const OriginalPriceRed = styled(Typography)`
+  text-decoration: line-through;
+`;
 
 function Details(props) {
   const { selectedStyle, name, category } = props;
   const { sale_price: salePrice, original_price: originalPrice } = selectedStyle;
-  // css style object NOT product style
-  const saleStyle = { color: 'red', textDecoration: 'line-through' };
+  // Check if there are styles in redux store before rendering
   return Object.keys(selectedStyle).length ? (
     <React.Fragment>
-      <h6>stars</h6>
-      <h6>{category}</h6>
-      <h3>{name}</h3>
+      <Typography variant="body1">stars</Typography>
+      <Typography variant="body1">{category}</Typography>
+      <Typography variant="h4">{name}</Typography>
       {salePrice > 0 ? (
         <React.Fragment>
-          <p>{`$${salePrice}`}</p>
-          <p style={saleStyle}>{`$${originalPrice}`}</p>
+          <SalePrice variant="body2">{`$${salePrice}`}</SalePrice>
+          <OriginalPriceRed variant="body2">{`$${originalPrice}`}</OriginalPriceRed>
         </React.Fragment>
       ) : (
-        <p>{`$${originalPrice}`}</p>
+        <OriginalPrice variant="body2">{`$${originalPrice}`}</OriginalPrice>
       )}
       <Styles />
       <Sizes />
     </React.Fragment>
   ) : (
-    <h6>details</h6>
+    <Typography variant="h6">details</Typography>
   );
 }
 

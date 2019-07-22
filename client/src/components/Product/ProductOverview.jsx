@@ -21,24 +21,24 @@ class ProductOverview extends Component {
     return !Object.keys(data).length ? (
       <h1>Loading Product</h1>
     ) : (
-      <React.Fragment>
-        <Grid item container xs={12}>
-          <Grid item container xs={8} justify="center">
+      <div style={{ marginTop: '2rem' }}>
+        <Grid container spacing={2}>
+          <Grid item container sm={8} justify="center">
             <Carousel />
           </Grid>
-          <Grid item container xs={4} justify="flex-start" direction="column">
+          <Grid item container sm={4} justify="flex-start" direction="column">
             <Details name={data.name} category={data.category} />
           </Grid>
         </Grid>
-        <Grid item container xs={12}>
-          <Grid item container xs={8} justify="center">
+        <Grid container spacing={2}>
+          <Grid item container sm={8} justify="center">
             <Description slogan={data.slogan} description={data.description} />
           </Grid>
-          <Grid item container xs={4} justify="flex-start" direction="column">
+          <Grid item container sm={4} justify="flex-start" direction="column">
             <Checklist features={data.features} />
           </Grid>
         </Grid>
-      </React.Fragment>
+      </div>
     );
   }
 }
