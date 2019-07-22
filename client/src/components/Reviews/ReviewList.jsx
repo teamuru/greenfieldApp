@@ -9,6 +9,7 @@ const ReviewList = (props) => {
 
   return reviews.data ? (
     <div>
+      {/* {reviews.data.results.slice(0, 2).map( */}
       {reviews.data.results.map((review) => {
         return (
           <div key={review.review_id}>
