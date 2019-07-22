@@ -19,9 +19,12 @@ const useStyles = makeStyles((theme) => ({
 const style = {
   ft: {
     fontSize: 15,
-    fontWeight: 500,
-    fontStyle: 'italic',
-    padding: 30
+    // fontWeight: 500,
+    spacing: 10
+  },
+  sum: {
+    fontWeight: 700,
+    fontSize: 30
   },
   bg: {
     backgroundColor: '#E5E5E5'
@@ -40,7 +43,10 @@ function ReviewEntry({ review }) {
           </Grid>
         </Grid>
         <Grid>
-          <Grid item>{review.summary}</Grid>
+          {/* Find lighter color */}
+          <Grid item style={style.sum}>
+            {review.summary}
+          </Grid>
           <Grid item>{review.body}</Grid>
           <Grid
             item
