@@ -4,6 +4,8 @@ import SearchQuestions from "./SearchQuestions";
 import { connect } from "react-redux";
 import MoreAnsweredQuestions from "./MoreAnsweredQuestions";
 import { fetchQuestions } from "../../actions/questionsActions";
+import QuestionModel from "./QuesstionModel";
+import AddAnswer from "./AddAnswer";
 
 class Question extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ class Question extends Component {
       <div>
         <h6>QUESTIONS{` & `}ANSWERS</h6>
         <SearchQuestions />
-        <AddQuestionModal questions={questions} count={this.state.count} />
+        <QuestionModel questions={questions} count={this.state.count} />
         <MoreAnsweredQuestions
           questions={questions}
           setCount={this.setCount}

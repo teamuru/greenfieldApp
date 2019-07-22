@@ -22,6 +22,7 @@ const styles = (theme) => ({
     boxShadow: theme.shadows[5]
   }
 });
+
 class AddReviewModal extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +46,11 @@ class AddReviewModal extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Button onClick={this.handleOpen} size="large" variant="outlined">
+        <Button
+          onClick={this.handleOpen}
+          variant="outlined"
+          style={{ padding: '10px', margin: '10px', fontSize: 20 }}
+        >
           ADD A REVIEW +
         </Button>
         <div>

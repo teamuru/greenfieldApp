@@ -22,4 +22,23 @@ export const fetchQuestions = (prodId) => {
       });
 };
 
-export default fetchQuestions;
+export const postAddAnswer = (answer, name, email, photos, id) => {
+  const url = `${API_URL}/qa/${id}/answers`;
+  // console.log("post add answer answer: ", answer);
+  // console.log("post add answer name: ", name);
+  // console.log("post add answer email: ", email);
+  // console.log("post add answer id: ", id);
+  // console.log("post add answer photos[0]: ", photos);
+
+  Axios.post(url, {
+ body: answer, name, email, photos 
+})
+    .then(() => {
+      console.log('Success to post AddAnswer');
+    })
+    .catch(() => {
+      console.log('Fail to post AddAnswer');
+    });
+};
+
+// export default fetchQuestions;

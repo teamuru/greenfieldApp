@@ -9,7 +9,7 @@ class LoadMore extends Component {
 
   hangelLoadMore(e) {
     // e.preventDefault();
-    console.log("click on load more", this.state.loadMore);
+    // console.log("click on load more", this.state.loadMore);
     //TODO: change to less or more depend on onclick
     // this.state.loadMore
     //   ? this.setState({ moreOrLess: "More", loadMore: false })

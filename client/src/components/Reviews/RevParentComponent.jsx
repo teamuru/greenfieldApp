@@ -11,15 +11,19 @@ import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
+import Relevance from './Relevance';
+import AverageRev from './AverageRev';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    margin: '40px 0px'
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'right-align',
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
+    fontSize: 15
   }
 }));
 
@@ -30,13 +34,15 @@ const RevParentComponent = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <Paper className={classes.paper}>Ratings and Reviews</Paper>
+          <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
         {/* <Grid item xs> */}
         <Grid item xs>
-          <Paper className={classes.paper}>Rating and Star</Paper>
+          <Paper className={classes.paper}>
+            <AverageRev />
+          </Paper>
           <Paper className={classes.paper}>
             <Recommended />
           </Paper>
@@ -46,18 +52,15 @@ const RevParentComponent = () => {
           <Paper className={classes.paper}>
             <SizeGraph />
           </Paper>
-          <Paper className={classes.paper}>
-            <ComfortGraph />
-          </Paper>
         </Grid>
+
         <Grid item xs={9}>
-          <Grid>
-            <Paper className={classes.paper}>Sort By Relevance</Paper>
+          <Grid style={{ fontSize: 15, fontWeight: 700 }}>
+            248 reviews, sorted by
+            <Relevance />
           </Grid>
 
-          <Grid
-          // item xs={9}
-          >
+          <Grid item>
             <ReviewList />
           </Grid>
 
