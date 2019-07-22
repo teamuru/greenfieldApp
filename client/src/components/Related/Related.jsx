@@ -6,28 +6,37 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
-import { fetchAllRelated, fetchAllPhotos } from '../../actions/relatedActions';
+import {
+  fetchAllRelated,
+  fetchAllPhotos,
+  clearAllPhotos,
+  clearAllRelated
+} from '../../actions/relatedActions';
 
 const Related = (props) => {
-  useEffect(() => {
-    const {
-      fetchAllRelated,
-      fetchAllPhotos,
-      location: { pathname }
-    } = props;
+  const {
+    relatedProducts,
+    photos,
+    fetchAllRelated,
+    fetchAllPhotos,
+    clearAllPhotos,
+    clearAllRelated,
+    location: { pathname }
+  } = props;
 
+  useEffect(() => {
+    clearAllPhotos();
+    clearAllRelated();
     fetchAllRelated(pathname);
     fetchAllPhotos(pathname);
-  }, []);
-
-  const { relatedProducts, photos } = props;
+  }, [pathname]);
 
   return (
     <div className="relatedCards">
       {relatedProducts.map((product, index) => (
         <ProductCard
           id={product.id}
-          key={product.id}
+          // key={product.id}
           name={product.name}
           image={photos[index]}
           defaultPrice={product.default_price}
@@ -44,6 +53,12 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchAllPhotos: (id) => {
     dispatch(fetchAllPhotos(id));
+  },
+  clearAllPhotos: () => {
+    dispatch(clearAllPhotos());
+  },
+  clearAllRelated: () => {
+    dispatch(clearAllRelated());
   }
 });
 

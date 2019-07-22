@@ -52,6 +52,16 @@ const relatedReducer = (state = initialState, action) => {
         ...state,
         photos: [...state.photos, action.payload]
       };
+    case 'CLEAR_PHOTOS':
+      return {
+        ...state,
+        photos: []
+      };
+    case 'CLEAR_RELATED':
+      return {
+        ...state,
+        relatedProducts: []
+      };
 
     default:
       return state;
