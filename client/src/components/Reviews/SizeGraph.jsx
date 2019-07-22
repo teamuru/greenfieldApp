@@ -55,7 +55,7 @@ const SizeGraph = (props) => {
         let number = Number(meta.characteristics[category]) * 10;
 
         return (
-          <div key={indexg}>
+          <div key={index}>
             <Box key={category} style={style.head} className={classes.category}>
               <span style={style.head}>{category}</span>
 
