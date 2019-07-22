@@ -22,7 +22,6 @@ const Recommended = (props) => {
   ) : (
     <div style={{ color: '#A9A9A9' }}>
       {calcRec(meta.recommended)}% of users recommend this product
-      {console.log(`calcRec`, calcRec(meta.recommended))}
     </div>
   );
 };
