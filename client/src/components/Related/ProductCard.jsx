@@ -24,11 +24,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles(theme => ({
   card: {
     width: '30vw',
-    height: '25vw'
+    height: '27vw'
   },
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: '56.25%' // 16:9 ascpect ratio
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -89,7 +89,9 @@ const ProductCard = (props) => {
 
         <CardActions disableSpacing>
           <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+            <div className="favorite">
+              <FavoriteIcon hovercolor="red" />
+            </div>
           </IconButton>
           {/* <IconButton aria-label="Share">
             <ShareIcon />
