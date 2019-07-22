@@ -36,7 +36,7 @@ const Related = (props) => {
       {relatedProducts.map((product, index) => (
         <ProductCard
           id={product.id}
-          key={product.id}
+          // key={product.id}
           name={product.name}
           image={photos[index]}
           defaultPrice={product.default_price}

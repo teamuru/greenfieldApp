@@ -53,13 +53,11 @@ const relatedReducer = (state = initialState, action) => {
         photos: [...state.photos, action.payload]
       };
     case 'CLEAR_PHOTOS':
-      console.log('CLEAR PHOTOS');
       return {
         ...state,
         photos: []
       };
     case 'CLEAR_RELATED':
-      console.log('CLEAR RELATED');
       return {
         ...state,
         relatedProducts: []
