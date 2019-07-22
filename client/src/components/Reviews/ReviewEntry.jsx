@@ -20,11 +20,16 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(0),
     padding: theme.spacing(-1),
-    fontSize: 12
+    fontSize: 12,
+    font: 'Roboto'
   }
 }));
 
 const style = {
+  stars: {
+    fontSize: 12,
+    padding: '10px 0px'
+  },
   userSum: {
     fontSize: 12,
     color: '#A9A9A9'
@@ -61,21 +66,15 @@ const style = {
     padding: '0px -10px'
   },
   bor: {
-    border: 2,
-    borderColor: 'text.primary'
+    padding: '40px 0px'
   }
 };
 
 function ReviewEntry({ review }) {
   const classes = useStyles();
   return (
-    <Box style={style.bor}>
-      <Paper
-        className={classes.paper}
-
-        // borderColor="text.primary"
-      >
-        {/* <Grid item xs={9}> */}
+    <Box borderBottom={1}>
+      <div style={style.bor}>
         <Grid container justify="space-between" direction="row">
           <Grid item style={{ fontSize: 15 }}>
             {' '}
@@ -113,16 +112,23 @@ function ReviewEntry({ review }) {
             </Grid>
           </Grid>
           <Grid item style={style.helpful}>
-            <span>Helpful |</span>
-            <Button color="primary" className={classes.button}>
-              <span>Yes?</span>
+            <span>Helpful? </span>
+            <Button className={classes.button}>
+              <span style={{ fontWeight: 400 }}>
+                Yes
+                <span style={{ color: '#A9A9A9' }}>
+                  ( {review.helpfulness} ){' '}
+                </span>
+              </span>
             </Button>
-            <span style={{ color: '#A9A9A9' }}>({review.helpfulness}) </span>
+            {'  '} | {'  '}
+            <Button className={classes.button}>
+              <span style={{ fontWeight: 400 }}>Report</span>
+            </Button>
           </Grid>
         </Grid>
         <Grid />
-        {/* </Grid> */}
-      </Paper>
+      </div>
     </Box>
   );
 }
