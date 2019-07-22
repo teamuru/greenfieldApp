@@ -16,7 +16,8 @@ import AverageRev from './AverageRev';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    margin: '40px 0px'
   },
   paper: {
     padding: theme.spacing(2),
@@ -51,32 +52,18 @@ const RevParentComponent = () => {
           <Paper className={classes.paper}>
             <SizeGraph />
           </Paper>
-          <Paper className={classes.paper}>
-            <ComfortGraph />
-          </Paper>
         </Grid>
 
-        {/* sortby extends all the way */}
         <Grid item xs={9}>
-          <Grid>
-            <Paper
-              className={classes.paper}
-              style={{ fontSize: 15, fontWeight: 700 }}
-            >
-              248 reviews, sorted by
-              {/* relevance */}
-              <Relevance />
-            </Paper>
+          <Grid style={{ fontSize: 15, fontWeight: 700 }}>
+            248 reviews, sorted by
+            <Relevance />
           </Grid>
 
-          <Grid
-            item
-            // xs={9}
-          >
+          <Grid item>
             <ReviewList />
           </Grid>
 
-          {/* Bottom portion */}
           <Grid
             container
             alignItems="baseline"
