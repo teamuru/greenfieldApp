@@ -21,7 +21,7 @@ class ProductOverview extends Component {
     return !Object.keys(data).length ? (
       <h1>Loading Product</h1>
     ) : (
-      <React.Fragment>
+      <div style={{ marginTop: '2rem' }}>
         <Grid container spacing={2}>
           <Grid item container sm={8} justify="center">
             <Carousel />
@@ -38,7 +38,7 @@ class ProductOverview extends Component {
             <Checklist features={data.features} />
           </Grid>
         </Grid>
-      </React.Fragment>
+      </div>
     );
   }
 }
