@@ -70,7 +70,7 @@ const style = {
   }
 };
 
-function ReviewEntry({ review }) {
+const ReviewEntry = ({ review }) => {
   const classes = useStyles();
   return (
     <Box borderBottom={1}>
@@ -81,7 +81,8 @@ function ReviewEntry({ review }) {
             Placeholder Rating: {review.rating}
           </Grid>
           <Grid item style={style.userSum}>
-            {review.reviewer_name}, {moment(review.date).format('MMM Do YY')}
+            {review.reviewer_name},{' '}
+            {moment(review.date).format('MMMM Do, YYYY')}
           </Grid>
         </Grid>
         <Grid>
@@ -100,14 +101,14 @@ function ReviewEntry({ review }) {
             </Grid>
             <Grid item xs={9} style={style.resBod}>
               {' '}
-              <div>response body {review.response}</div>
+              <div>{review.response}</div>
             </Grid>
           </Grid>
           <Grid item style={style.helpful}>
             <span>Helpful? </span>
             <Button className={classes.button}>
               <span style={{ fontWeight: 400 }}>
-                Yes
+                <u>Yes</u>{' '}
                 <span style={{ color: '#A9A9A9' }}>
                   ( {review.helpfulness} ){' '}
                 </span>
@@ -123,6 +124,6 @@ function ReviewEntry({ review }) {
       </div>
     </Box>
   );
-}
+};
 
 export default ReviewEntry;
