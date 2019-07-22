@@ -2,7 +2,8 @@ const intialState = {
   data: {},
   styles: [],
   selectedStyle: {},
-  selectedSku: ''
+  selectedSku: '',
+  selectedQty: 0
 };
 
 const productReducer = (state = intialState, action) => {
@@ -19,6 +20,8 @@ const productReducer = (state = intialState, action) => {
       return { ...state, selectedStyle: action.payload };
     case 'CHANGE_SELECTED_SKU':
       return { ...state, selectedSku: action.payload };
+    case 'CHANGE_SELECTED_QUANTITY':
+      return { ...state, selectedQty: action.payload };
     default:
       return state;
   }

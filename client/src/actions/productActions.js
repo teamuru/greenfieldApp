@@ -27,6 +27,9 @@ export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_ST
 // Change Selected Sku
 export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload: sku });
 
+// Change Selected Quantity
+export const changeSelectedQty = qty => ({ type: 'CHANGE_SELECTED_QUANTITY', payload: qty });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',
