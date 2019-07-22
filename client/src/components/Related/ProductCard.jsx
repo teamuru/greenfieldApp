@@ -68,25 +68,25 @@ const ProductCard = (props) => {
 
   if (image) {
     return (
-      // <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
       <Card className={classes.card}>
-        <CardHeader
-          title={name}
-          subheader={`$${defaultPrice}`}
-          style={{ height: '10vw' }}
-        />
-        <CardMedia
-          className={classes.media}
-          image={image.photo.results[0].photos[0].thumbnail_url}
-          title={name}
-        />
-
+        <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
+          <CardHeader
+            title={name}
+            subheader={`$${defaultPrice}`}
+            style={{ height: '10vw' }}
+          />
+          <CardMedia
+            className={classes.media}
+            image={image.photo.results[0].photos[0].thumbnail_url}
+            title={name}
+          />
+        </Link>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {category}
           </Typography>
         </CardContent>
-        {/* <Link /> */}
+
         <CardActions disableSpacing>
           <IconButton aria-label="Add to favorites">
             <FavoriteIcon />
