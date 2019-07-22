@@ -13,8 +13,20 @@ class ReviewList extends Component {
     super(props);
 
     this.state = {
-      //
+      increment: 2,
+      limit: 2
     };
+  }
+
+  loadMore() {
+    this.setState(
+      {
+        limit: this.state.limit + this.state.increment
+      },
+      () => {
+        console.log(`this.state.limit`, this.state.limit);
+      }
+    );
   }
 
   render() {
@@ -24,7 +36,7 @@ class ReviewList extends Component {
     ) : (
       <div>
         {/* {data.results.slice(0, 2).map( */}
-        {data.results.map((review) => {
+        {data.results.slice(0, this.state.limit).map((review) => {
           return (
             <div key={review.review_id}>
               <ReviewEntry review={review} />
@@ -40,7 +52,7 @@ class ReviewList extends Component {
           justify="flex-start"
           direction="row"
         >
-          <Grid item>
+          <Grid item onClick={this.loadMore}>
             <MoreReviews />
           </Grid>
           <Grid item>
