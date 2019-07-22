@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 
 // import Checklist from '../Product/Checklist.jsx';
+import Relevance from './Relevance.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const style = {
   userSum: {
     fontSize: 12,
-    color: '#darkgrey'
+    color: '#A9A9A9'
     // ,
     // spacing: 20
   },
@@ -81,7 +82,7 @@ function ReviewEntry({ review }) {
             Placeholder Rating: {review.rating}
           </Grid>
           <Grid item style={style.userSum}>
-            {review.reviewer_name} {moment(review.date).format('MMM Do YY')}
+            {review.reviewer_name}, {moment(review.date).format('MMM Do YY')}
           </Grid>
         </Grid>
         <Grid>
@@ -114,9 +115,9 @@ function ReviewEntry({ review }) {
           <Grid item style={style.helpful}>
             <span>Helpful |</span>
             <Button color="primary" className={classes.button}>
-              Yes?
+              <span>Yes?</span>
             </Button>
-            <span>({review.helpfulness}) </span>
+            <span style={{ color: '#A9A9A9' }}>({review.helpfulness}) </span>
           </Grid>
         </Grid>
         <Grid />

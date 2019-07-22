@@ -11,6 +11,8 @@ import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
+import Relevance from './Relevance';
+import AverageRev from './AverageRev';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'right-align',
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
+    fontSize: 15
   }
 }));
 
@@ -30,13 +33,15 @@ const RevParentComponent = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <Paper className={classes.paper}>Ratings and Reviews</Paper>
+          <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
         {/* <Grid item xs> */}
         <Grid item xs>
-          <Paper className={classes.paper}>Rating and Star</Paper>
+          <Paper className={classes.paper}>
+            <AverageRev />
+          </Paper>
           <Paper className={classes.paper}>
             <Recommended />
           </Paper>
@@ -54,14 +59,13 @@ const RevParentComponent = () => {
         {/* sortby extends all the way */}
         <Grid item xs={9}>
           <Grid>
-            <Paper className={classes.paper}>
-              sorted by{' '}
-              <span
-              // FIXME: underline true
-              //  style={{ disableUnderline: true }}
-              >
-                relevance
-              </span>
+            <Paper
+              className={classes.paper}
+              style={{ fontSize: 15, fontWeight: 700 }}
+            >
+              248 reviews, sorted by
+              {/* relevance */}
+              <Relevance />
             </Paper>
           </Grid>
 

@@ -28,14 +28,16 @@ export class StarGraphsList extends Component {
       <h1> ... Loading</h1>
     ) : (
       <React.Fragment>
-        {console.log(`meta.ratings`, meta.ratings)}
-        {console.log(`ratings length`, this.getTotalReviews(meta.ratings))}
+        {/* {console.log(`meta.ratings`, meta.ratings)} */}
+        {/* {console.log(`ratings length`, this.getTotalReviews(meta.ratings))} */}
         {ratings.map((element) => {
           {
             {
               /* let normalize =  */
             }
-            console.log(`inside map, meta.ratings => `, meta.ratings);
+            {
+              /* console.log(`inside map, meta.ratings => `, meta.ratings); */
+            }
             {
               /* console.log(`totalReviews`, totalReviews);
             let normalize = this.handleNormalize(
