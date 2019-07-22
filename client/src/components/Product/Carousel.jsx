@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-export default class Carousel extends Component {
+class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedPhoto: 0 };
@@ -9,16 +10,23 @@ export default class Carousel extends Component {
 
   render() {
     const { selectedPhoto } = this.state;
-    const { styles, selectedStyle } = this.props;
-    return (
+    const { selectedStyle } = this.props;
+    return Object.keys(selectedStyle).length ? (
       <React.Fragment>
-        <img style={{ width: '100%', height: 'auto' }} src={styles[selectedStyle].photos[selectedPhoto].url} alt="product" />
+        <img style={{ width: '100%', height: 'auto' }} src={selectedStyle.photos[selectedPhoto].url} alt="product" />
       </React.Fragment>
+    ) : (
+      <h3>Carousel</h3>
     );
   }
 }
 
 Carousel.propTypes = {
-  styles: PropTypes.array.isRequired,
-  selectedStyle: PropTypes.number.isRequired
+  selectedStyle: PropTypes.object.isRequired
 };
+
+const mapStateToProps = store => ({
+  selectedStyle: store.product.selectedStyle
+});
+
+export default connect(mapStateToProps)(Carousel);
