@@ -16,7 +16,6 @@ const Recommended = (props) => {
     <h4>... Loading</h4>
   ) : (
     <div style={{ color: '#A9A9A9' }}>
-      omm
       {calcRec(meta.recommended)}% of users recend this product
     </div>
   );
