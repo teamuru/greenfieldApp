@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import ReviewEntry from './ReviewEntry';
+import { Grid } from '@material-ui/core';
 
+import ReviewEntry from './ReviewEntry';
+import MoreReviews from './MoreReviews';
+import AddReviewModal from './AddReviewModal';
 
 class ReviewList extends Component {
   constructor(props) {
@@ -28,6 +31,22 @@ class ReviewList extends Component {
             </div>
           );
         })}
+
+        {/* Buttons */}
+        <Grid
+          container
+          alignItems="baseline"
+          spacing={6}
+          justify="flex-start"
+          direction="row"
+        >
+          <Grid item>
+            <MoreReviews />
+          </Grid>
+          <Grid item>
+            <AddReviewModal />
+          </Grid>
+        </Grid>
       </div>
     );
   }
