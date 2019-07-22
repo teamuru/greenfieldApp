@@ -85,7 +85,6 @@ function ReviewEntry({ review }) {
           </Grid>
         </Grid>
         <Grid>
-          {/* Find lighter color */}
           <Grid item style={style.sum}>
             {review.summary}
           </Grid>
@@ -95,14 +94,7 @@ function ReviewEntry({ review }) {
           <Grid item style={style.recommend}>
             #recommended: {review.recommend}
           </Grid>
-          <Grid
-            container
-            // alignItems="baseline"
-            style={style.bg}
-          >
-            {/* <h6>Response</h6>
-          <br />
-          <div>response body</div> */}
+          <Grid container style={style.bg}>
             <Grid item xs={9} style={style.resHead}>
               Response
             </Grid>
