@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Grid } from '@material-ui/core';
+import { Paper, Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
@@ -14,19 +14,24 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'right-align',
     color: theme.palette.text.primary
+  },
+  button: {
+    margin: theme.spacing(0),
+    padding: theme.spacing(-1),
+    fontSize: 12
   }
 }));
 
 const style = {
   userSum: {
-    fontSize: 10,
+    fontSize: 12,
     color: '#darkgrey'
     // ,
     // spacing: 20
   },
   sum: {
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 17,
     padding: '10px 0px'
   },
   bod: {
@@ -34,16 +39,24 @@ const style = {
     padding: '10px 0px'
   },
   resHead: {
+    fontWeight: 700,
     fontSize: 15,
-    fontWeight: 600
+    padding: '0px 10px'
   },
   resBod: {
+    fontSize: 15,
+    padding: '10px 10px'
+  },
+  recommend: {
     fontSize: 15
   },
   bg: {
-    backgroundColor: '#E5E5E5'
-    // ,
-    // padding: '5px 0px'
+    backgroundColor: '#E5E5E5',
+    padding: '10px 0px'
+  },
+  helpful: {
+    fontSize: 12,
+    padding: '0px -10px'
   }
 };
 
@@ -69,10 +82,7 @@ function ReviewEntry({ review }) {
         <Grid item style={style.bod}>
           {review.body}
         </Grid>
-        <Grid
-          item
-          // style={{ fontSize: 15 }}
-        >
+        <Grid item style={style.recommend}>
           #recommended: {review.recommend}
         </Grid>
         <Grid
@@ -80,22 +90,24 @@ function ReviewEntry({ review }) {
           // alignItems="baseline"
           style={style.bg}
         >
-          <h6>Response</h6>
+          {/* <h6>Response</h6>
           <br />
-          <div>response body</div>
-          {/* <Grid
-            item
-            xs={9}
-            // style={style.resHead}
-          >
-            <h6>Response</h6>
+          <div>response body</div> */}
+          <Grid item xs={9} style={style.resHead}>
+            Response
           </Grid>
           <Grid item xs={9} style={style.resBod}>
             {' '}
             <div>response body {review.response}</div>
-          </Grid> */}
+          </Grid>
         </Grid>
-        <Grid item>Helpful | Yes? ({review.helpfulness}) </Grid>
+        <Grid item style={style.helpful}>
+          <span>Helpful |</span>
+          <Button color="primary" className={classes.button}>
+            Yes?
+          </Button>
+          <span>({review.helpfulness}) </span>
+        </Grid>
       </Grid>
       <Grid />
       {/* </Grid> */}
