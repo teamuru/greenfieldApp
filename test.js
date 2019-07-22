@@ -8,7 +8,7 @@ const calcRec = (obj) => {
     return a + b;
   });
 
-  return values + ' ' + obj['1'];
+  return (obj['1'] / values) * 100;
 };
 
 let actual = calcRec(metaRec);

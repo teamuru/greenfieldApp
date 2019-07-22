@@ -11,7 +11,7 @@ const calcRec = (obj) => {
     return a + b;
   });
 
-  const rec = obj['1'];
+  return (obj['1'] / values) * 100;
 };
 
 const Recommended = (props) => {
@@ -21,8 +21,8 @@ const Recommended = (props) => {
     <h4>... Loading</h4>
   ) : (
     <div style={{ color: '#A9A9A9' }}>
-      xxx% of users recommend this product
-      {console.log(`meta`, meta)}
+      {calcRec(meta.recommended)}% of users recommend this product
+      {console.log(`calcRec`, calcRec(meta.recommended))}
     </div>
   );
 };
