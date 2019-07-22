@@ -56,7 +56,6 @@ export default function AddAnswer(props) {
 
   const handleSubmit = () => {
     let id = props.questionId;
-    // console.log("id ", id);
     if (answer.length > 0 && name.length > 0) {
       if (ValidateEmail(email)) {
         handleClose();
