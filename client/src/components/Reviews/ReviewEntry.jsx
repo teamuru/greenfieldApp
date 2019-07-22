@@ -1,6 +1,7 @@
 import React from 'react';
-import { Paper, Grid, Button } from '@material-ui/core';
+import { Paper, Grid, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { borders } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 
@@ -57,61 +58,71 @@ const style = {
   helpful: {
     fontSize: 12,
     padding: '0px -10px'
+  },
+  bor: {
+    border: 2,
+    borderColor: 'text.primary'
   }
 };
 
 function ReviewEntry({ review }) {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
-      {/* <Grid item xs={9}> */}
-      <Grid container justify="space-between" direction="row">
-        <Grid item style={{ fontSize: 15 }}>
-          {' '}
-          Placeholder Rating: {review.rating}
+    <Box style={style.bor}>
+      <Paper
+        className={classes.paper}
+
+        // borderColor="text.primary"
+      >
+        {/* <Grid item xs={9}> */}
+        <Grid container justify="space-between" direction="row">
+          <Grid item style={{ fontSize: 15 }}>
+            {' '}
+            Placeholder Rating: {review.rating}
+          </Grid>
+          <Grid item style={style.userSum}>
+            {review.reviewer_name} {moment(review.date).format('MMM Do YY')}
+          </Grid>
         </Grid>
-        <Grid item style={style.userSum}>
-          {review.reviewer_name} {moment(review.date).format('MMM Do YY')}
-        </Grid>
-      </Grid>
-      <Grid>
-        {/* Find lighter color */}
-        <Grid item style={style.sum}>
-          {review.summary}
-        </Grid>
-        <Grid item style={style.bod}>
-          {review.body}
-        </Grid>
-        <Grid item style={style.recommend}>
-          #recommended: {review.recommend}
-        </Grid>
-        <Grid
-          container
-          // alignItems="baseline"
-          style={style.bg}
-        >
-          {/* <h6>Response</h6>
+        <Grid>
+          {/* Find lighter color */}
+          <Grid item style={style.sum}>
+            {review.summary}
+          </Grid>
+          <Grid item style={style.bod}>
+            {review.body}
+          </Grid>
+          <Grid item style={style.recommend}>
+            #recommended: {review.recommend}
+          </Grid>
+          <Grid
+            container
+            // alignItems="baseline"
+            style={style.bg}
+          >
+            {/* <h6>Response</h6>
           <br />
           <div>response body</div> */}
-          <Grid item xs={9} style={style.resHead}>
-            Response
+            <Grid item xs={9} style={style.resHead}>
+              Response
+            </Grid>
+            <Grid item xs={9} style={style.resBod}>
+              {' '}
+              <div>response body {review.response}</div>
+            </Grid>
           </Grid>
-          <Grid item xs={9} style={style.resBod}>
-            {' '}
-            <div>response body {review.response}</div>
+          <Grid item style={style.helpful}>
+            <span>Helpful |</span>
+            <Button color="primary" className={classes.button}>
+              Yes?
+            </Button>
+            <span>({review.helpfulness}) </span>
           </Grid>
         </Grid>
-        <Grid item style={style.helpful}>
-          <span>Helpful |</span>
-          <Button color="primary" className={classes.button}>
-            Yes?
-          </Button>
-          <span>({review.helpfulness}) </span>
-        </Grid>
-      </Grid>
-      <Grid />
-      {/* </Grid> */}
-    </Paper>
+        <Grid />
+        {/* </Grid> */}
+      </Paper>
+    </Box>
   );
 }
 
