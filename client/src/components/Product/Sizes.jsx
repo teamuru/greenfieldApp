@@ -21,7 +21,7 @@ class Sizes extends Component {
     return (
       <form style={formStyle}>
         <div style={{ width: '65%', marginRight: '5%' }}>
-          <FormControl variant="outlined" fullWidth margin="normal">
+          <FormControl variant="outlined" fullWidth>
             <InputLabel>Select Size</InputLabel>
             <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
               {Object.keys(skus).map(sku => (
@@ -33,7 +33,7 @@ class Sizes extends Component {
           </FormControl>
         </div>
         <div style={{ width: '35%' }}>
-          <FormControl variant="outlined" fullWidth margin="normal">
+          <FormControl variant="outlined" fullWidth>
             <InputLabel>Qty</InputLabel>
             <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
               {qty.map((skuQty, index) => (
