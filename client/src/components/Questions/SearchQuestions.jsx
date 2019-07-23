@@ -33,7 +33,6 @@ class SearchQuestions extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log("search value: ", this.state.value);
-    // this.handleOnChange();
   }
   render() {
     return (

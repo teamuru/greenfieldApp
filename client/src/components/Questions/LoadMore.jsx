@@ -8,21 +8,16 @@ class LoadMore extends Component {
   }
 
   hangelLoadMore(e) {
-    // e.preventDefault();
-    // console.log("click on load more", this.state.loadMore);
-    //TODO: change to less or more depend on onclick
-    // let bool;
     let { moreOrLess } = this.state;
     moreOrLess
-      ? this.setState({ loadMore: false })
-      : this.setState({ loadMore: true });
-
+      ? this.setState({ moreOrLess: false })
+      : this.setState({ moreOrLess: true });
     this.props.setLoadMore();
   }
 
   render() {
     // let answers = this.props.answers;
-    let { moreOrLess } = this.state.props;
+    let { moreOrLess } = this.state;
     return (
       <div>
         <button
