@@ -10,7 +10,8 @@ describe('Product reducer', () => {
         selectedStyle: {},
         selectedSku: '',
         selectedQty: 0,
-        rating: 0
+        rating: 0,
+        selectedPhoto: 0
       })
     ).toEqual({
       data: {},
@@ -18,7 +19,8 @@ describe('Product reducer', () => {
       selectedStyle: {},
       selectedSku: '',
       selectedQty: 0,
-      rating: 0
+      rating: 0,
+      selectedPhoto: 0
     });
   });
 

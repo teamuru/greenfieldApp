@@ -31,6 +31,13 @@ export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload:
 // Change Selected Quantity
 export const changeSelectedQty = qty => ({ type: 'CHANGE_SELECTED_QUANTITY', payload: qty });
 
+// Change Selected PHOTO
+export const resetSelectedPhoto = () => ({ type: 'RESET_SELECTED_PHOTO' });
+
+export const changeSelectedPhotoUp = () => ({ type: 'CHANGE_SELECTED_PHOTO_UP' });
+
+export const changeSelectedPhotoDown = () => ({ type: 'CHANGE_SELECTED_PHOTO_DOWN' });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',
@@ -78,8 +85,6 @@ export const fetchRatings = (prodId) => {
       .then(({ data }) => {
         const { ratings } = data;
         const stars = calculateAverageRating(ratings);
-        console.log('ratings', ratings);
-        console.log('stars', stars);
         dispatch(fetchRatingsSuccess(stars));
       })
       .catch((err) => {

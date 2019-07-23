@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { changeSelectedStyle, changeSelectedSku } from '../../actions/productActions';
+import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
 
 const StyleDiv = styled.div`
   display: flex;
@@ -78,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
   handleClick: (selectedStyle) => {
     dispatch(changeSelectedStyle(selectedStyle));
     dispatch(changeSelectedSku(''));
+    dispatch(resetSelectedPhoto());
   }
 });
 

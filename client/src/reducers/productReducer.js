@@ -4,6 +4,7 @@ const intialState = {
   selectedStyle: {},
   selectedSku: '',
   selectedQty: 0,
+  selectedPhoto: 0,
   rating: 0
 };
 
@@ -27,6 +28,14 @@ const productReducer = (state = intialState, action) => {
       return { ...state, selectedSku: action.payload };
     case 'CHANGE_SELECTED_QUANTITY':
       return { ...state, selectedQty: action.payload };
+    case 'RESET_SELECTED_PHOTO':
+      return { ...state, selectedPhoto: intialState.selectedPhoto };
+    case 'CHANGE_SELECTED_PHOTO_UP': {
+      return { ...state, selectedPhoto: state.selectedPhoto + 1 };
+    }
+    case 'CHANGE_SELECTED_PHOTO_DOWN': {
+      return { ...state, selectedPhoto: state.selectedPhoto - 1 };
+    }
     default:
       return state;
   }
