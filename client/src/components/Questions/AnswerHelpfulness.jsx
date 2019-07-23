@@ -4,9 +4,16 @@ import { putHelpfulAnswer } from "../../actions/questionsActions";
 //PUT /qa/question/:question_id/helpful
 function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
+  const [hover, setHover] = React.useState("underline");
+
+  const handleHoverOn = () => {
+    setHover("none");
+  };
+  const handleHoverOff = () => {
+    setHover("underline");
+  };
   const handleClick = () => {
     setHelpfulness(helpful + 1);
-    // console.log("answer helpfuL ", id);
     putHelpfulAnswer(id);
   };
   return (
@@ -17,7 +24,9 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
         )}      |      Helpful?   `}
       </span>
       <button
-        style={{ textDecorationLine: "underline", fontSize: 8, border: "none" }}
+        onMouseEnter={handleHoverOn}
+        onMouseLeave={handleHoverOff}
+        style={{ textDecorationLine: hover, fontSize: 8, border: "none" }}
         onClick={handleClick}
       >
         Yes

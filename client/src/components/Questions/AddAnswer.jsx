@@ -17,7 +17,14 @@ export default function AddAnswer(props) {
   const [photo, setPhoto] = React.useState("");
   const [photos, setPhotos] = React.useState([]);
   const [fail, setFail] = React.useState("");
+  const [hover, setHover] = React.useState("underline");
 
+  const handleHoverOn = () => {
+    setHover("none");
+  };
+  const handleHoverOff = () => {
+    setHover("underline");
+  };
   //https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 
   function handleClickOpen() {
@@ -130,9 +137,11 @@ export default function AddAnswer(props) {
   return (
     <span>
       <button
+        onMouseEnter={handleHoverOn}
+        onMouseLeave={handleHoverOff}
         style={{
           border: "none",
-          textDecorationLine: "underline",
+          textDecorationLine: hover,
           fontSize: 8
         }}
         onClick={handleClickOpen}

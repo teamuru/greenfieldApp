@@ -41,6 +41,7 @@ class Question extends Component {
           setLoadMore={this.setLoadMore}
           load={this.state.load}
         />
+        <AddQuestionModal />
       </div>
     );
   }

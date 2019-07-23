@@ -3,8 +3,17 @@ import React, { Component } from "react";
 class MoreAnsweredQuestions extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 2 };
+    this.state = { count: 2, hover: "normal" };
     this.hangelClick = this.hangelClick.bind(this);
+    this.handleHoverOn = this.handleHoverOn.bind(this);
+    this.handleHoverOff = this.handleHoverOff.bind(this);
+  }
+
+  handleHoverOn() {
+    this.setState({ hover: "bold" });
+  }
+  handleHoverOff() {
+    this.setState({ hover: "normal" });
   }
 
   hangelClick() {
@@ -16,15 +25,17 @@ class MoreAnsweredQuestions extends Component {
 
   render() {
     return (
-      <div>
+      <span>
         <button
-          onClick={() => {
-            this.hangelClick();
-          }}
+          onMouseEnter={this.handleHoverOn}
+          onMouseLeave={this.handleHoverOff}
+          style={{ fontWeight: this.state.hover, fontSize: 14 }}
+          onClick={this.hangelClick}
         >
           MORE ANSWERED QUESTIONS
         </button>
-      </div>
+        <span style={{ whiteSpace: "pre-wrap" }}>{`   `}</span>
+      </span>
     );
   }
 }

@@ -4,9 +4,16 @@ import { putHelpful } from "../../actions/questionsActions";
 //PUT /qa/question/:question_id/helpful
 function Helpful({ questionId, helpfulness }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
+  const [hover, setHover] = React.useState("underline");
   const handleClick = () => {
     putHelpful(questionId);
     setHelpfulness(helpful + 1);
+  };
+  const handleHoverOn = () => {
+    setHover("none");
+  };
+  const handleHoverOff = () => {
+    setHover("underline");
   };
   return (
     <React.Fragment>
@@ -15,7 +22,9 @@ function Helpful({ questionId, helpfulness }) {
       </span>
       <button
         onClick={handleClick}
-        style={{ textDecorationLine: "underline", border: "none", fontSize: 8 }}
+        onMouseEnter={handleHoverOn}
+        onMouseLeave={handleHoverOff}
+        style={{ textDecorationLine: hover, border: "none", fontSize: 8 }}
       >
         Yes
       </button>
