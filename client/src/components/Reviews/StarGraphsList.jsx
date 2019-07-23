@@ -37,10 +37,13 @@ export class StarGraphsList extends Component {
               {element} Stars
               <StarGraph
                 variant="determinate"
-                value={element}
-                // value={this.normalize}
+                // value={element}
+                value={
+                  // this.normalize
+                  `${meta.ratings[`${element}`] / normalizeData(meta.ratings)}`
+                }
               />
-              {console.log(`meta`, meta)}
+              {console.log(`meta.ratings`, meta.ratings)}
             </div>
           );
         })}

@@ -18,10 +18,8 @@
 
 const normalizeData = (obj) => {
   const arr = Object.values(obj);
-  const max = arr.reduce((a, b) => {
-    return a > b ? a : b;
-  });
-  return max;
+  const max = arr.reduce((a, b) => (a > b ? a : b));
+  return max / 100;
 };
 
 // const actual = normalizeData(sample.ratings);
