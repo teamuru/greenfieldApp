@@ -16,12 +16,11 @@ class SearchQuestions extends Component {
     let { setQuestionList, questionsData } = this.props;
     currentList = questionsData;
     if (e.target.value.length > 3) {
-      // console.log(e.target.value);
       newList = currentList.filter(question => {
         let { question_body } = question;
-        let lc = question_body.toLowerCase();
+        let questList = question_body.toLowerCase();
         let filter = e.target.value.toLowerCase();
-        if (lc.includes(filter)) {
+        if (questList.includes(filter)) {
           return question;
         }
       });
@@ -34,6 +33,7 @@ class SearchQuestions extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log("search value: ", this.state.value);
+    // this.handleOnChange();
   }
   render() {
     return (

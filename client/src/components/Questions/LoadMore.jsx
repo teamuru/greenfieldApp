@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class LoadMore extends Component {
   constructor(props) {
     super(props);
-    this.state = { moreOrLess: "More", loadMore: false };
+    this.state = { moreOrLess: true };
     this.hangelLoadMore = this.hangelLoadMore.bind(this);
   }
 
@@ -11,15 +11,18 @@ class LoadMore extends Component {
     // e.preventDefault();
     // console.log("click on load more", this.state.loadMore);
     //TODO: change to less or more depend on onclick
-    // this.state.loadMore
-    //   ? this.setState({ moreOrLess: "More", loadMore: false })
-    //   : this.setState({ moreOrLess: "Less", loadMore: true });
+    // let bool;
+    let { moreOrLess } = this.state;
+    moreOrLess
+      ? this.setState({ loadMore: false })
+      : this.setState({ loadMore: true });
 
     this.props.setLoadMore();
   }
 
   render() {
     // let answers = this.props.answers;
+    let { moreOrLess } = this.state.props;
     return (
       <div>
         <button
@@ -31,7 +34,7 @@ class LoadMore extends Component {
           }}
           onClick={this.hangelLoadMore}
         >
-          See {this.state.moreOrLess} Answers
+          {moreOrLess ? "See More Answers" : "See Less Answers"}
         </button>
       </div>
     );
