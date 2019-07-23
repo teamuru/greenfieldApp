@@ -1,11 +1,11 @@
 import React from "react";
-import { pullHelpful } from "../../actions/questionsActions";
+import { putHelpful } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
 function Helpful({ questionId, helpfulness }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const handleClick = () => {
-    pullHelpful(questionId);
+    putHelpful(questionId);
     setHelpfulness(helpful + 1);
   };
   return (

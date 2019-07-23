@@ -1,12 +1,13 @@
 import React from "react";
-import { pullHelpful } from "../../actions/questionsActions";
+import { putHelpfulAnswer } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function AnswerHelpful({ answerer_name, date, helpfulness }) {
+function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const handleClick = () => {
-    pullHelpful(questionId);
     setHelpfulness(helpful + 1);
+    // console.log("answer helpfuL ", id);
+    putHelpfulAnswer(id);
   };
   return (
     <React.Fragment>
@@ -15,29 +16,15 @@ function AnswerHelpful({ answerer_name, date, helpfulness }) {
           date
         )}      |      Helpful?   `}
       </span>
-      <span
-        style={{
-          textDecorationLine: "underline",
-          fontSize: 8
-        }}
-      >
-        Yes
-      </span>
-      <span
-        style={{ whiteSpace: "pre-wrap", fontSize: 8 }}
-      >{` (${helpfulness})      |      `}</span>
-      {/* <span style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
-        {`     Helpful?    `}
-      </span>
       <button
+        style={{ textDecorationLine: "underline", fontSize: 8, border: "none" }}
         onClick={handleClick}
-        style={{ textDecorationLine: "underline", border: "none", fontSize: 8 }}
       >
         Yes
       </button>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
-        {`(${helpful})     |     `}
-      </span> */}
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: 8 }}
+      >{` (${helpful})      |      `}</span>
     </React.Fragment>
   );
 }

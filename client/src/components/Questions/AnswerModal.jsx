@@ -19,7 +19,7 @@ class AddAnswerModal extends Component {
     let answers = this.props.answers;
     let keys = Object.keys(answers);
     let load = this.state.load;
-    console.log("answers ", answers);
+    // console.log("answers ", answers);
 
     if (keys.length > 0) {
       sortAnswer(keys, answers);
@@ -57,19 +57,20 @@ const renderAnswers = (key, answers) => {
       <span style={{ fontSize: 10 }}> {body} </span>
       <br />
       <Photo photos={photos} />
-      {subInfo(date, helpfulness, answerer_name)}
+      {subInfo(date, helpfulness, answerer_name, id)}
     </List>
   );
 };
 
 //
-const subInfo = (date, helpfulness, answerer_name) => {
+const subInfo = (date, helpfulness, answerer_name, id) => {
   return (
     <React.Fragment>
       <AnswerHelpfulness
         answerer_name={answerer_name}
         date={date}
         helpfulness={helpfulness}
+        id={id}
       />
       <span style={{ textDecorationLine: "underline", fontSize: 8 }}>
         Report
