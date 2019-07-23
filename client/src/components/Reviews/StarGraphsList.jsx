@@ -35,8 +35,6 @@ export class StarGraphsList extends Component {
                 value={`${meta.ratings[`${element}`] /
                   normalizeData(meta.ratings)}`}
               />
-              {console.log(`meta.ratings`, meta.ratings)}
-              {console.log(`meta at element`, meta.ratings[`${element}`])}
             </div>
           );
         })}
