@@ -55,7 +55,8 @@ const style = {
     marginRight: 'auto',
     maxWidth: '70%',
     maxHeight: '70%',
-    fontSize: 20
+    fontSize: 20,
+    overflow: 'auto'
   }
 };
 
@@ -65,7 +66,6 @@ class ReviewForm extends Component {
 
     return (
       <div style={style.formSt}>
-
         <CssBaseline />
         <Typography variant="h6" align="center" component="h1" gutterBottom>
           Create A Review
@@ -73,7 +73,8 @@ class ReviewForm extends Component {
 
         {/* Text Inputs */}
         <Form
-          style={{ fontSize: 10 }}
+          // FIXME: overflow might be able to be taken out
+          style={{ fontSize: 10, overflow: 'auto' }}
           onSubmit={onSubmit}
           validate={validate}
           // Handle Submission Function

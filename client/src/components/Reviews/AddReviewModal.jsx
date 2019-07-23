@@ -20,14 +20,17 @@ function getModalStyle() {
   //   // height: '100%',
   //   display: 'block'
   // };
-  const top = 50;
-  const left = 50;
+
+  const side = 10;
 
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-    overflow: 'scroll'
+    position: 'absolute',
+    top: '5%',
+    left: `${side}%`,
+    right: `${side}%`,
+    overflow: 'scroll',
+    height: '100%',
+    display: 'block'
   };
 }
 
