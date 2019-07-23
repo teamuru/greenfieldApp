@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-// import * actions from ''
+
+import normalizeData from '../../lib/normalize.js';
 
 import StarGraph from './StarGraph.jsx';
 
 export class StarGraphsList extends Component {
-  // some functtions here
   handleNormalize(current, total) {
-    // gives us the number of ratings
-    // todo: total is meta
     let overall = Object.values(total.ratings);
 
     return (current / overall) * 100;
@@ -22,43 +20,21 @@ export class StarGraphsList extends Component {
   renderRatings() {
     const ratings = [1, 2, 3, 4, 5];
     const { meta } = this.props.reviews;
-    // const totalReviews = Object.values(meta.ratings);
 
     return !meta ? (
       <h1> ... Loading</h1>
     ) : (
       <React.Fragment>
-        {/* {console.log(`meta.ratings`, meta.ratings)} */}
-        {/* {console.log(`ratings length`, this.getTotalReviews(meta.ratings))} */}
         {ratings.map((element) => {
-          {
-            {
-              /* let normalize =  */
-            }
-            {
-              /* console.log(`inside map, meta.ratings => `, meta.ratings); */
-            }
-            {
-              /* console.log(`totalReviews`, totalReviews);
-            let normalize = this.handleNormalize(
-              ratings[element] || 0,
-              totalReviews.length
-            );
-            console.log('normalize', normalize); */
-            }
-          }
-
           return (
             <div style={{ fontSize: 15 }} key={element}>
               {element} Stars
-              {/* FIXME: get normalize working */}
               <StarGraph
                 variant="determinate"
-                value={element}
-                // value={this.normalize}
+                // value={element}
+                value={`${meta.ratings[`${element}`] /
+                  normalizeData(meta.ratings)}`}
               />
-              {/* {console.log(`this.props.reviews.meta`, meta)} */}
-              {/* {console.log(`totalReviews`, Object.values(meta.ratings))} */}
             </div>
           );
         })}
@@ -73,8 +49,7 @@ export class StarGraphsList extends Component {
   render() {
     return (
       <div>
-        <span> {} Stars *add renderAverageStars </span>
-        {} *add recommended
+        {/* FIXME: */}
         {this.renderRatings()}
       </div>
     );
