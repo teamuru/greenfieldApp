@@ -45,14 +45,24 @@ const ChevronRightStyled = styled(ChevronRight)`
 class Carousel extends Component {
   render() {
     const {
- selectedStyle, selectedPhoto, handleClickLeft, handleClickRight 
+ styles, selectedStyle, selectedPhoto, handleClickLeft, handleClickRight 
 } = this.props;
+    const displayChevronLeft = () => {
+      if (selectedPhoto !== 0) {
+        return <ChevronLeftStyled onClick={handleClickLeft} />;
+      }
+    };
+    const displayChevronRight = () => {
+      if (styles.length - 1 !== selectedPhoto) {
+        return <ChevronRightStyled onClick={handleClickRight} />;
+      }
+    };
     return Object.keys(selectedStyle).length ? (
       <StylesProvider injectFirst>
         <Container>
-          <ChevronLeftStyled onClick={handleClickLeft} />
+          {displayChevronLeft()}
           <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />
-          <ChevronRightStyled onClick={handleClickRight} />
+          {displayChevronRight()}
         </Container>
       </StylesProvider>
     ) : (
@@ -62,6 +72,7 @@ class Carousel extends Component {
 }
 
 Carousel.propTypes = {
+  styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.object.isRequired,
   selectedPhoto: PropTypes.number.isRequired,
   handleClickLeft: PropTypes.func.isRequired,
@@ -69,6 +80,7 @@ Carousel.propTypes = {
 };
 
 const mapStateToProps = store => ({
+  styles: store.product.styles,
   selectedStyle: store.product.selectedStyle,
   selectedPhoto: store.product.selectedPhoto
 });
