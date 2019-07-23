@@ -48,7 +48,9 @@ const style = {
   },
   formSt: {
     padding: 20,
-    margin: 'auto',
+    // margin: 'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     maxWidth: '70%',
     maxHeight: '70%',
     fontSize: 20
@@ -62,10 +64,11 @@ class ReviewForm extends Component {
     return (
       <div style={style.formSt}>
         <CssBaseline />
-        <Typography variant="h4" align="center" component="h1" gutterBottom>
+        <Typography variant="h6" align="center" component="h1" gutterBottom>
           Create A Review
         </Typography>
         <Form
+          style={{ fontSize: 20 }}
           onSubmit={onSubmit}
           validate={validate}
           render={({ handleSubmit, submitting, values }) => (

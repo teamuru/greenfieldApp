@@ -14,6 +14,8 @@ import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
 
+import ReviewForm from './ReviewForm';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -63,6 +65,8 @@ const RevParentComponent = () => {
           <Grid item>
             <ReviewList />
           </Grid>
+
+          <ReviewForm />
         </Grid>
       </Grid>
     </div>
