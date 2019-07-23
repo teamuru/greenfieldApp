@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Grid, Box } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 
 import calculateAverage from '../../lib/calculateAverageRate.js';
 
 const style = {
   ft: {
-    fontSize: 40
+    fontSize: 50
   },
   st: {
-    fontSize: 15,
+    fontSize: 30,
     padding: '0px 0px 50px 60px'
   }
 };
@@ -26,14 +27,22 @@ class AverageRev extends Component {
 
   render() {
     const { meta } = this.props.reviews;
-    return meta ? (
-      <h5>...Loading </h5>
+    return !meta ? (
+      <h5>..Loading</h5>
     ) : (
-      <React.Fragment>
-        <span style={style.ft}>3.5</span>
-        {/* {console.log(`props`, this.props.reviews.meta.ratings)} */}
-        <Rating readOnly size="small" value={3.25} max={5} />
-      </React.Fragment>
+      <Grid container direction="row" justify="center" alignItems="flex-start">
+        <span style={style.ft}>
+          {calculateAverage(meta.ratings).toFixed(1)}
+        </span>
+        <span>
+          <Rating
+            readOnly
+            size="small"
+            value={calculateAverage(meta.ratings).toFixed(1)}
+            max={5}
+          />
+        </span>
+      </Grid>
     );
   }
 }
