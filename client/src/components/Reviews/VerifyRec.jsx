@@ -15,7 +15,7 @@ function VerifyRec({ review }) {
         alignItems="center"
         style={{ fontSize: 15, padding: '15px 0px' }}
       >
-        <Check style={{ fontSize: 20 }} color="secondary" />
+        <Check style={{ fontSize: 20, color: '#4CAF50' }} />
 
         <span> {'   '} I recommend this product</span>
       </Grid>
