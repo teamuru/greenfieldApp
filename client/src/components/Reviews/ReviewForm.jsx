@@ -19,6 +19,8 @@ import {
   FormControlLabel
 } from '@material-ui/core';
 
+import descriptions from '../../lib/description';
+
 const onSubmit = (values) => {
   window.alert(JSON.stringify(values, 0, 2));
   console.log(' values from form ', values);
@@ -63,6 +65,9 @@ class ReviewForm extends Component {
 
     return (
       <div style={style.formSt}>
+        {/* FIXME: checking descriptions */}
+        {console.log(`descriptions: `, descriptions.Fit)}
+
         <CssBaseline />
         <Typography variant="h6" align="center" component="h1" gutterBottom>
           Create A Review
@@ -140,6 +145,7 @@ class ReviewForm extends Component {
                             return (
                               <div key={rating}>
                                 <FormControlLabel
+                                  // label="2"
                                   label={`${rating}`}
                                   control={
                                     <Field
