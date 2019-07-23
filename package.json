@@ -43,6 +43,7 @@
     "morgan": "^1.9.1",
     "npm": "^6.10.1",
     "prop-types": "^15.7.2",
+    "pure-react-carousel": "^1.21.1",
     "rc-slider": "^8.6.13",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -54,7 +55,8 @@
     "redux": "^4.0.4",
     "redux-multi": "^0.1.12",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",

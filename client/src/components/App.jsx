@@ -1,6 +1,5 @@
 /* eslint no-shadow: "off" */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,11 +38,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = store => ({
-  related: store.related,
-  relatedProducts: store.relatedProducts,
-  stars: store.stars,
-  outfit: store.outfit
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
