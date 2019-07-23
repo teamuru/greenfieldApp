@@ -6,21 +6,6 @@ import PropTypes from 'prop-types';
 import ReviewForm from './ReviewForm';
 
 function getModalStyle() {
-  // const top = 1;
-  // const left = 25;
-  // return {
-  //   top: `${top}%`,
-  //   // margin: 'auto',
-  //   left: `${left}%`,
-  //   overflow: 'scroll',
-
-  //   // position: 'absolute',
-  //   // top: '10%',
-  //   // left: '10%',
-  //   // height: '100%',
-  //   display: 'block'
-  // };
-
   const side = 10;
 
   return {

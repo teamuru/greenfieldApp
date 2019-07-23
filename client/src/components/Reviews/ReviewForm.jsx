@@ -49,12 +49,12 @@ const style = {
     fontWeight: 700
   },
   formSt: {
-    padding: 20,
+    padding: 10,
     // margin: 'auto',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: '70%',
-    maxHeight: '70%',
+    maxWidth: '90%',
+    maxHeight: '90%',
     fontSize: 20,
     overflow: 'auto'
   }
@@ -74,7 +74,7 @@ class ReviewForm extends Component {
         {/* Text Inputs */}
         <Form
           // FIXME: overflow might be able to be taken out
-          style={{ fontSize: 10, overflow: 'auto' }}
+          style={{ fontSize: 10 }}
           onSubmit={onSubmit}
           validate={validate}
           // Handle Submission Function
