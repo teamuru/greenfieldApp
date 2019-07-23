@@ -1,12 +1,13 @@
 import React from 'react';
-import { Paper, Grid, Button, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { borders } from '@material-ui/system';
-import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
+
+import Rating from '@material-ui/lab/Rating';
+import { Grid, Button, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 // import Checklist from '../Product/Checklist.jsx';
 import Relevance from './Relevance.jsx';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +79,7 @@ const ReviewEntry = ({ review }) => {
         <Grid container justify="space-between" direction="row">
           <Grid item style={{ fontSize: 15 }}>
             {' '}
-            Placeholder Rating: {review.rating}
+            <Rating readOnly value={review.rating} max={5} size="small" />
           </Grid>
           <Grid item style={style.userSum}>
             <b>{review.reviewer_name}, </b>
