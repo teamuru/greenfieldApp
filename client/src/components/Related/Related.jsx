@@ -28,7 +28,6 @@ const Related = (props) => {
 
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
-  const [current, setCurrent] = useState({});
 
   const addToOutfit = (product) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
@@ -43,16 +42,14 @@ const Related = (props) => {
   };
 
   useEffect(() => {
-    setOutfit([...outfit, current]);
-  }, [current]);
-
-  useEffect(() => {
     const keys = Object.keys(localStorage);
+    const values = [];
     if (keys.length > 0) {
       keys.forEach((key) => {
-        console.log(key);
-        setCurrent(JSON.parse(localStorage.getItem(key)));
+        values.push(JSON.parse(localStorage.getItem(key)));
       });
+
+      setOutfit(values);
       setExists(true);
     }
   }, []);
