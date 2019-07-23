@@ -26,6 +26,7 @@ function getModalStyle() {
   return {
     position: 'absolute',
     top: '5%',
+    bottom: '5%',
     left: `${side}%`,
     right: `${side}%`,
     overflow: 'scroll',
