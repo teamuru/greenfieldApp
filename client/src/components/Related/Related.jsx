@@ -28,6 +28,7 @@ const Related = (props) => {
 
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
+  const [current, setCurrent] = useState({});
 
   const addToOutfit = (product) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
@@ -41,12 +42,20 @@ const Related = (props) => {
     localStorage.removeItem(id);
   };
 
-  // useEffect(() => {
-  //   const keys = Object.keys(localStorage);
-  //   keys.forEach((key) => {
-  //     setOutfit(localStorage.getItem(key));
-  //   });
-  // }, []);
+  useEffect(() => {
+    setOutfit([...outfit, current]);
+  }, [current]);
+
+  useEffect(() => {
+    const keys = Object.keys(localStorage);
+    if (keys.length > 0) {
+      keys.forEach((key) => {
+        console.log(key);
+        setCurrent(JSON.parse(localStorage.getItem(key)));
+      });
+      setExists(true);
+    }
+  }, []);
 
   useEffect(() => {
     clearAllPhotos();
