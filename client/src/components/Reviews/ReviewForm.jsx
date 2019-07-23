@@ -50,7 +50,6 @@ const style = {
   },
   formSt: {
     padding: 10,
-    // margin: 'auto',
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: '90%',
