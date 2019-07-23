@@ -36,7 +36,6 @@ class ReviewList extends Component {
       <h3>...Loading reviews</h3>
     ) : (
       <div>
-        {/* {data.results.slice(0, 2).map( */}
         {data.results.slice(0, this.state.limit).map((review) => {
           return (
             <div key={review.review_id}>

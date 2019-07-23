@@ -30,7 +30,6 @@ class App extends Component {
                 <Route path="/:id" component={Related} />
                 <Route path="/:id" component={Questions} />
                 <Route path="/:id" component={ReviewsWrapper} />
-                {/* <ReviewsWrapper /> */}
               </main>
             </Container>
           </Router>
@@ -40,7 +39,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
