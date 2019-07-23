@@ -45,7 +45,6 @@ export default function AddAnswer(props) {
   }
 
   function LoadMorePhoto() {
-    // console.log("photo ", photo);
     if (isImageUrl(photo)) {
       setPhotos([...photos, photo]);
       setPhoto("");
@@ -57,7 +56,6 @@ export default function AddAnswer(props) {
 
   const handleSubmit = () => {
     let id = props.questionId;
-
     if (answer.length > 0 && name.length > 0) {
       if (ValidateEmail(email)) {
         handleClose();

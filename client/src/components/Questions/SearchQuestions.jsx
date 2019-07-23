@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Input from "@material-ui/core/Input";
 
 class SearchQuestions extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SearchQuestions extends Component {
     this.handleOnChange = this.handleOnChange.bind(this);
   }
   handleOnChange(e) {
+    console.log(e.target.value);
     this.setState({ value: e.target.value });
   }
   handleSubmit(e) {
@@ -19,13 +21,12 @@ class SearchQuestions extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          style={{ fontSize: 16 }}
-          placeholder="🔍   HAVE A QUESTION? SEARCH FOR ANSWERS...     "
-          size="90"
+        <Input
           value={this.state.value}
           onChange={this.handleOnChange}
+          placeholder="🔍   HAVE A QUESTION? SEARCH FOR ANSWERS...     "
+          type="text"
+          fullWidth
         />
       </form>
     );

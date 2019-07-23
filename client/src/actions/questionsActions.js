@@ -31,8 +31,11 @@ export const postAddAnswer = (answer, name, email, photos, id) => {
   // console.log("post add answer photos[0]: ", photos);
 
   Axios.post(url, {
- body: answer, name, email, photos 
-})
+    body: answer,
+    name,
+    email,
+    photos
+  })
     .then(() => {
       console.log('Success to post AddAnswer');
     })
@@ -41,4 +44,26 @@ export const postAddAnswer = (answer, name, email, photos, id) => {
     });
 };
 
-// export default fetchQuestions;
+export const putHelpful = (id) => {
+  const url = `${API_URL}/qa/question/${id}/helpful`;
+  console.log('id for pull: ', id);
+  Axios.put(url, { question_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+export const putHelpfulAnswer = (id) => {
+  const url = `${API_URL}/qa/answer/${id}/helpful`;
+  console.log('id for pull: ', id);
+  Axios.put(url, { question_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
