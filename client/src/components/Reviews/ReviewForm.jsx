@@ -68,7 +68,7 @@ class ReviewForm extends Component {
           Create A Review
         </Typography>
         <Form
-          style={{ fontSize: 20 }}
+          style={{ fontSize: 10 }}
           onSubmit={onSubmit}
           validate={validate}
           render={({ handleSubmit, submitting, values }) => (
@@ -77,7 +77,8 @@ class ReviewForm extends Component {
                 <Grid container alignItems="flex-start" spacing={4}>
                   <Grid item xs={6}>
                     <Field
-                      fullWidth
+                      // fullWidth
+                      style={{ fontSize: 10 }}
                       required
                       name="username"
                       component={TextField}
@@ -120,6 +121,7 @@ class ReviewForm extends Component {
                       <Button
                         // variant="raised"
                         component="span"
+                        style={{ fontSize: 16 }}
                         // className={classes.button}
                       >
                         Add image {'  '} <Attachment />
