@@ -4,6 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
 import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
 import {
@@ -24,6 +25,11 @@ const Related = (props) => {
     location: { pathname }
   } = props;
 
+  const addToOutfit = (product) => {
+    // Don't need a check here because it will just overwrite the object if the key exists.
+    localStorage.setItem(product.id, JSON.stringify(product));
+  };
+
   useEffect(() => {
     clearAllPhotos();
     clearAllRelated();
@@ -36,11 +42,12 @@ const Related = (props) => {
       {relatedProducts.map((product, index) => (
         <ProductCard
           id={product.id}
-          // key={product.id}
+          key={uuid()}
           name={product.name}
           image={photos[index]}
           defaultPrice={product.default_price}
           category={product.category}
+          addToOutfit={addToOutfit}
         />
       ))}
     </div>

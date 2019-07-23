@@ -1,7 +1,7 @@
 /* eslint react/jsx-indent: "off" */
 /* eslint react/prop-types: "off" */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrowsSharp';
-// import Modal from '@material-ui/core/Modal';
 
 const useStyles = makeStyles({
   card: {
@@ -24,22 +23,31 @@ const useStyles = makeStyles({
   media: {
     height: 0,
     paddingTop: '56.25%' // 16:9 aspect ratio
-    // 'object-fit': 'contain'
   }
 });
 
-const ProductCard = (props) => {
+const OutfitCard = () => {
   const classes = useStyles();
 
-  const {
- category, name, defaultPrice, image, id, addToOutfit 
-} = props;
+  //   const {
+  //  category, name, defaultPrice, image, id
+  // } = props;
+
+  useEffect(() => {
+    const keys = Object.keys(localStorage);
+    const values = [];
+    keys.forEach((key) => {
+      values.push(localStorage.getItem(key));
+    });
+  }, []);
+
+  const removeFromOutfit = () => {};
 
   const [compare, setCompare] = useState(false);
 
-  function handleCompareClick() {
+  const handleCompareClick = () => {
     setCompare(!compare);
-  }
+  };
 
   if (image) {
     return (
@@ -63,12 +71,7 @@ const ProductCard = (props) => {
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton
-            aria-label="Add to favorites"
-            onClick={() => {
-              addToOutfit(props);
-            }}
-          >
+          <IconButton aria-label="Add to favorites" onClick={addToOutfit}>
             <div className="favorite">
               <FavoriteIcon />
             </div>
@@ -83,10 +86,10 @@ const ProductCard = (props) => {
   return null;
 };
 
-ProductCard.propTypes = {
+OutfitCard.propTypes = {
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   defaultPrice: PropTypes.string.isRequired
 };
 
-export default ProductCard;
+export default OutfitCard;
