@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core';
-import Rating from 'material-ui-rating';
+import { connect } from 'react-redux';
+
+import Rating from '@material-ui/lab/Rating';
+
+import calculateAverage from '../../lib/calculateAverageRate.js';
 
 const style = {
   ft: {
@@ -13,19 +16,32 @@ const style = {
 };
 
 class AverageRev extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      //
+    };
+  }
+
   render() {
-    return (
+    const { meta } = this.props.reviews;
+    return meta ? (
+      <h5>...Loading </h5>
+    ) : (
       <React.Fragment>
         <span style={style.ft}>3.5</span>
-        <span style={style.st}>placeholder</span>
-        <Rating
-          value={3.25}
-          max={5}
-          // onChange={(value) => console.log(`Rated with value ${value}`)}
-        />
+        {/* {console.log(`props`, this.props.reviews.meta.ratings)} */}
+        <Rating readOnly size="small" value={3.25} max={5} />
       </React.Fragment>
     );
   }
 }
 
-export default AverageRev;
+const mapStateToProps = (store) => ({
+  reviews: store.reviews
+});
+
+export default connect(mapStateToProps)(AverageRev);
+
+// export default AverageRev;
