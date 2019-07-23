@@ -66,7 +66,9 @@ const ProductCard = (props) => {
           <IconButton
             aria-label="Add to favorites"
             onClick={() => {
-              addToOutfit(props);
+              addToOutfit({
+ category, name, defaultPrice, image, id 
+});
             }}
           >
             <div className="favorite">

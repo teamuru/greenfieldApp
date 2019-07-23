@@ -6,3 +6,8 @@
 .favorite :hover {
   fill: red;
 }
+
+.outfitCards {
+  display: flex;
+  flex-direction: row;
+}
