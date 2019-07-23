@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
 import Photo from "./Photo";
 import AnswerHelpfulness from "./AnswerHelpfulness";
+import Report from "./Report";
 
 class AddAnswerModal extends Component {
   constructor(props) {
@@ -72,9 +73,7 @@ const subInfo = (date, helpfulness, answerer_name, id) => {
         helpfulness={helpfulness}
         id={id}
       />
-      <span style={{ textDecorationLine: "underline", fontSize: 8 }}>
-        Report
-      </span>
+      <Report />
     </React.Fragment>
   );
 };

@@ -16,15 +16,15 @@ class MoreAnsweredQuestions extends Component {
 
   render() {
     return (
-      <div>
+      <span>
         <button
-          onClick={() => {
-            this.hangelClick();
-          }}
+          style={{ fontWeight: "bold", fontSize: 14 }}
+          onClick={this.hangelClick}
         >
           MORE ANSWERED QUESTIONS
         </button>
-      </div>
+        <span style={{ whiteSpace: "pre-wrap" }}>{`   `}</span>
+      </span>
     );
   }
 }

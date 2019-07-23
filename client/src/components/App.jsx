@@ -1,19 +1,19 @@
 /* eslint no-shadow: "off" */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import theme from '../theme';
-import Related from './Related/Related';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Container from "@material-ui/core/Container";
+import theme from "../theme";
+import Related from "./Related/Related";
+import "./App.css";
 
 // component imports
-import ProductOverview from './Product/ProductOverview';
-import Questions from './Questions/Question';
-import ReviewsWrapper from './Reviews/ReviewsWrapper';
+import ProductOverview from "./Product/ProductOverview";
+import Questions from "./Questions/Question";
+import ReviewsWrapper from "./Reviews/ReviewsWrapper";
 
 class App extends Component {
   render() {
@@ -39,7 +39,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = store => ({
   related: store.related,
   relatedProducts: store.relatedProducts,
   stars: store.stars,
