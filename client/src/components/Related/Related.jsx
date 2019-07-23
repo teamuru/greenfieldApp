@@ -44,7 +44,7 @@ const Related = (props) => {
 
   const removeFromOutfit = (id) => {
     localStorage.removeItem(id);
-    outfit.filter(item => item.id !== id);
+    setOutfit(outfit.filter(item => item.id !== id));
   };
 
   useEffect(() => {
