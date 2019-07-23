@@ -81,7 +81,7 @@ const ReviewEntry = ({ review }) => {
             Placeholder Rating: {review.rating}
           </Grid>
           <Grid item style={style.userSum}>
-            {review.reviewer_name},{' '}
+            <b>{review.reviewer_name}, </b>
             {moment(review.date).format('MMMM Do, YYYY')}
           </Grid>
         </Grid>
