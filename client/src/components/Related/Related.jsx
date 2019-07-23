@@ -77,7 +77,8 @@ const Related = (props) => {
               id={item.id}
               key={uuid()}
               name={item.name}
-              defaultPrice={item.default_price}
+              img={item.img}
+              defaultPrice={item.defaultPrice}
               category={item.category}
               removeFromOutfit={removeFromOutfit}
             />

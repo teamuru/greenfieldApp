@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -29,23 +28,17 @@ const OutfitCard = (props) => {
   const classes = useStyles();
 
   const {
- category, name, defaultPrice, id, removeFromOutfit 
+ category, name, defaultPrice, id, img, removeFromOutfit 
 } = props;
 
   return (
     <Card className={classes.card}>
-      <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
-        <CardHeader
-          title={name}
-          subheader={`$${defaultPrice}`}
-          style={{ height: '10vw' }}
-        />
-        <CardMedia
-          className={classes.media}
-          // image={image.photo.results[0].photos[0].thumbnail_url}
-          title={name}
-        />
-      </Link>
+      <CardHeader
+        title={name}
+        subheader={`$${defaultPrice}`}
+        style={{ height: '10vw' }}
+      />
+      <CardMedia className={classes.media} image={img} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {category}

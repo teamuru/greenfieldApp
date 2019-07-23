@@ -35,6 +35,7 @@ const ProductCard = (props) => {
  category, name, defaultPrice, image, id, addToOutfit 
 } = props;
 
+  // TODO: move to parent
   const [compare, setCompare] = useState(false);
 
   function handleCompareClick() {
@@ -42,6 +43,7 @@ const ProductCard = (props) => {
   }
 
   if (image) {
+    const img = image.photo.results[0].photos[0].thumbnail_url;
     return (
       <Card className={classes.card}>
         <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
@@ -50,11 +52,7 @@ const ProductCard = (props) => {
             subheader={`$${defaultPrice}`}
             style={{ height: '10vw' }}
           />
-          <CardMedia
-            className={classes.media}
-            image={image.photo.results[0].photos[0].thumbnail_url}
-            title={name}
-          />
+          <CardMedia className={classes.media} image={img} title={name} />
         </Link>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -67,8 +65,12 @@ const ProductCard = (props) => {
             aria-label="Add to favorites"
             onClick={() => {
               addToOutfit({
- category, name, defaultPrice, image, id 
-});
+                category,
+                name,
+                defaultPrice,
+                img,
+                id
+              });
             }}
           >
             <div className="favorite">
