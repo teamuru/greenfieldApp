@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import LoadMore from "./LoadMore";
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import Photo from "./Photo";
-import AnswerHelpfulness from "./AnswerHelpfulness";
+import React, { Component } from 'react';
+import LoadMore from './LoadMore';
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import Photo from './Photo';
+import AnswerHelpfulness from './AnswerHelpfulness';
 
 class AddAnswerModal extends Component {
   constructor(props) {
@@ -26,8 +26,8 @@ class AddAnswerModal extends Component {
       if (load) {
         return (
           <React.Fragment>
-            <Paper style={{ maxHeight: 200, overflow: "auto" }}>
-              {keys.map(key => {
+            <Paper style={{ maxHeight: 200, overflow: 'auto' }}>
+              {keys.map((key) => {
                 return renderAnswers(key, answers);
               })}
             </Paper>
@@ -53,7 +53,7 @@ const renderAnswers = (key, answers) => {
   let { id, body, answerer_name, helpfulness, date, photos } = answers[key];
   return (
     <List key={`answerId:${id}`}>
-      <span style={{ fontWeight: "bold", fontSize: 12 }}>A: </span>
+      <span style={{ fontWeight: 'bold', fontSize: 12 }}>A: </span>
       <span style={{ fontSize: 10 }}> {body} </span>
       <br />
       <Photo photos={photos} />
@@ -72,7 +72,7 @@ const subInfo = (date, helpfulness, answerer_name, id) => {
         helpfulness={helpfulness}
         id={id}
       />
-      <span style={{ textDecorationLine: "underline", fontSize: 8 }}>
+      <span style={{ textDecorationLine: 'underline', fontSize: 8 }}>
         Report
       </span>
     </React.Fragment>
@@ -86,7 +86,7 @@ const sortAnswer = (keys, answers) => {
     rerun = false;
     for (var i = 0; i < keys.length - 1; i++) {
       if (
-        answers[keys[i]]["helpfulness"] < answers[keys[i + 1]]["helpfulness"]
+        answers[keys[i]]['helpfulness'] < answers[keys[i + 1]]['helpfulness']
       ) {
         let first = keys[i];
         let second = keys[i + 1];
