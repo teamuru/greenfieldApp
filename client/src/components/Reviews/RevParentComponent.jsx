@@ -66,7 +66,7 @@ const RevParentComponent = () => {
             <ReviewList />
           </Grid>
 
-          <ReviewForm />
+          {/* <ReviewForm /> */}
         </Grid>
       </Grid>
     </div>

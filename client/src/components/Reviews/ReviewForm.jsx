@@ -65,8 +65,6 @@ class ReviewForm extends Component {
 
     return (
       <div style={style.formSt}>
-        {/* FIXME: checking descriptions */}
-        {console.log(`descriptions: `, descriptions.Fit)}
 
         <CssBaseline />
         <Typography variant="h6" align="center" component="h1" gutterBottom>
@@ -120,7 +118,9 @@ class ReviewForm extends Component {
                   <React.Fragment>
                     <Grid item xs={8}>
                       <FormControl component="fieldset">
-                        <FormLabel component="legend">Select A Fit</FormLabel>
+                        <FormLabel component="legend">
+                          How was the fit?
+                        </FormLabel>
                         <RadioGroup row>
                           {descriptions.Fit.map((description, index) => {
                             return (
@@ -130,6 +130,161 @@ class ReviewForm extends Component {
                                   control={
                                     <Field
                                       name="fit"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${index}`}
+                                    />
+                                  }
+                                />
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                  </React.Fragment>
+
+                  {/* Size */}
+                  <React.Fragment>
+                    <Grid item xs={8}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">
+                          How was the Size?{' '}
+                        </FormLabel>
+                        <RadioGroup row>
+                          {descriptions.Size.map((description, index) => {
+                            return (
+                              <div key={index}>
+                                <FormControlLabel
+                                  label={`${description}`}
+                                  control={
+                                    <Field
+                                      name="size"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${index}`}
+                                    />
+                                  }
+                                />
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                  </React.Fragment>
+
+                  {/* Length */}
+                  <React.Fragment>
+                    <Grid item xs={8}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">
+                          How was the Length?{' '}
+                        </FormLabel>
+                        <RadioGroup row>
+                          {descriptions.Length.map((description, index) => {
+                            return (
+                              <div key={index}>
+                                <FormControlLabel
+                                  label={`${description}`}
+                                  control={
+                                    <Field
+                                      name="Length"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${index}`}
+                                    />
+                                  }
+                                />
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                  </React.Fragment>
+
+                  {/* Width */}
+                  <React.Fragment>
+                    <Grid item xs={8}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">
+                          How was the Width?{' '}
+                        </FormLabel>
+                        <RadioGroup row>
+                          {descriptions.Width.map((description, index) => {
+                            return (
+                              <div key={index}>
+                                <FormControlLabel
+                                  label={`${description}`}
+                                  control={
+                                    <Field
+                                      name="Width"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${index}`}
+                                    />
+                                  }
+                                />
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                  </React.Fragment>
+
+                  {/* Comfort */}
+                  <React.Fragment>
+                    <Grid item xs={8}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">
+                          How was the Comfort?{' '}
+                        </FormLabel>
+                        <RadioGroup row>
+                          {descriptions.Comfort.map((description, index) => {
+                            return (
+                              <div key={index}>
+                                <FormControlLabel
+                                  label={`${description}`}
+                                  control={
+                                    <Field
+                                      name="Comfort"
+                                      component={Radio}
+                                      type="radio"
+                                      value={`${index}`}
+                                    />
+                                  }
+                                />
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                  </React.Fragment>
+
+                  {/* Quality */}
+                  <React.Fragment>
+                    <Grid item xs={8}>
+                      <FormControl component="fieldset">
+                        <FormLabel component="legend">
+                          How was the Quality?{' '}
+                        </FormLabel>
+                        <RadioGroup row>
+                          {descriptions.Quality.map((description, index) => {
+                            return (
+                              <div key={index}>
+                                <FormControlLabel
+                                  label={`${description}`}
+                                  control={
+                                    <Field
+                                      name="Quality"
                                       component={Radio}
                                       type="radio"
                                       value={`${index}`}
