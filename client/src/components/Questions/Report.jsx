@@ -1,11 +1,17 @@
 import React from "react";
+import { ReportAnswer } from "../../actions/questionsActions";
 
-const Report = () => {
+//PUT /qa/answer/:answer_id/report
+const Report = ({ id }) => {
   const [report, setReport] = React.useState("Report");
   const [hover, setHover] = React.useState("underline");
+
   const handleReport = () => {
+    // console.log("report props", id);
+    ReportAnswer(id);
     setReport("Reported");
   };
+
   const handleHoverOn = () => {
     setHover("none");
   };

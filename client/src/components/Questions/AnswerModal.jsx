@@ -73,7 +73,7 @@ const subInfo = (date, helpfulness, answerer_name, id) => {
         helpfulness={helpfulness}
         id={id}
       />
-      <Report />
+      <Report id={id} />
     </React.Fragment>
   );
 };

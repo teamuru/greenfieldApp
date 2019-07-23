@@ -58,8 +58,19 @@ export const putHelpful = (id) => {
 
 export const putHelpfulAnswer = (id) => {
   const url = `${API_URL}/qa/answer/${id}/helpful`;
-  console.log('id for pull: ', id);
   Axios.put(url, { question_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+// PUT /qa/answer/:answer_id/report
+export const ReportAnswer = (id) => {
+  const url = `${API_URL}/qa/answer/${id}/report`;
+  Axios.put(url, { answer_id: id })
     .then(() => {
       console.log('success pull helpful');
     })
