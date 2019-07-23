@@ -5,9 +5,7 @@ import Rating from '@material-ui/lab/Rating';
 import { Grid, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-// import Checklist from '../Product/Checklist.jsx';
-import Relevance from './Relevance.jsx';
-
+import VerifyRec from './VerifyRec';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +92,8 @@ const ReviewEntry = ({ review }) => {
             {review.body}
           </Grid>
           <Grid item style={style.recommend}>
-            #recommended: {review.recommend}
+            <VerifyRec review={review} />
+            {/* #recommended: {review.recommend} */}
           </Grid>
           <Grid container style={style.bg}>
             <Grid item xs={9} style={style.resHead}>
