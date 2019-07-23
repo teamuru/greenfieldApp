@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import StarIcon from '@material-ui/icons/Star';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrowsSharp';
 // import Modal from '@material-ui/core/Modal';
 
@@ -74,7 +74,7 @@ const ProductCard = (props) => {
             }}
           >
             <div className="favorite">
-              <FavoriteIcon />
+              <StarIcon />
             </div>
           </IconButton>
           <IconButton onClick={handleCompareClick} aria-label="Show more">

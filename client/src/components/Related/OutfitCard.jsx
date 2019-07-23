@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 
 const useStyles = makeStyles({
   card: {
@@ -52,7 +52,7 @@ const OutfitCard = (props) => {
           }}
         >
           <div className="remove">
-            <FavoriteIcon />
+            <DeleteForever />
           </div>
         </IconButton>
       </CardActions>
