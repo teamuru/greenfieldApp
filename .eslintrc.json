@@ -26,6 +26,7 @@
     "comma-dangle": 0,
     "indent": 0,
     "react/prefer-stateless-function": false,
-    "react/forbid-prop-types": false
+    "react/forbid-prop-types": false,
+    "react/no-array-index-key": false
   }
 }

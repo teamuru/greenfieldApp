@@ -27,6 +27,9 @@ export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_ST
 // Change Selected Sku
 export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload: sku });
 
+// Change Selected Quantity
+export const changeSelectedQty = qty => ({ type: 'CHANGE_SELECTED_QUANTITY', payload: qty });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',
@@ -43,14 +46,14 @@ export const fetchStyles = (prodId) => {
   return dispatch => Axios.get(url)
       .then(({ data }) => {
         const { results } = data;
-        let i = 0;
-        for (i; i < results.length; i += 1) {
+        dispatch(fetchStylesSuccess(results));
+        for (let i = 0; i < results.length; i += 1) {
           if (results[i]['default?']) {
-            break;
+            dispatch(changeSelectedStyle(results[i]));
+          } else if (i === results.length - 1) {
+            dispatch(changeSelectedStyle(results[0]));
           }
         }
-        dispatch(fetchStylesSuccess(results));
-        dispatch(changeSelectedStyle(results[i]));
       })
       .catch((err) => {
         console.log(err);
