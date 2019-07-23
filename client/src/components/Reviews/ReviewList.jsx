@@ -20,14 +20,9 @@ class ReviewList extends Component {
   }
 
   loadMore() {
-    this.setState(
-      {
-        limit: this.state.limit + this.state.increment
-      },
-      () => {
-        console.log(`this.state.limit`, this.state.limit);
-      }
-    );
+    this.setState({
+      limit: this.state.limit + this.state.increment
+    });
   }
 
   render() {

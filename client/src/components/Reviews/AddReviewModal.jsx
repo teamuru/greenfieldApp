@@ -6,12 +6,17 @@ import PropTypes from 'prop-types';
 import ReviewForm from './ReviewForm';
 
 function getModalStyle() {
-  const top = 1;
-  const left = 25;
+  const side = 10;
+
   return {
-    top: `${top}%`,
-    margin: 'auto',
-    left: `${left}%`
+    position: 'absolute',
+    top: '5%',
+    bottom: '5%',
+    left: `${side}%`,
+    right: `${side}%`,
+    overflow: 'scroll',
+    height: '100%',
+    display: 'block'
   };
 }
 
@@ -19,7 +24,8 @@ const styles = (theme) => ({
   paper: {
     position: 'absolute',
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5]
+    boxShadow: theme.shadows[5],
+    fontSize: 10
   }
 });
 
