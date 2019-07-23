@@ -37,6 +37,8 @@ const productReducer = (state = intialState, action) => {
     case 'CHANGE_SELECTED_PHOTO_DOWN': {
       return { ...state, selectedPhoto: state.selectedPhoto - 1 };
     }
+    case 'CHANGE_SELECTED_PHOTO_INDEX':
+      return { ...state, selectedPhoto: action.payload };
     case 'CHANGE_EXPANDED_VIEW':
       return { ...state, expandedView: !state.expandedView };
     default:

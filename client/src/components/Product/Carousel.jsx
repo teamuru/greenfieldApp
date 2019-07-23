@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StylesProvider } from '@material-ui/styles';
+import Avatar from '@material-ui/core/Avatar';
 import { ChevronLeft, ChevronRight, Fullscreen } from '@material-ui/icons';
 
 import theme from '../../theme';
-import { changeSelectedPhotoUp, changeSelectedPhotoDown, changeExpandedView } from '../../actions/productActions';
+import {
+ changeSelectedPhotoUp, changeSelectedPhotoDown, changeSelectedPhotoIndex, changeExpandedView 
+} from '../../actions/productActions';
 
 const HoverMixin = `
   color: ${theme.palette.secondary.main};
-  cursor: pointer;
 `;
 
 const Container = styled.div`
@@ -29,8 +31,9 @@ const Img = styled.img`
 
 const ChevronLeftStyled = styled(ChevronLeft)`
   position: absolute;
-  left: 1%;
+  left: 60px;
   bottom: 50%;
+  cursor: pointer;
   &:hover {
     ${HoverMixin}
   }
@@ -40,6 +43,7 @@ const ChevronRightStyled = styled(ChevronRight)`
   position: absolute;
   right: 1%;
   bottom: 50%;
+  cursor: pointer;
   &:hover {
     ${HoverMixin}
   }
@@ -49,14 +53,28 @@ const FullScreenStyled = styled(Fullscreen)`
   position: absolute;
   right: 1%;
   top: 1%;
+  cursor: pointer;
   &:hover {
     ${HoverMixin}
   }
 `;
 
+const AvatarDiv = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+`;
+
+const AvatarStyled = styled(Avatar)`
+  border-radius: 0;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border: solid 2.5px ${props => (props.selectedPhoto === props.index ? theme.palette.secondary.main : theme.palette.secondary.contrastText)};
+`;
+
 function Carousel(props) {
   const {
- selectedStyle, selectedPhoto, expandedView, handleClickLeft, handleClickRight, handleClickExpandedView 
+ selectedStyle, selectedPhoto, expandedView, handleClickLeft, handleClickRight, handleClickPhotoIndex, handleClickExpandedView 
 } = props;
   const displayChevronLeft = () => {
     if (selectedPhoto !== 0) {
@@ -68,9 +86,27 @@ function Carousel(props) {
       return <ChevronRightStyled onClick={handleClickRight} />;
     }
   };
+
+  const displayOverlays = photos => photos.map((photo, index) => {
+      if (index < 7) {
+        return (
+          <AvatarStyled
+            key={photo.url}
+            onClick={() => {
+              handleClickPhotoIndex(index);
+            }}
+            src={photo.url}
+            selectedPhoto={selectedPhoto}
+            index={index}
+          />
+        );
+      }
+    });
+
   return Object.keys(selectedStyle).length ? (
     <StylesProvider injectFirst>
       <Container expandedView={expandedView}>
+        <AvatarDiv>{displayOverlays(selectedStyle.photos)}</AvatarDiv>
         {displayChevronLeft()}
         <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />
         <FullScreenStyled onClick={handleClickExpandedView} />
@@ -88,6 +124,7 @@ Carousel.propTypes = {
   expandedView: PropTypes.bool.isRequired,
   handleClickLeft: PropTypes.func.isRequired,
   handleClickRight: PropTypes.func.isRequired,
+  handleClickPhotoIndex: PropTypes.func.isRequired,
   handleClickExpandedView: PropTypes.func.isRequired
 };
 
@@ -103,6 +140,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickLeft: () => {
     dispatch(changeSelectedPhotoDown());
+  },
+  handleClickPhotoIndex: (index) => {
+    dispatch(changeSelectedPhotoIndex(index));
   },
   handleClickExpandedView: () => {
     dispatch(changeExpandedView());

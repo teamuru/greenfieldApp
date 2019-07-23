@@ -38,6 +38,8 @@ export const changeSelectedPhotoUp = () => ({ type: 'CHANGE_SELECTED_PHOTO_UP' }
 
 export const changeSelectedPhotoDown = () => ({ type: 'CHANGE_SELECTED_PHOTO_DOWN' });
 
+export const changeSelectedPhotoIndex = index => ({ type: 'CHANGE_SELECTED_PHOTO_INDEX', payload: index });
+
 // Change Expanded View
 export const changeExpandedView = () => ({ type: 'CHANGE_EXPANDED_VIEW' });
 
