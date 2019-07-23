@@ -15,7 +15,7 @@ const SalePrice = styled(Typography)`
   color: red;
 `;
 
-const OriginalPriceRed = styled(Typography)`
+const OriginalPriceWithSale = styled(Typography)`
   text-decoration: line-through;
 `;
 
@@ -33,7 +33,7 @@ function Details(props) {
       {salePrice > 0 ? (
         <React.Fragment>
           <SalePrice variant="body2">{`$${salePrice}`}</SalePrice>
-          <OriginalPriceRed variant="body2">{`$${originalPrice}`}</OriginalPriceRed>
+          <OriginalPriceWithSale variant="body2">{`$${originalPrice}`}</OriginalPriceWithSale>
         </React.Fragment>
       ) : (
         <OriginalPrice variant="body2">{`$${originalPrice}`}</OriginalPrice>
