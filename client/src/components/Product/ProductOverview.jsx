@@ -20,18 +20,26 @@ class ProductOverview extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, expandedView } = this.props;
     return !Object.keys(data).length ? (
       <h1>Loading Product</h1>
     ) : (
-      <div style={{ marginTop: '2rem' }}>
+      <div style={{ margin: '2rem 0' }}>
         <Grid container spacing={2}>
-          <Grid item container sm={8} justify="center">
-            <Carousel />
-          </Grid>
-          <Grid item container sm={4} justify="flex-start" direction="column">
-            <Details name={data.name} category={data.category} />
-          </Grid>
+          {expandedView ? (
+            <Grid item container sm justify="center">
+              <Carousel />
+            </Grid>
+          ) : (
+            <React.Fragment>
+              <Grid item container sm={8} justify="center">
+                <Carousel />
+              </Grid>
+              <Grid item container sm={4} justify="flex-start" direction="column">
+                <Details name={data.name} category={data.category} />
+              </Grid>
+            </React.Fragment>
+          )}
         </Grid>
         <Grid container spacing={2}>
           <Grid item container sm={8} justify="center">
@@ -51,11 +59,13 @@ ProductOverview.propTypes = {
   getStyles: PropTypes.func.isRequired,
   getRatings: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  expandedView: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = store => ({
-  data: store.product.data
+  data: store.product.data,
+  expandedView: store.product.expandedView
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -11,7 +11,8 @@ describe('Product reducer', () => {
         selectedSku: '',
         selectedQty: 0,
         rating: 0,
-        selectedPhoto: 0
+        selectedPhoto: 0,
+        expandedView: false
       })
     ).toEqual({
       data: {},
@@ -20,7 +21,8 @@ describe('Product reducer', () => {
       selectedSku: '',
       selectedQty: 0,
       rating: 0,
-      selectedPhoto: 0
+      selectedPhoto: 0,
+      expandedView: false
     });
   });
 

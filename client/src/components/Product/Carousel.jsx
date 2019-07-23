@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StylesProvider } from '@material-ui/styles';
-import { ChevronLeft, ChevronRight } from '@material-ui/icons';
+import { ChevronLeft, ChevronRight, Fullscreen } from '@material-ui/icons';
 
 import theme from '../../theme';
-import { changeSelectedPhotoUp, changeSelectedPhotoDown } from '../../actions/productActions';
+import { changeSelectedPhotoUp, changeSelectedPhotoDown, changeExpandedView } from '../../actions/productActions';
+
+const HoverMixin = `
+  color: ${theme.palette.secondary.main};
+  cursor: pointer;
+`;
 
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh;
-  padding: 5%;
+  height: ${props => (props.expandedView ? '85vh' : '70vh')};
+  padding: 1rem;
   box-shadow: 0px 0px 20px ${theme.palette.secondary.contrastText};
 `;
 
@@ -27,8 +32,7 @@ const ChevronLeftStyled = styled(ChevronLeft)`
   left: 1%;
   bottom: 50%;
   &:hover {
-    color: ${theme.palette.secondary.main};
-    cursor: pointer;
+    ${HoverMixin}
   }
 `;
 
@@ -37,52 +41,60 @@ const ChevronRightStyled = styled(ChevronRight)`
   right: 1%;
   bottom: 50%;
   &:hover {
-    color: ${theme.palette.secondary.main};
-    cursor: pointer;
+    ${HoverMixin}
   }
 `;
 
-class Carousel extends Component {
-  render() {
-    const {
- styles, selectedStyle, selectedPhoto, handleClickLeft, handleClickRight 
-} = this.props;
-    const displayChevronLeft = () => {
-      if (selectedPhoto !== 0) {
-        return <ChevronLeftStyled onClick={handleClickLeft} />;
-      }
-    };
-    const displayChevronRight = () => {
-      if (styles.length - 1 !== selectedPhoto) {
-        return <ChevronRightStyled onClick={handleClickRight} />;
-      }
-    };
-    return Object.keys(selectedStyle).length ? (
-      <StylesProvider injectFirst>
-        <Container>
-          {displayChevronLeft()}
-          <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />
-          {displayChevronRight()}
-        </Container>
-      </StylesProvider>
-    ) : (
-      <h3>Carousel</h3>
-    );
+const FullScreenStyled = styled(Fullscreen)`
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  &:hover {
+    ${HoverMixin}
   }
+`;
+
+function Carousel(props) {
+  const {
+ selectedStyle, selectedPhoto, expandedView, handleClickLeft, handleClickRight, handleClickExpandedView 
+} = props;
+  const displayChevronLeft = () => {
+    if (selectedPhoto !== 0) {
+      return <ChevronLeftStyled onClick={handleClickLeft} />;
+    }
+  };
+  const displayChevronRight = () => {
+    if (selectedStyle.photos.length - 1 !== selectedPhoto) {
+      return <ChevronRightStyled onClick={handleClickRight} />;
+    }
+  };
+  return Object.keys(selectedStyle).length ? (
+    <StylesProvider injectFirst>
+      <Container expandedView={expandedView}>
+        {displayChevronLeft()}
+        <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />
+        <FullScreenStyled onClick={handleClickExpandedView} />
+        {displayChevronRight()}
+      </Container>
+    </StylesProvider>
+  ) : (
+    <h3>Carousel</h3>
+  );
 }
 
 Carousel.propTypes = {
-  styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.object.isRequired,
   selectedPhoto: PropTypes.number.isRequired,
+  expandedView: PropTypes.bool.isRequired,
   handleClickLeft: PropTypes.func.isRequired,
-  handleClickRight: PropTypes.func.isRequired
+  handleClickRight: PropTypes.func.isRequired,
+  handleClickExpandedView: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
-  styles: store.product.styles,
   selectedStyle: store.product.selectedStyle,
-  selectedPhoto: store.product.selectedPhoto
+  selectedPhoto: store.product.selectedPhoto,
+  expandedView: store.product.expandedView
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -91,6 +103,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickLeft: () => {
     dispatch(changeSelectedPhotoDown());
+  },
+  handleClickExpandedView: () => {
+    dispatch(changeExpandedView());
   }
 });
 

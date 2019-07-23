@@ -38,6 +38,9 @@ export const changeSelectedPhotoUp = () => ({ type: 'CHANGE_SELECTED_PHOTO_UP' }
 
 export const changeSelectedPhotoDown = () => ({ type: 'CHANGE_SELECTED_PHOTO_DOWN' });
 
+// Change Expanded View
+export const changeExpandedView = () => ({ type: 'CHANGE_EXPANDED_VIEW' });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',

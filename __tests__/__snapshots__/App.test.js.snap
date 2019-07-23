@@ -6,7 +6,7 @@ exports[`It renders App 1`] = `
 >
   <header>
     <header
-      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky sc-gZMcBi KGvIl MuiAppBar-colorPrimary"
+      className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionSticky sc-gqjmRU bevImq MuiAppBar-colorPrimary"
     >
       Greenfield Logo
     </header>

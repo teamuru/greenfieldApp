@@ -5,7 +5,8 @@ const intialState = {
   selectedSku: '',
   selectedQty: 0,
   selectedPhoto: 0,
-  rating: 0
+  rating: 0,
+  expandedView: false
 };
 
 const productReducer = (state = intialState, action) => {
@@ -36,6 +37,8 @@ const productReducer = (state = intialState, action) => {
     case 'CHANGE_SELECTED_PHOTO_DOWN': {
       return { ...state, selectedPhoto: state.selectedPhoto - 1 };
     }
+    case 'CHANGE_EXPANDED_VIEW':
+      return { ...state, expandedView: !state.expandedView };
     default:
       return state;
   }
