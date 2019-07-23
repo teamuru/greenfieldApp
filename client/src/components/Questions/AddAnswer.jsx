@@ -139,12 +139,12 @@ export default function AddAnswer(props) {
       <button
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
+        onClick={handleClickOpen}
         style={{
           border: "none",
           textDecorationLine: hover,
           fontSize: 8
         }}
-        onClick={handleClickOpen}
       >
         Add Answer
       </button>

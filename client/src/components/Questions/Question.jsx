@@ -30,6 +30,7 @@ class Question extends Component {
 
   render() {
     let questions = this.props.questions.data;
+    let { location } = this.props;
     return (
       <div>
         <h6>QUESTIONS{` & `}ANSWERS</h6>
@@ -41,7 +42,7 @@ class Question extends Component {
           setLoadMore={this.setLoadMore}
           load={this.state.load}
         />
-        <AddQuestionModal />
+        <AddQuestionModal id={location.pathname} />
       </div>
     );
   }

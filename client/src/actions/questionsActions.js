@@ -24,11 +24,6 @@ export const fetchQuestions = (prodId) => {
 
 export const postAddAnswer = (answer, name, email, photos, id) => {
   const url = `${API_URL}/qa/${id}/answers`;
-  // console.log("post add answer answer: ", answer);
-  // console.log("post add answer name: ", name);
-  // console.log("post add answer email: ", email);
-  // console.log("post add answer id: ", id);
-  // console.log("post add answer photos[0]: ", photos);
 
   Axios.post(url, {
     body: answer,
@@ -67,10 +62,23 @@ export const putHelpfulAnswer = (id) => {
     });
 };
 
-// PUT /qa/answer/:answer_id/report
 export const ReportAnswer = (id) => {
   const url = `${API_URL}/qa/answer/${id}/report`;
   Axios.put(url, { answer_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+export const postQuestion = (id, question, name, email) => {
+  const url = `${API_URL}/qa/${id}`;
+
+  Axios.post(url, {
+ product_id: id, body: question, name, email 
+})
     .then(() => {
       console.log('success pull helpful');
     })
