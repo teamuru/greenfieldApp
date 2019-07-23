@@ -26,7 +26,12 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
       <button
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
-        style={{ textDecorationLine: hover, fontSize: 8, border: "none" }}
+        style={{
+          textDecorationLine: hover,
+          fontSize: 8,
+          border: "none",
+          cursor: "pointer"
+        }}
         onClick={handleClick}
       >
         Yes

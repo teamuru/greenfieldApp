@@ -23,7 +23,12 @@ class LoadMore extends Component {
     return (
       <div>
         <button
-          style={{ border: "none", fontWeight: "bold", fontSize: 8 }}
+          style={{
+            border: "none",
+            fontWeight: "bold",
+            fontSize: 8,
+            cursor: "pointer"
+          }}
           onClick={this.hangelLoadMore}
         >
           See {this.state.moreOrLess} Answers

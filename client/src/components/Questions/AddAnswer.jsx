@@ -143,7 +143,8 @@ export default function AddAnswer(props) {
         style={{
           border: "none",
           textDecorationLine: hover,
-          fontSize: 8
+          fontSize: 8,
+          cursor: "pointer"
         }}
       >
         Add Answer

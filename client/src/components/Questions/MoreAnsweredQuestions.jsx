@@ -29,7 +29,11 @@ class MoreAnsweredQuestions extends Component {
         <button
           onMouseEnter={this.handleHoverOn}
           onMouseLeave={this.handleHoverOff}
-          style={{ fontWeight: this.state.hover, fontSize: 14 }}
+          style={{
+            fontWeight: this.state.hover,
+            fontSize: 14,
+            cursor: "pointer"
+          }}
           onClick={this.hangelClick}
         >
           MORE ANSWERED QUESTIONS
