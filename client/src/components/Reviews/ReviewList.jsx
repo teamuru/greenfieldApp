@@ -16,6 +16,7 @@ class ReviewList extends Component {
       increment: 2,
       limit: 2
     };
+    this.loadMore = this.loadMore.bind(this);
   }
 
   loadMore() {
