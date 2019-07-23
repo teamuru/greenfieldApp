@@ -44,6 +44,7 @@ export class StarGraphsList extends Component {
                 }
               />
               {console.log(`meta.ratings`, meta.ratings)}
+              {console.log(`meta at element`, meta.ratings[`${element}`])}
             </div>
           );
         })}
