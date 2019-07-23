@@ -24,7 +24,12 @@ function Helpful({ questionId, helpfulness }) {
         onClick={handleClick}
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
-        style={{ textDecorationLine: hover, border: "none", fontSize: 8 }}
+        style={{
+          textDecorationLine: hover,
+          border: "none",
+          fontSize: 8,
+          cursor: "pointer"
+        }}
       >
         Yes
       </button>

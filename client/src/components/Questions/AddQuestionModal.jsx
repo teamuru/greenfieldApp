@@ -117,7 +117,11 @@ class AddQuestionModal extends Component {
           onMouseEnter={this.handleHoverOn}
           onMouseLeave={this.handleHoverOff}
           onClick={this.handleClickOpen}
-          style={{ fontWeight: this.state.hover, fontSize: 14 }}
+          style={{
+            fontWeight: this.state.hover,
+            fontSize: 14,
+            cursor: "pointer"
+          }}
         >
           ADD A QUESTION +
         </button>

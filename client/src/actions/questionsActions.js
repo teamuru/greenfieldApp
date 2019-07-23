@@ -11,6 +11,11 @@ export const fetchQuestionsError = error => ({
   error
 });
 
+export const displayQuestions = questions => ({
+  type: 'DISPLAY_QUESTIONS',
+  payload: questions
+});
+
 export const fetchQuestions = (prodId) => {
   const url = `${API_URL}/qa/${prodId}`;
   return dispatch => Axios.get(url)
@@ -77,8 +82,11 @@ export const postQuestion = (id, question, name, email) => {
   const url = `${API_URL}/qa/${id}`;
 
   Axios.post(url, {
- product_id: id, body: question, name, email 
-})
+    product_id: id,
+    body: question,
+    name,
+    email
+  })
     .then(() => {
       console.log('success pull helpful');
     })

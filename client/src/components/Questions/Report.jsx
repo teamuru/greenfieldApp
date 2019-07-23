@@ -25,7 +25,12 @@ const Report = ({ id }) => {
         onClick={handleReport}
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
-        style={{ textDecorationLine: hover, fontSize: 8, border: "none" }}
+        style={{
+          textDecorationLine: hover,
+          fontSize: 8,
+          border: "none",
+          cursor: "pointer"
+        }}
       >
         {report}
       </button>
