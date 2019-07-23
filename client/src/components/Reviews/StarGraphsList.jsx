@@ -3,10 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 // import * actions from ''
 
+import normalizeData from '../../lib/normalize.js';
+
 import StarGraph from './StarGraph.jsx';
 
 export class StarGraphsList extends Component {
-  // some functtions here
   handleNormalize(current, total) {
     // gives us the number of ratings
     // todo: total is meta
@@ -31,34 +32,15 @@ export class StarGraphsList extends Component {
         {/* {console.log(`meta.ratings`, meta.ratings)} */}
         {/* {console.log(`ratings length`, this.getTotalReviews(meta.ratings))} */}
         {ratings.map((element) => {
-          {
-            {
-              /* let normalize =  */
-            }
-            {
-              /* console.log(`inside map, meta.ratings => `, meta.ratings); */
-            }
-            {
-              /* console.log(`totalReviews`, totalReviews);
-            let normalize = this.handleNormalize(
-              ratings[element] || 0,
-              totalReviews.length
-            );
-            console.log('normalize', normalize); */
-            }
-          }
-
           return (
             <div style={{ fontSize: 15 }} key={element}>
               {element} Stars
-              {/* FIXME: get normalize working */}
               <StarGraph
                 variant="determinate"
                 value={element}
                 // value={this.normalize}
               />
-              {/* {console.log(`this.props.reviews.meta`, meta)} */}
-              {/* {console.log(`totalReviews`, Object.values(meta.ratings))} */}
+              {console.log(`meta`, meta)}
             </div>
           );
         })}
