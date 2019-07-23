@@ -28,6 +28,11 @@ const Related = (props) => {
 
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
+  const [compare, setCompare] = useState(false);
+
+  const handleCompareClick = () => {
+    setCompare(!compare);
+  };
 
   const addToOutfit = (product) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
@@ -39,6 +44,7 @@ const Related = (props) => {
 
   const removeFromOutfit = (id) => {
     localStorage.removeItem(id);
+    outfit.filter(item => item.id !== id);
   };
 
   useEffect(() => {
@@ -73,6 +79,7 @@ const Related = (props) => {
             defaultPrice={product.default_price}
             category={product.category}
             addToOutfit={addToOutfit}
+            handleCompareClick={handleCompareClick}
           />
         ))}
       </div>
