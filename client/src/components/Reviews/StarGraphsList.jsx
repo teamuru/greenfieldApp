@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-// import * actions from ''
 
 import normalizeData from '../../lib/normalize.js';
 
@@ -9,8 +8,6 @@ import StarGraph from './StarGraph.jsx';
 
 export class StarGraphsList extends Component {
   handleNormalize(current, total) {
-    // gives us the number of ratings
-    // todo: total is meta
     let overall = Object.values(total.ratings);
 
     return (current / overall) * 100;
@@ -23,14 +20,11 @@ export class StarGraphsList extends Component {
   renderRatings() {
     const ratings = [1, 2, 3, 4, 5];
     const { meta } = this.props.reviews;
-    // const totalReviews = Object.values(meta.ratings);
 
     return !meta ? (
       <h1> ... Loading</h1>
     ) : (
       <React.Fragment>
-        {/* {console.log(`meta.ratings`, meta.ratings)} */}
-        {/* {console.log(`ratings length`, this.getTotalReviews(meta.ratings))} */}
         {ratings.map((element) => {
           return (
             <div style={{ fontSize: 15 }} key={element}>
@@ -38,10 +32,8 @@ export class StarGraphsList extends Component {
               <StarGraph
                 variant="determinate"
                 // value={element}
-                value={
-                  // this.normalize
-                  `${meta.ratings[`${element}`] / normalizeData(meta.ratings)}`
-                }
+                value={`${meta.ratings[`${element}`] /
+                  normalizeData(meta.ratings)}`}
               />
               {console.log(`meta.ratings`, meta.ratings)}
               {console.log(`meta at element`, meta.ratings[`${element}`])}
@@ -59,8 +51,7 @@ export class StarGraphsList extends Component {
   render() {
     return (
       <div>
-        <span> {} Stars *add renderAverageStars </span>
-        {} *add recommended
+        {/* FIXME: */}
         {this.renderRatings()}
       </div>
     );
