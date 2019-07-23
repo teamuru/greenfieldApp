@@ -7,3 +7,7 @@
 .favorite :hover {
   fill: red;
 }
+
+.slidecontainer {
+  width: 100%;
+}
