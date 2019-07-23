@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
+import calculateAverageRating from '../lib/calculateAverageRating';
 
 // Fetch Product Data
 export const fetchProductSuccess = product => ({
@@ -50,13 +51,38 @@ export const fetchStyles = (prodId) => {
         for (let i = 0; i < results.length; i += 1) {
           if (results[i]['default?']) {
             dispatch(changeSelectedStyle(results[i]));
+            break;
           } else if (i === results.length - 1) {
             dispatch(changeSelectedStyle(results[0]));
           }
         }
       })
       .catch((err) => {
-        console.log(err);
         dispatch(fetchStylesFailure(err));
+      });
+};
+// Fetch Ratings
+export const fetchRatingsSuccess = ratings => ({
+  type: 'FETCH_RATINGS_SUCCESS',
+  payload: ratings
+});
+
+export const fetchRatingsFailure = error => ({
+  type: 'FETCH_RATINGS_FAILURE',
+  payload: error
+});
+
+export const fetchRatings = (prodId) => {
+  const url = `${API_URL}/reviews/${prodId}/meta`;
+  return dispatch => Axios.get(url)
+      .then(({ data }) => {
+        const { ratings } = data;
+        const stars = calculateAverageRating(ratings);
+        console.log('ratings', ratings);
+        console.log('stars', stars);
+        dispatch(fetchRatingsSuccess(stars));
+      })
+      .catch((err) => {
+        dispatch(fetchRatingsFailure(err));
       });
 };

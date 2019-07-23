@@ -3,7 +3,8 @@ const intialState = {
   styles: [],
   selectedStyle: {},
   selectedSku: '',
-  selectedQty: 0
+  selectedQty: 0,
+  rating: 0
 };
 
 const productReducer = (state = intialState, action) => {
@@ -16,6 +17,10 @@ const productReducer = (state = intialState, action) => {
       return { ...state, styles: action.payload };
     case 'FETCH_STYLES_FAILURE':
       return { ...state, stylesError: action.payload };
+    case 'FETCH_RATINGS_SUCCESS':
+      return { ...state, rating: action.payload };
+    case 'FETCH_RATINGS_FAILURE':
+      return { ...state, ratingError: action.payload };
     case 'CHANGE_SELECTED_STYLE':
       return { ...state, selectedStyle: action.payload };
     case 'CHANGE_SELECTED_SKU':

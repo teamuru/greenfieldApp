@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
+import Rating from '@material-ui/lab/Rating';
 import Styles from './Styles';
 import Sizes from './Sizes';
 
@@ -19,12 +20,14 @@ const OriginalPriceRed = styled(Typography)`
 `;
 
 function Details(props) {
-  const { selectedStyle, name, category } = props;
+  const {
+ selectedStyle, rating, name, category 
+} = props;
   const { sale_price: salePrice, original_price: originalPrice } = selectedStyle;
   // Check if there are styles in redux store before rendering
   return Object.keys(selectedStyle).length ? (
     <React.Fragment>
-      <Typography variant="body1">stars</Typography>
+      <Rating readOnly value={rating} precision={0.25} size="small" />
       <Typography variant="body1">{category}</Typography>
       <Typography variant="h4">{name}</Typography>
       {salePrice > 0 ? (
@@ -45,12 +48,14 @@ function Details(props) {
 
 Details.propTypes = {
   selectedStyle: PropTypes.object.isRequired,
+  rating: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired
 };
 
 const mapStateToProps = store => ({
-  selectedStyle: store.product.selectedStyle
+  selectedStyle: store.product.selectedStyle,
+  rating: store.product.rating
 });
 
 export default connect(mapStateToProps)(Details);

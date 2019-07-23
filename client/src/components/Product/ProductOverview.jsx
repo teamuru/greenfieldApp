@@ -7,13 +7,16 @@ import Carousel from './Carousel';
 import Details from './Details';
 import Description from './Description';
 import Checklist from './Checklist';
-import { fetchProduct, fetchStyles } from '../../actions/productActions';
+import { fetchProduct, fetchStyles, fetchRatings } from '../../actions/productActions';
 
 class ProductOverview extends Component {
   componentDidMount() {
-    const { getProducts, getStyles, location } = this.props;
+    const {
+ getProducts, getStyles, getRatings, location 
+} = this.props;
     getProducts(location.pathname);
     getStyles(location.pathname);
+    getRatings(location.pathname);
   }
 
   render() {
@@ -46,6 +49,7 @@ class ProductOverview extends Component {
 ProductOverview.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getStyles: PropTypes.func.isRequired,
+  getRatings: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired
 };
@@ -56,7 +60,8 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   getProducts: id => dispatch(fetchProduct(id)),
-  getStyles: id => dispatch(fetchStyles(id))
+  getStyles: id => dispatch(fetchStyles(id)),
+  getRatings: id => dispatch(fetchRatings(id))
 });
 
 export default connect(
