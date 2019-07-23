@@ -16,7 +16,7 @@ const Recommended = (props) => {
     <h4>... Loading</h4>
   ) : (
     <div style={{ color: '#A9A9A9' }}>
-      {calcRec(meta.recommended)}% of users recend this product
+      {calcRec(meta.recommended).toFixed(0)}% of users recommend this product
     </div>
   );
 };

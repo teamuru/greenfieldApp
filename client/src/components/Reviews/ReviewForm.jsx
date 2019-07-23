@@ -50,7 +50,6 @@ const style = {
   },
   formSt: {
     padding: 10,
-    // margin: 'auto',
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: '90%',
@@ -67,7 +66,7 @@ class ReviewForm extends Component {
     return (
       <div style={style.formSt}>
         <CssBaseline />
-        <Typography variant="h6" align="center" component="h1" gutterBottom>
+        <Typography variant="h6" align="center" component="h4" gutterBottom>
           Create A Review
         </Typography>
 
@@ -82,7 +81,7 @@ class ReviewForm extends Component {
             <form onSubmit={handleSubmit} noValidate>
               <Paper style={{ padding: 10 }}>
                 <Grid container alignItems="flex-start" spacing={4}>
-                  <Grid item xs={6}>
+                  <Grid item xs={7}>
                     <Field
                       fullWidth
                       // FIXME: adjust font
@@ -94,7 +93,7 @@ class ReviewForm extends Component {
                       label="username"
                     />
                   </Grid>
-                  <Grid item xs={9}>
+                  <Grid item xs={7}>
                     <Field
                       fullWidth
                       required

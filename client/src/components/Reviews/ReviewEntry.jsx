@@ -1,12 +1,11 @@
 import React from 'react';
-import { Paper, Grid, Button, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { borders } from '@material-ui/system';
-import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 
-// import Checklist from '../Product/Checklist.jsx';
-import Relevance from './Relevance.jsx';
+import Rating from '@material-ui/lab/Rating';
+import { Grid, Button, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import VerifyRec from './VerifyRec';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +77,7 @@ const ReviewEntry = ({ review }) => {
         <Grid container justify="space-between" direction="row">
           <Grid item style={{ fontSize: 15 }}>
             {' '}
-            Placeholder Rating: {review.rating}
+            <Rating readOnly value={review.rating} max={5} size="small" />
           </Grid>
           <Grid item style={style.userSum}>
             <b>{review.reviewer_name}, </b>
@@ -93,7 +92,8 @@ const ReviewEntry = ({ review }) => {
             {review.body}
           </Grid>
           <Grid item style={style.recommend}>
-            #recommended: {review.recommend}
+            <VerifyRec review={review} />
+            {/* #recommended: {review.recommend} */}
           </Grid>
           <Grid container style={style.bg}>
             <Grid item xs={9} style={style.resHead}>
