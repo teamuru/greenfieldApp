@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 class AddQuestionModal extends Component {
   render() {
     let { questions, count, qFontSize, subFontSize, aFontSize } = this.props;
-    console.log("question ", questions);
+    // console.log("question ", questions);
 
     if (questions) {
       questions = questionModal(questions, count);
@@ -23,25 +23,33 @@ class AddQuestionModal extends Component {
             } = question;
 
             return (
-              <Grid key={`questionID:${question_id}`} container spacing={3}>
-                {/* <div key={`questionID:${question_id}`}> */}
-                <label style={{ fontWeight: "bold", fontSize: qFontSize }}>
-                  Q: {question_body}
-                </label>
-                <Helpful
-                  questionId={question_id}
-                  helpfulness={question_helpfulness}
-                  subFontSize={subFontSize}
-                />
-                <AddAnswer questionId={question_id} subFontSize={subFontSize} />
-                <br />
-                <AnswerModal
-                  answers={answers}
-                  subFontSize={subFontSize}
-                  aFontSize={aFontSize}
-                  qFontSize={qFontSize}
-                />
-                {/* </div> */}
+              <Grid key={`questionID:${question_id}`} container spacing={1}>
+                <Grid item xs={8}>
+                  <label style={{ fontWeight: "bold", fontSize: qFontSize }}>
+                    Q: {question_body}
+                  </label>
+                </Grid>
+
+                <Grid item xs={4}>
+                  <Helpful
+                    questionId={question_id}
+                    helpfulness={question_helpfulness}
+                    subFontSize={subFontSize}
+                  />
+                  <AddAnswer
+                    questionId={question_id}
+                    subFontSize={subFontSize}
+                  />
+                  <br />
+                </Grid>
+                <Grid item xs={12}>
+                  <AnswerModal
+                    answers={answers}
+                    subFontSize={subFontSize}
+                    aFontSize={aFontSize}
+                    qFontSize={qFontSize}
+                  />
+                </Grid>
               </Grid>
             );
           })}

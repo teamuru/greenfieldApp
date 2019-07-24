@@ -28,6 +28,7 @@ function Helpful({ questionId, helpfulness, subFontSize }) {
         onMouseLeave={handleHoverOff}
         style={{
           textDecorationLine: hover,
+
           border: "none",
           fontSize: subFontSize,
           cursor: "pointer",
