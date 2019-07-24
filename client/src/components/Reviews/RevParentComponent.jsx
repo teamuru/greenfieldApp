@@ -34,7 +34,11 @@ const RevParentComponent = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid
+        container
+        spacing={3}
+        // direction="row"
+      >
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
@@ -57,10 +61,10 @@ const RevParentComponent = () => {
         </Grid>
 
         <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
+          item
+          // direction="column"
+          // justify="flex-start"
+          // alignItems="flex-start"
           xs={9}
           style={{ fontSize: 15, fontWeight: 700 }}
         >
