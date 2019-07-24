@@ -2,7 +2,7 @@ import React from "react";
 import { putHelpfulAnswer } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
+function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const [hover, setHover] = React.useState("underline");
 
@@ -18,7 +18,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
   };
   return (
     <React.Fragment>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
+      <span style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}>
         {`    by ${answerer_name}, ${timeConvert(
           date
         )}      |      Helpful?   `}
@@ -28,7 +28,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
         onMouseLeave={handleHoverOff}
         style={{
           textDecorationLine: hover,
-          fontSize: 8,
+          fontSize: subFontSize,
           border: "none",
           cursor: "pointer"
         }}
@@ -37,7 +37,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
         Yes
       </button>
       <span
-        style={{ whiteSpace: "pre-wrap", fontSize: 8 }}
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}
       >{` (${helpful})      |      `}</span>
     </React.Fragment>
   );

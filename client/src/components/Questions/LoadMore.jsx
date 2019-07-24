@@ -18,13 +18,14 @@ class LoadMore extends Component {
   render() {
     // let answers = this.props.answers;
     let { moreOrLess } = this.state;
+    let { aFontSize } = this.props;
     return (
       <div>
         <button
           style={{
             border: "none",
             fontWeight: "bold",
-            fontSize: 8,
+            fontSize: aFontSize,
             cursor: "pointer"
           }}
           onClick={this.hangelLoadMore}

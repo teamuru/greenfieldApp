@@ -17,7 +17,7 @@ class AddAnswerModal extends Component {
     load ? this.setState({ load: false }) : this.setState({ load: true });
   }
   render() {
-    let answers = this.props.answers;
+    let { answers, aFontSize, subFontSize, qFontSize } = this.props;
     let keys = Object.keys(answers);
     let load = this.state.load;
     // console.log("answers ", answers);
@@ -29,17 +29,23 @@ class AddAnswerModal extends Component {
           <React.Fragment>
             <Paper style={{ maxHeight: 200, overflow: "auto" }}>
               {keys.map(key => {
-                return renderAnswers(key, answers);
+                return renderAnswers(
+                  key,
+                  answers,
+                  aFontSize,
+                  qFontSize,
+                  subFontSize
+                );
               })}
             </Paper>
-            {loadMore(keys, this.setLoadMore, load)}
+            {loadMore(keys, this.setLoadMore, load, aFontSize)}
           </React.Fragment>
         );
       } else {
         return (
           <React.Fragment>
-            {renderAnswers(keys[0], answers)}
-            {loadMore(keys, this.setLoadMore, load)}
+            {renderAnswers(keys[0], answers, aFontSize, qFontSize, subFontSize)}
+            {loadMore(keys, this.setLoadMore, load, aFontSize)}
           </React.Fragment>
         );
       }
@@ -50,21 +56,21 @@ class AddAnswerModal extends Component {
 }
 
 // render answer modal
-const renderAnswers = (key, answers) => {
+const renderAnswers = (key, answers, aFontSize, qFontSize, subFontSize) => {
   let { id, body, answerer_name, helpfulness, date, photos } = answers[key];
   return (
     <List key={`answerId:${id}`}>
-      <span style={{ fontWeight: "bold", fontSize: 12 }}>A: </span>
-      <span style={{ fontSize: 10 }}> {body} </span>
+      <span style={{ fontWeight: "bold", fontSize: qFontSize }}>A: </span>
+      <span style={{ fontSize: aFontSize }}> {body} </span>
       <br />
       <Photo photos={photos} />
-      {subInfo(date, helpfulness, answerer_name, id)}
+      {subInfo(date, helpfulness, answerer_name, id, subFontSize)}
     </List>
   );
 };
 
 //
-const subInfo = (date, helpfulness, answerer_name, id) => {
+const subInfo = (date, helpfulness, answerer_name, id, subFontSize) => {
   return (
     <React.Fragment>
       <AnswerHelpfulness
@@ -72,8 +78,9 @@ const subInfo = (date, helpfulness, answerer_name, id) => {
         date={date}
         helpfulness={helpfulness}
         id={id}
+        subFontSize={subFontSize}
       />
-      <Report id={id} />
+      <Report id={id} subFontSize={subFontSize} />
     </React.Fragment>
   );
 };
@@ -99,9 +106,9 @@ const sortAnswer = (keys, answers) => {
 };
 
 //load more function
-const loadMore = (keys, setLoadMore, load) => {
+const loadMore = (keys, setLoadMore, load, aFontSize) => {
   if (keys.length > 1)
-    return <LoadMore setLoadMore={setLoadMore} loadMore={load} />;
+    return <LoadMore setLoadMore={setLoadMore} aFontSize={aFontSize} />;
   else return <div />;
 };
 

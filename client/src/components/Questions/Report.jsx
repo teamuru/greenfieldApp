@@ -2,7 +2,7 @@ import React from "react";
 import { ReportAnswer } from "../../actions/questionsActions";
 
 //PUT /qa/answer/:answer_id/report
-const Report = ({ id }) => {
+const Report = ({ id, subFontSize }) => {
   const [report, setReport] = React.useState("Report");
   const [hover, setHover] = React.useState("underline");
 
@@ -27,7 +27,7 @@ const Report = ({ id }) => {
         onMouseLeave={handleHoverOff}
         style={{
           textDecorationLine: hover,
-          fontSize: 8,
+          fontSize: subFontSize,
           border: "none",
           cursor: "pointer"
         }}

@@ -5,7 +5,7 @@ import Helpful from "./Helpful";
 
 class AddQuestionModal extends Component {
   render() {
-    let { questions, count } = this.props;
+    let { questions, count, qFontSize, subFontSize, aFontSize } = this.props;
     // console.log("question ", questions);
 
     if (questions) {
@@ -22,16 +22,22 @@ class AddQuestionModal extends Component {
 
             return (
               <div key={`questionID:${question_id}`}>
-                <label style={{ fontWeight: "bold", fontSize: 12 }}>
+                <label style={{ fontWeight: "bold", fontSize: qFontSize }}>
                   Q: {question_body}
                 </label>
                 <Helpful
                   questionId={question_id}
                   helpfulness={question_helpfulness}
+                  subFontSize={subFontSize}
                 />
-                <AddAnswer questionId={question_id} />
+                <AddAnswer questionId={question_id} subFontSize={subFontSize} />
                 <br />
-                <AnswerModal answers={answers} />
+                <AnswerModal
+                  answers={answers}
+                  subFontSize={subFontSize}
+                  aFontSize={aFontSize}
+                  qFontSize={qFontSize}
+                />
               </div>
             );
           })}

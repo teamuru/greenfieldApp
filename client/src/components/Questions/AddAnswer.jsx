@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { postAddAnswer } from "../../actions/questionsActions";
 import isImageUrl from "is-image-url";
 
-export default function AddAnswer(props) {
+export default function AddAnswer({ questionId, subFontSize }) {
   const [open, setOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
   const [name, setName] = React.useState("");
@@ -62,11 +62,10 @@ export default function AddAnswer(props) {
   }
 
   const handleSubmit = () => {
-    let id = props.questionId;
     if (answer.length > 0 && name.length > 0) {
       if (ValidateEmail(email)) {
         handleClose();
-        postAddAnswer(answer, name, email, photos, id);
+        postAddAnswer(answer, name, email, photos, questionId);
         setAnswer("");
         setName("");
         setEmail("");
@@ -143,7 +142,7 @@ export default function AddAnswer(props) {
         style={{
           border: "none",
           textDecorationLine: hover,
-          fontSize: 8,
+          fontSize: subFontSize,
           cursor: "pointer"
         }}
       >
