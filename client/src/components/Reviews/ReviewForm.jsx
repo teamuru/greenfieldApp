@@ -359,6 +359,8 @@ const ReviewForm = () => {
                   value={value}
                   onChange={(event, newValue) => {
                     setValue(newValue);
+                    console.log(`newValue from Rating: `, newValue);
+                    console.log(`value`, value)
                   }}
                   size="large"
                 />
