@@ -15,14 +15,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FeatureModal = (props) => {
-  const { open } = props;
+  const { modalOpen, modalClose } = props;
   const classes = useStyles();
   return (
     <Modal
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
-      open={open}
-      // onClose={showModal}
+      open={modalOpen}
+      onClose={modalClose}
     >
       <div className="FeatureModal">
         <div className={classes.paper}>
@@ -35,7 +35,8 @@ const FeatureModal = (props) => {
 };
 
 FeatureModal.propTypes = {
-  open: PropTypes.bool.isRequired
+  modalOpen: PropTypes.bool.isRequired,
+  modalClose: PropTypes.func.isRequired
 };
 
 export default FeatureModal;

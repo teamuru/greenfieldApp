@@ -33,7 +33,11 @@ const Related = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const showModal = () => {
-    setModalOpen(!modalOpen);
+    setModalOpen(true);
+  };
+
+  const modalClose = () => {
+    setModalOpen(false);
   };
 
   const addToOutfit = (product) => {
@@ -71,7 +75,7 @@ const Related = (props) => {
 
   return (
     <>
-      <FeatureModal open={modalOpen} />
+      <FeatureModal modalOpen={modalOpen} modalClose={modalClose} />
       <div className="relatedCards">
         {relatedProducts.map((product, index) => (
           <ProductCard
