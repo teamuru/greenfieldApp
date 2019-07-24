@@ -76,7 +76,7 @@ const ProductCard = (props) => {
           </IconButton>
           <IconButton
             onClick={() => {
-              showModal(features);
+              showModal(features, name);
             }}
             aria-label="Show more"
           >

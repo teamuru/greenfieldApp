@@ -17,21 +17,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FeatureModal = (props) => {
-  const { modalOpen, modalClose, clickedFeatures } = props;
+  const {
+ modalOpen, modalClose, clickedFeatures, clickedName 
+} = props;
   const classes = useStyles();
-  // <p id="simple-modal-description" />;
-  // console.log('CURRENT: ', currentFeatures);
-  // console.log('clicked: ', clickedFeatures);
-  let zipped = [];
 
   if (modalOpen) {
     const currentFeatures = store.getState().product.data.features;
-    zipped = _.zip(currentFeatures, clickedFeatures);
-  }
-  // const zipped = _.zipWith(currentFeatures, clickedFeatures, (item, value) => _.defaults({ clicked: value }, item));
-
-  console.log('ZIPPED: ', JSON.stringify(zipped));
-  if (zipped.length > 0) {
+    const currentProduct = store.getState().product.data.name;
+    const zipped = _.zip(currentFeatures, clickedFeatures);
     return (
       <>
         <Modal
@@ -43,21 +37,24 @@ const FeatureModal = (props) => {
           <div className="FeatureModal">
             <div className={classes.paper}>
               <h5 id="modal-title">Features</h5>
-              {zipped.map((item, index) => (
-                <>
-                  <p>
-                    {item[0] !== undefined
-                      ? item[0].value
-                      : console.log('fail0')}
-                  </p>
-                  <p>
-                    {item[1] !== undefined
-                      ? item[1].value
-                      : console.log('fail1')}
-                  </p>
-                  {/* <p>{JSON.stringify(item)}</p> */}
-                </>
-              ))}
+              <table>
+                <th>{currentProduct}</th>
+                <th>{clickedName}</th>
+                {zipped.map(item => (
+                  <>
+                    <p>
+                      {item[0] !== undefined
+                        ? item[0].value
+                        : console.log('fail0')}
+                    </p>
+                    <p>
+                      {item[1] !== undefined
+                        ? item[1].value
+                        : console.log('fail1')}
+                    </p>
+                  </>
+                ))}
+              </table>
             </div>
           </div>
         </Modal>
@@ -70,7 +67,8 @@ const FeatureModal = (props) => {
 FeatureModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   modalClose: PropTypes.func.isRequired,
-  clickedFeatures: PropTypes.array.isRequired
+  clickedFeatures: PropTypes.array.isRequired,
+  clickedName: PropTypes.string.isRequired
 };
 
 export default FeatureModal;

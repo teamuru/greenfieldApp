@@ -32,10 +32,12 @@ const Related = (props) => {
   const [outfitExists, setExists] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedFeatures, setClickedFeatures] = useState([]);
+  const [clickedName, setClickedName] = useState('');
 
-  const showModal = (features) => {
+  const showModal = (features, name) => {
     setModalOpen(true);
     setClickedFeatures(features);
+    setClickedName(name);
   };
 
   const modalClose = () => {
@@ -81,6 +83,7 @@ const Related = (props) => {
         modalOpen={modalOpen}
         modalClose={modalClose}
         clickedFeatures={clickedFeatures}
+        clickedName={clickedName}
       />
       <div className="relatedCards">
         {relatedProducts.map((product, index) => (
