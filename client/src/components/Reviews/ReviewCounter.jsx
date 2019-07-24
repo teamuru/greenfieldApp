@@ -1,9 +1,23 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import React from 'react';
+import { node } from 'prop-types';
 
-class ReviewCounter extends Component {
-  render() {
-    return <div>review counter</div>;
-  }
-}
+const ReviewCounter = (props) => {
+  const { data } = props.reviews;
 
-export default ReviewCounter;
+  return !data.results ? (
+    <span>... Loading no. of reviews</span>
+  ) : (
+    <div>
+      <span> {data.results.length} </span>
+    </div>
+  );
+};
+
+const mapStateToProps = (store) => ({
+  reviews: store.reviews
+});
+
+export default connect(mapStateToProps)(ReviewCounter);
+
+// export default ReviewCounter;
