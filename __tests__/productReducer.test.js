@@ -9,14 +9,20 @@ describe('Product reducer', () => {
         styles: [],
         selectedStyle: {},
         selectedSku: '',
-        selectedQty: 0
+        selectedQty: 0,
+        rating: 0,
+        selectedPhoto: 0,
+        expandedView: false
       })
     ).toEqual({
       data: {},
       styles: [],
       selectedStyle: {},
       selectedSku: '',
-      selectedQty: 0
+      selectedQty: 0,
+      rating: 0,
+      selectedPhoto: 0,
+      expandedView: false
     });
   });
 

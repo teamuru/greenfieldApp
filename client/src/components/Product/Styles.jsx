@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { changeSelectedStyle, changeSelectedSku } from '../../actions/productActions';
+import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
 
 const StyleDiv = styled.div`
   display: flex;
@@ -46,21 +46,19 @@ function Styles(props) {
   const { styles, selectedStyle, handleClick } = props;
   return (
     <StylesProvider injectFirst>
-      <div>
-        <Typography variant="subtitle2">
-          STYLE &gt;
-          {` ${selectedStyle.name.toUpperCase()}`}
-        </Typography>
-        <StyleDiv>
-          {styles.map(style => (
-            <AvatarDiv key={style.style_id}>
-              <Tooltip title={style.name}>
-                <AvatarStyled onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
-              </Tooltip>
-            </AvatarDiv>
-          ))}
-        </StyleDiv>
-      </div>
+      <Typography variant="subtitle2">
+        STYLE &gt;
+        {` ${selectedStyle.name.toUpperCase()}`}
+      </Typography>
+      <StyleDiv>
+        {styles.map(style => (
+          <AvatarDiv key={style.style_id}>
+            <Tooltip title={style.name}>
+              <AvatarStyled onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
+            </Tooltip>
+          </AvatarDiv>
+        ))}
+      </StyleDiv>
     </StylesProvider>
   );
 }
@@ -80,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
   handleClick: (selectedStyle) => {
     dispatch(changeSelectedStyle(selectedStyle));
     dispatch(changeSelectedSku(''));
+    dispatch(resetSelectedPhoto());
   }
 });
 

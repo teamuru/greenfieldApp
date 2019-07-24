@@ -15,8 +15,3 @@ function calculateAverageRate(obj) {
 }
 
 export default calculateAverageRate;
-
-// test
-// var obj = {2: 1, 3: 1, 4: 2}
-// var output = calculatorAverageRate(obj)
-// console.log(output)
