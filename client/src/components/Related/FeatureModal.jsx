@@ -29,45 +29,42 @@ const FeatureModal = (props) => {
     zipped = _.zip(currentFeatures, clickedFeatures);
   }
   // const zipped = _.zipWith(currentFeatures, clickedFeatures, (item, value) => _.defaults({ clicked: value }, item));
-  console.log(zipped);
 
   console.log('ZIPPED: ', JSON.stringify(zipped));
-
-  return (
-    <>
-      <Modal
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        open={modalOpen}
-        onClose={modalClose}
-      >
-        <div className="FeatureModal">
-          <div className={classes.paper}>
-            <h5 id="modal-title">Features</h5>
-            {zipped.map(item => (
-              <>
-                <p>
-                  {item[0] === null ? (
-                    <p>fail0</p>
-                  ) : (
-                    JSON.stringify(item[0].value)
-                  )}
-                </p>
-                <p>
-                  {item[1] === null ? (
-                    <p>fail1</p>
-                  ) : (
-                    JSON.stringify(item[1].value)
-                  )}
-                </p>
-                {/* <p>{JSON.stringify(item)}</p> */}
-              </>
-            ))}
+  if (zipped.length > 0) {
+    return (
+      <>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={modalOpen}
+          onClose={modalClose}
+        >
+          <div className="FeatureModal">
+            <div className={classes.paper}>
+              <h5 id="modal-title">Features</h5>
+              {zipped.map((item, index) => (
+                <>
+                  <p>
+                    {item[0] !== undefined
+                      ? item[0].value
+                      : console.log('fail0')}
+                  </p>
+                  <p>
+                    {item[1] !== undefined
+                      ? item[1].value
+                      : console.log('fail1')}
+                  </p>
+                  {/* <p>{JSON.stringify(item)}</p> */}
+                </>
+              ))}
+            </div>
           </div>
-        </div>
-      </Modal>
-    </>
-  );
+        </Modal>
+      </>
+    );
+  }
+  return null;
 };
 
 FeatureModal.propTypes = {
