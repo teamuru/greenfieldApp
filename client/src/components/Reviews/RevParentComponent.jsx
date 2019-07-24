@@ -14,7 +14,7 @@ import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
 import ReviewForm from './ReviewForm';
-// import ReviewCounter from './ReviewCounter';
+import ReviewCounter from './ReviewCounter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,24 +60,19 @@ const RevParentComponent = () => {
           </Paper>
         </Grid>
 
-        <Grid
-          item
-          // direction="column"
-          // justify="flex-start"
-          // alignItems="flex-start"
-          xs={9}
-          style={{ fontSize: 15, fontWeight: 700 }}
-        >
-          {/* <div style={{ fontSize: 15, fontWeight: 700 }}> */}
-          review counter =>
-          {/* <ReviewCounter /> */}
-          248 reviews, sorted by
-          <Relevance />
-          {/* </div> */}
+        <Grid item xs={9} style={{ fontSize: 20, fontWeight: 700 }}>
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-end"
+          >
+            <ReviewCounter />
+            <Relevance />
+          </Grid>
           <div>
             <ReviewList />
           </div>
-          {/* <ReviewForm /> */}
         </Grid>
       </Grid>
     </div>
