@@ -96,6 +96,7 @@ export default function AddAnswer({ questionId, subFontSize }) {
     <TextField
       label="Your nickname"
       type="text"
+      inputProps={{ maxLength: 60 }}
       fullWidth
       required
       onChange={handleName}
@@ -143,7 +144,8 @@ export default function AddAnswer({ questionId, subFontSize }) {
           border: "none",
           textDecorationLine: hover,
           fontSize: subFontSize,
-          cursor: "pointer"
+          cursor: "pointer",
+          color: "gray"
         }}
       >
         Add Answer

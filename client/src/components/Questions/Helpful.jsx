@@ -17,7 +17,9 @@ function Helpful({ questionId, helpfulness, subFontSize }) {
   };
   return (
     <React.Fragment>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}>
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
+      >
         {`     Helpful?`}
       </span>
       <button
@@ -28,12 +30,15 @@ function Helpful({ questionId, helpfulness, subFontSize }) {
           textDecorationLine: hover,
           border: "none",
           fontSize: subFontSize,
-          cursor: "pointer"
+          cursor: "pointer",
+          color: "gray"
         }}
       >
         Yes
       </button>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}>
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
+      >
         {`(${helpful})     |     `}
       </span>
     </React.Fragment>

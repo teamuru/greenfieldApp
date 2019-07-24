@@ -16,13 +16,26 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
     setHelpfulness(helpful + 1);
     putHelpfulAnswer(id);
   };
+  const styples = {
+    whiteSpace: "pre-wrap",
+    fontSize: subFontSize,
+    color: "gray"
+  };
+  const boldSeller = () => (
+    <span style={{ fontWeight: "bold", fontSize: subFontSize, color: "gray" }}>
+      Seller
+    </span>
+  );
   return (
     <React.Fragment>
-      <span
-        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
-      >
-        {`    by ${answerer_name}, ${timeConvert(date)}      |      Helpful?`}
+      <span style={styples}>{`    by ${answerer_name} `}</span>
+      <span style={styples}>
+        {answerer_name === "Seller" ? "-" : ""}
+        {answerer_name === "Seller" ? boldSeller() : ""}
       </span>
+      <span style={styples}>{`, ${timeConvert(
+        date
+      )}      |      Helpful?`}</span>
       <button
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
@@ -38,7 +51,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
         Yes
       </button>
       <span
-        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}
+        style={{ whiteSpace: "pre-wrap", color: "gray", fontSize: subFontSize }}
       >{` (${helpful})      |      `}</span>
     </React.Fragment>
   );

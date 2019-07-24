@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import AnswerModal from "./AnswerModal";
 import AddAnswer from "./AddAnswer";
 import Helpful from "./Helpful";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
 class AddQuestionModal extends Component {
   render() {
     let { questions, count, qFontSize, subFontSize, aFontSize } = this.props;
-    // console.log("question ", questions);
+    console.log("question ", questions);
 
     if (questions) {
       questions = questionModal(questions, count);
@@ -21,7 +23,8 @@ class AddQuestionModal extends Component {
             } = question;
 
             return (
-              <div key={`questionID:${question_id}`}>
+              <Grid key={`questionID:${question_id}`} container spacing={3}>
+                {/* <div key={`questionID:${question_id}`}> */}
                 <label style={{ fontWeight: "bold", fontSize: qFontSize }}>
                   Q: {question_body}
                 </label>
@@ -38,7 +41,8 @@ class AddQuestionModal extends Component {
                   aFontSize={aFontSize}
                   qFontSize={qFontSize}
                 />
-              </div>
+                {/* </div> */}
+              </Grid>
             );
           })}
         </div>
