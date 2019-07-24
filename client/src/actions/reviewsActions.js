@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 
+// GET REVIEWS
 export const fetchReviewsSuccess = reviews => ({
   type: 'FETCH_REVIEWS_SUCCESS',
   payload: reviews
@@ -20,7 +21,7 @@ export const fetchReviews = (prodId) => {
       .catch(err => dispatch(fetchReviewsFailure(err)));
 };
 
-// META
+// GET META
 export const fetchMetaSuccess = meta => ({
   type: 'FETCH_META_SUCCESS',
   payload: meta
@@ -40,6 +41,35 @@ export const fetchMeta = (prodId) => {
       .catch(err => dispatch(fetchMetaFailure(err)));
 };
 
+// Helpful
+export const putHelpful = (reviewId) => {
+  // console.log('productId from actions', reviewId);
+  const url = `${API_URL}/reviews/helpful/${reviewId}`;
+
+  Axios.put(url, { reveiw_id: reviewId })
+    .then(() => {
+      console.log('sucessful put');
+    })
+    .catch((err) => {
+      console.log('reviews - fail put helpful \n err => ', err);
+    });
+};
+
+// Report
+export const reportReview = (prodId) => {
+  const url = `${API_URL}/reviews/report/${prodId}`;
+  // FIXME: with spelling error
+  // Axios.put(url, { reveiw_id: prodId })
+  Axios.put(url, { review_id: prodId })
+    .then((data) => {
+      console.log('reviews - sucessful put report', data);
+    })
+    .catch((err) => {
+      console.log('reviews - fail put report', err);
+    });
+};
+
+// Post from Form
 export const postReviewSucess = review => ({
   type: 'POST_REVIEW_SUCCESS',
   payload: review
@@ -61,20 +91,10 @@ export const postReview = (reviewObj, prodId) => {
       });
 };
 
-// export const markReviewSuccess = (review) => ({
-//   type: 'PUT_REVIEW_SUCCESS',
-//   payload: review
-// });
-
-// export const markReviewFailure = (error) => ({
-//   type: 'PUT_REVIEW_FAILURE',
-//   payload: error
-// });
-
-// export const markReview = (prodId) => (dispatch) =>
-//   Axios.put(`${API_URL}/reviews/report/${prodId}`)
-//     // TODO: fix put request so that it gets thte helpfullness rating and increments it up
-//     .then(({ data }) => dispatch(markReviewSuccess(data)))
-//     .catch((err) => dispatch(markReviewFailure(err)));
-
-export default { fetchReviews, postReview, fetchMeta };
+export default {
+  fetchReviews,
+  fetchMeta,
+  putHelpful,
+  reportReview,
+  postReview
+};

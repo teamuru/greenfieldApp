@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import VerifyRec from './VerifyRec';
 import ReviewResponse from './ReviewResponse';
+import RevHelpful from './RevHelpful';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -110,14 +111,10 @@ const ReviewEntry = ({ review }) => {
           </Grid>
           <Grid item style={style.helpful}>
             <span>Helpful? </span>
-            <Button className={classes.button}>
-              <span style={{ fontWeight: 400 }}>
-                <u>Yes</u>{' '}
-                <span style={{ color: '#A9A9A9' }}>
-                  ( {review.helpfulness} ){' '}
-                </span>
-              </span>
-            </Button>
+            <RevHelpful
+              reviewId={review.review_id}
+              helpfulness={review.helpfulness}
+            />
             {'  '} | {'  '}
             <Button className={classes.button}>
               <span style={{ fontWeight: 400 }}>Report</span>
