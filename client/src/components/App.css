@@ -12,6 +12,14 @@
   flex-direction: row;
 }
 
+<<<<<<< HEAD
+.FeatureModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+=======
 .slidecontainer {
   width: 100%;
 }
@@ -38,3 +46,4 @@
   background: #4CAF50;
   cursor: pointer;
 }
+>>>>>>> c7b07f34ef7845e7c438f6f5484b2f38d2a95153

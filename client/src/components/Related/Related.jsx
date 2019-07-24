@@ -8,6 +8,8 @@ import uuid from 'uuid';
 import { PropTypes } from 'prop-types';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
+import FeatureModal from './FeatureModal';
+
 import {
   fetchAllRelated,
   fetchAllPhotos,
@@ -28,10 +30,14 @@ const Related = (props) => {
 
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
-  const [compare, setCompare] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCompareClick = () => {
-    setCompare(!compare);
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
+  const modalClose = () => {
+    setModalOpen(false);
   };
 
   const addToOutfit = (product) => {
@@ -69,6 +75,7 @@ const Related = (props) => {
 
   return (
     <>
+      <FeatureModal modalOpen={modalOpen} modalClose={modalClose} />
       <div className="relatedCards">
         {relatedProducts.map((product, index) => (
           <ProductCard
@@ -79,7 +86,7 @@ const Related = (props) => {
             defaultPrice={product.default_price}
             category={product.category}
             addToOutfit={addToOutfit}
-            handleCompareClick={handleCompareClick}
+            showModal={showModal}
           />
         ))}
       </div>
