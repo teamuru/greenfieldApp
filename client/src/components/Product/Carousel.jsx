@@ -28,6 +28,8 @@ const Container = styled.div`
 const Img = styled.img`
   width: 100%;
   height: 100%;
+  padding-left: 80px;
+  padding-right: 20px;
   object-fit: contain;
 `;
 
@@ -43,7 +45,7 @@ const ChevronLeftStyled = styled(ChevronLeft)`
 
 const ChevronRightStyled = styled(ChevronRight)`
   position: absolute;
-  right: 1%;
+  right: 0px;
   bottom: 50%;
   cursor: pointer;
   &:hover {
@@ -53,8 +55,8 @@ const ChevronRightStyled = styled(ChevronRight)`
 
 const FullScreenStyled = styled(Fullscreen)`
   position: absolute;
-  right: 1%;
-  top: 1%;
+  right: 0%;
+  top: 0%;
   cursor: pointer;
   &:hover {
     ${HoverMixin}
@@ -71,13 +73,14 @@ const AvatarDiv = styled.div`
 const AvatarStyled = styled(Avatar)`
   border-radius: 0;
   margin-bottom: 1rem;
+  margin-top: ${props => (props.selectedphoto === 0 && props.index === 0 ? '38px' : '0px')};
   cursor: pointer;
   border: solid 2.5px ${props => (props.selectedphoto === props.index ? theme.palette.secondary.main : theme.palette.secondary.contrastText)};
 `;
 
 const ArrowDropUpStyled = styled(ArrowDropUp)`
   cursor: pointer;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   &:hover {
     ${HoverMixin}
   }
