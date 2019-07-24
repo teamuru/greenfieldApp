@@ -17,7 +17,8 @@ class Question extends Component {
       load: false,
       qFontSize: 20,
       aFontSize: 18,
-      subFontSize: 16
+      subFontSize: 16,
+      highLight: ""
     };
     this.setCount = this.setCount.bind(this);
     this.setLoadMore = this.setLoadMore.bind(this);
@@ -28,8 +29,8 @@ class Question extends Component {
     fetchQuestions(location.pathname);
   }
 
-  setCount(count) {
-    this.setState({ count: count });
+  setCount(count, char) {
+    this.setState({ count: count, highLight: char });
   }
 
   setLoadMore() {
@@ -46,7 +47,14 @@ class Question extends Component {
     let questions = this.props.questions.displayList;
     let questionsData = this.props.questions.data;
     let { location } = this.props;
-    let { qFontSize, count, load, aFontSize, subFontSize } = this.state;
+    let {
+      qFontSize,
+      count,
+      load,
+      aFontSize,
+      subFontSize,
+      highLight
+    } = this.state;
 
     // console.log("questions: ", questions);
     return (
@@ -55,10 +63,12 @@ class Question extends Component {
         <SearchQuestions
           setQuestionList={this.setQuestionList}
           questionsData={questionsData}
+          setCount={this.setCount}
         />
         <QuestionModel
           questions={questions}
           count={count}
+          highLight={highLight}
           qFontSize={qFontSize}
           aFontSize={aFontSize}
           subFontSize={subFontSize}

@@ -13,7 +13,8 @@ class SearchQuestions extends Component {
   handleOnChange(e) {
     let currentList = [];
     let newList = [];
-    let { setQuestionList, questionsData } = this.props;
+    let questCount = 3;
+    let { setQuestionList, questionsData, setCount } = this.props;
     currentList = questionsData;
     if (e.target.value.length > 3) {
       newList = currentList.filter(question => {
@@ -24,12 +25,17 @@ class SearchQuestions extends Component {
           return question;
         }
       });
+      questCount = currentList.length;
     } else {
       newList = questionsData;
     }
+    //highligth char
+
+    setCount(questCount, e.target.value);
     setQuestionList(newList);
     this.setState({ value: e.target.value });
   }
+
   handleSubmit(e) {
     e.preventDefault();
     console.log("search value: ", this.state.value);

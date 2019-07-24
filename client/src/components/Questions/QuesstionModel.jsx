@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import AnswerModal from "./AnswerModal";
 import AddAnswer from "./AddAnswer";
 import Helpful from "./Helpful";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Highlighter from "react-highlight-words";
 
 class AddQuestionModal extends Component {
   render() {
-    let { questions, count, qFontSize, subFontSize, aFontSize } = this.props;
+    let {
+      questions,
+      count,
+      qFontSize,
+      subFontSize,
+      aFontSize,
+      highLight
+    } = this.props;
     // console.log("question ", questions);
 
     if (questions) {
@@ -25,8 +32,20 @@ class AddQuestionModal extends Component {
             return (
               <Grid key={`questionID:${question_id}`} container spacing={1}>
                 <Grid item xs={8}>
-                  <label style={{ fontWeight: "bold", fontSize: qFontSize }}>
-                    Q: {question_body}
+                  <label
+                    style={{
+                      whiteSpace: "pre-wrap",
+                      fontWeight: "bold",
+                      fontSize: qFontSize
+                    }}
+                  >
+                    Q:{` `}
+                    <Highlighter
+                      highlightClassName="YourHighlightClass"
+                      searchWords={[highLight]}
+                      autoEscape={true}
+                      textToHighlight={question_body}
+                    />
                   </label>
                 </Grid>
 
