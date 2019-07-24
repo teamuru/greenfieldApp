@@ -34,14 +34,18 @@ const RevParentComponent = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid
+        container
+        spacing={3}
+        // direction="row"
+      >
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        {/* <Grid item xs> */}
-        <Grid item xs>
+        {/* <d item xs> */}
+        <Grid item>
           <Paper className={classes.paper}>
             <AverageRev />
           </Paper>
@@ -56,16 +60,21 @@ const RevParentComponent = () => {
           </Paper>
         </Grid>
 
-        <Grid item xs={9}>
-          <Grid style={{ fontSize: 15, fontWeight: 700 }}>
-            248 reviews, sorted by
-            <Relevance />
-          </Grid>
-
-          <Grid item>
+        <Grid
+          item
+          // direction="column"
+          // justify="flex-start"
+          // alignItems="flex-start"
+          xs={9}
+          style={{ fontSize: 15, fontWeight: 700 }}
+        >
+          {/* <div style={{ fontSize: 15, fontWeight: 700 }}> */}
+          248 reviews, sorted by
+          <Relevance />
+          {/* </div> */}
+          <div>
             <ReviewList />
-          </Grid>
-
+          </div>
           {/* <ReviewForm /> */}
         </Grid>
       </Grid>
