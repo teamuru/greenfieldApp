@@ -61,7 +61,7 @@ const RevParentComponent = () => {
           direction="row"
           justify="flex-start"
           alignItems="center"
-          // xs={9}
+          xs={9}
           style={{ fontSize: 15, fontWeight: 700 }}
         >
           {/* <div style={{ fontSize: 15, fontWeight: 700 }}> */}
