@@ -36,7 +36,7 @@ const ProductCard = (props) => {
     image,
     id,
     addToOutfit,
-    handleCompareClick
+    showModal
   } = props;
 
   if (image) {
@@ -74,7 +74,7 @@ const ProductCard = (props) => {
               <StarIcon />
             </div>
           </IconButton>
-          <IconButton onClick={handleCompareClick} aria-label="Show more">
+          <IconButton onClick={showModal} aria-label="Show more">
             <CompareArrowsIcon />
           </IconButton>
         </CardActions>

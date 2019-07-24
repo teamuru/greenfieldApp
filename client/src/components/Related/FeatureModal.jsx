@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
@@ -15,29 +14,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function getModalStyle() {
-  return {
-    top: '50%',
-    left: '50%',
-    // transform: `translate(-${top}%, -${left}%)`
-    position: 'fixed'
-  };
-}
-
 const FeatureModal = (props) => {
   const { open } = props;
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-
   return (
     <Modal
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
       open={open}
+      // onClose={showModal}
     >
-      <div style={modalStyle} className={classes.paper}>
-        <h2 id="modal-title">Features</h2>
-        <p id="simple-modal-description" />
+      <div className="FeatureModal">
+        <div className={classes.paper}>
+          <h2 id="modal-title">Features</h2>
+          <p id="simple-modal-description" />
+        </div>
       </div>
     </Modal>
   );

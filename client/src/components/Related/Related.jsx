@@ -32,7 +32,7 @@ const Related = (props) => {
   const [outfitExists, setExists] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCompareClick = () => {
+  const showModal = () => {
     setModalOpen(!modalOpen);
   };
 
@@ -82,7 +82,7 @@ const Related = (props) => {
             defaultPrice={product.default_price}
             category={product.category}
             addToOutfit={addToOutfit}
-            handleCompareClick={handleCompareClick}
+            showModal={showModal}
           />
         ))}
       </div>
