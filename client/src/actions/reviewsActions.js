@@ -48,10 +48,10 @@ export const postHelpful = (prodId) => {
   const url = `${URL}/reviews/helpful/${prodId}`;
   Axios.put(url, { reveiw_id: prodId })
     .then((data) => {
-      console.log(`reviews - sucessful put helpful`, data);
+      console.log('reviews - sucessful put helpful', data);
     })
     .catch((err) => {
-      console.log(`reviews - fail put helpful`, err);
+      console.log('reviews - fail put helpful', err);
     });
 };
 
@@ -60,10 +60,10 @@ export const reportReview = (prodId) => {
   const url = `${API_URL}/reviews/report/`;
   Axios.put(url, { answer_id: prodId })
     .then((data) => {
-      console.log(`reviews - sucessful put report`, data);
+      console.log('reviews - sucessful put report', data);
     })
     .catch((err) => {
-      console.log(`reviews - fail put report`, err);
+      console.log('reviews - fail put report', err);
     });
 };
 
@@ -90,20 +90,10 @@ export const postReview = (reviewObj, prodId) => {
       });
 };
 
-// export const markReviewSuccess = (review) => ({
-//   type: 'PUT_REVIEW_SUCCESS',
-//   payload: review
-// });
-
-// export const markReviewFailure = (error) => ({
-//   type: 'PUT_REVIEW_FAILURE',
-//   payload: error
-// });
-
-// export const markReview = (prodId) => (dispatch) =>
-//   Axios.put(`${API_URL}/reviews/report/${prodId}`)
-//     // TODO: fix put request so that it gets thte helpfullness rating and increments it up
-//     .then(({ data }) => dispatch(markReviewSuccess(data)))
-//     .catch((err) => dispatch(markReviewFailure(err)));
-
-export default { fetchReviews, postReview, fetchMeta };
+export default {
+  fetchReviews,
+  fetchMeta,
+  postHelpful,
+  reportReview,
+  postReview
+};
