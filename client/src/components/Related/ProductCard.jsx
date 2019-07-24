@@ -28,13 +28,13 @@ const useStyles = makeStyles({
 
 const ProductCard = (props) => {
   const classes = useStyles();
-
   const {
     category,
     name,
     defaultPrice,
     image,
     id,
+    features,
     addToOutfit,
     showModal
   } = props;
@@ -74,7 +74,12 @@ const ProductCard = (props) => {
               <StarIcon />
             </div>
           </IconButton>
-          <IconButton onClick={showModal} aria-label="Show more">
+          <IconButton
+            onClick={() => {
+              showModal(features);
+            }}
+            aria-label="Show more"
+          >
             <CompareArrowsIcon />
           </IconButton>
         </CardActions>

@@ -31,9 +31,11 @@ const Related = (props) => {
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [clickedFeatures, setClickedFeatures] = useState([]);
 
-  const showModal = () => {
+  const showModal = (features) => {
     setModalOpen(true);
+    setClickedFeatures(features);
   };
 
   const modalClose = () => {
@@ -75,7 +77,11 @@ const Related = (props) => {
 
   return (
     <>
-      <FeatureModal modalOpen={modalOpen} modalClose={modalClose} />
+      <FeatureModal
+        modalOpen={modalOpen}
+        modalClose={modalClose}
+        clickedFeatures={clickedFeatures}
+      />
       <div className="relatedCards">
         {relatedProducts.map((product, index) => (
           <ProductCard
@@ -85,6 +91,7 @@ const Related = (props) => {
             image={photos[index]}
             defaultPrice={product.default_price}
             category={product.category}
+            features={product.features}
             addToOutfit={addToOutfit}
             showModal={showModal}
           />
