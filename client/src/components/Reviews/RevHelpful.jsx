@@ -27,17 +27,10 @@ const RevHelpful = ({ reviewId, helpfulness }) => {
   const [helpful, updateHelpful] = React.useState(helpfulness);
 
   const handleClick = () => {
-    console.log(`inside handleClick => `, reviewId);
+    // console.log(`inside handleClick => `, reviewId);
     putHelpful(reviewId);
     updateHelpful(helpful + 1);
   };
-
-  // Attempt 1
-  // const handleClick = (e) => {
-  //   putHelpful(e.target.value);
-  //   // updateHelpful(helpful + 1);
-  //   console.log(`e.target.value inside updateHelpful`, e.target.value);
-  // };
 
   return (
     <span>

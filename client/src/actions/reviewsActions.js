@@ -44,22 +44,24 @@ export const fetchMeta = (prodId) => {
 };
 
 // Helpful
-export const putHelpful = (prodId) => {
-  console.log('productId from actions', prodId);
-  const url = `${URL}/reviews/helpful/${prodId}`;
-  Axios.put(url, { reveiw_id: prodId })
-    .then((data) => {
-      console.log('reviews - sucessful put helpful', data);
-      // data.rev
+export const putHelpful = (reviewId) => {
+  // console.log('productId from actions', reviewId);
+  const url = `${API_URL}/reviews/helpful/${reviewId}`;
+
+  Axios.put(url, { reveiw_id: reviewId })
+    .then(() => {
+      console.log(`sucessful put`);
     })
     .catch((err) => {
-      console.log('reviews - fail put helpful', err);
+      console.log('reviews - fail put helpful \n err => ', err);
     });
 };
 
 // Report
 export const reportReview = (prodId) => {
   const url = `${API_URL}/reviews/report/${prodId}`;
+  // FIXME: with spelling error
+  // Axios.put(url, { reveiw_id: prodId })
   Axios.put(url, { review_id: prodId })
     .then((data) => {
       console.log('reviews - sucessful put report', data);
