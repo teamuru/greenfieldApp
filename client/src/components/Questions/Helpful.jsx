@@ -1,24 +1,26 @@
-import React from 'react';
-import { putHelpful } from '../../actions/questionsActions';
+import React from "react";
+import { putHelpful } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function Helpful({ questionId, helpfulness }) {
+function Helpful({ questionId, helpfulness, subFontSize }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
-  const [hover, setHover] = React.useState('underline');
+  const [hover, setHover] = React.useState("underline");
   const handleClick = () => {
     putHelpful(questionId);
     setHelpfulness(helpful + 1);
   };
   const handleHoverOn = () => {
-    setHover('none');
+    setHover("none");
   };
   const handleHoverOff = () => {
-    setHover('underline');
+    setHover("underline");
   };
   return (
     <React.Fragment>
-      <span style={{ whiteSpace: 'pre-wrap', fontSize: 8 }}>
-        {`     Helpful?    `}
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
+      >
+        {`     Helpful?`}
       </span>
       <button
         onClick={handleClick}
@@ -26,14 +28,18 @@ function Helpful({ questionId, helpfulness }) {
         onMouseLeave={handleHoverOff}
         style={{
           textDecorationLine: hover,
-          border: 'none',
-          fontSize: 8,
-          cursor: 'pointer'
+
+          border: "none",
+          fontSize: subFontSize,
+          cursor: "pointer",
+          color: "gray"
         }}
       >
         Yes
       </button>
-      <span style={{ whiteSpace: 'pre-wrap', fontSize: 8 }}>
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
+      >
         {`(${helpful})     |     `}
       </span>
     </React.Fragment>

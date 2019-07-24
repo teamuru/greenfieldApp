@@ -5,7 +5,7 @@ class MoreAnsweredQuestions extends Component {
     super(props);
     this.state = {
       count: 2,
-      hover: "normal",
+      hover: "bold",
       moreOrLess: true
     };
     this.hangelClick = this.hangelClick.bind(this);
@@ -14,10 +14,10 @@ class MoreAnsweredQuestions extends Component {
   }
 
   handleHoverOn() {
-    this.setState({ hover: "bold" });
+    this.setState({ hover: "normal" });
   }
   handleHoverOff() {
-    this.setState({ hover: "normal" });
+    this.setState({ hover: "bold" });
   }
 
   hangelClick() {
@@ -40,8 +40,9 @@ class MoreAnsweredQuestions extends Component {
           onMouseLeave={this.handleHoverOff}
           style={{
             fontWeight: this.state.hover,
-            fontSize: 14,
-            cursor: "pointer"
+            fontSize: 24,
+            cursor: "pointer",
+            padding: "20px"
           }}
           onClick={this.hangelClick}
         >
