@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
-import calculateAverageRating from '../lib/calculateAverageRating';
+import calculateAverageRate from '../lib/calculateAverageRate';
 
 // Fetch Product Data
 export const fetchProductSuccess = product => ({
@@ -89,7 +89,7 @@ export const fetchRatings = (prodId) => {
   return dispatch => Axios.get(url)
       .then(({ data }) => {
         const { ratings } = data;
-        const stars = calculateAverageRating(ratings);
+        const stars = calculateAverageRate(ratings);
         dispatch(fetchRatingsSuccess(stars));
       })
       .catch((err) => {

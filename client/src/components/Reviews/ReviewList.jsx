@@ -1,26 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { Grid } from '@material-ui/core';
+
 import ReviewEntry from './ReviewEntry';
+import MoreReviews from './MoreReviews';
+import AddReviewModal from './AddReviewModal';
 
-const ReviewList = (props) => {
-  const { reviews } = props;
 
-  return reviews.data ? (
-    <div>
-      {reviews.data.results.map((review) => {
-        return (
-          <div key={review.review_id}>
-            <ReviewEntry review={review} />
-          </div>
-        );
-      })}
-    </div>
-  ) : (
-    <h1>... Loading</h1>
-  );
-};
+class ReviewList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      increment: 2,
+      limit: 2
+    };
+    this.loadMore = this.loadMore.bind(this);
+  }
+
+  loadMore() {
+    this.setState({
+      limit: this.state.limit + this.state.increment
+    });
+  }
+
+  render() {
+    const { data } = this.props.reviews;
+    return !data ? (
+      <h3>...Loading reviews</h3>
+    ) : (
+      <div>
+        {data.results.slice(0, this.state.limit).map((review) => {
+          return (
+            <div key={review.review_id}>
+              <ReviewEntry review={review} />
+            </div>
+          );
+        })}
+
+        {/* Buttons */}
+        <Grid
+          container
+          alignItems="baseline"
+          spacing={6}
+          justify="flex-start"
+          direction="row"
+        >
+          <Grid item onClick={this.loadMore}>
+            <MoreReviews />
+          </Grid>
+          <Grid item>
+            <AddReviewModal />
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (store) => ({
   reviews: store.reviews

@@ -1,7 +1,7 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { Paper, Grid } from '@material-ui/core';
 
 // Children Components
 import MoreReviews from './MoreReviews';
@@ -13,6 +13,8 @@ import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
+
+import ReviewForm from './ReviewForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,20 +66,7 @@ const RevParentComponent = () => {
             <ReviewList />
           </Grid>
 
-          <Grid
-            container
-            alignItems="baseline"
-            spacing={6}
-            justify="flex-start"
-            direction="row"
-          >
-            <Grid item>
-              <MoreReviews />
-            </Grid>
-            <Grid item>
-              <AddReviewModal />
-            </Grid>
-          </Grid>
+          {/* <ReviewForm /> */}
         </Grid>
       </Grid>
     </div>

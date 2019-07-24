@@ -17,7 +17,14 @@ export default function AddAnswer(props) {
   const [photo, setPhoto] = React.useState("");
   const [photos, setPhotos] = React.useState([]);
   const [fail, setFail] = React.useState("");
+  const [hover, setHover] = React.useState("underline");
 
+  const handleHoverOn = () => {
+    setHover("none");
+  };
+  const handleHoverOff = () => {
+    setHover("underline");
+  };
   //https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 
   function handleClickOpen() {
@@ -45,7 +52,6 @@ export default function AddAnswer(props) {
   }
 
   function LoadMorePhoto() {
-    // console.log("photo ", photo);
     if (isImageUrl(photo)) {
       setPhotos([...photos, photo]);
       setPhoto("");
@@ -57,7 +63,6 @@ export default function AddAnswer(props) {
 
   const handleSubmit = () => {
     let id = props.questionId;
-
     if (answer.length > 0 && name.length > 0) {
       if (ValidateEmail(email)) {
         handleClose();
@@ -132,12 +137,15 @@ export default function AddAnswer(props) {
   return (
     <span>
       <button
+        onMouseEnter={handleHoverOn}
+        onMouseLeave={handleHoverOff}
+        onClick={handleClickOpen}
         style={{
           border: "none",
-          textDecorationLine: "underline",
-          fontSize: 8
+          textDecorationLine: hover,
+          fontSize: 8,
+          cursor: "pointer"
         }}
-        onClick={handleClickOpen}
       >
         Add Answer
       </button>

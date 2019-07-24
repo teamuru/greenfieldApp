@@ -11,6 +11,11 @@ export const fetchQuestionsError = error => ({
   error
 });
 
+export const displayQuestions = questions => ({
+  type: 'DISPLAY_QUESTIONS',
+  payload: questions
+});
+
 export const fetchQuestions = (prodId) => {
   const url = `${API_URL}/qa/${prodId}`;
   return dispatch => Axios.get(url)
@@ -24,15 +29,13 @@ export const fetchQuestions = (prodId) => {
 
 export const postAddAnswer = (answer, name, email, photos, id) => {
   const url = `${API_URL}/qa/${id}/answers`;
-  // console.log("post add answer answer: ", answer);
-  // console.log("post add answer name: ", name);
-  // console.log("post add answer email: ", email);
-  // console.log("post add answer id: ", id);
-  // console.log("post add answer photos[0]: ", photos);
 
   Axios.post(url, {
- body: answer, name, email, photos 
-})
+    body: answer,
+    name,
+    email,
+    photos
+  })
     .then(() => {
       console.log('Success to post AddAnswer');
     })
@@ -41,4 +44,53 @@ export const postAddAnswer = (answer, name, email, photos, id) => {
     });
 };
 
-// export default fetchQuestions;
+export const putHelpful = (id) => {
+  const url = `${API_URL}/qa/question/${id}/helpful`;
+  console.log('id for pull: ', id);
+  Axios.put(url, { question_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+export const putHelpfulAnswer = (id) => {
+  const url = `${API_URL}/qa/answer/${id}/helpful`;
+  Axios.put(url, { question_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+export const ReportAnswer = (id) => {
+  const url = `${API_URL}/qa/answer/${id}/report`;
+  Axios.put(url, { answer_id: id })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};
+
+export const postQuestion = (id, question, name, email) => {
+  const url = `${API_URL}/qa/${id}`;
+
+  Axios.post(url, {
+    product_id: id,
+    body: question,
+    name,
+    email
+  })
+    .then(() => {
+      console.log('success pull helpful');
+    })
+    .catch(() => {
+      console.log('fail pull helpful');
+    });
+};

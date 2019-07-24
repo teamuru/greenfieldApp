@@ -2,7 +2,7 @@
 // obj = { 2: 1, 3: 1, 4: 2, ... }
 // return average rate rounding to nearest 0.25
 
-function calculateAverageRating(obj) {
+function calculateAverageRate(obj) {
   let rateSum = 0;
   let rateCounter = 0;
   Object.keys(obj).forEach((k) => {
@@ -14,4 +14,4 @@ function calculateAverageRating(obj) {
   return Number(Math.round(average * 4) / 4);
 }
 
-export default calculateAverageRating;
+export default calculateAverageRate;
