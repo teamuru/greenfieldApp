@@ -27,23 +27,16 @@ const RevHelpful = ({ reviewId, helpfulness }) => {
   const [helpful, updateHelpful] = React.useState(helpfulness);
 
   const handleClick = () => {
-    // console.log(`inside handleClick => `, reviewId);
     putHelpful(reviewId);
     updateHelpful(helpful + 1);
   };
 
   return (
     <span>
-      <Button
-        className={classes.button}
-        // // id={review.review_id}
-        // value={review.review_id}
-        onClick={handleClick}
-      >
+      <Button className={classes.button} onClick={handleClick}>
         <span style={{ fontWeight: 400 }}>
           <u>Yes</u>{' '}
           <span style={{ color: '#A9A9A9' }}>( {helpfulness} ) </span>
-          <h1> review_id => {reviewId} </h1>
         </span>
       </Button>
     </span>
