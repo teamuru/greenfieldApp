@@ -8,13 +8,13 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    fontSize: 13
+    fontSize: 20
   }
 }));
 
 const style = {
   menuStyle: {
-    fontSize: 15
+    fontSize: 20
   }
 };
 
