@@ -6,6 +6,7 @@ import { Grid, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import VerifyRec from './VerifyRec';
+import ReviewResponse from './ReviewResponse';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,7 +102,10 @@ const ReviewEntry = ({ review }) => {
             </Grid>
             <Grid item xs={9} style={style.resBod}>
               {' '}
-              <div>{review.response}</div>
+              <div>
+                {/* {review.response} */}
+                <ReviewResponse review={review} />
+              </div>
             </Grid>
           </Grid>
           <Grid item style={style.helpful}>

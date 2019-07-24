@@ -32,8 +32,10 @@ export class StarGraphsList extends Component {
               <StarGraph
                 variant="determinate"
                 // value={element}
-                value={`${meta.ratings[`${element}`] /
-                  normalizeData(meta.ratings)}`}
+                // value={`${meta.ratings[`${element}`] /
+                // normalizeData(meta.ratings)}`}
+
+                value={meta.ratings[`${element}`] / normalizeData(meta.ratings)}
               />
             </div>
           );
