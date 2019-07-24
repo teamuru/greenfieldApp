@@ -11,7 +11,7 @@ class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: "normal",
+      hover: "bold",
       open: false,
       question: "",
       name: "",
@@ -28,10 +28,10 @@ class AddQuestionModal extends Component {
     this.handleEmail = this.handleEmail.bind(this);
   }
   handleHoverOn() {
-    this.setState({ hover: "bold" });
+    this.setState({ hover: "normal" });
   }
   handleHoverOff() {
-    this.setState({ hover: "normal" });
+    this.setState({ hover: "bold" });
   }
   handleClickOpen() {
     this.setState({ open: true });
@@ -119,8 +119,9 @@ class AddQuestionModal extends Component {
           onClick={this.handleClickOpen}
           style={{
             fontWeight: this.state.hover,
-            fontSize: 14,
-            cursor: "pointer"
+            fontSize: 24,
+            cursor: "pointer",
+            padding: "20px"
           }}
         >
           ADD A QUESTION +

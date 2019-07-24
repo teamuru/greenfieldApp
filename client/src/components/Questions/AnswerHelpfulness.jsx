@@ -18,10 +18,10 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
   };
   return (
     <React.Fragment>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}>
-        {`    by ${answerer_name}, ${timeConvert(
-          date
-        )}      |      Helpful?   `}
+      <span
+        style={{ whiteSpace: "pre-wrap", fontSize: subFontSize, color: "gray" }}
+      >
+        {`    by ${answerer_name}, ${timeConvert(date)}      |      Helpful?`}
       </span>
       <button
         onMouseEnter={handleHoverOn}
@@ -29,6 +29,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
         style={{
           textDecorationLine: hover,
           fontSize: subFontSize,
+          color: "gray",
           border: "none",
           cursor: "pointer"
         }}

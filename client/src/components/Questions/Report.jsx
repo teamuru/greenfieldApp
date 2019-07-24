@@ -28,6 +28,7 @@ const Report = ({ id, subFontSize }) => {
         style={{
           textDecorationLine: hover,
           fontSize: subFontSize,
+          color: "gray",
           border: "none",
           cursor: "pointer"
         }}

@@ -18,7 +18,7 @@ function Helpful({ questionId, helpfulness, subFontSize }) {
   return (
     <React.Fragment>
       <span style={{ whiteSpace: "pre-wrap", fontSize: subFontSize }}>
-        {`     Helpful?    `}
+        {`     Helpful?`}
       </span>
       <button
         onClick={handleClick}
