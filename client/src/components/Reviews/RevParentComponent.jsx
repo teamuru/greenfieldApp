@@ -4,17 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid } from '@material-ui/core';
 
 // Children Components
-import MoreReviews from './MoreReviews';
-import AddReviewModal from './AddReviewModal.jsx';
+
 import Recommended from './Recommended.jsx';
-import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
-import ReviewForm from './ReviewForm';
 import ReviewCounter from './ReviewCounter';
+
+// Testing Form
+import ReviewForm from './ReviewForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,6 +74,7 @@ const RevParentComponent = () => {
             <ReviewList />
           </div>
         </Grid>
+        <ReviewForm />
       </Grid>
     </div>
   );
