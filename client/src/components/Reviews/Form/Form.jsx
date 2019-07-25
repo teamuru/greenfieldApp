@@ -15,6 +15,8 @@ import {
   Typography
 } from '@material-ui/core';
 
+import { ReviewSnackbar } from './Snackbar';
+
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
 import Username from './Username';
@@ -158,6 +160,24 @@ const Form = (props) => {
         setForm={setForm.bind(this)}
         error={checkErrors('rating')}
       />
+
+      <DialogActions>
+        <Button onClick={props.handleClose} variant="contained" color="primary">
+          Cancel
+        </Button>
+
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          Submit
+        </Button>
+
+        {/* Snackbar */}
+        <ReviewSnackbar open={open} handleClose={handleClose} errors={errors} />
+      </DialogActions>
     </React.Fragment>
   ) : (
     <div>Loading...</div>
