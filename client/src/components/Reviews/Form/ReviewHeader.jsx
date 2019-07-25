@@ -13,7 +13,7 @@ const RevSummary = ({ summary = '', handleChange, error }) => {
         Enter a Summary*
       </Typography>
       <TextField
-        className={classes.textField}
+        className={classes.txt}
         required={true}
         inputProps={{ maxLength: 60 }}
         onChange={handleChange}

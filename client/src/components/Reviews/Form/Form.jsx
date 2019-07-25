@@ -15,6 +15,7 @@ import {
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
 import Username from './Username';
+import Email from './Email';
 // import Recommend from './formComponents/Recommend.jsx';
 // import OverallRating from './formComponents/OverallRating.jsx';
 // import Characteristics from './Charcteristics';
@@ -112,6 +113,12 @@ const Form = (props) => {
         name={form.name}
         handleChange={handleChange.bind(this)}
         error={checkErrors('name')}
+      />
+
+      <Email
+        name={form.name}
+        handleChange={handleChange.bind(this)}
+        error={checkErrors('email')}
       />
 
       <RevSummary

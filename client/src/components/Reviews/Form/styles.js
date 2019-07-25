@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-  textField: {
+  txt: {
     width: 500,
     fontSize: 20,
     padding: '0px 0px 50px 0px'

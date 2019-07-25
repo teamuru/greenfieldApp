@@ -13,7 +13,7 @@ const Username = ({ name, handleChange, error }) => {
         enter a username*
       </Typography>
       <TextField
-        className={classes.textField}
+        className={classes.txt}
         required={true}
         inputProps={{ maxLength: 60 }}
         onChange={handleChange}

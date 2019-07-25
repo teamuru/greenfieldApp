@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TextField, Box, Typography, Paper } from '@material-ui/core/';
+import { TextField, Box, Typography, Paper, Grid } from '@material-ui/core/';
 // import Box from '@material-ui/core/Box';
 
 import { useStyles } from './styles.js';
@@ -27,10 +27,10 @@ const ReviewBody = ({ body, handleChange, error }) => {
         required={true}
         value={body}
         name="body"
-        className={classes.textField}
+        className={classes.txt}
         error={error}
       />
-      <Box>{minReqChars()}</Box>
+      <Grid>{minReqChars()}</Grid>
     </Paper>
   );
 };
