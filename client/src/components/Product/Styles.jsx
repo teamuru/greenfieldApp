@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import theme from '../../theme';
 import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
 
 const StyleDiv = styled.div`
@@ -24,6 +25,7 @@ const AvatarStyled = styled(Avatar)`
   cursor: pointer;
   width: 60px;
   height: 60px;
+  border: solid 3px ${theme.palette.primary.main};
   @media (max-width: 960px) {
     width: 40px;
     height: 40px;

@@ -13,6 +13,10 @@ import {
  changeSelectedPhotoUp, changeSelectedPhotoDown, changeSelectedPhotoIndex, changeExpandedView 
 } from '../../actions/productActions';
 
+const MainMixin = `
+  color: ${theme.palette.primary.main};
+`;
+
 const HoverMixin = `
   color: ${theme.palette.secondary.main};
 `;
@@ -37,6 +41,7 @@ const ChevronLeftStyled = styled(ChevronLeft)`
   position: absolute;
   left: 60px;
   bottom: 50%;
+  ${MainMixin}
   cursor: pointer;
   &:hover {
     ${HoverMixin}
@@ -48,6 +53,7 @@ const ChevronRightStyled = styled(ChevronRight)`
   right: 0px;
   bottom: 50%;
   cursor: pointer;
+  ${MainMixin}
   &:hover {
     ${HoverMixin}
   }
@@ -57,6 +63,7 @@ const FullScreenStyled = styled(Fullscreen)`
   position: absolute;
   right: 0%;
   top: 0%;
+  ${MainMixin}
   cursor: pointer;
   &:hover {
     ${HoverMixin}
@@ -75,12 +82,13 @@ const AvatarStyled = styled(Avatar)`
   margin-bottom: 1rem;
   margin-top: ${props => (props.selectedphoto === 0 && props.index === 0 ? '38px' : '0px')};
   cursor: pointer;
-  border: solid 2.5px ${props => (props.selectedphoto === props.index ? theme.palette.secondary.main : theme.palette.secondary.contrastText)};
+  border: solid 2.5px ${props => (props.selectedphoto === props.index ? theme.palette.secondary.main : theme.palette.primary.main)};
 `;
 
 const ArrowDropUpStyled = styled(ArrowDropUp)`
   cursor: pointer;
   margin-bottom: 1rem;
+  ${MainMixin}
   &:hover {
     ${HoverMixin}
   }
@@ -88,6 +96,7 @@ const ArrowDropUpStyled = styled(ArrowDropUp)`
 
 const ArrowDropDownStyled = styled(ArrowDropDown)`
   cursor: pointer;
+  ${MainMixin}
   &:hover {
     ${HoverMixin}
   }

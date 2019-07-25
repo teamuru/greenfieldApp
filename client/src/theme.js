@@ -19,6 +19,14 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: ['-apple-system', 'Roboto', 'sans-serif'].join(','),
     htmlFontSize: 10
+  },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        color: '#E5E5E5',
+        backgroundColor: '#14213D'
+      }
+    }
   }
 });
 
