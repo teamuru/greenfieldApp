@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { Close, Error, CheckCircle } from '@material-ui/icons';
 import { green, red } from '@material-ui/core/colors';
@@ -35,7 +35,6 @@ const ReviewsSnackbarWrapper = (props) => {
   const classes = useStyles();
   const { message, onClose, variant } = props;
 
-  //select success or error icon
   const Icon = variantIcon[variant];
 
   return (
@@ -48,7 +47,6 @@ const ReviewsSnackbarWrapper = (props) => {
           {message}
         </span>
       }
-      //handle close icon and functionality
       action={[
         <IconButton
           key="close"

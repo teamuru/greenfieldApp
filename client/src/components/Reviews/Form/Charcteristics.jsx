@@ -109,13 +109,14 @@ const Characteristics = ({ form, setForm, error, meta }) => {
 
       {Object.keys(meta.characteristics).map((character, index) => {
         console.log(`1. form`, form);
-        let id = meta.characteristics[character].id;
+        const id = meta.characteristics[character].id;
         console.log(`2. id`, id);
-        let allDescriptions = descriptions[character];
+        const allDescriptions = descriptions[character];
+
         console.log(`3. allDescriptions`, allDescriptions);
-        let selectedVal = form.characteristics[id];
+        const selectedVal = form.characteristics[id];
         console.log(`4. selectedVal`, selectedVal);
-        let selectedDes = allDescriptions[selectedVal];
+        const selectedDes = allDescriptions[selectedVal];
         console.log(`5. selectedDes`, selectedDes);
 
         return (
