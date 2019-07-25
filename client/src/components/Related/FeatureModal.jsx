@@ -22,6 +22,9 @@ const FeatureModal = (props) => {
 } = props;
   const classes = useStyles();
 
+  /* table with headers of currentProduct and clickedName
+     Checkmark       feature              checkmark */
+
   if (modalOpen) {
     const currentFeatures = store.getState().product.data.features;
     const currentProduct = store.getState().product.data.name;
@@ -39,20 +42,18 @@ const FeatureModal = (props) => {
               <h5 id="modal-title">Features</h5>
               <table>
                 <th>{currentProduct}</th>
+                <th />
                 <th>{clickedName}</th>
+                {/* item0 */}
                 {zipped.map(item => (
-                  <>
-                    <p>
-                      {item[0] !== undefined
-                        ? item[0].value
-                        : console.log('fail0')}
-                    </p>
-                    <p>
-                      {item[1] !== undefined
-                        ? item[1].value
-                        : console.log('fail1')}
-                    </p>
-                  </>
+                  <tr>
+                    {item[0] !== undefined
+                      ? item[0].value
+                      : console.log('fail0')}
+                    {item[1] !== undefined
+                      ? item[1].value
+                      : console.log('fail1')}
+                  </tr>
                 ))}
               </table>
             </div>

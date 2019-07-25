@@ -6,9 +6,17 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { PropTypes } from 'prop-types';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext
+} from 'pure-react-carousel';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
 import FeatureModal from './FeatureModal';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
   fetchAllRelated,
@@ -86,19 +94,31 @@ const Related = (props) => {
         clickedName={clickedName}
       />
       <div className="relatedCards">
-        {relatedProducts.map((product, index) => (
-          <ProductCard
-            id={product.id}
-            key={uuid()}
-            name={product.name}
-            image={photos[index]}
-            defaultPrice={product.default_price}
-            category={product.category}
-            features={product.features}
-            addToOutfit={addToOutfit}
-            showModal={showModal}
-          />
-        ))}
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={125}
+          totalSlides={relatedProducts.length}
+        >
+          <Slider>
+            {relatedProducts.map((product, index) => (
+              <Slide index={index}>
+                <ProductCard
+                  id={product.id}
+                  key={uuid()}
+                  name={product.name}
+                  image={photos[index]}
+                  defaultPrice={product.default_price}
+                  category={product.category}
+                  features={product.features}
+                  addToOutfit={addToOutfit}
+                  showModal={showModal}
+                />
+              </Slide>
+            ))}
+          </Slider>
+          <ButtonBack>Back</ButtonBack>
+          <ButtonNext>Next</ButtonNext>
+        </CarouselProvider>
       </div>
       <div className="outfitCards">
         {outfitExists
