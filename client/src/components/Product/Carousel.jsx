@@ -10,8 +10,10 @@ import {
 
 import theme from '../../theme';
 import {
- changeSelectedPhotoUp, changeSelectedPhotoDown, changeSelectedPhotoIndex, changeExpandedView 
+ changeSelectedPhotoUp, changeSelectedPhotoDown, changeSelectedPhotoIndex, changeExpandedView, changeZoomed 
 } from '../../actions/productActions';
+
+import Zoom from './Zoom';
 
 const MainMixin = `
   color: ${theme.palette.primary.main};
@@ -35,6 +37,7 @@ const Img = styled.img`
   padding-left: 80px;
   padding-right: 20px;
   object-fit: contain;
+  cursor: ${props => (props.expandedView ? 'zoom-in' : 'default')};
 `;
 
 const ChevronLeftStyled = styled(ChevronLeft)`
@@ -104,7 +107,7 @@ const ArrowDropDownStyled = styled(ArrowDropDown)`
 
 function Carousel(props) {
   const {
- selectedStyle, selectedPhoto, expandedView, handlePhotoIndexDown, handlePhotoIndexUp, handleClickPhotoIndex, handleClickExpandedView 
+ selectedStyle, selectedPhoto, expandedView, zoomed, handlePhotoIndexDown, handlePhotoIndexUp, handleClickPhotoIndex, handleClickExpandedView, handleClickZoomed 
 } = props;
   const displayPhotoIndexDown = (chevronOrArrow) => {
     if (selectedPhoto !== 0) {
@@ -151,15 +154,21 @@ function Carousel(props) {
   return Object.keys(selectedStyle).length ? (
     <StylesProvider injectFirst>
       <Container expandedView={expandedView}>
-        <AvatarDiv>
-          {displayPhotoIndexDown('arrow')}
-          {displayOverlays(selectedStyle.photos)}
-          {displayPhotoIndexUp('arrow')}
-        </AvatarDiv>
-        {displayPhotoIndexDown('chevron')}
-        <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />
-        <FullScreenStyled onClick={handleClickExpandedView} />
-        {displayPhotoIndexUp('chevron')}
+        {zoomed ? (
+          <Zoom handleClick={handleClickZoomed} />
+        ) : (
+          <React.Fragment>
+            <AvatarDiv>
+              {displayPhotoIndexDown('arrow')}
+              {displayOverlays(selectedStyle.photos)}
+              {displayPhotoIndexUp('arrow')}
+            </AvatarDiv>
+            {expandedView ? <Img onClick={handleClickZoomed} expandedView src={selectedStyle.photos[selectedPhoto].url} alt="product" /> : <Img src={selectedStyle.photos[selectedPhoto].url} alt="product" />}
+            {displayPhotoIndexDown('chevron')}
+            <FullScreenStyled onClick={handleClickExpandedView} />
+            {displayPhotoIndexUp('chevron')}
+          </React.Fragment>
+        )}
       </Container>
     </StylesProvider>
   ) : (
@@ -171,16 +180,19 @@ Carousel.propTypes = {
   selectedStyle: PropTypes.object.isRequired,
   selectedPhoto: PropTypes.number.isRequired,
   expandedView: PropTypes.bool.isRequired,
+  zoomed: PropTypes.bool.isRequired,
   handlePhotoIndexDown: PropTypes.func.isRequired,
   handlePhotoIndexUp: PropTypes.func.isRequired,
   handleClickPhotoIndex: PropTypes.func.isRequired,
-  handleClickExpandedView: PropTypes.func.isRequired
+  handleClickExpandedView: PropTypes.func.isRequired,
+  handleClickZoomed: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
   selectedStyle: store.product.selectedStyle,
   selectedPhoto: store.product.selectedPhoto,
-  expandedView: store.product.expandedView
+  expandedView: store.product.expandedView,
+  zoomed: store.product.zoomed
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -195,6 +207,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickExpandedView: () => {
     dispatch(changeExpandedView());
+  },
+  handleClickZoomed: () => {
+    dispatch(changeZoomed());
   }
 });
 

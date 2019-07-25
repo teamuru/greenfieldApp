@@ -85,8 +85,8 @@ function Styles(props) {
       </Typography>
       <StyleDiv>
         {styles.map((style, index) => (
-          <Tooltip title={style.name}>
-            <AvatarDiv key={style.style_id}>
+          <Tooltip key={style.style_id} title={style.name}>
+            <AvatarDiv>
               <AvatarStyled onClick={() => handleClick(style, index)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
               {selectedStyleIndex === index ? <CheckCircleStyled /> : null}
             </AvatarDiv>

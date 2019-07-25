@@ -45,6 +45,9 @@ export const changeSelectedPhotoIndex = index => ({ type: 'CHANGE_SELECTED_PHOTO
 // Change Expanded View
 export const changeExpandedView = () => ({ type: 'CHANGE_EXPANDED_VIEW' });
 
+// Change Zoomed
+export const changeZoomed = () => ({ type: 'CHANGE_ZOOMED' });
+
 // Fetch Styles
 export const fetchStylesSuccess = styles => ({
   type: 'FETCH_STYLES_SUCCESS',

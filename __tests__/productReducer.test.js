@@ -13,7 +13,8 @@ describe('Product reducer', () => {
         selectedQty: 0,
         rating: 0,
         selectedPhoto: 0,
-        expandedView: false
+        expandedView: false,
+        zoomed: false
       })
     ).toEqual({
       data: {},
@@ -24,7 +25,8 @@ describe('Product reducer', () => {
       selectedQty: 0,
       rating: 0,
       selectedPhoto: 0,
-      expandedView: false
+      expandedView: false,
+      zoomed: false
     });
   });
 

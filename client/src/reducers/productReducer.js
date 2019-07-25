@@ -7,7 +7,8 @@ const intialState = {
   selectedQty: 0,
   selectedPhoto: 0,
   rating: 0,
-  expandedView: false
+  expandedView: false,
+  zoomed: false
 };
 
 const productReducer = (state = intialState, action) => {
@@ -44,6 +45,8 @@ const productReducer = (state = intialState, action) => {
       return { ...state, selectedPhoto: action.payload };
     case 'CHANGE_EXPANDED_VIEW':
       return { ...state, expandedView: !state.expandedView };
+    case 'CHANGE_ZOOMED':
+      return { ...state, zoomed: !state.zoomed };
     default:
       return state;
   }
