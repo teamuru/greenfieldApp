@@ -8,7 +8,6 @@ import ReviewEntry from './ReviewEntry';
 import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal';
 
-
 class ReviewList extends Component {
   constructor(props) {
     super(props);
@@ -26,8 +25,14 @@ class ReviewList extends Component {
     });
   }
 
+  // TODO: function to get rid of button if 2 or less reviews
+  // shoMore() {
+  //   const { results } = this.props.reviews.results
+  // }
+
   render() {
     const { data } = this.props.reviews;
+
     return !data ? (
       <h3>...Loading reviews</h3>
     ) : (
