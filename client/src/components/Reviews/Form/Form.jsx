@@ -27,7 +27,7 @@ import Overall from './OverallRatings';
 import Characteristics from './Charcteristics';
 
 // import Images from './formComponents/Images.jsx';
-// import { FormSnackbar } from '../SnackBar.jsx';
+import ReviewsSnackbar from './Snackbar';
 
 const defaultForm = {
   rating: 0,

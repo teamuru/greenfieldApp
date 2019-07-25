@@ -108,7 +108,6 @@ const Characteristics = ({ form, setForm, error, meta }) => {
       </Typography>
 
       {Object.keys(meta.characteristics).map((character, index) => {
-        console.log(`form`, form);
         console.log(`1. form`, form);
         let id = meta.characteristics[character].id;
         console.log(`2. id`, id);
