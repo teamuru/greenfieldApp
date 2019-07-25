@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import LoadMore from "./LoadMore";
-import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
 import Photo from "./Photo";
 import AnswerHelpfulness from "./AnswerHelpfulness";
@@ -27,7 +26,7 @@ class AddAnswerModal extends Component {
       if (load) {
         return (
           <React.Fragment>
-            <Paper style={{ maxHeight: 200, overflow: "auto" }}>
+            <div style={{ maxHeight: 200, overflow: "auto" }}>
               {keys.map(key => {
                 return renderAnswers(
                   key,
@@ -37,7 +36,7 @@ class AddAnswerModal extends Component {
                   subFontSize
                 );
               })}
-            </Paper>
+            </div>
             {loadMore(keys, this.setLoadMore, load, aFontSize)}
           </React.Fragment>
         );
@@ -64,24 +63,14 @@ const renderAnswers = (key, answers, aFontSize, qFontSize, subFontSize) => {
       <span style={{ fontSize: aFontSize }}> {body} </span>
       <br />
       <Photo photos={photos} />
-      {subInfo(date, helpfulness, answerer_name, id, subFontSize)}
-    </List>
-  );
-};
-
-//
-const subInfo = (date, helpfulness, answerer_name, id, subFontSize) => {
-  return (
-    <React.Fragment>
       <AnswerHelpfulness
         answerer_name={answerer_name}
         date={date}
         helpfulness={helpfulness}
         id={id}
-        subFontSize={subFontSize}
       />
       <Report id={id} subFontSize={subFontSize} />
-    </React.Fragment>
+    </List>
   );
 };
 

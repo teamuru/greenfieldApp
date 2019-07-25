@@ -5,7 +5,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { postQuestion } from "../../actions/questionsActions";
+import { connect } from "react-redux";
+import { fetchQuestions, postQuestion } from "../../actions/questionsActions";
 
 class AddQuestionModal extends Component {
   constructor(props) {
@@ -42,16 +43,25 @@ class AddQuestionModal extends Component {
   ValidateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+
   handleSubmit() {
     let { question, name, email } = this.state;
     let id = Number(this.props.id.slice(1));
+    let { productId, fetchQuestions } = this.props;
     if (question.length > 0 && name.length > 0) {
       if (this.ValidateEmail(email)) {
+        //post add question function
         postQuestion(id, question, name, email);
+
+        setTimeout(function() {
+          fetchQuestions(productId);
+        }, 1000);
+        //reset all temp state to empty
         this.setState({ open: false, question: "", name: "", email: "" });
       } else this.setState({ fail: "Invalied email" });
     } else this.setState({ fail: "Blank with symbol * are required" });
   }
+
   handleQuestion(e) {
     this.setState({ question: e.target.value });
   }
@@ -133,4 +143,19 @@ class AddQuestionModal extends Component {
   }
 }
 
-export default AddQuestionModal;
+const mapStateToProps = store => ({
+  productId: store.questions.productId
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuestions: id => {
+    dispatch(fetchQuestions(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddQuestionModal);
+
+// export default AddQuestionModal;

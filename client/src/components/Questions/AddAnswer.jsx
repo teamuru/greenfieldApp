@@ -6,10 +6,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { postAddAnswer } from "../../actions/questionsActions";
 import isImageUrl from "is-image-url";
+import { connect } from "react-redux";
+import { postAddAnswer, fetchQuestions } from "../../actions/questionsActions";
 
-export default function AddAnswer({ questionId, subFontSize }) {
+function AddAnswer({ questionId, subFontSize, fetchQuestions, productId }) {
   const [open, setOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
   const [name, setName] = React.useState("");
@@ -72,6 +73,9 @@ export default function AddAnswer({ questionId, subFontSize }) {
         setPhoto("");
         setPhotos([]);
         setFail("");
+        setTimeout(function() {
+          fetchQuestions(productId);
+        }, 1000);
       } else {
         setFail("Invalied Eamil");
       }
@@ -179,3 +183,19 @@ export default function AddAnswer({ questionId, subFontSize }) {
     </span>
   );
 }
+
+const mapStateToProps = store => ({
+  subFontSize: store.questions.subFontSize,
+  productId: store.questions.productId
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuestions: id => {
+    dispatch(fetchQuestions(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddAnswer);

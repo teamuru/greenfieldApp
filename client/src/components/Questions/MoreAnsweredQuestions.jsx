@@ -4,7 +4,6 @@ class MoreAnsweredQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 2,
       hover: "bold",
       moreOrLess: true
     };
@@ -22,13 +21,22 @@ class MoreAnsweredQuestions extends Component {
 
   hangelClick() {
     let count = this.props.questions.length;
-    let load = this.props.load;
+    let { load, countQuestion, setLoadMore, setCount } = this.props;
     let temp;
+    let tempCount;
     let { moreOrLess } = this.state;
-    load ? this.props.setCount(2) : this.props.setCount(count);
-    this.props.setLoadMore();
+    // console.log("more answer question ", moreOrLess);
+    tempCount = moreOrLess
+      ? count > countQuestion + 2
+        ? countQuestion + 2
+        : count
+      : 2;
+    // 5      2 + 2
+    tempCount >= count ? (temp = false) : (temp = true);
+    // console.log("more answer countQuestion ", countQuestion);
 
-    moreOrLess ? (temp = false) : (temp = true);
+    setLoadMore();
+    setCount(tempCount);
     this.setState({ moreOrLess: temp });
   }
 
@@ -50,7 +58,7 @@ class MoreAnsweredQuestions extends Component {
             ? "MORE ANSWERED QUESTIONS"
             : "LESS ANSWERED QUESTIONS"}
         </button>
-        <span style={{ whiteSpace: "pre-wrap" }}>{`   `}</span>
+        <span style={{ whiteSpace: "pre-wrap" }}>{`       `}</span>
       </span>
     );
   }

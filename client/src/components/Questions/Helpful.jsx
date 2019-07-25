@@ -1,13 +1,21 @@
 import React from "react";
-import { putHelpful } from "../../actions/questionsActions";
+import { connect } from "react-redux";
+import { putHelpful, fetchQuestions } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function Helpful({ questionId, helpfulness, subFontSize }) {
+function Helpful({
+  questionId,
+  helpfulness,
+  subFontSize,
+  productId,
+  fetchQuestions
+}) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const [hover, setHover] = React.useState("underline");
   const handleClick = () => {
     putHelpful(questionId);
     setHelpfulness(helpful + 1);
+    fetchQuestions(productId);
   };
   const handleHoverOn = () => {
     setHover("none");
@@ -46,4 +54,18 @@ function Helpful({ questionId, helpfulness, subFontSize }) {
   );
 }
 
-export default Helpful;
+const mapStateToProps = store => ({
+  subFontSize: store.questions.subFontSize,
+  productId: store.questions.productId
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuestions: id => {
+    dispatch(fetchQuestions(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Helpful);
