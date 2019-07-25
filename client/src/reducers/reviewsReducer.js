@@ -1,8 +1,4 @@
-const intialState = {
-  characteristics: {},
-  ratings: {},
-  recommended: {}
-};
+const intialState = { data: { results: [] } };
 
 const reviewsReducer = (state = intialState, action) => {
   switch (action.type) {
