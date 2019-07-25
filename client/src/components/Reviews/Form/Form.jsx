@@ -109,8 +109,6 @@ const Form = (props) => {
     <React.Fragment>
       {renderErrors()}
 
-      {/* <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle> */}
-
       <Paper>
         <Typography variant="h6" align="center" component="h4" gutterBottom>
           Create A Review

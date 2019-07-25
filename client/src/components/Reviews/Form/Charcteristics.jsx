@@ -105,15 +105,20 @@ const Characteristics = ({ form, setForm, error, meta }) => {
       {Object.keys(meta.characteristics).map((character) => {
         let id = meta.characteristics[character].id;
         let descriptionList = descriptions[character];
+        let selectedValue = form.characteristics[id];
+        let selectedDescription = descriptionList[selectedValue];
+
+        console.log(`form`, form);
+        console.log(`selectedValue`, selectedValue);
 
         return (
           <FormControl component="fieldset" key={character}>
-            {/* <FormLabel className={classes.category}>
+            <FormLabel className={classes.category}>
               {character}:{selectedDescription || 'None selected:'}
-            </FormLabel> */}
+            </FormLabel>
             <RadioGroup
               name={character}
-              // value={String(selectedValue) || ''}
+              value={String(selectedValue) || ''}
               onChange={handleChange}
               row
               // className={classes.group}
