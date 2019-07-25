@@ -66,11 +66,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     padding: '20px'
   },
-  category: {
-    margin: theme.spacing(0),
-    fontSize: 15,
-    fontWeight: 'bold'
-  },
+
   group: {
     margin: theme.spacing(1, 0),
     marginBottom: theme.spacing(4)
@@ -81,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     alignContent: 'center'
   },
   label: {
-    fontSize: 13,
+    fontSize: 15,
     textAlign: 'center'
   }
 }));
@@ -116,11 +112,15 @@ const Characteristics = ({ form, setForm, error, meta }) => {
         console.log(`selectedVal`, selectedVal);
 
         return (
-          <Grid item xs={8} key={index}>
+          <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="center"
+            key={index}
+          >
             <FormControl component="fieldset" key={character}>
-              <FormLabel
-              // className={classes.category}
-              >
+              <FormLabel>
                 {character}:{selectedDes}
               </FormLabel>
               <RadioGroup
@@ -128,27 +128,28 @@ const Characteristics = ({ form, setForm, error, meta }) => {
                 value={String(selectedVal) || ''}
                 onChange={handleChange}
                 row
-                // className={classes.group}
+                className={classes.group}
               >
                 {ratings.map((value, innerInd) => {
                   return (
-                    <FormControlLabel
-                      value={value}
-                      key={innerInd}
-                      control={<Radio color="primary" />}
-                      label={
-                        <Typography
-                        // className={classes.label}
-                        >
-                          {value === '2' || value === '4'
-                            ? ''
-                            : allDescriptions[value]}
-                        </Typography>
-                      }
-                      labelPlacement="bottom"
-                      key={value}
-                      // className={classes.col}
-                    />
+                    <Grid key={innerInd}>
+                      <FormControlLabel
+                        value={value}
+                        // className={classes.category}
+                        control={<Radio color="primary" />}
+                        label={
+                          <Typography className={classes.label} fontSize={12}>
+                            {value === '2' || value === '4'
+                              ? ''
+                              : allDescriptions[value]}
+                          </Typography>
+                        }
+                        labelPlacement="bottom"
+                        key={value}
+                        component={Radio}
+                        className={classes.col}
+                      />
+                    </Grid>
                   );
                 })}
               </RadioGroup>

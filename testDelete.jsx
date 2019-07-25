@@ -109,7 +109,8 @@ const Characteristics = ({ form, setForm, error, meta.characteristics }) => {
         let selectedDescription = descriptionList[selectedValue]; //selected description obtained by selected value
         return (
           <FormControl component="fieldset" key={character}>
-            <FormLabel className={classes.category}>
+            <FormLabel className={classes.category}
+            >
               {character}:{selectedDescription || 'None selected:'}
             </FormLabel>
             <RadioGroup

@@ -168,6 +168,8 @@ const ReviewForm = ({ reviews }) => {
                         {descriptions.Size.map((description, index) => {
                           return (
                             <div key={index}>
+
+                            {/* Form itself */}
                               <FormControlLabel
                                 label={`${description}`}
                                 control={
@@ -177,6 +179,10 @@ const ReviewForm = ({ reviews }) => {
                                     type="radio"
                                     value={`${index}`}
                                   />
+
+
+
+                                  // 
                                 }
                               />
                               <br />

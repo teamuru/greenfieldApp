@@ -106,7 +106,7 @@ const Form = (props) => {
   };
 
   return form ? (
-    <React.Fragment>
+    <Paper>
       {renderErrors()}
 
       <Paper>
@@ -174,7 +174,7 @@ const Form = (props) => {
         {/* Snackbar */}
         <ReviewSnackbar open={open} handleClose={handleClose} errors={errors} />
       </DialogActions>
-    </React.Fragment>
+    </Paper>
   ) : (
     <div>Loading...</div>
   );
