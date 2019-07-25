@@ -6,8 +6,12 @@ import { StylesProvider } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
+import { CheckCircle } from '@material-ui/icons';
 
-import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
+import theme from '../../theme';
+import {
+ changeSelectedStyle, changeSelectedStyleIndex, changeSelectedSku, resetSelectedPhoto 
+} from '../../actions/productActions';
 
 const StyleDiv = styled.div`
   display: flex;
@@ -16,19 +20,21 @@ const StyleDiv = styled.div`
 `;
 
 const AvatarDiv = styled.div`
+  position: relative;
   width: 25%;
   margin: 1.5rem 0;
 `;
 
 const AvatarStyled = styled(Avatar)`
-  cursor: pointer;
   width: 60px;
   height: 60px;
+  border: solid 3px ${theme.palette.primary.main};
+  cursor: pointer;
   @media (max-width: 960px) {
     width: 40px;
     height: 40px;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 599px) {
     width: 60px;
     height: 60px;
   }
@@ -41,9 +47,36 @@ const AvatarStyled = styled(Avatar)`
     height: 25px;
   }
 `;
+const CheckCircleStyled = styled(CheckCircle)`
+  position: absolute;
+  right: calc(100% - 70px);
+  top: calc(0% - 20px);
+  color: ${theme.palette.secondary.main};
+  @media (max-width: 960px) {
+    right: calc(100% - 50px);
+    top: calc(0% - 15px);
+    transform: scale(0.75);
+  }
+  @media (max-width: 599px) {
+    right: calc(100% - 70px);
+    top: calc(0% - 20px);
+  }
+  @media (max-width: 350px) {
+    right: calc(100% - 45px);
+    top: calc(0% - 15px);
+    transform: scale(0.7);
+  }
+  @media (max-width: 250px) {
+    right: calc(100% - 40px);
+    top: calc(0% - 15px);
+    transform: scale(0.5);
+  }
+`;
 
 function Styles(props) {
-  const { styles, selectedStyle, handleClick } = props;
+  const {
+ styles, selectedStyle, selectedStyleIndex, handleClick 
+} = props;
   return (
     <StylesProvider injectFirst>
       <Typography variant="subtitle2">
@@ -51,12 +84,13 @@ function Styles(props) {
         {` ${selectedStyle.name.toUpperCase()}`}
       </Typography>
       <StyleDiv>
-        {styles.map(style => (
-          <AvatarDiv key={style.style_id}>
-            <Tooltip title={style.name}>
-              <AvatarStyled onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
-            </Tooltip>
-          </AvatarDiv>
+        {styles.map((style, index) => (
+          <Tooltip key={style.style_id} title={style.name}>
+            <AvatarDiv>
+              <AvatarStyled onClick={() => handleClick(style, index)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
+              {selectedStyleIndex === index ? <CheckCircleStyled /> : null}
+            </AvatarDiv>
+          </Tooltip>
         ))}
       </StyleDiv>
     </StylesProvider>
@@ -66,17 +100,20 @@ function Styles(props) {
 Styles.propTypes = {
   styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.object.isRequired,
+  selectedStyleIndex: PropTypes.number.isRequired,
   handleClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
   styles: store.product.styles,
-  selectedStyle: store.product.selectedStyle
+  selectedStyle: store.product.selectedStyle,
+  selectedStyleIndex: store.product.selectedStyleIndex
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: (selectedStyle) => {
+  handleClick: (selectedStyle, index) => {
     dispatch(changeSelectedStyle(selectedStyle));
+    dispatch(changeSelectedStyleIndex(index));
     dispatch(changeSelectedSku(''));
     dispatch(resetSelectedPhoto());
   }
