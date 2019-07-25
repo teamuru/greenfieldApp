@@ -44,6 +44,7 @@ const style = {
   },
   bod: {
     fontSize: 15,
+    fontSize: 300,
     padding: '10px 0px'
   },
   resHead: {

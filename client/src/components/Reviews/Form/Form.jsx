@@ -17,6 +17,7 @@ import {
 
 import { ReviewSnackbar } from './Snackbar';
 import { validate } from './validate.js';
+import * as actions from '../../../actions/reviewsActions';
 
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = (props) => {
-  // console.log(`props from form`, props);
+  console.log(`props from form`, props);
   const [form, setForm] = useState(defaultForm);
   const [errors, setErrors] = useState(false);
   const [open, setOpen] = React.useState(false);
@@ -71,8 +72,7 @@ const Form = (props) => {
     setErrors(errorList);
 
     if (!errorList) {
-      props.submitForm(form);
-      props.handleClose();
+      props.postReview(form, props.productId);
     }
 
     setOpen(true);
@@ -186,7 +186,6 @@ let mapStateToProps = (store) => ({
 });
 
 export default connect(
-  mapStateToProps
-  // ,
-  // actions
+  mapStateToProps,
+  actions
 )(Form);
