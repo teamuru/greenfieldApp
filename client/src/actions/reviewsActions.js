@@ -45,7 +45,7 @@ export const fetchMeta = (prodId) => {
 export const putHelpful = (reviewId) => {
   const url = `${API_URL}/reviews/helpful/${reviewId}`;
 
-  return Axios.put(url, { reveiw_id: reviewId })
+  Axios.put(url, { reveiw_id: reviewId })
     .then(() => {
       console.log('sucessful put');
       // dispatch(fetchReviews(prodId));
@@ -56,15 +56,30 @@ export const putHelpful = (reviewId) => {
 };
 
 // Report
+// export const reportReview = (reviewId) => {
+//   const url = `${API_URL}/reviews/report/${reviewId}`;
+//   Axios.put(url, { review_id: reviewId })
+//     .then(() => {
+//       // dispatch(fetchReviews(reviewId));
+//       console.log('sucess report');
+//     })
+//     .catch((err) => {
+//       console.log('reviews - fail put report', err);
+//     });
+// };
+
 export const reportReview = (reviewId) => {
-  const url = `${API_URL}/reviews/report/${reviewId}`;
-  return Axios.put(url, { review_id: reviewId })
+  // const url = `${API_URL}/reviews/report/${reviewId}`;
+  const url = `http://18.222.40.124/reviews/helpful/${reviewId}`;
+  Axios.put(
+    url
+    // , { review_id: reviewId }
+  )
     .then(() => {
-      // dispatch(fetchReviews(reviewId));
-      console.log('sucess report');
+      console.log('success put report answer ');
     })
-    .catch((err) => {
-      console.log('reviews - fail put report', err);
+    .catch(() => {
+      console.log('fail put report answer ');
     });
 };
 

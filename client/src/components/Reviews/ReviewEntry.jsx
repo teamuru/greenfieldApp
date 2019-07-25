@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import VerifyRec from './VerifyRec';
 import ReviewResponse from './ReviewResponse';
 import RevHelpful from './RevHelpful';
+import ReportRev from './Report';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,6 @@ const style = {
   },
   bod: {
     fontSize: 15,
-    fontSize: 300,
     padding: '10px 0px'
   },
   resHead: {
@@ -124,9 +124,12 @@ const ReviewEntry = ({ review }) => {
               helpfulness={review.helpfulness}
             />
             {'  '} | {'  '}
-            <Button className={classes.button}>
+            {/* <Button className={classes.button}>
               <span style={{ fontWeight: 400 }}>Report</span>
-            </Button>
+            </Button> */}
+            <span>
+              <ReportRev reviewId={review.review_id} />
+            </span>
           </Grid>
         </Grid>
         <Grid />
