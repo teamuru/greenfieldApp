@@ -59,7 +59,7 @@ const SizeGraph = (props) => {
             <Box key={category} style={style.head} className={classes.category}>
               <span style={style.head}>{category}</span>
 
-              <div>
+              <div className="slidecontainer">
                 <input
                   type="range"
                   min="0"
@@ -71,6 +71,7 @@ const SizeGraph = (props) => {
                   list="tickmarks"
                   value={number}
                   style={style.ft}
+                  className="slider"
                 />
                 {renderCat(category)}
               </div>

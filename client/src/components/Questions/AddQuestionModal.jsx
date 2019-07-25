@@ -11,7 +11,7 @@ class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: "normal",
+      hover: "bold",
       open: false,
       question: "",
       name: "",
@@ -28,10 +28,10 @@ class AddQuestionModal extends Component {
     this.handleEmail = this.handleEmail.bind(this);
   }
   handleHoverOn() {
-    this.setState({ hover: "bold" });
+    this.setState({ hover: "normal" });
   }
   handleHoverOff() {
-    this.setState({ hover: "normal" });
+    this.setState({ hover: "bold" });
   }
   handleClickOpen() {
     this.setState({ open: true });
@@ -45,7 +45,7 @@ class AddQuestionModal extends Component {
   handleSubmit() {
     let { question, name, email } = this.state;
     let id = Number(this.props.id.slice(1));
-    if (question.length > 0 && name.length > 0 && name.length <= 60) {
+    if (question.length > 0 && name.length > 0) {
       if (this.ValidateEmail(email)) {
         postQuestion(id, question, name, email);
         this.setState({ open: false, question: "", name: "", email: "" });
@@ -75,15 +75,16 @@ class AddQuestionModal extends Component {
         }`}</p>
         <DialogContent>
           <TextField
-            label="Your Question"
+            label="Your Question max 1000 character"
             type="text"
             fullWidth
+            inputProps={{ maxLength: 1000 }}
             multiline
             required
             onChange={this.handleQuestion}
           />
           <TextField
-            label="Your nickname"
+            label="Your nickname max 60 character"
             type="text"
             inputProps={{ maxLength: 60 }}
             fullWidth
@@ -119,8 +120,9 @@ class AddQuestionModal extends Component {
           onClick={this.handleClickOpen}
           style={{
             fontWeight: this.state.hover,
-            fontSize: 14,
-            cursor: "pointer"
+            fontSize: 24,
+            cursor: "pointer",
+            padding: "20px"
           }}
         >
           ADD A QUESTION +

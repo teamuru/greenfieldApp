@@ -2,10 +2,19 @@ import React, { Component } from "react";
 import AnswerModal from "./AnswerModal";
 import AddAnswer from "./AddAnswer";
 import Helpful from "./Helpful";
+import Grid from "@material-ui/core/Grid";
+import Highlighter from "react-highlight-words";
 
 class AddQuestionModal extends Component {
   render() {
-    let { questions, count } = this.props;
+    let {
+      questions,
+      count,
+      qFontSize,
+      subFontSize,
+      aFontSize,
+      highLight
+    } = this.props;
     // console.log("question ", questions);
 
     if (questions) {
@@ -21,18 +30,46 @@ class AddQuestionModal extends Component {
             } = question;
 
             return (
-              <div key={`questionID:${question_id}`}>
-                <label style={{ fontWeight: "bold", fontSize: 12 }}>
-                  Q: {question_body}
-                </label>
-                <Helpful
-                  questionId={question_id}
-                  helpfulness={question_helpfulness}
-                />
-                <AddAnswer questionId={question_id} />
-                <br />
-                <AnswerModal answers={answers} />
-              </div>
+              <Grid key={`questionID:${question_id}`} container spacing={1}>
+                <Grid item xs={8}>
+                  <label
+                    style={{
+                      whiteSpace: "pre-wrap",
+                      fontWeight: "bold",
+                      fontSize: qFontSize
+                    }}
+                  >
+                    Q:{` `}
+                    <Highlighter
+                      highlightClassName="YourHighlightClass"
+                      searchWords={[highLight]}
+                      autoEscape={true}
+                      textToHighlight={question_body}
+                    />
+                  </label>
+                </Grid>
+
+                <Grid item xs={4}>
+                  <Helpful
+                    questionId={question_id}
+                    helpfulness={question_helpfulness}
+                    subFontSize={subFontSize}
+                  />
+                  <AddAnswer
+                    questionId={question_id}
+                    subFontSize={subFontSize}
+                  />
+                  <br />
+                </Grid>
+                <Grid item xs={12}>
+                  <AnswerModal
+                    answers={answers}
+                    subFontSize={subFontSize}
+                    aFontSize={aFontSize}
+                    qFontSize={qFontSize}
+                  />
+                </Grid>
+              </Grid>
             );
           })}
         </div>

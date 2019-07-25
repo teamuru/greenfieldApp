@@ -12,7 +12,14 @@ import QuestionModel from "./QuesstionModel";
 class Question extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 2, load: false };
+    this.state = {
+      count: 2,
+      load: false,
+      qFontSize: 20,
+      aFontSize: 18,
+      subFontSize: 16,
+      highLight: ""
+    };
     this.setCount = this.setCount.bind(this);
     this.setLoadMore = this.setLoadMore.bind(this);
     this.setQuestionList = this.setQuestionList.bind(this);
@@ -22,8 +29,8 @@ class Question extends Component {
     fetchQuestions(location.pathname);
   }
 
-  setCount(count) {
-    this.setState({ count: count });
+  setCount(count, char) {
+    this.setState({ count: count, highLight: char });
   }
 
   setLoadMore() {
@@ -40,21 +47,37 @@ class Question extends Component {
     let questions = this.props.questions.displayList;
     let questionsData = this.props.questions.data;
     let { location } = this.props;
+    let {
+      qFontSize,
+      count,
+      load,
+      aFontSize,
+      subFontSize,
+      highLight
+    } = this.state;
 
     // console.log("questions: ", questions);
     return (
       <div>
-        <h6>QUESTIONS{` & `}ANSWERS</h6>
+        <h5>QUESTIONS{` & `}ANSWERS</h5>
         <SearchQuestions
           setQuestionList={this.setQuestionList}
           questionsData={questionsData}
+          setCount={this.setCount}
         />
-        <QuestionModel questions={questions} count={this.state.count} />
+        <QuestionModel
+          questions={questions}
+          count={count}
+          highLight={highLight}
+          qFontSize={qFontSize}
+          aFontSize={aFontSize}
+          subFontSize={subFontSize}
+        />
         <MoreAnsweredQuestions
           questions={questions}
           setCount={this.setCount}
           setLoadMore={this.setLoadMore}
-          load={this.state.load}
+          load={load}
         />
         <AddQuestionModal id={location.pathname} />
       </div>
