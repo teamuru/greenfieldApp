@@ -12,6 +12,7 @@ import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
 import ReviewCounter from './ReviewCounter';
+import Form from './Form/Form';
 
 // Testing Form
 import ReviewForm from './ReviewForm';
@@ -34,17 +35,14 @@ const RevParentComponent = () => {
 
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        spacing={3}
-        // direction="row"
-      >
+      <Form />
+
+      {/* <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        {/* <d item xs> */}
         <Grid item>
           <Paper className={classes.paper}>
             <AverageRev />
@@ -74,8 +72,7 @@ const RevParentComponent = () => {
             <ReviewList />
           </div>
         </Grid>
-        <ReviewForm />
-      </Grid>
+      </Grid> */}
     </div>
   );
 };
