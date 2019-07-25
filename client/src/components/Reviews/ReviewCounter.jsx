@@ -5,7 +5,7 @@ const ReviewCounter = (props) => {
   const { data } = props.reviews;
 
   return !data ? (
-    <span>... Loading no. of reviews</span>
+    <h5>... Loading no. of reviews</h5>
   ) : (
     <div>
       <span> {data.results.length} reviews, sorted by </span>
