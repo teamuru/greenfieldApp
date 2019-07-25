@@ -85,11 +85,16 @@ const useStyles = makeStyles((theme) => ({
 const Characteristics = ({ form, setForm, error, meta }) => {
   const classes = useStyles();
   const ratings = ['1', '2', '3', '4', '5'];
+  console.log(`form`, form);
 
   const handleChange = (e) => {
+    // e.preventDefault();
     setForm((prevState) => {
+      // console.log(`1 before`);
       let id = meta.characteristics[e.target.name].id;
+      // console.log(`1 after`);
       prevState.meta.characteristics[id] = Number(e.target.value);
+      console.log(`prevState `, prevState);
       return { ...prevState };
     });
   };
@@ -103,13 +108,16 @@ const Characteristics = ({ form, setForm, error, meta }) => {
       </Typography>
 
       {Object.keys(meta.characteristics).map((character, index) => {
-        let id = meta.characteristics[character].id;
-        let allDescriptions = descriptions[character];
-        let selectedVal = form.characteristics[id];
-        let selectedDes = allDescriptions[selectedVal];
-
         console.log(`form`, form);
-        console.log(`selectedVal`, selectedVal);
+        console.log(`1. form`, form);
+        let id = meta.characteristics[character].id;
+        console.log(`2. id`, id);
+        let allDescriptions = descriptions[character];
+        console.log(`3. allDescriptions`, allDescriptions);
+        let selectedVal = form.characteristics[id];
+        console.log(`4. selectedVal`, selectedVal);
+        let selectedDes = allDescriptions[selectedVal];
+        console.log(`5. selectedDes`, selectedDes);
 
         return (
           <Grid
