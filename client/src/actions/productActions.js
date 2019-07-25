@@ -25,6 +25,8 @@ export const fetchProduct = (prodId) => {
 // Change Selected Style
 export const changeSelectedStyle = selectedStyle => ({ type: 'CHANGE_SELECTED_STYLE', payload: selectedStyle });
 
+export const changeSelectedStyleIndex = index => ({ type: 'CHANGE_SELECTED_STYLE_INDEX', payload: index });
+
 // Change Selected Sku
 export const changeSelectedSku = sku => ({ type: 'CHANGE_SELECTED_SKU', payload: sku });
 
@@ -63,9 +65,11 @@ export const fetchStyles = (prodId) => {
         for (let i = 0; i < results.length; i += 1) {
           if (results[i]['default?']) {
             dispatch(changeSelectedStyle(results[i]));
+            dispatch(changeSelectedStyleIndex(i));
             break;
           } else if (i === results.length - 1) {
             dispatch(changeSelectedStyle(results[0]));
+            dispatch(changeSelectedStyleIndex(0));
           }
         }
       })

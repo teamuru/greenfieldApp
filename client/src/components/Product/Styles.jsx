@@ -9,7 +9,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { CheckCircle } from '@material-ui/icons';
 
 import theme from '../../theme';
-import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
+import {
+ changeSelectedStyle, changeSelectedStyleIndex, changeSelectedSku, resetSelectedPhoto 
+} from '../../actions/productActions';
 
 const StyleDiv = styled.div`
   display: flex;
@@ -72,7 +74,9 @@ const CheckCircleStyled = styled(CheckCircle)`
 `;
 
 function Styles(props) {
-  const { styles, selectedStyle, handleClick } = props;
+  const {
+ styles, selectedStyle, selectedStyleIndex, handleClick 
+} = props;
   return (
     <StylesProvider injectFirst>
       <Typography variant="subtitle2">
@@ -80,11 +84,11 @@ function Styles(props) {
         {` ${selectedStyle.name.toUpperCase()}`}
       </Typography>
       <StyleDiv>
-        {styles.map(style => (
+        {styles.map((style, index) => (
           <Tooltip title={style.name}>
             <AvatarDiv key={style.style_id}>
-              <AvatarStyled onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
-              <CheckCircleStyled />
+              <AvatarStyled onClick={() => handleClick(style, index)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
+              {selectedStyleIndex === index ? <CheckCircleStyled /> : null}
             </AvatarDiv>
           </Tooltip>
         ))}
@@ -96,17 +100,20 @@ function Styles(props) {
 Styles.propTypes = {
   styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.object.isRequired,
+  selectedStyleIndex: PropTypes.number.isRequired,
   handleClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
   styles: store.product.styles,
-  selectedStyle: store.product.selectedStyle
+  selectedStyle: store.product.selectedStyle,
+  selectedStyleIndex: store.product.selectedStyleIndex
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: (selectedStyle) => {
+  handleClick: (selectedStyle, index) => {
     dispatch(changeSelectedStyle(selectedStyle));
+    dispatch(changeSelectedStyleIndex(index));
     dispatch(changeSelectedSku(''));
     dispatch(resetSelectedPhoto());
   }
