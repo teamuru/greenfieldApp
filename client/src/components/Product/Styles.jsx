@@ -6,6 +6,7 @@ import { StylesProvider } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Tooltip from '@material-ui/core/Tooltip';
+import { CheckCircle } from '@material-ui/icons';
 
 import theme from '../../theme';
 import { changeSelectedStyle, changeSelectedSku, resetSelectedPhoto } from '../../actions/productActions';
@@ -17,20 +18,21 @@ const StyleDiv = styled.div`
 `;
 
 const AvatarDiv = styled.div`
+  position: relative;
   width: 25%;
   margin: 1.5rem 0;
 `;
 
 const AvatarStyled = styled(Avatar)`
-  cursor: pointer;
   width: 60px;
   height: 60px;
   border: solid 3px ${theme.palette.primary.main};
+  cursor: pointer;
   @media (max-width: 960px) {
     width: 40px;
     height: 40px;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 599px) {
     width: 60px;
     height: 60px;
   }
@@ -41,6 +43,31 @@ const AvatarStyled = styled(Avatar)`
   @media (max-width: 250px) {
     width: 25px;
     height: 25px;
+  }
+`;
+const CheckCircleStyled = styled(CheckCircle)`
+  position: absolute;
+  right: calc(100% - 70px);
+  top: calc(0% - 20px);
+  color: ${theme.palette.secondary.main};
+  @media (max-width: 960px) {
+    right: calc(100% - 50px);
+    top: calc(0% - 15px);
+    transform: scale(0.75);
+  }
+  @media (max-width: 599px) {
+    right: calc(100% - 70px);
+    top: calc(0% - 20px);
+  }
+  @media (max-width: 350px) {
+    right: calc(100% - 45px);
+    top: calc(0% - 15px);
+    transform: scale(0.7);
+  }
+  @media (max-width: 250px) {
+    right: calc(100% - 40px);
+    top: calc(0% - 15px);
+    transform: scale(0.5);
   }
 `;
 
@@ -54,11 +81,12 @@ function Styles(props) {
       </Typography>
       <StyleDiv>
         {styles.map(style => (
-          <AvatarDiv key={style.style_id}>
-            <Tooltip title={style.name}>
+          <Tooltip title={style.name}>
+            <AvatarDiv key={style.style_id}>
               <AvatarStyled onClick={() => handleClick(style)} src={style.photos[0].thumbnail_url} alt="product style" fontSize="2rem" />
-            </Tooltip>
-          </AvatarDiv>
+              <CheckCircleStyled />
+            </AvatarDiv>
+          </Tooltip>
         ))}
       </StyleDiv>
     </StylesProvider>
