@@ -98,6 +98,7 @@ const Related = (props) => {
           naturalSlideWidth={100}
           naturalSlideHeight={125}
           totalSlides={relatedProducts.length}
+          visibleSlides={4}
         >
           <Slider>
             {relatedProducts.map((product, index) => (

@@ -17,8 +17,8 @@ import CompareArrowsIcon from '@material-ui/icons/CompareArrowsSharp';
 
 const useStyles = makeStyles({
   card: {
-    width: '30vw',
-    height: '27vw'
+    width: '15vw',
+    height: '21vw'
   },
   media: {
     height: 0,
@@ -47,7 +47,7 @@ const ProductCard = (props) => {
           <CardHeader
             title={name}
             subheader={`$${defaultPrice}`}
-            style={{ height: '10vw' }}
+            titleTypographyProps={{ variant: 'h8' }}
           />
           <CardMedia className={classes.media} image={img} title={name} />
         </Link>
@@ -56,7 +56,6 @@ const ProductCard = (props) => {
             {category}
           </Typography>
         </CardContent>
-
         <CardActions disableSpacing>
           <IconButton
             aria-label="Add to favorites"

@@ -1,16 +1,15 @@
-.relatedCards {
-  display: flex;
-  flex-direction: row;
-}
+/* .relatedCards {
+  /* display: flex;
+  flex-direction: row; */
 
 .favorite :hover {
   fill: yellow;
 }
 
-.outfitCards {
+/* .outfitCards {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .FeatureModal {
   position: absolute;
