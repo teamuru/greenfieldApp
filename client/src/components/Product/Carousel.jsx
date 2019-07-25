@@ -26,7 +26,7 @@ const Container = styled.div`
   width: 100%;
   height: ${props => (props.expandedView ? '85vh' : '70vh')};
   padding: 1rem;
-  box-shadow: 0px 0px 20px ${theme.palette.secondary.contrastText};
+  box-shadow: 0px 0px 20px grey;
 `;
 
 const Img = styled.img`

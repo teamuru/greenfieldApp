@@ -56,14 +56,16 @@ function Details(props) {
   // Check if there are styles in redux store before rendering
   return Object.keys(selectedStyle).length ? (
     <React.Fragment>
-      <RatingContainer>
-        <Rating readOnly value={rating} precision={0.25} size="small" />
-        <StyledA href="#reviews">
-          <Typography style={{ fontSize: '.75rem' }} variant="subtitle2">
-            {reviewsText(reviewsNum)}
-          </Typography>
-        </StyledA>
-      </RatingContainer>
+      {reviewsNum ? (
+        <RatingContainer>
+          <Rating readOnly value={rating} precision={0.25} size="small" />
+          <StyledA href="#reviews">
+            <Typography style={{ fontSize: '.75rem' }} variant="subtitle2">
+              {reviewsText(reviewsNum)}
+            </Typography>
+          </StyledA>
+        </RatingContainer>
+      ) : null}
       <Typography variant="body1">{category}</Typography>
       <Typography variant="h4">{name}</Typography>
       {salePrice > 0 ? (
