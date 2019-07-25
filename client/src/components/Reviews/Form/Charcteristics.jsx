@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   FormLabel,
   Paper,
+  Grid,
   Typography
 } from '@material-ui/core';
 
@@ -63,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
   titleError: {
     color: theme.palette.error.dark
   },
+  title: {
+    padding: '20px'
+  },
   category: {
     margin: theme.spacing(0),
     fontSize: 15,
@@ -85,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Characteristics = ({ form, setForm, error, meta }) => {
   const classes = useStyles();
+  const ratings = ['1', '2', '3', '4', '5'];
 
   const handleChange = (e) => {
     setForm((prevState) => {
@@ -104,47 +109,52 @@ const Characteristics = ({ form, setForm, error, meta }) => {
 
       {Object.keys(meta.characteristics).map((character) => {
         let id = meta.characteristics[character].id;
-        let descriptionList = descriptions[character];
-        let selectedValue = form.characteristics[id];
-        let selectedDescription = descriptionList[selectedValue];
+        let allDescriptions = descriptions[character];
+        let selectedVal = form.characteristics[id];
+        let selectedDes = allDescriptions[selectedVal];
 
         console.log(`form`, form);
-        console.log(`selectedValue`, selectedValue);
+        console.log(`selectedVal`, selectedVal);
 
         return (
-          <FormControl component="fieldset" key={character}>
-            <FormLabel className={classes.category}>
-              {character}:{selectedDescription || 'None selected:'}
-            </FormLabel>
-            <RadioGroup
-              name={character}
-              value={String(selectedValue) || ''}
-              onChange={handleChange}
-              row
-              // className={classes.group}
-            >
-              {['1', '2', '3', '4', '5'].map((value) => {
-                return (
-                  <FormControlLabel
-                    value={value}
-                    control={<Radio color="primary" />}
-                    label={
-                      <Typography
-                      //  className={classes.label}
-                      >
-                        {value === '2' || value === '4'
-                          ? ''
-                          : descriptionList[value]}
-                      </Typography>
-                    }
-                    labelPlacement="bottom"
-                    key={value}
-                    // className={classes.col}
-                  />
-                );
-              })}
-            </RadioGroup>
-          </FormControl>
+          <Grid item xs={8}>
+            <FormControl component="fieldset" key={character}>
+              <FormLabel
+              // className={classes.category}
+              >
+                {character}:{selectedDes}
+              </FormLabel>
+              <RadioGroup
+                name={character}
+                value={String(selectedVal) || ''}
+                onChange={handleChange}
+                row
+                // className={classes.group}
+              >
+                {ratings.map((value) => {
+                  return (
+                    <FormControlLabel
+                      value={value}
+                      // key={}
+                      control={<Radio color="primary" />}
+                      label={
+                        <Typography
+                        // className={classes.label}
+                        >
+                          {value === '2' || value === '4'
+                            ? ''
+                            : allDescriptions[value]}
+                        </Typography>
+                      }
+                      labelPlacement="bottom"
+                      key={value}
+                      // className={classes.col}
+                    />
+                  );
+                })}
+              </RadioGroup>
+            </FormControl>
+          </Grid>
         );
       })}
     </Paper>
@@ -153,7 +163,6 @@ const Characteristics = ({ form, setForm, error, meta }) => {
 
 let mapStateToProps = (store) => ({
   meta: store.reviews.meta
-  // characteristics: store.reviews.meta.characteristics
 });
 
 export default connect(mapStateToProps)(Characteristics);
