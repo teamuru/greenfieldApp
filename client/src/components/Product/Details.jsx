@@ -53,6 +53,7 @@ function Details(props) {
     }
     return `Read all ${n} reviews`;
   };
+
   // Check if there are styles in redux store before rendering
   return Object.keys(selectedStyle).length ? (
     <React.Fragment>
