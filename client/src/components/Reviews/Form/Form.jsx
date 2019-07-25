@@ -16,6 +16,7 @@ import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
 import Username from './Username';
 import Email from './Email';
+import Recommend from './Recommend';
 // import Recommend from './formComponents/Recommend.jsx';
 // import OverallRating from './formComponents/OverallRating.jsx';
 // import Characteristics from './Charcteristics';
@@ -63,7 +64,6 @@ const Form = (props) => {
   };
 
   const handleSubmit = (e) => {
-    //returns an arr or errors or false
     let errorList = validate(form, 'reviews', props.meta.characteristics);
 
     setErrors(errorList);
@@ -105,9 +105,7 @@ const Form = (props) => {
 
   return form ? (
     <React.Fragment>
-      {/* <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle>
-      <DialogContent className={classes.content}>
-        <DialogContentText>About {props.product.name}</DialogContentText> */}
+      <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle>
 
       <Username
         name={form.name}
@@ -131,6 +129,12 @@ const Form = (props) => {
         body={form.body}
         handleChange={handleChange.bind(this)}
         error={checkErrors('body')}
+      />
+
+      <Recommend
+        form={form}
+        setForm={setForm.bind(this)}
+        error={checkErrors('recommend')}
       />
 
       {/* <Characteristics

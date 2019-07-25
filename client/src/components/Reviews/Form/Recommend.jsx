@@ -10,7 +10,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { useStyles } from './inputStyle.js';
+import { useStyles } from './styles.js';
 
 const Recommend = ({ form, setForm, error }) => {
   const classes = useStyles();
@@ -22,10 +22,10 @@ const Recommend = ({ form, setForm, error }) => {
   };
 
   return (
-    <Paper>
-      <h4 className={error ? classes.titleError : classes.title}>
+    <Paper className={classes.header} style={{ padding: '50px 20px' }}>
+      <Typography className={error ? classes.titleError : classes.title}>
         Do you recommend this product?*
-      </h4>
+      </Typography>
       <FormControl component="fieldset">
         <RadioGroup
           name="position"
