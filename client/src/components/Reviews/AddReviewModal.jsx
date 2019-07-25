@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+
 import ReviewForm from './ReviewForm';
 
 function getModalStyle() {

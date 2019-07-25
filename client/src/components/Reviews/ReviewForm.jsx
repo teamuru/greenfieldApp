@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Form, Field } from 'react-final-form';
 import { TextField, Radio } from 'final-form-material-ui';
 
 import Attachment from '@material-ui/icons/Attachment';
 import Rating from '@material-ui/lab/Rating';
+import OverallRating from './OverallRatings';
+import postReview from '../../actions/reviewsActions';
 
 import {
   Typography,
@@ -59,12 +62,16 @@ const style = {
 };
 
 // class ReviewForm extends Component {
-const ReviewForm = () => {
+const ReviewForm = ({ reviews }) => {
   // render() {
   const ratings = [1, 2, 3, 4, 5];
-  const [value, setValue] = React.useState(2);
+  const { meta } = reviews;
+  const [value, setValue] = React.useState(0);
 
-  return (
+  console.log(`reviews.meta inside form`, reviews.meta);
+  return !meta ? (
+    <Typography>... Loading Form</Typography>
+  ) : (
     <div style={style.formSt}>
       <CssBaseline />
       <Typography variant="h6" align="center" component="h4" gutterBottom>
@@ -82,6 +89,7 @@ const ReviewForm = () => {
           <form onSubmit={handleSubmit} noValidate>
             <Paper style={{ padding: 10 }}>
               <Grid container alignItems="flex-start" spacing={4}>
+                {/* Username */}
                 <Grid item xs={7}>
                   <Field
                     fullWidth
@@ -94,16 +102,21 @@ const ReviewForm = () => {
                     label="username"
                   />
                 </Grid>
+
+                {/* Headline */}
                 <Grid item xs={7}>
                   <Field
                     fullWidth
                     required
+                    // value={`${meta.product_id}`}
                     name="headline"
                     component={TextField}
                     type="text"
                     label="Add a headline"
                   />
                 </Grid>
+
+                {/* Review Body */}
                 <Grid item xs={10}>
                   <Field
                     name="review"
@@ -354,16 +367,16 @@ const ReviewForm = () => {
                 </React.Fragment>
 
                 {/* Star Rating */}
-                <Rating
-                  name="simple-controlled"
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                    console.log(`newValue from Rating: `, newValue);
-                    console.log(`value`, value)
-                  }}
-                  size="large"
-                />
+
+                {/* <React.Fragment>
+                  <Grid>
+                    <OverallRating
+                      // form={form}
+                      setForm={setForm.bind(this)}
+                      error={checkErrors('rating')}
+                    />
+                  </Grid>
+                </React.Fragment> */}
 
                 {/* submit button */}
 
@@ -387,4 +400,9 @@ const ReviewForm = () => {
   // }
 };
 
-export default ReviewForm;
+const mapStateToProps = (store) => ({
+  reviews: store.reviews
+});
+
+// export default ReviewForm;
+export default connect(mapStateToProps)(ReviewForm);
