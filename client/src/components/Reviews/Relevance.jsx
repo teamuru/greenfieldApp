@@ -54,13 +54,13 @@ const ControledOpenSelect = () => {
             <em>None</em>
           </MenuItem>
           <MenuItem value={10} style={style.menuStyle}>
-            Field 1
+            Newest
           </MenuItem>
           <MenuItem value={20} style={style.menuStyle}>
-            Field 2
+            Helpfulness
           </MenuItem>
           <MenuItem value={30} style={style.menuStyle}>
-            Field 3
+            Relevance
           </MenuItem>
         </Select>
       </FormControl>
