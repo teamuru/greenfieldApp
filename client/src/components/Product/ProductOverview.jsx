@@ -25,7 +25,7 @@ class ProductOverview extends Component {
       <h1>Loading Product</h1>
     ) : (
       <div style={{ margin: '2rem 0' }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           {expandedView ? (
             <Grid item container sm justify="center">
               <Carousel />

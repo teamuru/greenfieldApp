@@ -29,6 +29,7 @@
     "react/forbid-prop-types": false,
     "react/no-array-index-key": false,
     "consistent-return": 0,
-    "array-callback-return": 0
+    "array-callback-return": 0,
+    "jsx-a11y/anchor-is-valid": false
   }
 }

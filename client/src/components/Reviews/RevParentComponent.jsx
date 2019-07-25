@@ -16,7 +16,7 @@ import AverageRev from './AverageRev';
 
 import ReviewForm from './ReviewForm';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     margin: '40px 0px'
@@ -33,7 +33,7 @@ const RevParentComponent = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="reviews">
       <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
