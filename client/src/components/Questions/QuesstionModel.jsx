@@ -53,7 +53,6 @@ class AddQuestionModal extends Component {
                   <Helpful
                     questionId={question_id}
                     helpfulness={question_helpfulness}
-                    subFontSize={subFontSize}
                   />
                   <AddAnswer
                     questionId={question_id}

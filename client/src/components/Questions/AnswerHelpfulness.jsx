@@ -1,8 +1,21 @@
 import React from "react";
-import { putHelpfulAnswer } from "../../actions/questionsActions";
+import { connect } from "react-redux";
+import {
+  putHelpful,
+  fetchQuestions,
+  putHelpfulAnswer
+} from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
+function AnswerHelpful({
+  answerer_name,
+  date,
+  helpfulness,
+  id,
+  subFontSize,
+  productId,
+  fetchQuestions
+}) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const [hover, setHover] = React.useState("underline");
 
@@ -13,8 +26,12 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
     setHover("underline");
   };
   const handleClick = () => {
-    setHelpfulness(helpful + 1);
     putHelpfulAnswer(id);
+    setHelpfulness(helpful + 1);
+    // fetchQuestions(productId);
+    setTimeout(function() {
+      fetchQuestions(productId);
+    }, 500);
   };
   const styples = {
     whiteSpace: "pre-wrap",
@@ -80,4 +97,20 @@ const timeConvert = time => {
   return monthList[month] + " " + date + ", " + year;
 };
 
-export default AnswerHelpful;
+const mapStateToProps = store => ({
+  subFontSize: store.questions.subFontSize,
+  productId: store.questions.productId
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuestions: id => {
+    dispatch(fetchQuestions(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnswerHelpful);
+
+// export default AnswerHelpful;

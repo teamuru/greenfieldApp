@@ -14,9 +14,10 @@ class SearchQuestions extends Component {
     let currentList = [];
     let newList = [];
     let questCount = 3;
-    let { setQuestionList, questionsData, setCount } = this.props;
+    let { setQuestionList, questionsData, handleSearch } = this.props;
     currentList = questionsData;
-    if (e.target.value.length > 3) {
+
+    if (e.target.value.length >= 3) {
       newList = currentList.filter(question => {
         let { question_body } = question;
         let questList = question_body.toLowerCase();
@@ -31,7 +32,7 @@ class SearchQuestions extends Component {
     }
     //highligth char
 
-    setCount(questCount, e.target.value);
+    handleSearch(questCount, e.target.value);
     setQuestionList(newList);
     this.setState({ value: e.target.value });
   }

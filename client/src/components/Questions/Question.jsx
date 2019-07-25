@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import MoreAnsweredQuestions from "./MoreAnsweredQuestions";
 import {
   fetchQuestions,
-  displayQuestions
+  displayQuestions,
+  setProductId
 } from "../../actions/questionsActions";
 import QuestionModel from "./QuesstionModel";
 
@@ -16,20 +17,27 @@ class Question extends Component {
       count: 2,
       load: false,
       qFontSize: 20,
-      aFontSize: 18,
+      aFontSize: 20,
       subFontSize: 16,
       highLight: ""
     };
     this.setCount = this.setCount.bind(this);
     this.setLoadMore = this.setLoadMore.bind(this);
     this.setQuestionList = this.setQuestionList.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   componentDidMount() {
-    const { fetchQuestions, location } = this.props;
-    fetchQuestions(location.pathname);
+    const { fetchQuestions, location, setProductId } = this.props;
+    let prodId = Number(location.pathname.slice(1));
+    fetchQuestions(prodId);
+    setProductId(prodId);
   }
 
-  setCount(count, char) {
+  setCount(count) {
+    this.setState({ count: count });
+  }
+
+  handleSearch(count, char) {
     this.setState({ count: count, highLight: char });
   }
 
@@ -63,7 +71,7 @@ class Question extends Component {
         <SearchQuestions
           setQuestionList={this.setQuestionList}
           questionsData={questionsData}
-          setCount={this.setCount}
+          handleSearch={this.handleSearch}
         />
         <QuestionModel
           questions={questions}
@@ -73,12 +81,18 @@ class Question extends Component {
           aFontSize={aFontSize}
           subFontSize={subFontSize}
         />
-        <MoreAnsweredQuestions
-          questions={questions}
-          setCount={this.setCount}
-          setLoadMore={this.setLoadMore}
-          load={load}
-        />
+        {questions.length >= 2 ? (
+          <MoreAnsweredQuestions
+            questions={questions}
+            setCount={this.setCount}
+            setLoadMore={this.setLoadMore}
+            countQuestion={count}
+            load={load}
+          />
+        ) : (
+          ""
+        )}
+
         <AddQuestionModal id={location.pathname} />
       </div>
     );
@@ -95,6 +109,9 @@ const mapDispatchToProps = dispatch => ({
   },
   displayQuestions: questions => {
     dispatch(displayQuestions(questions));
+  },
+  setProductId: id => {
+    dispatch(setProductId(id));
   }
 });
 
