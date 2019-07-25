@@ -19,6 +19,16 @@ class ProductOverview extends Component {
     getRatings(location.pathname);
   }
 
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+    if (location !== prevProps.location) {
+      const { getProducts, getStyles, getRatings } = this.props;
+      getProducts(location.pathname);
+      getStyles(location.pathname);
+      getRatings(location.pathname);
+    }
+  }
+
   render() {
     const { data, expandedView } = this.props;
     return !Object.keys(data).length ? (
