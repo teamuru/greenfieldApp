@@ -56,7 +56,6 @@ const Related = (props) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
     localStorage.setItem(product.id, JSON.stringify(product));
 
-    // TODO: add check to make sure that product is not already in outfit.
     if (outfit.some(item => item.id === product.id)) {
       return;
     }
@@ -124,18 +123,30 @@ const Related = (props) => {
         </CarouselProvider>
       </div>
       <div className="outfitCards">
-        {outfitExists
-          && outfit.map(item => (
-            <OutfitCard
-              id={item.id}
-              key={uuid()}
-              name={item.name}
-              img={item.img}
-              defaultPrice={item.defaultPrice}
-              category={item.category}
-              removeFromOutfit={removeFromOutfit}
-            />
-          ))}
+        {outfitExists && (
+          <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={140}
+            totalSlides={outfit.length}
+            visibleSlides={4}
+          >
+            <Slider>
+              {outfit.map((item, index) => (
+                <Slide index={index}>
+                  <OutfitCard
+                    id={item.id}
+                    key={uuid()}
+                    name={item.name}
+                    img={item.img}
+                    defaultPrice={item.defaultPrice}
+                    category={item.category}
+                    removeFromOutfit={removeFromOutfit}
+                  />
+                </Slide>
+              ))}
+            </Slider>
+          </CarouselProvider>
+        )}
       </div>
     </>
   );
