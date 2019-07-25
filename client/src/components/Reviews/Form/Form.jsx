@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
 
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { Button, Box, Paper, Grid } from '@material-ui/core';
+
+import {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from '@material-ui/core';
 
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
+import Username from './Username';
 // import Recommend from './formComponents/Recommend.jsx';
 // import OverallRating from './formComponents/OverallRating.jsx';
 // import Characteristics from './Charcteristics';
@@ -104,6 +107,12 @@ const Form = (props) => {
       {/* <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle>
       <DialogContent className={classes.content}>
         <DialogContentText>About {props.product.name}</DialogContentText> */}
+
+      <Username
+        name={form.name}
+        handleChange={handleChange.bind(this)}
+        error={checkErrors('name')}
+      />
 
       <RevSummary
         summary={form.summary}

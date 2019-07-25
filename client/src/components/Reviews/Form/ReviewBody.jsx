@@ -1,9 +1,12 @@
 import React from 'react';
 
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
+import { TextField, Box, Typography, Paper } from '@material-ui/core/';
+// import Box from '@material-ui/core/Box';
+
+import { useStyles } from './styles.js';
 
 const ReviewBody = ({ body, handleChange, error }) => {
+  const classes = useStyles();
   const minReqChars = () => {
     let remainingChars = 50 - body.length;
     return remainingChars > 0
@@ -12,8 +15,10 @@ const ReviewBody = ({ body, handleChange, error }) => {
   };
 
   return (
-    <Box>
-      <h4>Review Body*</h4>
+    <Paper className={classes.header}>
+      <Typography className={error ? classes.titleError : classes.title}>
+        Review Body*
+      </Typography>
       <TextField
         inputProps={{ maxLength: 1000 }}
         multiline
@@ -22,10 +27,11 @@ const ReviewBody = ({ body, handleChange, error }) => {
         required={true}
         value={body}
         name="body"
+        className={classes.textField}
         error={error}
       />
       <Box>{minReqChars()}</Box>
-    </Box>
+    </Paper>
   );
 };
 

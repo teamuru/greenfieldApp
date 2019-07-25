@@ -1,21 +1,29 @@
 import React from 'react';
 
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
+import { TextField, Box, Typography, Paper } from '@material-ui/core/';
+
+import { useStyles } from './styles.js';
 
 const RevSummary = ({ summary = '', handleChange, error }) => {
+  const classes = useStyles();
+
   return (
-    <Box>
-      <h4>Review Summary*</h4>
+    <Paper className={classes.header}>
+      <Typography className={error ? classes.titleError : classes.title}>
+        Enter a Summary*
+      </Typography>
       <TextField
-        placeholder="i.e. What an amazing onesie!"
-        value={summary}
-        onChange={handleChange}
+        className={classes.textField}
+        required={true}
         inputProps={{ maxLength: 60 }}
+        onChange={handleChange}
+        placeholder="i.e. What an amazing onesie!"
+        required={true}
+        value={summary}
         name="summary"
         error={error}
       />
-    </Box>
+    </Paper>
   );
 };
 
