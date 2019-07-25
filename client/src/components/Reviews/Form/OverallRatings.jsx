@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { Grid, Box } from '@material-ui/core';
+import { Typography, Paper, Grid } from '@material-ui/core/';
 import Rating from '@material-ui/lab/Rating';
 
-// import { useStyles } from './inputStyle.js';
+import { useStyles } from './styles';
 
-const OverallRating = ({ 
-  // form, 
-  setForm, error }) => {
-  // const classes = useStyles();
+const Overall = ({ form, setForm, error }) => {
+  const classes = useStyles();
 
   const renderMeaning = (rating) => {
     let ratings = {
@@ -18,7 +16,7 @@ const OverallRating = ({
       '4': 'Good',
       '5': 'Great'
     };
-    return <div> {ratings[rating]} </div>;
+    return <span> {ratings[rating]} </span>;
   };
 
   const handleChange = (e, newValue) => {
@@ -28,12 +26,10 @@ const OverallRating = ({
   };
 
   return (
-    <Box>
-      <h4 
-      // className={error ? classes.titleError : classes.title}
-      >
+    <Paper className={classes.header}>
+      <Typography className={error ? classes.titleError : classes.title}>
         Overall Rating*
-      </h4>
+      </Typography>
       <Grid container direction="row">
         <Rating
           name="rating"
@@ -43,8 +39,8 @@ const OverallRating = ({
         />
         {renderMeaning(form.rating)}
       </Grid>
-    </Box>
+    </Paper>
   );
 };
 
-export default OverallRating;
+export default Overall;

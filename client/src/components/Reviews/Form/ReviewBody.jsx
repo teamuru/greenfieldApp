@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { TextField, Box, Typography, Paper, Grid } from '@material-ui/core/';
-// import Box from '@material-ui/core/Box';
+import { TextField, Typography, Paper, Grid } from '@material-ui/core/';
 
 import { useStyles } from './styles.js';
 

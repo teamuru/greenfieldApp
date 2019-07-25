@@ -6,7 +6,7 @@ import { TextField, Radio } from 'final-form-material-ui';
 
 import Attachment from '@material-ui/icons/Attachment';
 import Rating from '@material-ui/lab/Rating';
-import OverallRating from './OverallRatings';
+import OverallRating from './Form/OverallRatings';
 import postReview from '../../actions/reviewsActions';
 
 import {

@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Button, Box, Paper, Grid } from '@material-ui/core';
-
 import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
+  Button,
+  Box,
+  Paper,
+  Grid,
+  Typography
 } from '@material-ui/core';
 
 import RevSummary from './ReviewHeader';
@@ -17,12 +20,11 @@ import ReviewBody from './ReviewBody';
 import Username from './Username';
 import Email from './Email';
 import Recommend from './Recommend';
-// import Recommend from './formComponents/Recommend.jsx';
+import Overall from './OverallRatings';
+
 // import OverallRating from './formComponents/OverallRating.jsx';
 // import Characteristics from './Charcteristics';
-// import ReviewBody from './formComponents/ReviewBody.jsx';
-// import Nickname from './formComponents/Nickname.jsx';
-// import Email from './formComponents/Email.jsx';
+
 // import Images from './formComponents/Images.jsx';
 import { validate } from './validate.js';
 // import { FormSnackbar } from '../SnackBar.jsx';
@@ -105,7 +107,15 @@ const Form = (props) => {
 
   return form ? (
     <React.Fragment>
-      <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle>
+      {renderErrors()}
+
+      {/* <DialogTitle id="form-dialog-title">Write Your Review </DialogTitle> */}
+
+      <Paper>
+        <Typography variant="h6" align="center" component="h4" gutterBottom>
+          Create A Review
+        </Typography>
+      </Paper>
 
       <Username
         name={form.name}
@@ -142,6 +152,12 @@ const Form = (props) => {
         setForm={setForm}
         error={checkErrors('characteristics')}
       /> */}
+
+      <Overall
+        form={form}
+        setForm={setForm.bind(this)}
+        error={checkErrors('rating')}
+      />
     </React.Fragment>
   ) : (
     <div>Loading...</div>
