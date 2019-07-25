@@ -10,7 +10,7 @@ const Email = ({ email, handleChange, error }) => {
   return (
     <Paper className={classes.header}>
       <Typography className={error ? classes.titleError : classes.title}>
-        enter a email*
+        email address*
       </Typography>
       <TextField
         className={classes.txt}

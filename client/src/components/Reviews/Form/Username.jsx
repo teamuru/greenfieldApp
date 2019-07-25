@@ -10,7 +10,7 @@ const Username = ({ name, handleChange, error }) => {
   return (
     <Paper className={classes.header}>
       <Typography className={error ? classes.titleError : classes.title}>
-        enter a username*
+        username*
       </Typography>
       <TextField
         className={classes.txt}

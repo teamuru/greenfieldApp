@@ -10,7 +10,7 @@ const RevSummary = ({ summary = '', handleChange, error }) => {
   return (
     <Paper className={classes.header}>
       <Typography className={error ? classes.titleError : classes.title}>
-        Enter a Summary*
+        Review Summary*
       </Typography>
       <TextField
         className={classes.txt}

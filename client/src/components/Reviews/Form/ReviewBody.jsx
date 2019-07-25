@@ -16,13 +16,13 @@ const ReviewBody = ({ body, handleChange, error }) => {
   return (
     <Paper className={classes.header}>
       <Typography className={error ? classes.titleError : classes.title}>
-        Review Body*
+        Review*
       </Typography>
       <TextField
         inputProps={{ maxLength: 1000 }}
         multiline
         onChange={handleChange}
-        placeholder="tell us why you loved this product"
+        placeholder="Tell us your thoughts on this product"
         required={true}
         value={body}
         name="body"

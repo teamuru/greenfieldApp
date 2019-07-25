@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 
 import { ReviewSnackbar } from './Snackbar';
+import { validate } from './validate.js';
 
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
@@ -23,12 +24,9 @@ import Username from './Username';
 import Email from './Email';
 import Recommend from './Recommend';
 import Overall from './OverallRatings';
-
-// import OverallRating from './formComponents/OverallRating.jsx';
-// import Characteristics from './Charcteristics';
+import Characteristics from './Charcteristics';
 
 // import Images from './formComponents/Images.jsx';
-import { validate } from './validate.js';
 // import { FormSnackbar } from '../SnackBar.jsx';
 
 const defaultForm = {
@@ -53,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = (props) => {
-  console.log(`props from form`, props);
+  // console.log(`props from form`, props);
   const [form, setForm] = useState(defaultForm);
   const [errors, setErrors] = useState(false);
   const [open, setOpen] = React.useState(false);
@@ -149,11 +147,11 @@ const Form = (props) => {
         error={checkErrors('recommend')}
       />
 
-      {/* <Characteristics
+      <Characteristics
         form={form}
         setForm={setForm}
         error={checkErrors('characteristics')}
-      /> */}
+      />
 
       <Overall
         form={form}
