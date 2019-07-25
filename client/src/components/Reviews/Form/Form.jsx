@@ -11,6 +11,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import RevSummary from './ReviewHeader';
+import ReviewBody from './ReviewBody';
 // import Recommend from './formComponents/Recommend.jsx';
 // import OverallRating from './formComponents/OverallRating.jsx';
 // import Characteristics from './Charcteristics';
@@ -108,6 +109,12 @@ const Form = (props) => {
         summary={form.summary}
         handleChange={handleChange.bind(this)}
         error={checkErrors('summary')}
+      />
+
+      <ReviewBody
+        body={form.body}
+        handleChange={handleChange.bind(this)}
+        error={checkErrors('body')}
       />
 
       {/* <Characteristics
