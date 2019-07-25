@@ -6,9 +6,17 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { PropTypes } from 'prop-types';
+import {
+  CarouselProvider,
+  Slider,
+  Slide
+  // ButtonBack,
+  // ButtonNext
+} from 'pure-react-carousel';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
 import FeatureModal from './FeatureModal';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
   fetchAllRelated,
@@ -31,9 +39,13 @@ const Related = (props) => {
   const [outfit, setOutfit] = useState([]);
   const [outfitExists, setExists] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [clickedFeatures, setClickedFeatures] = useState([]);
+  const [clickedName, setClickedName] = useState('');
 
-  const showModal = () => {
+  const showModal = (features, name) => {
     setModalOpen(true);
+    setClickedFeatures(features);
+    setClickedName(name);
   };
 
   const modalClose = () => {
@@ -44,6 +56,9 @@ const Related = (props) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
     localStorage.setItem(product.id, JSON.stringify(product));
 
+    if (outfit.some(item => item.id === product.id)) {
+      return;
+    }
     setOutfit([...outfit, product]);
     setExists(true);
   };
@@ -75,34 +90,63 @@ const Related = (props) => {
 
   return (
     <>
-      <FeatureModal modalOpen={modalOpen} modalClose={modalClose} />
+      <FeatureModal
+        modalOpen={modalOpen}
+        modalClose={modalClose}
+        clickedFeatures={clickedFeatures}
+        clickedName={clickedName}
+      />
       <div className="relatedCards">
-        {relatedProducts.map((product, index) => (
-          <ProductCard
-            id={product.id}
-            key={uuid()}
-            name={product.name}
-            image={photos[index]}
-            defaultPrice={product.default_price}
-            category={product.category}
-            addToOutfit={addToOutfit}
-            showModal={showModal}
-          />
-        ))}
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={140}
+          totalSlides={relatedProducts.length}
+          visibleSlides={4}
+        >
+          <Slider>
+            {relatedProducts.map((product, index) => (
+              <Slide index={index}>
+                <ProductCard
+                  id={product.id}
+                  key={uuid()}
+                  name={product.name}
+                  image={photos[index]}
+                  defaultPrice={product.default_price}
+                  category={product.category}
+                  features={product.features}
+                  addToOutfit={addToOutfit}
+                  showModal={showModal}
+                />
+              </Slide>
+            ))}
+          </Slider>
+        </CarouselProvider>
       </div>
       <div className="outfitCards">
-        {outfitExists
-          && outfit.map(item => (
-            <OutfitCard
-              id={item.id}
-              key={uuid()}
-              name={item.name}
-              img={item.img}
-              defaultPrice={item.defaultPrice}
-              category={item.category}
-              removeFromOutfit={removeFromOutfit}
-            />
-          ))}
+        {outfitExists && (
+          <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={140}
+            totalSlides={outfit.length}
+            visibleSlides={4}
+          >
+            <Slider>
+              {outfit.map((item, index) => (
+                <Slide index={index}>
+                  <OutfitCard
+                    id={item.id}
+                    key={uuid()}
+                    name={item.name}
+                    img={item.img}
+                    defaultPrice={item.defaultPrice}
+                    category={item.category}
+                    removeFromOutfit={removeFromOutfit}
+                  />
+                </Slide>
+              ))}
+            </Slider>
+          </CarouselProvider>
+        )}
       </div>
     </>
   );
