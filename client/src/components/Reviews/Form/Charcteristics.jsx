@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  Box,
   Radio,
   RadioGroup,
   FormControl,
@@ -107,7 +106,7 @@ const Characteristics = ({ form, setForm, error, meta }) => {
         Characteristics*
       </Typography>
 
-      {Object.keys(meta.characteristics).map((character) => {
+      {Object.keys(meta.characteristics).map((character, index) => {
         let id = meta.characteristics[character].id;
         let allDescriptions = descriptions[character];
         let selectedVal = form.characteristics[id];
@@ -117,7 +116,7 @@ const Characteristics = ({ form, setForm, error, meta }) => {
         console.log(`selectedVal`, selectedVal);
 
         return (
-          <Grid item xs={8}>
+          <Grid item xs={8} key={index}>
             <FormControl component="fieldset" key={character}>
               <FormLabel
               // className={classes.category}
@@ -131,11 +130,11 @@ const Characteristics = ({ form, setForm, error, meta }) => {
                 row
                 // className={classes.group}
               >
-                {ratings.map((value) => {
+                {ratings.map((value, innerInd) => {
                   return (
                     <FormControlLabel
                       value={value}
-                      // key={}
+                      key={innerInd}
                       control={<Radio color="primary" />}
                       label={
                         <Typography
