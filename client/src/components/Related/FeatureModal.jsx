@@ -3,6 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import Check from '@material-ui/icons/Check';
 import store from '../../store';
 
 const useStyles = makeStyles(theme => ({
@@ -20,15 +21,30 @@ const FeatureModal = (props) => {
   const {
  modalOpen, modalClose, clickedFeatures, clickedName 
 } = props;
+
   const classes = useStyles();
 
-  /* table with headers of currentProduct and clickedName
-     Checkmark       feature              checkmark */
+  const checker = (feature) => {
+    if (feature.value !== undefined) {
+      return <Check />;
+    }
+  };
+
+  const doubleChecker = (feature) => {
+    if (feature.value !== undefined) {
+      if (feature[1].value === feature[0].value) {
+        return <Check />;
+      }
+    } else return '';
+  };
+
+  const currentFeatures = store.getState().product.data.features;
+  const currentProduct = store.getState().product.data.name;
+  const zipped = _.zip(currentFeatures, clickedFeatures);
 
   if (modalOpen) {
-    const currentFeatures = store.getState().product.data.features;
-    const currentProduct = store.getState().product.data.name;
-    const zipped = _.zip(currentFeatures, clickedFeatures);
+    console.log('ZIPPED: ', zipped);
+
     return (
       <>
         <Modal
@@ -41,20 +57,20 @@ const FeatureModal = (props) => {
             <div className={classes.paper}>
               <h5 id="modal-title">Features</h5>
               <table>
-                <th>{currentProduct}</th>
-                <th />
-                <th>{clickedName}</th>
-                {/* item0 */}
-                {zipped.map(item => (
+                <tbody>
                   <tr>
-                    {item[0] !== undefined
-                      ? item[0].value
-                      : console.log('fail0')}
-                    {item[1] !== undefined
-                      ? item[1].value
-                      : console.log('fail1')}
+                    <th>{currentProduct}</th>
+                    <th />
+                    <th>{clickedName}</th>
                   </tr>
-                ))}
+                  {zipped.map(item => (
+                    <tr>
+                      <td>{checker(item[0])}</td>
+                      <td>{item[0].value}</td>
+                      <td>{doubleChecker(item)}</td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
