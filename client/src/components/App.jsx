@@ -1,20 +1,20 @@
 /* eslint no-shadow: "off" */
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Container from "@material-ui/core/Container";
+import styled from "styled-components";
 
-import theme from '../theme';
-import './App.css';
+import theme from "../theme";
+import "./App.css";
 
 // component imports
-import ProductOverview from './Product/ProductOverview';
-import Related from './Related/Related';
-import Questions from './Questions/Question';
-import ReviewsWrapper from './Reviews/ReviewsWrapper';
+import ProductOverview from "./Product/ProductOverview";
+import Related from "./Related/Related";
+import Questions from "./Questions/Question";
+import ReviewsWrapper from "./Reviews/ReviewsWrapper";
 
 const AppBarStyled = styled(AppBar)`
   padding: 1.5rem;
