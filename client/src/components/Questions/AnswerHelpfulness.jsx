@@ -2,7 +2,7 @@ import React from "react";
 import { putHelpfulAnswer } from "../../actions/questionsActions";
 
 //PUT /qa/question/:question_id/helpful
-function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
+function AnswerHelpful({ answerer_name, date, helpfulness, id, subFontSize }) {
   const [helpful, setHelpfulness] = React.useState(helpfulness);
   const [hover, setHover] = React.useState("underline");
 
@@ -16,19 +16,33 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
     setHelpfulness(helpful + 1);
     putHelpfulAnswer(id);
   };
+  const styples = {
+    whiteSpace: "pre-wrap",
+    fontSize: subFontSize,
+    color: "gray"
+  };
+  const boldSeller = () => (
+    <span style={{ fontWeight: "bold", fontSize: subFontSize, color: "gray" }}>
+      Seller
+    </span>
+  );
   return (
     <React.Fragment>
-      <span style={{ whiteSpace: "pre-wrap", fontSize: 8 }}>
-        {`    by ${answerer_name}, ${timeConvert(
-          date
-        )}      |      Helpful?   `}
+      <span style={styples}>{`    by ${answerer_name} `}</span>
+      <span style={styples}>
+        {answerer_name === "Seller" ? "-" : ""}
+        {answerer_name === "Seller" ? boldSeller() : ""}
       </span>
+      <span style={styples}>{`, ${timeConvert(
+        date
+      )}      |      Helpful?`}</span>
       <button
         onMouseEnter={handleHoverOn}
         onMouseLeave={handleHoverOff}
         style={{
           textDecorationLine: hover,
-          fontSize: 8,
+          fontSize: subFontSize,
+          color: "gray",
           border: "none",
           cursor: "pointer"
         }}
@@ -37,7 +51,7 @@ function AnswerHelpful({ answerer_name, date, helpfulness, id }) {
         Yes
       </button>
       <span
-        style={{ whiteSpace: "pre-wrap", fontSize: 8 }}
+        style={{ whiteSpace: "pre-wrap", color: "gray", fontSize: subFontSize }}
       >{` (${helpful})      |      `}</span>
     </React.Fragment>
   );

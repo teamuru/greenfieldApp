@@ -46,7 +46,6 @@ export const postAddAnswer = (answer, name, email, photos, id) => {
 
 export const putHelpful = (id) => {
   const url = `${API_URL}/qa/question/${id}/helpful`;
-  console.log('id for pull: ', id);
   Axios.put(url, { question_id: id })
     .then(() => {
       console.log('success pull helpful');

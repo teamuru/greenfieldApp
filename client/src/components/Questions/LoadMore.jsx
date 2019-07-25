@@ -3,8 +3,10 @@ import React, { Component } from "react";
 class LoadMore extends Component {
   constructor(props) {
     super(props);
-    this.state = { moreOrLess: true };
+    this.state = { moreOrLess: true, hover: "none" };
     this.hangelLoadMore = this.hangelLoadMore.bind(this);
+    this.handleHoverOn = this.handleHoverOn.bind(this);
+    this.handleHoverOff = this.handleHoverOff.bind(this);
   }
 
   hangelLoadMore(e) {
@@ -14,17 +16,28 @@ class LoadMore extends Component {
       : this.setState({ moreOrLess: true });
     this.props.setLoadMore();
   }
+  handleHoverOn() {
+    this.setState({ hover: "underline" });
+  }
+  handleHoverOff() {
+    this.setState({ hover: "none" });
+  }
 
   render() {
     // let answers = this.props.answers;
-    let { moreOrLess } = this.state;
+    let { moreOrLess, hover } = this.state;
+    let { aFontSize } = this.props;
+    let { handleHoverOff, handleHoverOn } = this;
     return (
       <div>
         <button
+          onMouseEnter={handleHoverOn}
+          onMouseLeave={handleHoverOff}
           style={{
+            textDecorationLine: hover,
             border: "none",
             fontWeight: "bold",
-            fontSize: 8,
+            fontSize: aFontSize,
             cursor: "pointer"
           }}
           onClick={this.hangelLoadMore}
