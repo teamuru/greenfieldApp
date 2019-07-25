@@ -8,21 +8,25 @@ describe('Product reducer', () => {
         data: {},
         styles: [],
         selectedStyle: {},
+        selectedStyleIndex: 0,
         selectedSku: '',
         selectedQty: 0,
         rating: 0,
         selectedPhoto: 0,
-        expandedView: false
+        expandedView: false,
+        zoomed: false
       })
     ).toEqual({
       data: {},
       styles: [],
       selectedStyle: {},
+      selectedStyleIndex: 0,
       selectedSku: '',
       selectedQty: 0,
       rating: 0,
       selectedPhoto: 0,
-      expandedView: false
+      expandedView: false,
+      zoomed: false
     });
   });
 

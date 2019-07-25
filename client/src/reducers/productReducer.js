@@ -2,11 +2,13 @@ const intialState = {
   data: {},
   styles: [],
   selectedStyle: {},
+  selectedStyleIndex: 0,
   selectedSku: '',
   selectedQty: 0,
   selectedPhoto: 0,
   rating: 0,
-  expandedView: false
+  expandedView: false,
+  zoomed: false
 };
 
 const productReducer = (state = intialState, action) => {
@@ -25,6 +27,8 @@ const productReducer = (state = intialState, action) => {
       return { ...state, ratingError: action.payload };
     case 'CHANGE_SELECTED_STYLE':
       return { ...state, selectedStyle: action.payload };
+    case 'CHANGE_SELECTED_STYLE_INDEX':
+      return { ...state, selectedStyleIndex: action.payload };
     case 'CHANGE_SELECTED_SKU':
       return { ...state, selectedSku: action.payload };
     case 'CHANGE_SELECTED_QUANTITY':
@@ -41,6 +45,8 @@ const productReducer = (state = intialState, action) => {
       return { ...state, selectedPhoto: action.payload };
     case 'CHANGE_EXPANDED_VIEW':
       return { ...state, expandedView: !state.expandedView };
+    case 'CHANGE_ZOOMED':
+      return { ...state, zoomed: !state.zoomed };
     default:
       return state;
   }
