@@ -14,7 +14,6 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles';
 
-//property corresponds to a value,
 const descriptions = {
   Fit: {
     '1': 'Runs tight',
@@ -84,53 +83,49 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Characteristics = ({
-  form,
-  setForm,
-  error,
-  reviews
-  // , characteristics
-}) => {
+const Characteristics = ({ form, setForm, error, meta }) => {
   const classes = useStyles();
-  // const handleChange = (e) => {
-  //   setForm((prevState) => {
-  //     let id = characteristics[e.target.name].id;
-  //     prevState.characteristics[id] = Number(e.target.value);
-  //     return { ...prevState };
-  //   });
-  // };
 
-  return !reviews ? (
-    <h4>... Loading</h4>
+  const handleChange = (e) => {
+    setForm((prevState) => {
+      let id = meta.characteristics[e.target.name].id;
+      prevState.meta.characteristics[id] = Number(e.target.value);
+      return { ...prevState };
+    });
+  };
+
+  return !meta ? (
+    <Typography>... Loading</Typography>
   ) : (
     <Paper>
-      {/* FIXME: */}
-      {/* {console.log(`characteristics`, characteristics)} */}
-      {console.log(`meta: `, meta)}
-
-      {/* <h4 className={error ? classes.titleError : classes.title}>
+      <Typography className={error ? classes.titleError : classes.title}>
         Characteristics*
-      </h4>
-      {Object.keys(characteristics).map((character) => {
-        let id = characteristics[character].id;
+      </Typography>
 
+      {Object.keys(meta.characteristics).map((character) => {
+        let id = meta.characteristics[character].id;
         let descriptionList = descriptions[character];
+        {
+          /* {
+          /* let selectedValue = form.characteristics[id]; */
 
-        let selectedValue = form.characteristics[id];
-
-        let selectedDescription = descriptionList[selectedValue];
-
+        {
+          console.log(`form`, form);
+        }
+        {
+          /* let selectedDescription = descriptionList[selectedValue]; */
+        }
         return (
           <FormControl component="fieldset" key={character}>
-            <FormLabel className={classes.category}>
+            {/* <FormLabel className={classes.category}>
               {character}:{selectedDescription || 'None selected:'}
-            </FormLabel>
+            </FormLabel> */}
             <RadioGroup
               name={character}
               value={String(selectedValue) || ''}
               onChange={handleChange}
               row
-              className={classes.group}
+              // className={classes.group}
             >
               {['1', '2', '3', '4', '5'].map((value) => {
                 return (
@@ -138,7 +133,9 @@ const Characteristics = ({
                     value={value}
                     control={<Radio color="primary" />}
                     label={
-                      <Typography className={classes.label}>
+                      <Typography
+                      //  className={classes.label}
+                      >
                         {value === '2' || value === '4'
                           ? ''
                           : descriptionList[value]}
@@ -146,21 +143,21 @@ const Characteristics = ({
                     }
                     labelPlacement="bottom"
                     key={value}
-                    className={classes.col}
+                    // className={classes.col}
                   />
                 );
               })}
             </RadioGroup>
           </FormControl>
         );
-      })} */}
+      })}
     </Paper>
   );
 };
 
 let mapStateToProps = (store) => ({
-  // characteristics: state.reviews.meta.characteristics
   meta: store.reviews.meta
+  // characteristics: store.reviews.meta.characteristics
 });
 
 export default connect(mapStateToProps)(Characteristics);
