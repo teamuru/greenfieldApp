@@ -21,13 +21,14 @@ const OriginalPriceWithSale = styled(Typography)`
 
 function Details(props) {
   const {
- selectedStyle, rating, name, category 
+ selectedStyle, rating, reviewsNum, name, category 
 } = props;
   const { sale_price: salePrice, original_price: originalPrice } = selectedStyle;
   // Check if there are styles in redux store before rendering
   return Object.keys(selectedStyle).length ? (
     <React.Fragment>
       <Rating readOnly value={rating} precision={0.25} size="small" />
+      <Typography style={{ fontSize: '1rem' }} variant="subtitle2">{`Read all ${reviewsNum} reviews`}</Typography>
       <Typography variant="body1">{category}</Typography>
       <Typography variant="h4">{name}</Typography>
       {salePrice > 0 ? (
@@ -49,13 +50,15 @@ function Details(props) {
 Details.propTypes = {
   selectedStyle: PropTypes.object.isRequired,
   rating: PropTypes.number.isRequired,
+  reviewsNum: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired
 };
 
 const mapStateToProps = store => ({
   selectedStyle: store.product.selectedStyle,
-  rating: store.product.rating
+  rating: store.product.rating,
+  reviewsNum: store.reviews.data.results.length
 });
 
 export default connect(mapStateToProps)(Details);
