@@ -9,9 +9,9 @@ import { PropTypes } from 'prop-types';
 import {
   CarouselProvider,
   Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext
+  Slide
+  // ButtonBack,
+  // ButtonNext
 } from 'pure-react-carousel';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
@@ -56,6 +56,10 @@ const Related = (props) => {
     // Don't need a check here because it will just overwrite the object if the key exists.
     localStorage.setItem(product.id, JSON.stringify(product));
 
+    // TODO: add check to make sure that product is not already in outfit.
+    if (outfit.some(item => item.id === product.id)) {
+      return;
+    }
     setOutfit([...outfit, product]);
     setExists(true);
   };
@@ -96,7 +100,7 @@ const Related = (props) => {
       <div className="relatedCards">
         <CarouselProvider
           naturalSlideWidth={100}
-          naturalSlideHeight={125}
+          naturalSlideHeight={140}
           totalSlides={relatedProducts.length}
           visibleSlides={4}
         >
@@ -117,8 +121,6 @@ const Related = (props) => {
               </Slide>
             ))}
           </Slider>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
         </CarouselProvider>
       </div>
       <div className="outfitCards">
