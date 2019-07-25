@@ -43,12 +43,12 @@ export const fetchMeta = (prodId) => {
 
 // Helpful
 export const putHelpful = (reviewId) => {
-  // console.log('productId from actions', reviewId);
   const url = `${API_URL}/reviews/helpful/${reviewId}`;
 
-  Axios.put(url, { reveiw_id: reviewId })
+  return Axios.put(url, { reveiw_id: reviewId })
     .then(() => {
       console.log('sucessful put');
+      // dispatch(fetchReviews(prodId));
     })
     .catch((err) => {
       console.log('reviews - fail put helpful \n err => ', err);
@@ -56,13 +56,12 @@ export const putHelpful = (reviewId) => {
 };
 
 // Report
-export const reportReview = (prodId) => {
-  const url = `${API_URL}/reviews/report/${prodId}`;
-  // FIXME: with spelling error
-  // Axios.put(url, { reveiw_id: prodId })
-  Axios.put(url, { review_id: prodId })
-    .then((data) => {
-      console.log('reviews - sucessful put report', data);
+export const reportReview = (reviewId) => {
+  const url = `${API_URL}/reviews/report/${reviewId}`;
+  return Axios.put(url, { review_id: reviewId })
+    .then(() => {
+      // dispatch(fetchReviews(reviewId));
+      console.log('sucess report');
     })
     .catch((err) => {
       console.log('reviews - fail put report', err);
@@ -85,6 +84,8 @@ export const postReview = (reviewObj, prodId) => {
   return dispatch => Axios.post(url, reviewObj)
       .then(({ data }) => {
         dispatch(postReviewSucess(data));
+        dispatch(fetchReviews(prodId));
+        dispatch(fetchMeta(prodId));
       })
       .catch((err) => {
         dispatch(postReviewFailure(err));

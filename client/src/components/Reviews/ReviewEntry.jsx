@@ -38,12 +38,13 @@ const style = {
     // spacing: 20
   },
   sum: {
-    fontWeight: 700,
+    // fontWeight: 700,
     fontSize: 17,
     padding: '10px 0px'
   },
   bod: {
     fontSize: 15,
+    fontSize: 300,
     padding: '10px 0px'
   },
   resHead: {
@@ -77,19 +78,26 @@ const ReviewEntry = ({ review }) => {
     <Box borderBottom={1}>
       <div style={style.bor}>
         <Grid container justify="space-between" direction="row">
+          {/* Star Rating */}
           <Grid item style={{ fontSize: 15 }}>
             {' '}
             <Rating readOnly value={review.rating} max={5} size="small" />
           </Grid>
+
+          {/* Usernmae and date */}
           <Grid item style={style.userSum}>
             <b>{review.reviewer_name}, </b>
             {moment(review.date).format('MMMM Do, YYYY')}
           </Grid>
         </Grid>
+
+        {/* Summary */}
         <Grid>
           <Grid item style={style.sum}>
             {review.summary}
           </Grid>
+
+          {/* Body */}
           <Grid item style={style.bod}>
             {review.body}
           </Grid>
