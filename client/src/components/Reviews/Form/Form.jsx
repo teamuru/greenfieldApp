@@ -32,8 +32,8 @@ import Comfort from './Comfort';
 import Size from './Size';
 import Quality from './Quality';
 import Width from './Width';
+import Image from './Image';
 
-// import Images from './formComponents/Images.jsx';
 import ReviewsSnackbar from './Snackbar';
 
 const defaultForm = {
@@ -169,6 +169,9 @@ const Form = (props) => {
       <Quality form={form} setForm={setForm} />
       <Comfort form={form} setForm={setForm} />
       <Quality form={form} setForm={setForm} />
+
+      {/* Attach Image */}
+      <Image />
 
       {/* Recommend */}
       <Recommend
