@@ -56,7 +56,7 @@ const ProductCard = (props) => {
             // TODO: fix this console error
             titleTypographyProps={{ variant: 'h8' }}
           />
-          <Rating readOnly value={stars} max={5} size="small" />
+          <Rating readOnly value={stars} precision={0.25} max={5} size="small" />
           <CardMedia className={classes.media} image={img} title={name} />
         </Link>
         <CardContent>
@@ -73,7 +73,8 @@ const ProductCard = (props) => {
                 name,
                 defaultPrice,
                 img,
-                id
+                id,
+                stars
               });
             }}
           >
