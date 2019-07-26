@@ -49,8 +49,6 @@ const FeatureModal = (props) => {
   const zipped = _.zip(currentFeatures, clickedFeatures);
 
   if (modalOpen) {
-    console.log('ZIPPED: ', zipped);
-
     return (
       <>
         <Modal
@@ -80,7 +78,7 @@ const FeatureModal = (props) => {
                     <tr>
                       <td>{compare(item)}</td>
                       <td>{valueChecker(item[1])}</td>
-                      <td>{checker(item[0])}</td>
+                      <td>{checker(item[1])}</td>
                     </tr>
                   ))}
                 </tbody>
