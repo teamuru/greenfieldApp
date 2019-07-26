@@ -46,6 +46,7 @@ const defaultForm = {
   length: '',
   comfort: '',
   size: '',
+  width: '',
   quality: '',
   summary: '',
   body: '',

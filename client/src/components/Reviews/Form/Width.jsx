@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Width = ({ form, setForm, error, meta }) => {
-  const clsses = useStyles();
+  const classes = useStyles();
   console.log(`form`, form);
 
   const handleChange = (e) => {
@@ -63,7 +63,7 @@ const Width = ({ form, setForm, error, meta }) => {
   ) : (
     <Paper className={classes.header} style={{ padding: '50px 20px' }}>
       <Typography className={error ? classes.titleError : classes.title}>
-        How was the width?
+        How was the Width?
       </Typography>
       <FormControl component="fieldset">
         <RadioGroup
