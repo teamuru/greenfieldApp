@@ -7,7 +7,8 @@ Shopping app built with react and redux.
 <!-- TODO: link to a .gif of the app -->
 <!-- <img src='./snapshot.gif' height='80%' width='80%'> -->
 
-![Interface](documentation/Redux.png)
+![React](documentation/React.webp)
+![Redux](documentation/Redux.png)
 
 ## Table of Contents
 
