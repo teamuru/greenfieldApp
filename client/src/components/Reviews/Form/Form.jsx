@@ -9,7 +9,6 @@ import {
   DialogContentText,
   DialogTitle,
   Button,
-  Box,
   Paper,
   Grid,
   Typography
@@ -43,7 +42,7 @@ const defaultForm = {
 
 const useStyles = makeStyles((theme) => ({
   errors: {
-    color: theme.palette.error.dark,
+    color: '#F44336',
     padding: theme.spacing(0)
   },
   error: {
