@@ -25,8 +25,8 @@ const ReviewSortControl = (props) => {
   console.log(props);
 
   const handleChange = (e) => {
-    // const { sortReviews } = props;
-    // sortReviews(e.target.value);
+    const { sortReviews } = props;
+    sortReviews(e.target.value);
   };
 
   return (
@@ -38,9 +38,9 @@ const ReviewSortControl = (props) => {
         onChange={handleChange}
         className={classes.selected}
       >
-        <MenuItem value="relevant">relevance</MenuItem>
-        <MenuItem value="newest">newest</MenuItem>
-        <MenuItem value="helpful">helpful</MenuItem>
+        <MenuItem value="relevant">Relevance</MenuItem>
+        <MenuItem value="newest">Newest</MenuItem>
+        <MenuItem value="helpful">Helpfulness</MenuItem>
       </Select>
     </FormControl>
   );
