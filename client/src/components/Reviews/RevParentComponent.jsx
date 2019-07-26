@@ -66,7 +66,7 @@ const RevParentComponent = () => {
             alignItems="flex-end"
           >
             <ReviewCounter />
-            <SelectControl />
+            <SelectControl  />
           </Grid>
           <div>
             <ReviewList />

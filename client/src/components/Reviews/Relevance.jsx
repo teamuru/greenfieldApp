@@ -10,13 +10,13 @@ import * as actions from '../../actions/reviewsActions';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    fontSize: 20
+    fontSize: 15
   }
 }));
 
 const style = {
   menuStyle: {
-    fontSize: 20
+    fontSize: 15
   }
 };
 

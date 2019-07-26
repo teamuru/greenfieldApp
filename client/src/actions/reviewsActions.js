@@ -12,22 +12,13 @@ export const fetchReviewsFailure = (error) => ({
   payload: error
 });
 
-// export const fetchReviews = (prodId) => {
-//   const url = `${API_URL}/reviews/${prodId}/list`;
-//   return (dispatch) =>
-//     Axios.get(url)
-//       .then(({ data }) => {
-//         dispatch(fetchReviewsSuccess(data));
-//       })
-//       .catch((err) => dispatch(fetchReviewsFailure(err)));
-// };
 export const fetchReviews = (productId, sort, count = 50) => async (
   dispatch
 ) => {
-  let reviews = await Axios.get(`${API_URL}/reviews/${productId}/list`, {
+  const reviews = await Axios.get(`${API_URL}/reviews/${productId}/list`, {
     params: {
-      sort: sort,
-      count: count
+      sort,
+      count
     }
   });
 
