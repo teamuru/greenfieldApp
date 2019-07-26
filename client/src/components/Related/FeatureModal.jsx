@@ -30,12 +30,18 @@ const FeatureModal = (props) => {
     }
   };
 
-  const doubleChecker = (feature) => {
-    if (feature.value !== undefined) {
-      if (feature[1].value === feature[0].value) {
+  const compare = (feature) => {
+    if (feature[1] !== undefined && feature[0] !== undefined) {
+      if (feature[0].value === feature[1].value) {
         return <Check />;
       }
     } else return '';
+  };
+
+  const valueChecker = (feature) => {
+    if (feature.value !== undefined) {
+      return feature.value;
+    }
   };
 
   const currentFeatures = store.getState().product.data.features;
@@ -66,8 +72,8 @@ const FeatureModal = (props) => {
                   {zipped.map(item => (
                     <tr>
                       <td>{checker(item[0])}</td>
-                      <td>{item[0].value}</td>
-                      <td>{doubleChecker(item)}</td>
+                      <td>{valueChecker(item[0])}</td>
+                      <td>{compare(item)}</td>
                     </tr>
                   ))}
                 </tbody>
