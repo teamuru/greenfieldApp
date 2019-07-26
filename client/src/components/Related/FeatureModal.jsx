@@ -25,7 +25,7 @@ const FeatureModal = (props) => {
   const classes = useStyles();
 
   const checker = (feature) => {
-    if (feature.value !== undefined) {
+    if (feature !== undefined) {
       return <Check />;
     }
   };
@@ -39,7 +39,7 @@ const FeatureModal = (props) => {
   };
 
   const valueChecker = (feature) => {
-    if (feature.value !== undefined) {
+    if (feature !== undefined) {
       return feature.value;
     }
   };
@@ -74,6 +74,13 @@ const FeatureModal = (props) => {
                       <td>{checker(item[0])}</td>
                       <td>{valueChecker(item[0])}</td>
                       <td>{compare(item)}</td>
+                    </tr>
+                  ))}
+                  {zipped.map(item => (
+                    <tr>
+                      <td>{compare(item)}</td>
+                      <td>{valueChecker(item[1])}</td>
+                      <td>{checker(item[0])}</td>
                     </tr>
                   ))}
                 </tbody>
