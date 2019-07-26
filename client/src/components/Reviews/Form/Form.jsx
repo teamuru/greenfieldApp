@@ -34,7 +34,6 @@ import Quality from './Quality';
 import Width from './Width';
 import Image from './Image';
 
-// import Images from './formComponents/Images.jsx';
 import ReviewsSnackbar from './Snackbar';
 
 const defaultForm = {
