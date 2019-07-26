@@ -12,30 +12,30 @@ export const fetchReviewsFailure = (error) => ({
   payload: error
 });
 
-export const fetchReviews = (prodId) => {
-  const url = `${API_URL}/reviews/${prodId}/list`;
-  return (dispatch) =>
-    Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchReviewsSuccess(data));
-      })
-      .catch((err) => dispatch(fetchReviewsFailure(err)));
-};
-// export const fetchReviews = (prodId, sort, count = 50) => async (dispatch) => {
-//   const reviewList = await axios
-//     .get(`http://18.222.40.124/reviews/${prodId}/list`, {
-//       params: {
-//         sort,
-//         count
-//       }
-//     })
-//     .then((data) => {
-//       dispatch(fetchReviewsSuccess);
-//     })
-//     .catch((err) => {
-//       dispatch(fetchReviewsFailure);
-//     });
+// export const fetchReviews = (prodId) => {
+//   const url = `${API_URL}/reviews/${prodId}/list`;
+//   return (dispatch) =>
+//     Axios.get(url)
+//       .then(({ data }) => {
+//         dispatch(fetchReviewsSuccess(data));
+//       })
+//       .catch((err) => dispatch(fetchReviewsFailure(err)));
 // };
+export const fetchReviews = (productId, sort, count = 50) => async (
+  dispatch
+) => {
+  let reviews = await Axios.get(`${API_URL}/reviews/${productId}/list`, {
+    params: {
+      sort: sort,
+      count: count
+    }
+  });
+
+  dispatch({
+    type: 'FETCH_REVIEWS_SUCCESS',
+    payload: reviews.data
+  });
+};
 
 // GET META
 export const fetchMetaSuccess = (meta) => ({
