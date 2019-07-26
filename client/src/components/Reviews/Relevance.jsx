@@ -40,7 +40,7 @@ const ReviewSortControl = (props) => {
       >
         <MenuItem value="relevant">Relevance</MenuItem>
         <MenuItem value="newest">Newest</MenuItem>
-        <MenuItem value="helpful">Helpfulness</MenuItem>
+        <MenuItem value="helpfulness">Helpfulness</MenuItem>
       </Select>
     </FormControl>
   );
