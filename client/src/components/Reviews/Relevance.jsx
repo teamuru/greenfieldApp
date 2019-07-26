@@ -10,7 +10,7 @@ import * as actions from '../../actions/reviewsActions';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    fontSize: 15
+    fontSize: 20
   }
 }));
 
@@ -36,7 +36,7 @@ const ReviewSortControl = (props) => {
         name="sort"
         displayEmpty
         onChange={handleChange}
-        className={classes.selected}
+        className={classes.formControl}
       >
         <MenuItem value="relevant">Relevance</MenuItem>
         <MenuItem value="newest">Newest</MenuItem>
