@@ -15,11 +15,11 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 const descriptions = [
-  'Poor',
-  'Below average',
-  'What I expected',
-  'Pretty great',
-  'Perfect'
+  'Too narrow',
+  'Slightly narrow',
+  'Perfect',
+  'Slightly wide',
+  'Too wide'
 ];
 
 const useStyles = makeStyles((theme) => ({
