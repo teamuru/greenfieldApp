@@ -22,7 +22,7 @@ const style = {
 
 const ReviewSortControl = (props) => {
   const classes = useStyles();
-  console.log(props);
+  console.log(`props for sort`, props);
 
   const handleChange = (e) => {
     const { sortReviews } = props;
@@ -40,7 +40,7 @@ const ReviewSortControl = (props) => {
       >
         <MenuItem value="relevant">Relevance</MenuItem>
         <MenuItem value="newest">Newest</MenuItem>
-        <MenuItem value="helpfulness">Helpfulness</MenuItem>
+        <MenuItem value="helpful">Helpfulness</MenuItem>
       </Select>
     </FormControl>
   );

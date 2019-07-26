@@ -5,13 +5,16 @@ import reviewsReducer from './reducers/reviewsReducer';
 import questionsReducer from './reducers/questionsReducer';
 import relatedReducer from './reducers/relatedReducer';
 import sortReducer from './reducers/sortReducer';
+// import revLimitReducer from './reducers/revLimitReducer';
+import revLimitReducer from './reducers/setLimit';
 
 const rootReducer = combineReducers({
   product: productReducer,
   questions: questionsReducer,
   reviews: reviewsReducer,
   related: relatedReducer,
-  reviewSort: sortReducer
+  reviewSort: sortReducer,
+  revLimit: revLimitReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
