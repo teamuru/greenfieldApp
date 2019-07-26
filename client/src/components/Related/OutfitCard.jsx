@@ -12,11 +12,13 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import DeleteForever from '@material-ui/icons/DeleteForever';
+import Rating from '@material-ui/lab/Rating';
+
 
 const useStyles = makeStyles({
   card: {
     width: '15vw',
-    height: '21vw'
+    height: '25vw'
   },
   media: {
     height: 0,
@@ -28,8 +30,8 @@ const OutfitCard = (props) => {
   const classes = useStyles();
 
   const {
- category, name, defaultPrice, id, img, removeFromOutfit 
-} = props;
+    category, name, defaultPrice, id, img, removeFromOutfit, stars
+  } = props;
 
   return (
     <Card className={classes.card}>
@@ -38,6 +40,7 @@ const OutfitCard = (props) => {
         subheader={`$${defaultPrice}`}
         titleTypographyProps={{ variant: 'h8' }}
       />
+      <Rating readOnly value={stars} precision={0.25} max={5} size="small" />
       <CardMedia className={classes.media} image={img} title={name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
