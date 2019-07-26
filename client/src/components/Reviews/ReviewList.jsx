@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { Grid } from '@material-ui/core';
 
+import { fetchReviews } from '../../actions/reviewsActions';
+
 import ReviewEntry from './ReviewEntry';
 import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal';
@@ -25,13 +27,16 @@ class ReviewList extends Component {
     });
   }
 
-  // TODO: function to get rid of button if 2 or less reviews
-  // shoMore() {
-  //   const { results } = this.props.reviews.results
-  // }
+  // to get dynamic sorting
+  // useEffect(() => {
+  //   fetchReviews(productId, 'relevant');
+  //   getMeta(productId);
+  // }, [productId]);
 
   render() {
     const { data } = this.props.reviews;
+    // const { product } = this.props.data;
+    const { fetchReviews } = this.props;
 
     return !data ? (
       <h3>...Loading reviews</h3>
@@ -69,4 +74,13 @@ const mapStateToProps = (store) => ({
   reviews: store.reviews
 });
 
-export default connect(mapStateToProps)(ReviewList);
+const mapDispatchToProps = (dispatch) => ({
+  fetchReviews: (productId, sort) => {
+    dispatch(fetchReviews(productId, sort));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ReviewList);

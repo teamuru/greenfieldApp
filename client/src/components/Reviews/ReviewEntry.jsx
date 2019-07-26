@@ -45,6 +45,7 @@ const style = {
   },
   bod: {
     fontSize: 15,
+    fontWeight: 400,
     padding: '10px 0px'
   },
   resHead: {
@@ -54,6 +55,7 @@ const style = {
   },
   resBod: {
     fontSize: 15,
+    fontWeight: 400,
     padding: '10px 10px'
   },
   recommend: {

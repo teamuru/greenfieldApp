@@ -8,7 +8,7 @@ import Recommended from './Recommended.jsx';
 import SizeGraph from './SizeGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
-import Relevance from './Relevance';
+import SelectControl from './Relevance';
 import AverageRev from './AverageRev';
 import ReviewCounter from './ReviewCounter';
 
@@ -65,8 +65,7 @@ const RevParentComponent = () => {
             justify="flex-start"
             alignItems="flex-end"
           >
-            <ReviewCounter />
-            <Relevance />
+            <ReviewCounter /> {'   '} <SelectControl />
           </Grid>
           <div>
             <ReviewList />

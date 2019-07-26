@@ -12,13 +12,20 @@ export const fetchReviewsFailure = error => ({
   payload: error
 });
 
-export const fetchReviews = (prodId) => {
-  const url = `${API_URL}/reviews/${prodId}/list`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchReviewsSuccess(data));
-      })
-      .catch(err => dispatch(fetchReviewsFailure(err)));
+export const fetchReviews = (productId, sort, count = 50) => async (
+  dispatch
+) => {
+  const reviews = await Axios.get(`${API_URL}/reviews/${productId}/list`, {
+    params: {
+      sort,
+      count
+    }
+  });
+
+  dispatch({
+    type: 'FETCH_REVIEWS_SUCCESS',
+    payload: reviews.data
+  });
 };
 
 // GET META
@@ -56,17 +63,6 @@ export const putHelpful = (reviewId) => {
 };
 
 // Report
-// export const reportReview = (reviewId) => {
-//   const url = `${API_URL}/reviews/report/${reviewId}`;
-//   Axios.put(url, { review_id: reviewId })
-//     .then(() => {
-//       // dispatch(fetchReviews(reviewId));
-//       console.log('sucess report');
-//     })
-//     .catch((err) => {
-//       console.log('reviews - fail put report', err);
-//     });
-// };
 
 export const reportReview = (reviewId) => {
   // const url = `${API_URL}/reviews/report/${reviewId}`;
@@ -107,10 +103,20 @@ export const postReview = (reviewObj, prodId) => {
       });
 };
 
+export const sortReviews = sort => (dispatch, getState) => {
+  const { productId } = getState();
+  dispatch({
+    type: 'REVIEWS_SORT',
+    payload: sort
+  });
+  dispatch(fetchReviews(productId, sort));
+};
+
 export default {
   fetchReviews,
   fetchMeta,
   putHelpful,
   reportReview,
-  postReview
+  postReview,
+  sortReviews
 };
