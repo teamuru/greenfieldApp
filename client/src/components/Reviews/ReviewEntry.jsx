@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import VerifyRec from './VerifyRec';
 import ReviewResponse from './ReviewResponse';
 import RevHelpful from './RevHelpful';
+import ReportRev from './Report';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const style = {
     // spacing: 20
   },
   sum: {
-    fontWeight: 700,
+    // fontWeight: 700,
     fontSize: 17,
     padding: '10px 0px'
   },
@@ -77,19 +78,26 @@ const ReviewEntry = ({ review }) => {
     <Box borderBottom={1}>
       <div style={style.bor}>
         <Grid container justify="space-between" direction="row">
+          {/* Star Rating */}
           <Grid item style={{ fontSize: 15 }}>
             {' '}
             <Rating readOnly value={review.rating} max={5} size="small" />
           </Grid>
+
+          {/* Usernmae and date */}
           <Grid item style={style.userSum}>
             <b>{review.reviewer_name}, </b>
             {moment(review.date).format('MMMM Do, YYYY')}
           </Grid>
         </Grid>
+
+        {/* Summary */}
         <Grid>
           <Grid item style={style.sum}>
             {review.summary}
           </Grid>
+
+          {/* Body */}
           <Grid item style={style.bod}>
             {review.body}
           </Grid>
@@ -116,9 +124,12 @@ const ReviewEntry = ({ review }) => {
               helpfulness={review.helpfulness}
             />
             {'  '} | {'  '}
-            <Button className={classes.button}>
+            {/* <Button className={classes.button}>
               <span style={{ fontWeight: 400 }}>Report</span>
-            </Button>
+            </Button> */}
+            <span>
+              <ReportRev reviewId={review.review_id} />
+            </span>
           </Grid>
         </Grid>
         <Grid />

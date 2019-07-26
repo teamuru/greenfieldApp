@@ -3,20 +3,19 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid } from '@material-ui/core';
 
-// Children Components
-import MoreReviews from './MoreReviews';
-import AddReviewModal from './AddReviewModal.jsx';
+// Child Components
 import Recommended from './Recommended.jsx';
-import ComfortGraph from './ComfortGraph.jsx';
 import SizeGraph from './SizeGraph.jsx';
 import ReviewList from './ReviewList.jsx';
 import StarGraphsList from './StarGraphsList.jsx';
 import Relevance from './Relevance';
 import AverageRev from './AverageRev';
-import ReviewForm from './ReviewForm';
 import ReviewCounter from './ReviewCounter';
 
-const useStyles = makeStyles(theme => ({
+// Testing Form
+import Form from './Form/Form';
+
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: '40px 0px'
@@ -44,7 +43,6 @@ const RevParentComponent = () => {
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        {/* <d item xs> */}
         <Grid item>
           <Paper className={classes.paper}>
             <AverageRev />
@@ -61,7 +59,12 @@ const RevParentComponent = () => {
         </Grid>
 
         <Grid item xs={9} style={{ fontSize: 20, fontWeight: 700 }}>
-          <Grid container direction="row" justify="flex-start" alignItems="flex-end">
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-end"
+          >
             <ReviewCounter />
             <Relevance />
           </Grid>

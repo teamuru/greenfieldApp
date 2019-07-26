@@ -1,20 +1,28 @@
 import { connect } from 'react-redux';
 import React from 'react';
 
-const ReviewCounter = (props) => {
-  const { data } = props.reviews;
+const ReviewCounter = ({ reviews, meta }) => {
+  console.log(`meta from counter`, meta);
 
-  return !data ? (
-    <span>... Loading no. of reviews</span>
+  const countReviews = (ratings) => {
+    const vals = Object.values(ratings);
+    console.log(`vals`, vals);
+    return vals.reduce((a, b) => {
+      return a + b;
+    });
+  };
+
+  return !meta ? (
+    <h5>... Loading no. of reviews</h5>
   ) : (
     <div>
-      <span> {data.results.length} reviews, sorted by </span>
+      <span> {countReviews(meta.ratings)} reviews, sorted by </span>
     </div>
   );
 };
 
 const mapStateToProps = (store) => ({
-  reviews: store.reviews
+  meta: store.reviews.meta
 });
 
 export default connect(mapStateToProps)(ReviewCounter);
