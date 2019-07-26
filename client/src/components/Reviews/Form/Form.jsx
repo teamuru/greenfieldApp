@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { green, red } from '@material-ui/core/colors';
 
 import {
   DialogActions,
@@ -33,7 +34,10 @@ import ReviewsSnackbar from './Snackbar';
 const defaultForm = {
   rating: 0,
   recommend: '',
-  characteristics: {},
+  // characteristics: {
+  //   fit: ''
+  // },
+  fit: '',
   summary: '',
   body: '',
   email: '',
@@ -43,7 +47,7 @@ const defaultForm = {
 
 const useStyles = makeStyles((theme) => ({
   errors: {
-    color: theme.palette.error.dark,
+    color: red[500],
     padding: theme.spacing(0)
   },
   error: {
@@ -88,16 +92,26 @@ const Form = (props) => {
     }
 
     return (
-      <ul className={classes.errors}>
-        You must enter the following:
-        {Object.values(errors).map((err) => {
-          return (
-            <li className={classes.error} key={err}>
-              {err}
-            </li>
-          );
-        })}
-      </ul>
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="center"
+      >
+        <ul
+          className={classes.errors}
+          style={{ fontSize: 20, align: 'center' }}
+        >
+          Please fill out the following in order to submit:
+          {Object.values(errors).map((err) => {
+            return (
+              <li className={classes.error} key={err}>
+                {err}
+              </li>
+            );
+          })}
+        </ul>
+      </Grid>
     );
   };
 
@@ -107,8 +121,6 @@ const Form = (props) => {
 
   return form ? (
     <Paper>
-      {renderErrors()}
-
       <Paper>
         <Typography variant="h6" align="center" component="h4" gutterBottom>
           Create A Review
@@ -148,7 +160,7 @@ const Form = (props) => {
       <Characteristics
         form={form}
         setForm={setForm}
-        error={checkErrors('characteristics')}
+        // error={checkErrors('characteristics')}
       />
 
       <Overall
@@ -156,6 +168,9 @@ const Form = (props) => {
         setForm={setForm.bind(this)}
         error={checkErrors('rating')}
       />
+
+      {/* Error Message */}
+      {renderErrors()}
 
       <DialogActions>
         <Button onClick={props.handleClose} variant="contained" color="primary">

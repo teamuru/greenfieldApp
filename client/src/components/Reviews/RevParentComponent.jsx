@@ -33,11 +33,8 @@ const RevParentComponent = () => {
 
   return (
     <div className={classes.root} id="reviews">
-      <Grid
-        container
-        spacing={3}
-        // direction="row"
-      >
+      <Form />
+      {/* <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
         </Grid>
@@ -71,7 +68,7 @@ const RevParentComponent = () => {
             <ReviewList />
           </div>
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
 };

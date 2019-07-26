@@ -13,55 +13,14 @@ import {
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Form, Field } from 'react-final-form';
 
 const descriptions = [
-  [
-    'Runs tight',
-    ,
-    'Runs slightly tight',
-    ,
-    'Perfect',
-    ,
-    'Runs slightly long',
-    ,
-    'Runs long'
-  ]
-  // ,
-  // Size: {
-  //   '1': 'A size too small',
-  //   '2': '1/2 a size too small',
-  //   '3': 'Perfect',
-  //   '4': '1/2 a size too big',
-  //   '5': 'A size too wide'
-  // },
-  // Length: {
-  //   '1': 'Runs Short',
-  //   '2': 'Runs slightly short',
-  //   '3': 'Perfect',
-  //   '4': 'Runs slightly long',
-  //   '5': 'Runs long'
-  // },
-  // Width: {
-  //   '1': 'Too narrow',
-  //   '2': 'Slightly narrow',
-  //   '3': 'Perfect',
-  //   '4': 'Slightly wide',
-  //   '5': 'Too wide'
-  // },
-  // Comfort: {
-  //   '1': 'Uncomfortable',
-  //   '2': 'Slightly uncomfortable',
-  //   '3': 'Ok',
-  //   '4': 'Comfortable',
-  //   '5': 'Perfect'
-  // },
-  // Quality: {
-  //   '1': 'Poor',
-  //   '2': 'Below average',
-  //   '3': 'What I expected',
-  //   '4': 'Pretty great',
-  //   '5': 'Perfect'
-  // }
+  'Runs tight',
+  'Runs slightly tight',
+  'Perfect',
+  'Runs slightly long',
+  'Runs long'
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -94,7 +53,12 @@ const Characteristics = ({ form, setForm, error, meta }) => {
 
   const handleChange = (e) => {
     setForm((prevState) => {
-      return { ...prevState, fit: e.target.value };
+      return {
+        ...prevState,
+
+        // characteristics["fit"]: e.target.value
+        fit: e.target.value
+      };
     });
   };
 
@@ -112,18 +76,18 @@ const Characteristics = ({ form, setForm, error, meta }) => {
           onChange={handleChange}
           row
         >
-          <FormControlLabel
-            value="true"
-            control={<Radio color="primary" />}
-            label="this"
-            labelPlacement="bottom"
-          />
-          <FormControlLabel
-            value="is"
-            control={<Radio color="primary" />}
-            label="No"
-            labelPlacement="bottom"
-          />
+          {descriptions.map((description, index) => {
+            return (
+              <div key={index}>
+                <FormControlLabel
+                  value={`${index + 1}`}
+                  control={<Radio color="primary" />}
+                  label={description}
+                  labelPlacement="bottom"
+                />
+              </div>
+            );
+          })}
         </RadioGroup>
       </FormControl>
     </Paper>

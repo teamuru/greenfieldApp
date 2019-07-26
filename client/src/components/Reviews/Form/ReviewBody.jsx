@@ -15,7 +15,7 @@ import { useStyles } from './styles.js';
 
 const style = {
   not: {
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'justify'
   }
 };
