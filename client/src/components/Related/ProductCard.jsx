@@ -13,6 +13,7 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from '@material-ui/icons/Star';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrowsSharp';
 import Rating from '@material-ui/lab/Rating';
 
@@ -55,7 +56,7 @@ const ProductCard = (props) => {
             // TODO: fix this console error
             titleTypographyProps={{ variant: 'h8' }}
           />
-          <Rating readOnly value={stars} max={5} size="small" />
+          <Rating readOnly value={stars} precision={0.25} max={5} size="small" />
           <CardMedia className={classes.media} image={img} title={name} />
         </Link>
         <CardContent>
@@ -72,7 +73,8 @@ const ProductCard = (props) => {
                 name,
                 defaultPrice,
                 img,
-                id
+                id,
+                stars
               });
             }}
           >
@@ -91,8 +93,7 @@ const ProductCard = (props) => {
         </CardActions>
       </Card>
     );
-  }
-  return null;
+  } return <CircularProgress />;
 };
 
 ProductCard.propTypes = {

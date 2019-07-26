@@ -106,7 +106,7 @@ const Related = (props) => {
       <div className="relatedCards">
         <CarouselProvider
           naturalSlideWidth={100}
-          naturalSlideHeight={140}
+          naturalSlideHeight={150}
           totalSlides={relatedProducts.length}
           visibleSlides={4}
         >
@@ -130,11 +130,12 @@ const Related = (props) => {
           </Slider>
         </CarouselProvider>
       </div>
+      <br />
       <div className="outfitCards">
         {outfitExists && (
           <CarouselProvider
             naturalSlideWidth={100}
-            naturalSlideHeight={140}
+            naturalSlideHeight={150}
             totalSlides={outfit.length}
             visibleSlides={4}
           >
@@ -148,6 +149,7 @@ const Related = (props) => {
                     img={item.img}
                     defaultPrice={item.defaultPrice}
                     category={item.category}
+                    stars={item.stars}
                     removeFromOutfit={removeFromOutfit}
                   />
                 </Slide>
