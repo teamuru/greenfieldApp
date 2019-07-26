@@ -65,8 +65,7 @@ const RevParentComponent = () => {
             justify="flex-start"
             alignItems="flex-end"
           >
-            <ReviewCounter />
-            <SelectControl  />
+            <ReviewCounter /> {'   '} <SelectControl />
           </Grid>
           <div>
             <ReviewList />

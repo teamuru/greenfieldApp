@@ -30,7 +30,7 @@ const ReviewSortControl = (props) => {
   };
 
   return (
-    <FormControl>
+    <FormControl style={style.menuStyle}>
       <Select
         value={props.sort}
         name="sort"

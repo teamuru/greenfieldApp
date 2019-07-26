@@ -2,15 +2,22 @@ import React from 'react';
 
 import { TextField, Typography, Paper, Grid } from '@material-ui/core/';
 
-import { useStyles } from './styles.js';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  label: {
+    fontSize: 30,
+    textAlign: 'center'
+  }
+}));
 
 const ReviewBody = ({ body, handleChange, error }) => {
   const classes = useStyles();
   const minReqChars = () => {
     let remainingChars = 50 - body.length;
     return remainingChars > 0
-      ? `The response needs ${remainingChars} more characters`
-      : 'Able to submit';
+      ? `Your response needs ${remainingChars} more characters, type away!`
+      : 'you may submit!';
   };
 
   return (
@@ -29,7 +36,7 @@ const ReviewBody = ({ body, handleChange, error }) => {
         className={classes.txt}
         error={error}
       />
-      <Grid>{minReqChars()}</Grid>
+      <Typography className={classes.label}>{minReqChars()}</Typography>
     </Paper>
   );
 };
