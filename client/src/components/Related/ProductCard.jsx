@@ -40,7 +40,10 @@ const ProductCard = (props) => {
   } = props;
 
   if (image) {
-    const img = image.photo.results[0].photos[0].thumbnail_url;
+    const img = image.photo.results[0].photos[0].thumbnail_url
+      || 'http://contrapoderweb.com/wp-content/uploads/2014/10/default-img-768x461.gif';
+
+    // 'https://www.blackbeltkaratestudio.com/wp-content/uploads/2017/04/default-image.jpg';
     return (
       <Card className={classes.card}>
         <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
