@@ -1,18 +1,18 @@
-import Axios from "axios";
-import API_URL from "../lib/API_URL";
+import Axios from 'axios';
+import API_URL from '../lib/API_URL';
 
 export const fetchQuestionsSuccess = questions => ({
-  type: "FETCH_QUESTIONS_SUCCESS",
+  type: 'FETCH_QUESTIONS_SUCCESS',
   payload: questions
 });
 
 export const fetchQuestionsError = error => ({
-  type: "FETCH_QUESTIONS_ERROR",
+  type: 'FETCH_QUESTIONS_ERROR',
   error
 });
 
 export const displayQuestions = questions => ({
-  type: "DISPLAY_QUESTIONS",
+  type: 'DISPLAY_QUESTIONS',
   payload: questions
 });
 
@@ -27,19 +27,18 @@ export const displayQuestions = questions => ({
 // });
 
 export const setProductId = id => ({
-  type: "SET_PRODUCT_ID",
+  type: 'SET_PRODUCT_ID',
   payload: id
 });
 
-export const fetchQuestions = prodId => {
+export const fetchQuestions = (prodId) => {
   const url = `${API_URL}/qa/${prodId}`;
-  return dispatch =>
-    Axios.get(url)
+  return dispatch => Axios.get(url)
       .then(({ data }) => {
         // console.log("success fetchQuestions ", prodId);
         dispatch(fetchQuestionsSuccess(data.results));
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(fetchQuestionsError(err));
       });
 };
@@ -49,37 +48,37 @@ export const postAddAnswer = (answer, name, email, photos, id) => {
   // console.log("post answer photos ", photos);
   Axios.post(url, {
     body: answer,
-    name: name,
-    email: email,
-    photos: photos
+    name,
+    email,
+    photos
   })
     .then(() => {
-      console.log("Success to post AddAnswer ", name);
+      console.log('Success to post AddAnswer ', name);
     })
     .catch(() => {
-      console.log("Fail to post AddAnswer");
+      console.log('Fail to post AddAnswer');
     });
 };
 
-export const putHelpful = id => {
+export const putHelpful = (id) => {
   const url = `${API_URL}/qa/question/${id}/helpful`;
   Axios.put(url, { question_id: id })
     .then(() => {
-      console.log("success put helpful", id);
+      console.log('success put helpful', id);
     })
     .catch(() => {
-      console.log("fail put helpful");
+      console.log('fail put helpful');
     });
 };
 
-export const putHelpfulAnswer = id => {
+export const putHelpfulAnswer = (id) => {
   const url = `${API_URL}/qa/answer/${id}/helpful`;
   Axios.put(url, { question_id: id })
     .then(() => {
-      console.log("success pull helpful");
+      console.log('success pull helpful');
     })
     .catch(() => {
-      console.log("fail pull helpful");
+      console.log('fail pull helpful');
     });
 };
 
@@ -95,14 +94,14 @@ export const putHelpfulAnswer = id => {
 //     });
 // };
 
-export const ReportAnswer = id => {
+export const ReportAnswer = (id) => {
   const url = `${API_URL}/qa/answer/${id}/report`;
   Axios.put(url, { answer_id: id })
     .then(() => {
-      console.log("success put report answer ");
+      console.log('success put report answer ');
     })
     .catch(() => {
-      console.log("fail put report answer ");
+      console.log('fail put report answer ');
     });
 };
 
@@ -116,9 +115,9 @@ export const postQuestion = (id, question, name, email) => {
     email
   })
     .then(() => {
-      console.log("success post question name", name);
+      console.log('success post question name', name);
     })
     .catch(() => {
-      console.log("fail post question");
+      console.log('fail post question');
     });
 };
