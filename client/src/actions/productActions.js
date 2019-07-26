@@ -2,6 +2,11 @@ import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 import calculateAverageRate from '../lib/calculateAverageRate';
 
+// Reset Store
+export const resetStore = () => ({
+  type: 'RESET_STORE'
+});
+
 // Fetch Product Data
 export const fetchProductSuccess = product => ({
   type: 'FETCH_PRODUCT_SUCCESS',
