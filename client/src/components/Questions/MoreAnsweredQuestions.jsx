@@ -21,20 +21,16 @@ class MoreAnsweredQuestions extends Component {
 
   hangelClick() {
     let count = this.props.questions.length;
-    let { load, countQuestion, setLoadMore, setCount } = this.props;
+    let { countQuestion, setLoadMore, setCount } = this.props;
     let temp;
-    let tempCount;
     let { moreOrLess } = this.state;
-    // console.log("more answer question ", moreOrLess);
-    tempCount = moreOrLess
+
+    let tempCount = moreOrLess
       ? count > countQuestion + 2
         ? countQuestion + 2
         : count
       : 2;
-    // 5      2 + 2
     tempCount >= count ? (temp = false) : (temp = true);
-    // console.log("more answer countQuestion ", countQuestion);
-
     setLoadMore();
     setCount(tempCount);
     this.setState({ moreOrLess: temp });

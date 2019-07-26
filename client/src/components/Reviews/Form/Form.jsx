@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { green, red } from '@material-ui/core/colors';
 
 import {
   DialogActions,
@@ -25,7 +26,12 @@ import Username from './Username';
 import Email from './Email';
 import Recommend from './Recommend';
 import Overall from './OverallRatings';
-import Characteristics from './Charcteristics';
+import Fit from './Fit';
+import Length from './Length';
+import Comfort from './Comfort';
+import Size from './Size';
+import Quality from './Quality';
+import Width from './Width';
 
 // import Images from './formComponents/Images.jsx';
 import ReviewsSnackbar from './Snackbar';
@@ -33,7 +39,15 @@ import ReviewsSnackbar from './Snackbar';
 const defaultForm = {
   rating: 0,
   recommend: '',
-  characteristics: {},
+  characteristics: {
+    fit: ''
+  },
+  fit: '',
+  length: '',
+  comfort: '',
+  size: '',
+  width: '',
+  quality: '',
   summary: '',
   body: '',
   email: '',
@@ -43,7 +57,7 @@ const defaultForm = {
 
 const useStyles = makeStyles((theme) => ({
   errors: {
-    color: theme.palette.error.dark,
+    color: red[500],
     padding: theme.spacing(0)
   },
   error: {
@@ -88,16 +102,26 @@ const Form = (props) => {
     }
 
     return (
-      <ul className={classes.errors}>
-        You must enter the following:
-        {Object.values(errors).map((err) => {
-          return (
-            <li className={classes.error} key={err}>
-              {err}
-            </li>
-          );
-        })}
-      </ul>
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="center"
+      >
+        <ul
+          className={classes.errors}
+          style={{ fontSize: 20, align: 'center' }}
+        >
+          Please fill out the following in order to submit:
+          {Object.values(errors).map((err) => {
+            return (
+              <li className={classes.error} key={err}>
+                {err}
+              </li>
+            );
+          })}
+        </ul>
+      </Grid>
     );
   };
 
@@ -107,8 +131,6 @@ const Form = (props) => {
 
   return form ? (
     <Paper>
-      {renderErrors()}
-
       <Paper>
         <Typography variant="h6" align="center" component="h4" gutterBottom>
           Create A Review
@@ -139,23 +161,32 @@ const Form = (props) => {
         error={checkErrors('body')}
       />
 
+      {/* Characteristics */}
+      <Fit form={form} setForm={setForm} />
+      <Size form={form} setForm={setForm} />
+      <Length form={form} setForm={setForm} />
+      <Width form={form} setForm={setForm} />
+      <Quality form={form} setForm={setForm} />
+      <Comfort form={form} setForm={setForm} />
+      <Quality form={form} setForm={setForm} />
+
+      {/* Recommend */}
       <Recommend
         form={form}
         setForm={setForm.bind(this)}
         error={checkErrors('recommend')}
       />
 
-      <Characteristics
-        form={form}
-        setForm={setForm}
-        error={checkErrors('characteristics')}
-      />
+      {/* Overall Rating */}
 
       <Overall
         form={form}
         setForm={setForm.bind(this)}
         error={checkErrors('rating')}
       />
+
+      {/* Error Message */}
+      {renderErrors()}
 
       <DialogActions>
         <Button onClick={props.handleClose} variant="contained" color="primary">

@@ -62,6 +62,11 @@ const relatedReducer = (state = initialState, action) => {
         ...state,
         relatedProducts: []
       };
+    case 'CLEAR_STARS':
+      return {
+        ...state,
+        stars: []
+      };
 
     default:
       return state;

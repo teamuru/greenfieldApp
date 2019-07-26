@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-
-import normalizeData from '../../lib/normalize.js';
-
 import StarGraph from './StarGraph.jsx';
 
 export class StarGraphsList extends Component {
-  handleNormalize(current, total) {
-    let overall = Object.values(total.ratings);
+  normalizeData(obj) {
+    const arr = Object.values(obj);
+    const total = arr.reduce((a, b) => {
+      return a + b;
+    });
 
-    return (current / overall) * 100;
+    return total / 100;
   }
 
-  getTotalReviews(ratings) {
-    return Object.values(ratings).length;
+  handleNoRatings(obj) {
+    const ratings = [1, 2, 3, 4, 5];
+
+    ratings.map((element) => {
+      if (!obj[element]) {
+        obj[element] = 0;
+      }
+    });
+
+    return obj;
   }
 
   renderRatings() {
@@ -31,11 +39,10 @@ export class StarGraphsList extends Component {
               {element} Stars
               <StarGraph
                 variant="determinate"
-                // value={element}
-                // value={`${meta.ratings[`${element}`] /
-                // normalizeData(meta.ratings)}`}
-
-                value={meta.ratings[`${element}`] / normalizeData(meta.ratings)}
+                value={
+                  this.handleNoRatings(meta.ratings)[`${element}`] /
+                  this.normalizeData(meta.ratings)
+                }
               />
             </div>
           );

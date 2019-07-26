@@ -10,12 +10,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Form from './Form/Form';
 
 function getModalStyle() {
-  const side = 10;
+  const side = 20;
 
   return {
     position: 'absolute',
-    top: '5%',
-    bottom: '5%',
+    // top: '5%',
+    // bottom: '30%',
     left: `${side}%`,
     right: `${side}%`,
     overflow: 'scroll',

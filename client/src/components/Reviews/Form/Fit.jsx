@@ -13,8 +13,119 @@ import {
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Form, Field } from 'react-final-form';
+
+const descriptions = [
+  'Runs tight',
+  'Runs slightly tight',
+  'Perfect',
+  'Runs slightly long',
+  'Runs long'
+];
+
+const useStyles = makeStyles((theme) => ({
+  titleError: {
+    color: theme.palette.error.dark
+  },
+  title: {
+    padding: '20px'
+  },
+
+  group: {
+    margin: theme.spacing(1, 0),
+    marginBottom: theme.spacing(4)
+  },
+  col: {
+    margin: theme.spacing(0),
+    width: 80,
+    alignContent: 'center'
+  },
+  label: {
+    fontSize: 15,
+    textAlign: 'center'
+  }
+}));
+
+const Fit = ({ form, setForm, error, meta }) => {
+  const classes = useStyles();
+  const ratings = ['1', '2', '3', '4', '5'];
+  console.log(`form`, form);
+
+  const handleChange = (e) => {
+    setForm((prevState) => {
+      return {
+        ...prevState,
+
+        // characteristics["fit"]: e.target.value
+        fit: e.target.value
+      };
+    });
+  };
+
+  return !meta ? (
+    <Typography>... Loading</Typography>
+  ) : (
+    <Paper className={classes.header} style={{ padding: '50px 20px' }}>
+      <Typography className={error ? classes.titleError : classes.title}>
+        Rate the fit
+      </Typography>
+      <FormControl component="fieldset">
+        <RadioGroup
+          name="position"
+          value={form.fit}
+          onChange={handleChange}
+          row
+        >
+          {descriptions.map((description, index) => {
+            return (
+              <div key={index}>
+                <FormControlLabel
+                  value={`${index + 1}`}
+                  control={<Radio color="secondary" />}
+                  label={index === 1 || index === 3 ? '' : description}
+                  labelPlacement="bottom"
+                />
+              </div>
+            );
+          })}
+        </RadioGroup>
+      </FormControl>
+    </Paper>
+  );
+};
+
+let mapStateToProps = (store) => ({
+  meta: store.reviews.meta
+});
+
+export default connect(mapStateToProps)(Fit);
+
+/**
+ * 
+ * oldcode
+ * 
+ * 
+ * 
+ * 
+ * 
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Paper,
+  Grid,
+  Typography
+} from '@material-ui/core';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 const descriptions = {
+  // TODO: DONE
   Fit: {
     '1': 'Runs tight',
     '2': 'Runs slightly tight',
@@ -22,6 +133,9 @@ const descriptions = {
     '4': 'Runs slightly long',
     '5': 'Runs long'
   },
+
+
+ // TODO: DONE
   Size: {
     '1': 'A size too small',
     '2': '1/2 a size too small',
@@ -29,6 +143,9 @@ const descriptions = {
     '4': '1/2 a size too big',
     '5': 'A size too wide'
   },
+
+
+  // TODO: DONE
   Length: {
     '1': 'Runs Short',
     '2': 'Runs slightly short',
@@ -36,6 +153,8 @@ const descriptions = {
     '4': 'Runs slightly long',
     '5': 'Runs long'
   },
+
+
   Width: {
     '1': 'Too narrow',
     '2': 'Slightly narrow',
@@ -43,6 +162,9 @@ const descriptions = {
     '4': 'Slightly wide',
     '5': 'Too wide'
   },
+
+
+  // TODO: DONE
   Comfort: {
     '1': 'Uncomfortable',
     '2': 'Slightly uncomfortable',
@@ -50,6 +172,8 @@ const descriptions = {
     '4': 'Comfortable',
     '5': 'Perfect'
   },
+
+ // TODO: DONE
   Quality: {
     '1': 'Poor',
     '2': 'Below average',
@@ -174,3 +298,8 @@ let mapStateToProps = (store) => ({
 });
 
 export default connect(mapStateToProps)(Characteristics);
+
+ * 
+ * 
+ * 
+ */

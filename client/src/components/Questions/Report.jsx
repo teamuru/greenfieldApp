@@ -1,13 +1,11 @@
 import React from "react";
 import { ReportAnswer } from "../../actions/questionsActions";
 
-//PUT /qa/answer/:answer_id/report
 const Report = ({ id, subFontSize }) => {
   const [report, setReport] = React.useState("Report");
   const [hover, setHover] = React.useState("underline");
 
   const handleReport = () => {
-    // console.log("report props", id);
     ReportAnswer(id);
     setReport("Reported");
   };
