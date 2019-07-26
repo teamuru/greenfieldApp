@@ -4,12 +4,21 @@ import { TextField, Typography, Paper, Grid } from '@material-ui/core/';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  label: {
-    fontSize: 30,
-    textAlign: 'center'
+import { useStyles } from './styles.js';
+
+// const useStyles = makeStyles((theme) => ({
+//   label: {
+//     fontSize: 15,
+//     textAlign: 'right'
+//   }
+// }));
+
+const style = {
+  not: {
+    fontSize: 15,
+    textAlign: 'justify'
   }
-}));
+};
 
 const ReviewBody = ({ body, handleChange, error }) => {
   const classes = useStyles();
@@ -22,21 +31,25 @@ const ReviewBody = ({ body, handleChange, error }) => {
 
   return (
     <Paper className={classes.header}>
-      <Typography className={error ? classes.titleError : classes.title}>
-        Review*
-      </Typography>
-      <TextField
-        inputProps={{ maxLength: 1000 }}
-        multiline
-        onChange={handleChange}
-        placeholder="Tell us your thoughts on this product"
-        required={true}
-        value={body}
-        name="body"
-        className={classes.txt}
-        error={error}
-      />
-      <Typography className={classes.label}>{minReqChars()}</Typography>
+      <Grid container direction="column" justify="flex-start">
+        <Typography className={error ? classes.titleError : classes.title}>
+          Review*
+        </Typography>
+        <TextField
+          inputProps={{ maxLength: 1000 }}
+          multiline
+          onChange={handleChange}
+          placeholder="Tell us your thoughts on this product"
+          required={true}
+          value={body}
+          name="body"
+          className={classes.txt}
+          error={error}
+        />
+      </Grid>
+      <Grid>
+        <Typography style={style.not}>{minReqChars()}</Typography>
+      </Grid>
     </Paper>
   );
 };
