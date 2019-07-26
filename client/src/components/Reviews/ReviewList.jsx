@@ -33,8 +33,8 @@ const ReviewList = (props) => {
   // }, [productId]);
 
   const { data } = props.reviews;
-  const { fetchReviews } = props;
-  const { showReviews } = props;
+  // const { fetchReviews } = props;
+  // const { showReviews } = props;
 
   return !data ? (
     <h3>...Loading reviews</h3>
@@ -58,7 +58,7 @@ const ReviewList = (props) => {
       })}
 
       {/* Buttons */}
-      <Grid
+      {/* <Grid
         container
         alignItems="baseline"
         spacing={6}
@@ -71,7 +71,7 @@ const ReviewList = (props) => {
         <Grid item>
           <AddReviewModal />
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
   // }
