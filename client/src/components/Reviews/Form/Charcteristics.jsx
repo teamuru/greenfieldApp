@@ -14,6 +14,152 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles';
 
+const descriptions = [
+  [
+    'Runs tight',
+    ,
+    'Runs slightly tight',
+    ,
+    'Perfect',
+    ,
+    'Runs slightly long',
+    ,
+    'Runs long'
+  ]
+  // ,
+  // Size: {
+  //   '1': 'A size too small',
+  //   '2': '1/2 a size too small',
+  //   '3': 'Perfect',
+  //   '4': '1/2 a size too big',
+  //   '5': 'A size too wide'
+  // },
+  // Length: {
+  //   '1': 'Runs Short',
+  //   '2': 'Runs slightly short',
+  //   '3': 'Perfect',
+  //   '4': 'Runs slightly long',
+  //   '5': 'Runs long'
+  // },
+  // Width: {
+  //   '1': 'Too narrow',
+  //   '2': 'Slightly narrow',
+  //   '3': 'Perfect',
+  //   '4': 'Slightly wide',
+  //   '5': 'Too wide'
+  // },
+  // Comfort: {
+  //   '1': 'Uncomfortable',
+  //   '2': 'Slightly uncomfortable',
+  //   '3': 'Ok',
+  //   '4': 'Comfortable',
+  //   '5': 'Perfect'
+  // },
+  // Quality: {
+  //   '1': 'Poor',
+  //   '2': 'Below average',
+  //   '3': 'What I expected',
+  //   '4': 'Pretty great',
+  //   '5': 'Perfect'
+  // }
+];
+
+const useStyles = makeStyles((theme) => ({
+  titleError: {
+    color: theme.palette.error.dark
+  },
+  title: {
+    padding: '20px'
+  },
+
+  group: {
+    margin: theme.spacing(1, 0),
+    marginBottom: theme.spacing(4)
+  },
+  col: {
+    margin: theme.spacing(0),
+    width: 80,
+    alignContent: 'center'
+  },
+  label: {
+    fontSize: 15,
+    textAlign: 'center'
+  }
+}));
+
+const Characteristics = ({ form, setForm, error, meta }) => {
+  const classes = useStyles();
+  const ratings = ['1', '2', '3', '4', '5'];
+  console.log(`form`, form);
+
+  const handleChange = (e) => {
+    setForm((prevState) => {
+      return { ...prevState, fit: e.target.value };
+    });
+  };
+
+  return !meta ? (
+    <Typography>... Loading</Typography>
+  ) : (
+    <Paper className={classes.header} style={{ padding: '50px 20px' }}>
+      <Typography className={error ? classes.titleError : classes.title}>
+        Rate the fit
+      </Typography>
+      <FormControl component="fieldset">
+        <RadioGroup
+          name="position"
+          value={form.fit}
+          onChange={handleChange}
+          row
+        >
+          <FormControlLabel
+            value="true"
+            control={<Radio color="primary" />}
+            label="this"
+            labelPlacement="bottom"
+          />
+          <FormControlLabel
+            value="is"
+            control={<Radio color="primary" />}
+            label="No"
+            labelPlacement="bottom"
+          />
+        </RadioGroup>
+      </FormControl>
+    </Paper>
+  );
+};
+
+let mapStateToProps = (store) => ({
+  meta: store.reviews.meta
+});
+
+export default connect(mapStateToProps)(Characteristics);
+
+/**
+ * 
+ * oldcode
+ * 
+ * 
+ * 
+ * 
+ * 
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Paper,
+  Grid,
+  Typography
+} from '@material-ui/core';
+
+import { makeStyles } from '@material-ui/core/styles';
+
 const descriptions = {
   Fit: {
     '1': 'Runs tight',
@@ -174,3 +320,8 @@ let mapStateToProps = (store) => ({
 });
 
 export default connect(mapStateToProps)(Characteristics);
+
+ * 
+ * 
+ * 
+ */

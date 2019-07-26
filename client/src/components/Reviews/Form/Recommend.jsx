@@ -6,7 +6,7 @@ import {
   FormControlLabel,
   FormControl,
   Paper,
-  Gtid,
+  Grid,
   Typography
 } from '@material-ui/core';
 
