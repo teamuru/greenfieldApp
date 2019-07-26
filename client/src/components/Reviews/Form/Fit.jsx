@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Characteristics = ({ form, setForm, error, meta }) => {
+const Fit = ({ form, setForm, error, meta }) => {
   const classes = useStyles();
   const ratings = ['1', '2', '3', '4', '5'];
   console.log(`form`, form);
@@ -81,7 +81,7 @@ const Characteristics = ({ form, setForm, error, meta }) => {
               <div key={index}>
                 <FormControlLabel
                   value={`${index + 1}`}
-                  control={<Radio color="primary" />}
+                  control={<Radio color="secondary" />}
                   label={description}
                   labelPlacement="bottom"
                 />
@@ -98,7 +98,7 @@ let mapStateToProps = (store) => ({
   meta: store.reviews.meta
 });
 
-export default connect(mapStateToProps)(Characteristics);
+export default connect(mapStateToProps)(Fit);
 
 /**
  * 

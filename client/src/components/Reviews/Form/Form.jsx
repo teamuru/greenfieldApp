@@ -26,7 +26,7 @@ import Username from './Username';
 import Email from './Email';
 import Recommend from './Recommend';
 import Overall from './OverallRatings';
-import Characteristics from './Charcteristics';
+import Fit from './Fit';
 
 // import Images from './formComponents/Images.jsx';
 import ReviewsSnackbar from './Snackbar';
@@ -34,9 +34,9 @@ import ReviewsSnackbar from './Snackbar';
 const defaultForm = {
   rating: 0,
   recommend: '',
-  // characteristics: {
-  //   fit: ''
-  // },
+  characteristics: {
+    fit: ''
+  },
   fit: '',
   summary: '',
   body: '',
@@ -157,11 +157,7 @@ const Form = (props) => {
         error={checkErrors('recommend')}
       />
 
-      <Characteristics
-        form={form}
-        setForm={setForm}
-        // error={checkErrors('characteristics')}
-      />
+      <Fit form={form} setForm={setForm} />
 
       <Overall
         form={form}
