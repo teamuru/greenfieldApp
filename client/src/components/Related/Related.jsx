@@ -10,29 +10,33 @@ import {
   CarouselProvider,
   Slider,
   Slide
-  // ButtonBack,
-  // ButtonNext
 } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
 import FeatureModal from './FeatureModal';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
   fetchAllRelated,
   fetchAllPhotos,
+  fetchAllStars,
   clearAllPhotos,
-  clearAllRelated
+  clearAllRelated,
+  clearAllStars
 } from '../../actions/relatedActions';
+
 
 const Related = (props) => {
   const {
     relatedProducts,
     photos,
+    stars,
     fetchAllRelated,
     fetchAllPhotos,
+    fetchAllStars,
     clearAllPhotos,
     clearAllRelated,
+    clearAllStars,
     location: { pathname }
   } = props;
 
@@ -84,8 +88,11 @@ const Related = (props) => {
   useEffect(() => {
     clearAllPhotos();
     clearAllRelated();
+    clearAllStars();
     fetchAllRelated(pathname);
     fetchAllPhotos(pathname);
+    fetchAllStars(pathname);
+    console.log(stars);
   }, [pathname]);
 
   return (
@@ -105,7 +112,7 @@ const Related = (props) => {
         >
           <Slider>
             {relatedProducts.map((product, index) => (
-              <Slide index={index}>
+              <Slide index={index} key={uuid()}>
                 <ProductCard
                   id={product.id}
                   key={uuid()}
@@ -116,6 +123,7 @@ const Related = (props) => {
                   features={product.features}
                   addToOutfit={addToOutfit}
                   showModal={showModal}
+                  stars={stars[index]}
                 />
               </Slide>
             ))}
@@ -132,7 +140,7 @@ const Related = (props) => {
           >
             <Slider>
               {outfit.map((item, index) => (
-                <Slide index={index}>
+                <Slide index={index} key={uuid()}>
                   <OutfitCard
                     id={item.id}
                     key={uuid()}
@@ -159,22 +167,31 @@ const mapDispatchToProps = dispatch => ({
   fetchAllPhotos: (id) => {
     dispatch(fetchAllPhotos(id));
   },
+  fetchAllStars: (id) => {
+    dispatch(fetchAllStars(id));
+  },
   clearAllPhotos: () => {
     dispatch(clearAllPhotos());
   },
   clearAllRelated: () => {
     dispatch(clearAllRelated());
+  },
+  clearAllStars: () => {
+    dispatch(clearAllStars());
   }
 });
 
 const mapStateToProps = state => ({
   relatedProducts: state.related.relatedProducts,
-  photos: state.related.photos
+  photos: state.related.photos,
+  stars: state.related.stars
+
 });
 
 Related.propTypes = {
   fetchAllRelated: PropTypes.func.isRequired,
-  fetchAllPhotos: PropTypes.func.isRequired
+  fetchAllPhotos: PropTypes.func.isRequired,
+  fetchAllStars: PropTypes.func.isRequired
 };
 
 export default connect(

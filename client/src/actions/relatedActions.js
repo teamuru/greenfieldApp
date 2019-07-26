@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
+import calculateAverageRate from '../lib/calculateAverageRate';
 
 export const fetchRelatedSuccess = related => ({
   type: 'FETCH_RELATED_SUCCESS',
@@ -65,6 +66,10 @@ export const clearPhotos = () => ({
 
 export const clearRelated = () => ({
   type: 'CLEAR_RELATED'
+});
+
+export const clearStars = () => ({
+  type: 'CLEAR_STARS'
 });
 
 export const fetchRelatedIDs = (prodId) => {
@@ -143,6 +148,29 @@ export const fetchAllPhotos = (prodId) => {
   };
 };
 
+export const fetchAllStars = (prodId) => {
+  const promises = [];
+  return (dispatch) => {
+    Axios.get(`${API_URL}/products/${prodId}/related`)
+      .then(({ data }) => {
+        data.forEach((item) => {
+          promises.push(Axios.get(`${API_URL}/reviews/${item}/meta`));
+        });
+      })
+      .then(() => {
+        Axios.all(promises).then(
+          Axios.spread((...args) => {
+            args.forEach((item) => {
+              dispatch(
+                fetchStarsSuccess(calculateAverageRate(item.data.ratings))
+              );
+            });
+          })
+        );
+      });
+  };
+};
+
 // This cannot run until relatedProducts dispatches success
 export const addToOutfit = prodId => addProductToOutfit(prodId);
 
@@ -151,3 +179,5 @@ export const deleteFromOutfit = prodId => deleteProductFromOutfit(prodId);
 export const clearAllRelated = () => dispatch => dispatch(clearRelated());
 
 export const clearAllPhotos = () => dispatch => dispatch(clearPhotos());
+
+export const clearAllStars = () => dispatch => dispatch(clearStars());
