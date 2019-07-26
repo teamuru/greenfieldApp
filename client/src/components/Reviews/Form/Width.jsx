@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Width = ({ form, setForm, error, meta }) => {
   const classes = useStyles();
-  console.log(`form`, form);
 
   const handleChange = (e) => {
     setForm((prevState) => {

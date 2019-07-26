@@ -66,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = (props) => {
-  console.log(`props from form`, props);
   const [form, setForm] = useState(defaultForm);
   const [errors, setErrors] = useState(false);
   const [open, setOpen] = React.useState(false);
