@@ -16,7 +16,7 @@ class AddQuestionModal extends Component {
       highLight
     } = this.props;
     // console.log("question ", questions);
-
+    sortQuestion(questions);
     if (questions) {
       questions = questionModal(questions, count);
       return (
@@ -87,6 +87,27 @@ const questionModal = (questions, count) => {
     }
   }
   return newQues;
+};
+
+const sortQuestion = questions => {
+  let rerun = true;
+
+  while (rerun) {
+    rerun = false;
+    for (var i = 0; i < questions.length - 1; i++) {
+      if (
+        questions[i]["question_helpfulness"] <
+        questions[i + 1]["question_helpfulness"]
+      ) {
+        let first = questions[i];
+        let second = questions[i + 1];
+        questions[i] = second;
+        questions[i + 1] = first;
+        rerun = true;
+      }
+    }
+  }
+  // return questions;
 };
 
 export default AddQuestionModal;

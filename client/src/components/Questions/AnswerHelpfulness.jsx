@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  putHelpful,
   fetchQuestions,
   putHelpfulAnswer
 } from "../../actions/questionsActions";

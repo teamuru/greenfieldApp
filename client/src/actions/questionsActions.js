@@ -16,15 +16,15 @@ export const displayQuestions = questions => ({
   payload: questions
 });
 
-export const increaseQueHelpful = helpful => ({
-  type: 'INCREASE_QUESTION_HELPFULNESS',
-  payload: helpful
-});
+// export const increaseQueHelpful = helpful => ({
+//   type: 'INCREASE_QUESTION_HELPFULNESS',
+//   payload: helpful
+// });
 
-export const increaseAnwHelpful = helpful => ({
-  type: 'INCREASE_ANSWER_HELPFULNESS',
-  payload: helpful
-});
+// export const increaseAnwHelpful = helpful => ({
+//   type: 'INCREASE_ANSWER_HELPFULNESS',
+//   payload: helpful
+// });
 
 export const setProductId = id => ({
   type: 'SET_PRODUCT_ID',
@@ -35,7 +35,7 @@ export const fetchQuestions = (prodId) => {
   const url = `${API_URL}/qa/${prodId}`;
   return dispatch => Axios.get(url)
       .then(({ data }) => {
-        console.log('success fetchQuestions ', prodId);
+        // console.log("success fetchQuestions ", prodId);
         dispatch(fetchQuestionsSuccess(data.results));
       })
       .catch((err) => {
@@ -45,6 +45,7 @@ export const fetchQuestions = (prodId) => {
 
 export const postAddAnswer = (answer, name, email, photos, id) => {
   const url = `${API_URL}/qa/${id}/answers`;
+  // console.log("post answer photos ", photos);
   Axios.post(url, {
     body: answer,
     name,

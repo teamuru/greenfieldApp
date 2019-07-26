@@ -15,7 +15,9 @@ function Helpful({
   const handleClick = () => {
     putHelpful(questionId);
     setHelpfulness(helpful + 1);
-    fetchQuestions(productId);
+    setTimeout(function() {
+      fetchQuestions(productId);
+    }, 1000);
   };
   const handleHoverOn = () => {
     setHover("none");
