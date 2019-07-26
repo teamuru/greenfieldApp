@@ -71,11 +71,11 @@ function Details(props) {
       <Typography variant="h4">{name}</Typography>
       {salePrice > 0 ? (
         <React.Fragment>
-          <SalePrice variant="body2">{`$${salePrice}`}</SalePrice>
-          <OriginalPriceWithSale variant="body2">{`$${originalPrice}`}</OriginalPriceWithSale>
+          <SalePrice variant="body2">{`$${salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</SalePrice>
+          <OriginalPriceWithSale variant="body2">{`$${originalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</OriginalPriceWithSale>
         </React.Fragment>
       ) : (
-        <OriginalPrice variant="body2">{`$${originalPrice}`}</OriginalPrice>
+        <OriginalPrice variant="body2">{`$${originalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</OriginalPrice>
       )}
       <Styles />
       <Sizes />

@@ -28,7 +28,7 @@ class App extends Component {
           <Router>
             <Container>
               <header>
-                <AppBarStyled position="sticky">Greenfield Logo</AppBarStyled>
+                <AppBarStyled position="sticky">Team Uru</AppBarStyled>
               </header>
               <main>
                 <Route path="/:id" component={ProductOverview} />
