@@ -4,7 +4,7 @@ const intialState = {
   selectedStyle: {},
   selectedStyleIndex: 0,
   selectedSku: '',
-  selectedQty: 0,
+  selectedQty: '',
   selectedPhoto: 0,
   rating: 0,
   expandedView: false,

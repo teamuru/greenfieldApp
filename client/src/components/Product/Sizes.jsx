@@ -20,6 +20,7 @@ class Sizes extends Component {
     const {
  skus, selectedSku, selectedQty, handleChangeSku, handleChangeQty 
 } = this.props;
+    const styleStock = Object.values(skus).reduce((x, y) => x + y, 0);
     const skuStock = skus[selectedSku] || 1;
     const qty = new Array(Math.min(skuStock, 15)).fill(1);
     for (let i = 0; i < qty.length; i += 1) {
@@ -27,28 +28,46 @@ class Sizes extends Component {
     }
     return (
       <FormStyled>
-        <div style={{ width: '65%', marginRight: '5%' }}>
+        <div style={{ width: '75%', marginRight: '5%' }}>
           <FormControl variant="outlined" fullWidth>
-            <InputLabel>Select Size</InputLabel>
-            <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
-              {Object.keys(skus).map(sku => (skus[sku] ? (
-                <MenuItem key={sku} value={sku}>
-                  {sku}
-                </MenuItem>
-                ) : null))}
-            </Select>
+            {!styleStock ? (
+              <React.Fragment>
+                <InputLabel>OUT OF STOCK</InputLabel>
+                <Select disabled input={<OutlinedInput labelWidth={10} />} />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <InputLabel>Select Size</InputLabel>
+                <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
+                  {Object.keys(skus).map(sku => (skus[sku] ? (
+                    <MenuItem key={sku} value={sku}>
+                      {sku}
+                    </MenuItem>
+                    ) : null))}
+                </Select>
+              </React.Fragment>
+            )}
           </FormControl>
         </div>
-        <div style={{ width: '35%' }}>
+        <div style={{ width: '25%' }}>
           <FormControl variant="outlined" fullWidth>
-            <InputLabel>Qty</InputLabel>
-            <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
-              {qty.map(skuQty => (
-                <MenuItem key={skuQty} value={skuQty}>
-                  {skuQty}
-                </MenuItem>
-              ))}
-            </Select>
+            {selectedSku ? (
+              <React.Fragment>
+                <InputLabel>Qty</InputLabel>
+                <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
+                  {qty.map(skuQty => (
+                    <MenuItem key={skuQty} value={skuQty}>
+                      {skuQty}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <InputLabel>-</InputLabel>
+                <Select disabled input={<OutlinedInput labelWidth={10} />} />
+              </React.Fragment>
+            )}
           </FormControl>
         </div>
       </FormStyled>
@@ -59,7 +78,7 @@ class Sizes extends Component {
 Sizes.propTypes = {
   skus: PropTypes.object.isRequired,
   selectedSku: PropTypes.string.isRequired,
-  selectedQty: PropTypes.number.isRequired,
+  selectedQty: PropTypes.string.isRequired,
   handleChangeSku: PropTypes.func.isRequired,
   handleChangeQty: PropTypes.func.isRequired
 };

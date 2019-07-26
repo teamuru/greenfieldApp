@@ -50,7 +50,7 @@ const AvatarStyled = styled(Avatar)`
 const CheckCircleStyled = styled(CheckCircle)`
   position: absolute;
   right: calc(100% - 70px);
-  top: calc(0% - 20px);
+  top: calc(0% - 22px);
   color: ${theme.palette.secondary.main};
   @media (max-width: 960px) {
     right: calc(100% - 50px);
