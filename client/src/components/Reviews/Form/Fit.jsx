@@ -82,7 +82,7 @@ const Fit = ({ form, setForm, error, meta }) => {
                 <FormControlLabel
                   value={`${index + 1}`}
                   control={<Radio color="secondary" />}
-                  label={description}
+                  label={index === 1 || index === 3 ? '' : description}
                   labelPlacement="bottom"
                 />
               </div>
@@ -125,6 +125,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 const descriptions = {
+  // TODO: DONE
   Fit: {
     '1': 'Runs tight',
     '2': 'Runs slightly tight',
@@ -132,6 +133,9 @@ const descriptions = {
     '4': 'Runs slightly long',
     '5': 'Runs long'
   },
+
+
+ // TODO: DONE
   Size: {
     '1': 'A size too small',
     '2': '1/2 a size too small',
@@ -139,6 +143,9 @@ const descriptions = {
     '4': '1/2 a size too big',
     '5': 'A size too wide'
   },
+
+
+  // TODO: DONE
   Length: {
     '1': 'Runs Short',
     '2': 'Runs slightly short',
@@ -146,6 +153,8 @@ const descriptions = {
     '4': 'Runs slightly long',
     '5': 'Runs long'
   },
+
+
   Width: {
     '1': 'Too narrow',
     '2': 'Slightly narrow',
@@ -153,6 +162,9 @@ const descriptions = {
     '4': 'Slightly wide',
     '5': 'Too wide'
   },
+
+
+  // TODO: DONE
   Comfort: {
     '1': 'Uncomfortable',
     '2': 'Slightly uncomfortable',
@@ -160,6 +172,8 @@ const descriptions = {
     '4': 'Comfortable',
     '5': 'Perfect'
   },
+
+ // TODO: DONE
   Quality: {
     '1': 'Poor',
     '2': 'Below average',
