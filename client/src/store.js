@@ -7,6 +7,7 @@ import relatedReducer from './reducers/relatedReducer';
 import sortReducer from './reducers/sortReducer';
 // import revLimitReducer from './reducers/revLimitReducer';
 import revLimitReducer from './reducers/setLimit';
+import showReviewsReducer from './reducers/showReviews';
 
 const rootReducer = combineReducers({
   product: productReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   reviews: reviewsReducer,
   related: relatedReducer,
   reviewSort: sortReducer,
-  revLimit: revLimitReducer
+  revLimit: revLimitReducer,
+  showReviews: showReviewsReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

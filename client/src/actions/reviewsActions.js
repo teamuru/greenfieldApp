@@ -120,11 +120,20 @@ export const setLimit = () => ({
   payload: 2
 });
 
+// showReviews
+
+export const showReviews = (length) => ({
+  type: 'REVIEWS_SHOW',
+  payload: length
+});
+
 export default {
   fetchReviews,
   fetchMeta,
   putHelpful,
   reportReview,
   postReview,
-  sortReviews
+  sortReviews,
+  setLimit,
+  showReviews
 };
