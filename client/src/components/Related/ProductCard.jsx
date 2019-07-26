@@ -14,11 +14,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from '@material-ui/icons/Star';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrowsSharp';
+import Rating from '@material-ui/lab/Rating';
+
 
 const useStyles = makeStyles({
   card: {
     width: '15vw',
-    height: '21vw'
+    height: '25vw'
   },
   media: {
     height: 0,
@@ -36,22 +38,24 @@ const ProductCard = (props) => {
     id,
     features,
     addToOutfit,
-    showModal
+    showModal,
+    stars
   } = props;
 
-  if (image) {
+  if (image && stars) {
     const img = image.photo.results[0].photos[0].thumbnail_url
       || 'http://contrapoderweb.com/wp-content/uploads/2014/10/default-img-768x461.gif';
 
-    // 'https://www.blackbeltkaratestudio.com/wp-content/uploads/2017/04/default-image.jpg';
     return (
       <Card className={classes.card}>
         <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
           <CardHeader
             title={name}
             subheader={`$${defaultPrice}`}
+            // TODO: fix this console error
             titleTypographyProps={{ variant: 'h8' }}
           />
+          <Rating readOnly value={stars} max={5} size="small" />
           <CardMedia className={classes.media} image={img} title={name} />
         </Link>
         <CardContent>
