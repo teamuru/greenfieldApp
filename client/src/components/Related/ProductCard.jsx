@@ -20,7 +20,7 @@ import Rating from '@material-ui/lab/Rating';
 const useStyles = makeStyles({
   card: {
     width: '15vw',
-    height: '21vw'
+    height: '25vw'
   },
   media: {
     height: 0,
