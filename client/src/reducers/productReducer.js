@@ -1,4 +1,4 @@
-const intialState = {
+const initialState = {
   data: {},
   styles: [],
   selectedStyle: {},
@@ -11,8 +11,10 @@ const intialState = {
   zoomed: false
 };
 
-const productReducer = (state = intialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'RESET_STORE':
+      return initialState;
     case 'FETCH_PRODUCT_SUCCESS':
       return { ...state, data: action.payload };
     case 'FETCH_PRODUCT_FAILURE':
@@ -34,7 +36,7 @@ const productReducer = (state = intialState, action) => {
     case 'CHANGE_SELECTED_QUANTITY':
       return { ...state, selectedQty: action.payload };
     case 'RESET_SELECTED_PHOTO':
-      return { ...state, selectedPhoto: intialState.selectedPhoto };
+      return { ...state, selectedPhoto: initialState.selectedPhoto };
     case 'CHANGE_SELECTED_PHOTO_UP': {
       return { ...state, selectedPhoto: state.selectedPhoto + 1 };
     }

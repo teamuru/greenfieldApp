@@ -8,7 +8,7 @@ import Details from './Details';
 import Description from './Description';
 import Checklist from './Checklist';
 import {
- fetchProduct, fetchStyles, fetchRatings, resetSelectedPhoto 
+ resetStore, fetchProduct, fetchStyles, fetchRatings 
 } from '../../actions/productActions';
 
 class ProductOverview extends Component {
@@ -25,9 +25,9 @@ class ProductOverview extends Component {
     const { location } = this.props;
     if (location !== prevProps.location) {
       const {
- getProducts, getStyles, getRatings, resetPhoto 
+ reset, getProducts, getStyles, getRatings 
 } = this.props;
-      resetPhoto();
+      reset();
       getProducts(location.pathname);
       getStyles(location.pathname);
       getRatings(location.pathname);
@@ -70,10 +70,10 @@ class ProductOverview extends Component {
 }
 
 ProductOverview.propTypes = {
+  reset: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
   getStyles: PropTypes.func.isRequired,
   getRatings: PropTypes.func.isRequired,
-  resetPhoto: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   expandedView: PropTypes.bool.isRequired
@@ -85,10 +85,10 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  reset: () => dispatch(resetStore()),
   getProducts: id => dispatch(fetchProduct(id)),
   getStyles: id => dispatch(fetchStyles(id)),
-  getRatings: id => dispatch(fetchRatings(id)),
-  resetPhoto: () => dispatch(resetSelectedPhoto())
+  getRatings: id => dispatch(fetchRatings(id))
 });
 
 export default connect(
