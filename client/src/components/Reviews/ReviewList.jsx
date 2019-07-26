@@ -9,6 +9,8 @@ import { fetchReviews } from '../../actions/reviewsActions';
 import ReviewEntry from './ReviewEntry';
 import MoreReviews from './MoreReviews';
 import AddReviewModal from './AddReviewModal';
+import ReviewCounter from './ReviewCounter';
+import SelectControl from './Relevance';
 
 class ReviewList extends Component {
   constructor(props) {
@@ -42,6 +44,15 @@ class ReviewList extends Component {
       <h3>...Loading reviews</h3>
     ) : (
       <div>
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="flex-end"
+        >
+          <ReviewCounter /> {'   '} <SelectControl />
+        </Grid>
+
         {data.results.slice(0, this.state.limit).map((review) => {
           return (
             <div key={review.review_id}>
