@@ -23,8 +23,8 @@ const style = {
   }
 };
 
-const SizeGraph = (props) => {
-  const { meta } = props.reviews;
+const SizeGraph = ({ meta }) => {
+
   const classes = useStyles();
 
   const renderCat = (category) => {
@@ -52,7 +52,7 @@ const SizeGraph = (props) => {
   return meta ? (
     <Grid style={style.head}>
       {Object.keys(meta.characteristics).map((category, index) => {
-        let number = Number(meta.characteristics[category]) * 10;
+        let number = meta.characteristics[category].value;
 
         return (
           <div key={index}>
@@ -63,13 +63,15 @@ const SizeGraph = (props) => {
                 <input
                   type="range"
                   min="0"
-                  max="50"
+                  // max="50"
+                  max="5"
                   width="100%"
                   readOnly
                   // add some css slider later on
                   // className="slider"
                   list="tickmarks"
-                  value={number}
+                  value={`${number}`}
+
                   style={style.ft}
                   className="slider"
                 />
@@ -86,7 +88,8 @@ const SizeGraph = (props) => {
 };
 
 const mapStateToProps = (store) => ({
-  reviews: store.reviews
+  reviews: store.reviews,
+  meta: store.reviews.meta
 });
 
 export default connect(mapStateToProps)(SizeGraph);
