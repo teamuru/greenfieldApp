@@ -10,14 +10,14 @@ const Username = ({ name, handleChange, error }) => {
   return (
     <Paper className={classes.header}>
       <Typography className={error ? classes.titleError : classes.title}>
-        username*
+        nickname*
       </Typography>
       <TextField
         className={classes.txt}
         required={true}
         inputProps={{ maxLength: 60 }}
         onChange={handleChange}
-        placeholder="enter username"
+        placeholder="enter nickname"
         required={true}
         value={name}
         name="name"
