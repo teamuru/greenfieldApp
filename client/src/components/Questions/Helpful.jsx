@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { putHelpful, fetchQuestions } from "../../actions/questionsActions";
 
-//PUT /qa/question/:question_id/helpful
 function Helpful({
   questionId,
   helpfulness,

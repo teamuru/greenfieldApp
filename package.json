@@ -47,6 +47,7 @@
     "pure-react-carousel": "^1.21.1",
     "rc-slider": "^8.6.13",
     "react": "^16.8.6",
+    "react-auto-scale": "^1.0.4",
     "react-dom": "^16.8.6",
     "react-final-form": "^6.3.0",
     "react-highlight-words": "^0.16.0",

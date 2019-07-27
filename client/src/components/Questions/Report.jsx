@@ -1,13 +1,18 @@
 import React from "react";
-import { ReportAnswer } from "../../actions/questionsActions";
+import { connect } from "react-redux";
+import { ReportAnswer, fetchQuestions } from "../../actions/questionsActions";
 
-const Report = ({ id, subFontSize }) => {
+const Report = ({ id, subFontSize, fetchQuestions, productId }) => {
   const [report, setReport] = React.useState("Report");
   const [hover, setHover] = React.useState("underline");
 
   const handleReport = () => {
     ReportAnswer(id);
     setReport("Reported");
+
+    setTimeout(function() {
+      fetchQuestions(productId);
+    }, 1000);
   };
 
   const handleHoverOn = () => {
@@ -37,4 +42,20 @@ const Report = ({ id, subFontSize }) => {
   );
 };
 
-export default Report;
+const mapStateToProps = store => ({
+  subFontSize: store.questions.subFontSize,
+  productId: store.questions.productId
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuestions: id => {
+    dispatch(fetchQuestions(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Report);
+
+// export default Report;
