@@ -69,11 +69,15 @@ The seperate team member was in charge of the 4 main components seen on the app.
 
 > Overview
 
-- comp summary
+- For more information regarding the Overview portion for this app, please refer to the [ Overview README](documentation/Overview/README.md)
 
 > Related
 
+- For more information regarding the Related portion for this app, please refer to the [ Related README](documentation/Related/README.md)
+
 > Questions/Answers
+
+- For more information regarding the Questions portion for this app, please refer to the [ Questions README](documentation/Questions/README.md)
 
 > Reviews
 
