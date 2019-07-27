@@ -16,16 +16,6 @@ export const displayQuestions = questions => ({
   payload: questions
 });
 
-// export const increaseQueHelpful = helpful => ({
-//   type: 'INCREASE_QUESTION_HELPFULNESS',
-//   payload: helpful
-// });
-
-// export const increaseAnwHelpful = helpful => ({
-//   type: 'INCREASE_ANSWER_HELPFULNESS',
-//   payload: helpful
-// });
-
 export const setProductId = id => ({
   type: 'SET_PRODUCT_ID',
   payload: id

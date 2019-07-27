@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Dialog from "@material-ui/core/Dialog";
+
 const Photo = ({ photos }) => {
   const [open, setOpen] = React.useState(false);
   const [photo, setPhoto] = React.useState(false);
 
   function handleClickOpen(photo) {
-    console.log("click photo", photo);
     setOpen(true);
     setPhoto(photo);
   }
@@ -13,10 +13,7 @@ const Photo = ({ photos }) => {
   function handleClose() {
     setOpen(false);
   }
-  // const handleClick = () => {
-  //   console.log("click photo");
-  //   handleClickOpen()
-  // };
+
   return (
     <div>
       {photos.map((photo, index) => {
@@ -37,12 +34,11 @@ const Photo = ({ photos }) => {
           </React.Fragment>
         );
       })}
-      <Dialog open={open} onClose={handleClose} fullScreen>
-        <img src={photo} onClick={handleClose} />
+      <Dialog open={open} onClose={handleClose} maxWidth="lg">
+        <img src={photo} onClick={handleClose} style={{ width: "100%" }} />
       </Dialog>
     </div>
   );
-  // }
 };
 
 export default Photo;
