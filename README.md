@@ -76,7 +76,8 @@ The seperate team member was in charge of the 4 main components seen on the app.
 > Questions/Answers
 
 > Reviews
-> For more information regarding the Reviews portion for this app, please refer to the [ Reviews README](documentation/Reviews/README.md)
+
+- For more information regarding the Reviews portion for this app, please refer to the [ Reviews README](documentation/Reviews/README.md)
 
 ## Notes
 
