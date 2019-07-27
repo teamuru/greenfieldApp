@@ -25,7 +25,6 @@ import {
   clearAllStars
 } from '../../actions/relatedActions';
 
-
 const Related = (props) => {
   const {
     relatedProducts,

@@ -8,14 +8,15 @@ import Details from './Details';
 import Description from './Description';
 import Checklist from './Checklist';
 import {
- resetStore, fetchProduct, fetchStyles, fetchRatings 
+  resetStore,
+  fetchProduct,
+  fetchStyles,
+  fetchRatings
 } from '../../actions/productActions';
 
 class ProductOverview extends Component {
   componentDidMount() {
-    const {
- getProducts, getStyles, getRatings, location 
-} = this.props;
+    const { getProducts, getStyles, getRatings, location } = this.props;
     getProducts(location.pathname);
     getStyles(location.pathname);
     getRatings(location.pathname);
@@ -24,9 +25,7 @@ class ProductOverview extends Component {
   componentDidUpdate(prevProps) {
     const { location } = this.props;
     if (location !== prevProps.location) {
-      const {
- reset, getProducts, getStyles, getRatings 
-} = this.props;
+      const { reset, getProducts, getStyles, getRatings } = this.props;
       reset();
       getProducts(location.pathname);
       getStyles(location.pathname);
@@ -50,7 +49,13 @@ class ProductOverview extends Component {
               <Grid item container sm={8} justify="center">
                 <Carousel />
               </Grid>
-              <Grid item container sm={4} justify="flex-start" direction="column">
+              <Grid
+                item
+                container
+                sm={4}
+                justify="flex-start"
+                direction="column"
+              >
                 <Details name={data.name} category={data.category} />
               </Grid>
             </React.Fragment>
@@ -79,16 +84,16 @@ ProductOverview.propTypes = {
   expandedView: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   data: store.product.data,
   expandedView: store.product.expandedView
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   reset: () => dispatch(resetStore()),
-  getProducts: id => dispatch(fetchProduct(id)),
-  getStyles: id => dispatch(fetchStyles(id)),
-  getRatings: id => dispatch(fetchRatings(id))
+  getProducts: (id) => dispatch(fetchProduct(id)),
+  getStyles: (id) => dispatch(fetchStyles(id)),
+  getRatings: (id) => dispatch(fetchRatings(id))
 });
 
 export default connect(
