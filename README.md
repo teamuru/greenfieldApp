@@ -6,9 +6,9 @@ Shopping app built with react and redux.
 
 <!-- TODO: link to a .gif of the app -->
 <!-- <img src='./snapshot.gif' height='80%' width='80%'> -->
-
-<img align="center" src="documentation/technologies.png">
-
+<p align="center">
+<img src="documentation/technologies.png">
+</p>
 <!-- ![Technologies](documentation/technologies.png) -->
 
 ## Table of Contents
