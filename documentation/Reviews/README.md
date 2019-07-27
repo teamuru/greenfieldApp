@@ -16,7 +16,7 @@ The API also handles put requests to mark as helpful or report reviews.
 
 > The reviews object
 
-<p align="center">
+<p align="center" width="80%" height="80%" >
 <img src="reviewslistapi.gif">
 </p>
 
@@ -24,7 +24,7 @@ The API also handles put requests to mark as helpful or report reviews.
 
 > Product summary data
 
-<p align="center">
+<p align="center"  width="80%" height="80%">
 <img src="metaapi.gif">
 </p>
 
@@ -32,14 +32,6 @@ The API also handles put requests to mark as helpful or report reviews.
 
 > Request body
 
-<p align="center">
+<p align="center"  width="80%" height="80%">
 <img src="postapi.gif">
-</p>
-
-### put-request
-
-> Helpful reviews or report
-
-<p align="center">
-<img src="putapi.gif">
 </p>
