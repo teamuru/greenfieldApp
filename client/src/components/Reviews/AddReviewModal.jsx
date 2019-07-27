@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Form from './Form/Form';
 
 function getModalStyle() {
-  const side = 20;
+  const side = 30;
 
   return {
     position: 'absolute',
