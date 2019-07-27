@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 import calculateAverageRate from '../lib/calculateAverageRate';
+import store from '../store';
 
 export const fetchRelatedSuccess = related => ({
   type: 'FETCH_RELATED_SUCCESS',
@@ -104,24 +105,69 @@ export const fetchStars = (prodId) => {
       });
 };
 
+/* The fetchAll actions run on page load
+ and get the relevant information for all the related products.
+ All of the requests are required based on the API design we were given,
+ with the exception of the multiple requests to get the related products IDs array.  */
+
 export const fetchAllRelated = (prodId) => {
-  const promises = [];
+  const related = [];
+  const photos = [];
+  const stars = [];
 
   return (dispatch) => {
     Axios.get(`${API_URL}/products/${prodId}/related`)
       .then(({ data }) => {
+        dispatch(fetchRelatedSuccess(data));
         data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/products/${item}`));
+          related.push(Axios.get(`${API_URL}/products/${item}`));
         });
       })
       .then(() => {
-        Axios.all(promises).then(
+        Axios.all(related).then(
           Axios.spread((...args) => {
             args.forEach((item) => {
               dispatch(fetchRelatedProductSuccess(item.data));
             });
           })
         );
+      })
+      .then(() => {
+        const IDs = store.getState().related.relatedIDs;
+
+        IDs.forEach((id) => {
+          photos.push(Axios.get(`${API_URL}/products/${id}/styles`));
+        });
+      })
+      .then(() => {
+        Axios.all(photos).then(
+          Axios.spread((...args) => {
+            args.forEach((item) => {
+              dispatch(fetchPhotoSuccess(item.data));
+            });
+          })
+        );
+      })
+      .then(() => {
+        const IDs = store.getState().related.relatedIDs;
+
+        IDs.forEach((item) => {
+          stars.push(Axios.get(`${API_URL}/reviews/${item}/meta`));
+        });
+      })
+      .then(() => {
+        Axios.all(stars).then(
+          Axios.spread((...args) => {
+            args.forEach((item) => {
+              dispatch(
+                fetchStarsSuccess(calculateAverageRate(item.data.ratings))
+              );
+            });
+          })
+        );
+      })
+      .catch((error) => {
+        dispatch(fetchRelatedProductFailure(error));
       });
   };
 };
