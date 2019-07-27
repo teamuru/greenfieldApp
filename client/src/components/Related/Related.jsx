@@ -6,11 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { PropTypes } from 'prop-types';
-import {
-  CarouselProvider,
-  Slider,
-  Slide
-} from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import ProductCard from './ProductCard';
 import OutfitCard from './OutfitCard';
@@ -18,8 +14,6 @@ import FeatureModal from './FeatureModal';
 
 import {
   fetchAllRelated,
-  fetchAllPhotos,
-  fetchAllStars,
   clearAllPhotos,
   clearAllRelated,
   clearAllStars
@@ -31,8 +25,6 @@ const Related = (props) => {
     photos,
     stars,
     fetchAllRelated,
-    fetchAllPhotos,
-    fetchAllStars,
     clearAllPhotos,
     clearAllRelated,
     clearAllStars,
@@ -72,6 +64,7 @@ const Related = (props) => {
   };
 
   useEffect(() => {
+    // check if there is an outfit and load it into state.
     const keys = Object.keys(localStorage);
     const values = [];
     if (keys.length > 0) {
@@ -85,13 +78,11 @@ const Related = (props) => {
   }, []);
 
   useEffect(() => {
+    // everything has to be cleared when the route changes.
     clearAllPhotos();
     clearAllRelated();
     clearAllStars();
     fetchAllRelated(pathname);
-    fetchAllPhotos(pathname);
-    fetchAllStars(pathname);
-    console.log(stars);
   }, [pathname]);
 
   return (
@@ -165,12 +156,6 @@ const mapDispatchToProps = dispatch => ({
   fetchAllRelated: (id) => {
     dispatch(fetchAllRelated(id));
   },
-  fetchAllPhotos: (id) => {
-    dispatch(fetchAllPhotos(id));
-  },
-  fetchAllStars: (id) => {
-    dispatch(fetchAllStars(id));
-  },
   clearAllPhotos: () => {
     dispatch(clearAllPhotos());
   },
@@ -186,13 +171,10 @@ const mapStateToProps = state => ({
   relatedProducts: state.related.relatedProducts,
   photos: state.related.photos,
   stars: state.related.stars
-
 });
 
 Related.propTypes = {
-  fetchAllRelated: PropTypes.func.isRequired,
-  fetchAllPhotos: PropTypes.func.isRequired,
-  fetchAllStars: PropTypes.func.isRequired
+  fetchAllRelated: PropTypes.func.isRequired
 };
 
 export default connect(

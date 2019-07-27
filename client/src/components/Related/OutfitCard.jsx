@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import Rating from '@material-ui/lab/Rating';
 
-
 const useStyles = makeStyles({
   card: {
     width: '15vw',
@@ -30,7 +29,13 @@ const OutfitCard = (props) => {
   const classes = useStyles();
 
   const {
-    category, name, defaultPrice, id, img, removeFromOutfit, stars
+    category,
+    name,
+    defaultPrice,
+    id,
+    img,
+    removeFromOutfit,
+    stars
   } = props;
 
   return (

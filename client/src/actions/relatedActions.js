@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 import calculateAverageRate from '../lib/calculateAverageRate';
+import store from '../store';
 
 export const fetchRelatedSuccess = related => ({
   type: 'FETCH_RELATED_SUCCESS',
@@ -72,93 +73,57 @@ export const clearStars = () => ({
   type: 'CLEAR_STARS'
 });
 
-export const fetchRelatedIDs = (prodId) => {
-  const url = `${API_URL}/products/${prodId}/related`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchRelatedSuccess(data));
-      })
-      .catch(error => dispatch(fetchRelatedFailure(error)));
-};
-
-export const fetchRelatedProduct = (prodId) => {
-  const url = `${API_URL}/products/${prodId}`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        console.log(data);
-        dispatch(fetchRelatedProductSuccess(data));
-      })
-      .catch((error) => {
-        dispatch(fetchRelatedProductFailure(error));
-      });
-};
-
-export const fetchStars = (prodId) => {
-  const url = `${API_URL}/reviews/${prodId}/meta`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchStarsSuccess(data));
-      })
-      .catch((error) => {
-        dispatch(fetchStarsFailure(error));
-      });
-};
+/* The fetchAllRelated action runs on page load and gets all of the information for all the related products. 
+It is unavoidable to make all these requests because the data is stored at different endpoints.
+Originally this was in multiple functions but it all   */
 
 export const fetchAllRelated = (prodId) => {
-  const promises = [];
+  const related = [];
+  const photos = [];
+  const stars = [];
 
   return (dispatch) => {
     Axios.get(`${API_URL}/products/${prodId}/related`)
       .then(({ data }) => {
+        dispatch(fetchRelatedSuccess(data));
         data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/products/${item}`));
+          related.push(Axios.get(`${API_URL}/products/${item}`));
         });
       })
       .then(() => {
-        Axios.all(promises).then(
+        Axios.all(related).then(
           Axios.spread((...args) => {
             args.forEach((item) => {
               dispatch(fetchRelatedProductSuccess(item.data));
             });
           })
         );
-      });
-  };
-};
+      })
+      .then(() => {
+        const IDs = store.getState().related.relatedIDs;
 
-export const fetchAllPhotos = (prodId) => {
-  const promises = [];
-  return (dispatch) => {
-    // Can this be replaced with await store.getState?
-    Axios.get(`${API_URL}/products/${prodId}/related`)
-      .then(({ data }) => {
-        data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/products/${item}/styles`));
+        IDs.forEach((id) => {
+          photos.push(Axios.get(`${API_URL}/products/${id}/styles`));
         });
       })
       .then(() => {
-        Axios.all(promises).then(
+        Axios.all(photos).then(
           Axios.spread((...args) => {
             args.forEach((item) => {
               dispatch(fetchPhotoSuccess(item.data));
             });
           })
         );
-      });
-  };
-};
+      })
+      .then(() => {
+        const IDs = store.getState().related.relatedIDs;
 
-export const fetchAllStars = (prodId) => {
-  const promises = [];
-  return (dispatch) => {
-    Axios.get(`${API_URL}/products/${prodId}/related`)
-      .then(({ data }) => {
-        data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/reviews/${item}/meta`));
+        IDs.forEach((item) => {
+          stars.push(Axios.get(`${API_URL}/reviews/${item}/meta`));
         });
       })
       .then(() => {
-        Axios.all(promises).then(
+        Axios.all(stars).then(
           Axios.spread((...args) => {
             args.forEach((item) => {
               dispatch(
@@ -167,14 +132,12 @@ export const fetchAllStars = (prodId) => {
             });
           })
         );
+      })
+      .catch((error) => {
+        dispatch(fetchRelatedProductFailure(error));
       });
   };
 };
-
-// This cannot run until relatedProducts dispatches success
-export const addToOutfit = prodId => addProductToOutfit(prodId);
-
-export const deleteFromOutfit = prodId => deleteProductFromOutfit(prodId);
 
 export const clearAllRelated = () => dispatch => dispatch(clearRelated());
 
