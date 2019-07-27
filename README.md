@@ -2,14 +2,17 @@
 
 # Green Field App
 
+<!-- INSERT GIF OF OVERALL APP HERE -->
+
 Shopping app built with react and redux.
 
-<!-- TODO: link to a .gif of the app -->
-<!-- <img src='./snapshot.gif' height='80%' width='80%'> -->
 <p align="center">
-<img src="documentation/technologies.png">
+<img src="documentation/logos.png">
 </p>
-<!-- ![Technologies](documentation/technologies.png) -->
+
+> - 🎣 React Hooks - Alongside Redux, each team member implemented hooks in their component
+> - 🎭 Unit, Integration and End to End tests
+> - 📦 Webpack Build
 
 ## Table of Contents
 
@@ -22,7 +25,7 @@ Shopping app built with react and redux.
 
 > Navigate to the root directory
 
-- `npm install`
+- `npm install` - install dependencies
 - `npm start` - start the sevrer in production
 - `npm run build` - webpack build the front end
 
@@ -59,6 +62,21 @@ Shopping app built with react and redux.
 Ensure that the following modules are installed before running `npm install`
 
 - Node v10.13.0 or higher
+
+## Components Overview
+
+The seperate team member was in charge of the 4 main components seen on the app. Each team member utalized the above listed technologies.
+
+> Overview
+
+- comp summary
+
+> Related
+
+> Questions/Answers
+
+> Reviews
+> For more information regarding the Reviews portion for this app, please refer to the [ Reviews README](documentation/Reviews/README.md)
 
 ## Notes
 
