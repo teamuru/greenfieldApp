@@ -7,9 +7,10 @@
 ## Table of Contents
 
 1. [Sample API](#Sample-API)
-2. [Overview-Section](#Overview-Section)
-3. [Reviews-List](#Reviews-List)
-4. [Post-Review](#Post-Review)
+2. [Reviews Component](#Reviews-Component)
+   2i. [Overview-Section](#overview-section)
+   2ii. [Reviews-List](#reviews-list)
+   2iii. [Post-Review](#post-review)
 
 ## Sample-API
 
@@ -43,19 +44,21 @@ The API also handles put requests to mark as helpful or report reviews.
 <img src="postapi.gif">
 </p>
 
-## Overview-Section
+## Reviews-Component
+
+### overview-section
 
 <p align="center"  width="80%" height="80%">
 <img src="meta_gif.gif">
 </p>
 
-## Reviews-List
+### reviews-list
 
 <p align="center"  width="80%" height="80%">
 <img src="reviewslist_gif.gif">
 </p>
 
-## Post-Review
+### post-review
 
 <p align="center"  width="80%" height="80%">
 <img src="form.gif">
