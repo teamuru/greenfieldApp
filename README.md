@@ -4,6 +4,8 @@
 
 <!-- INSERT GIF OF OVERALL APP HERE -->
 
+A four person team created a mock shopping app focusing on the front-end using React-Redux. This project was built in two weeks using guidelines from a mock buisness requirements document. The given data supplied to the team from an API can be viewed at the individual components [README](#Components)
+
 Shopping app built with react and redux.
 
 <p align="center">
@@ -19,7 +21,8 @@ Shopping app built with react and redux.
 1. [Installing Dependencies](#Installing-Dependencies)
 2. [Technologies Used](#Technologies-Used)
 3. [Requirements](#Requirements)
-4. [Notes](#Notes)
+4. [Components](#Components)
+5. [Notes](#Notes)
 
 ## Installing-Dependencies
 
@@ -63,7 +66,7 @@ Ensure that the following modules are installed before running `npm install`
 
 - Node v10.13.0 or higher
 
-## Components Overview
+## Components
 
 The seperate team member was in charge of the 4 main components seen on the app. Each team member utalized the above listed technologies.
 
