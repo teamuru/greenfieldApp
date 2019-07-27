@@ -73,42 +73,9 @@ export const clearStars = () => ({
   type: 'CLEAR_STARS'
 });
 
-export const fetchRelatedIDs = (prodId) => {
-  const url = `${API_URL}/products/${prodId}/related`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchRelatedSuccess(data));
-      })
-      .catch(error => dispatch(fetchRelatedFailure(error)));
-};
-
-export const fetchRelatedProduct = (prodId) => {
-  const url = `${API_URL}/products/${prodId}`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        console.log(data);
-        dispatch(fetchRelatedProductSuccess(data));
-      })
-      .catch((error) => {
-        dispatch(fetchRelatedProductFailure(error));
-      });
-};
-
-export const fetchStars = (prodId) => {
-  const url = `${API_URL}/reviews/${prodId}/meta`;
-  return dispatch => Axios.get(url)
-      .then(({ data }) => {
-        dispatch(fetchStarsSuccess(data));
-      })
-      .catch((error) => {
-        dispatch(fetchStarsFailure(error));
-      });
-};
-
-/* The fetchAll actions run on page load
- and get the relevant information for all the related products.
- All of the requests are required based on the API design we were given,
- with the exception of the multiple requests to get the related products IDs array.  */
+/* The fetchAllRelated action runs on page load and gets all of the information for all the related products. 
+It is unavoidable to make all these requests because the data is stored at different endpoints.
+Originally this was in multiple functions but it all   */
 
 export const fetchAllRelated = (prodId) => {
   const related = [];
@@ -171,56 +138,6 @@ export const fetchAllRelated = (prodId) => {
       });
   };
 };
-
-export const fetchAllPhotos = (prodId) => {
-  const promises = [];
-  return (dispatch) => {
-    // Can this be replaced with await store.getState?
-    Axios.get(`${API_URL}/products/${prodId}/related`)
-      .then(({ data }) => {
-        data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/products/${item}/styles`));
-        });
-      })
-      .then(() => {
-        Axios.all(promises).then(
-          Axios.spread((...args) => {
-            args.forEach((item) => {
-              dispatch(fetchPhotoSuccess(item.data));
-            });
-          })
-        );
-      });
-  };
-};
-
-export const fetchAllStars = (prodId) => {
-  const promises = [];
-  return (dispatch) => {
-    Axios.get(`${API_URL}/products/${prodId}/related`)
-      .then(({ data }) => {
-        data.forEach((item) => {
-          promises.push(Axios.get(`${API_URL}/reviews/${item}/meta`));
-        });
-      })
-      .then(() => {
-        Axios.all(promises).then(
-          Axios.spread((...args) => {
-            args.forEach((item) => {
-              dispatch(
-                fetchStarsSuccess(calculateAverageRate(item.data.ratings))
-              );
-            });
-          })
-        );
-      });
-  };
-};
-
-// This cannot run until relatedProducts dispatches success
-export const addToOutfit = prodId => addProductToOutfit(prodId);
-
-export const deleteFromOutfit = prodId => deleteProductFromOutfit(prodId);
 
 export const clearAllRelated = () => dispatch => dispatch(clearRelated());
 

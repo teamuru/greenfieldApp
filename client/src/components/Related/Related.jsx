@@ -64,6 +64,7 @@ const Related = (props) => {
   };
 
   useEffect(() => {
+    // check if there is an outfit and load it into state.
     const keys = Object.keys(localStorage);
     const values = [];
     if (keys.length > 0) {
@@ -77,6 +78,7 @@ const Related = (props) => {
   }, []);
 
   useEffect(() => {
+    // everything has to be cleared when the route changes.
     clearAllPhotos();
     clearAllRelated();
     clearAllStars();
