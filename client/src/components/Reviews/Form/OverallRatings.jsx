@@ -10,13 +10,18 @@ const Overall = ({ form, setForm, error }) => {
 
   const renderMeaning = (rating) => {
     let ratings = {
-      '1': 'Poor',
+      '1': 'Poor :(',
       '2': 'Fair',
       '3': 'Average',
       '4': 'Good',
-      '5': 'Great'
+      '5': 'Great :)'
     };
-    return <span> {ratings[rating]} </span>;
+    return (
+      <span style={{ fontSize: 25 }}>
+        {' '}
+        {'  '} {ratings[rating]}{' '}
+      </span>
+    );
   };
 
   const handleChange = (e, newValue) => {

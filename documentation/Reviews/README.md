@@ -8,8 +8,8 @@
 
 1. [Sample API](#Sample-API)
 2. [Overview-Section](#Overview-Section)
-3. [Sample-API](#Sample-API)
-4. [Sample-API](#Sample-API)
+3. [Reviews-List](#Reviews-List)
+4. [Post-Review](#Post-Review)
 
 ## Sample-API
 
@@ -45,6 +45,18 @@ The API also handles put requests to mark as helpful or report reviews.
 
 ## Overview-Section
 
+<p align="center"  width="80%" height="80%">
+<img src="meta_gif.gif">
+</p>
+
 ## Reviews-List
 
+<p align="center"  width="80%" height="80%">
+<img src="reviewslist_gif.gif">
+</p>
+
 ## Post-Review
+
+<p align="center"  width="80%" height="80%">
+<img src="form.gif">
+</p>
