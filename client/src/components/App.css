@@ -1,5 +1,5 @@
 .favorite :hover {
-  fill: yellow;
+  fill: #fca311;
 }
 
 .FeatureModal {
@@ -35,4 +35,3 @@
   background: #4caf50;
   cursor: pointer;
 }
-
