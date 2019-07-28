@@ -142,6 +142,7 @@ function Carousel(props) {
         index={index}
       />
     ));
+    // Only show maximum of 7 thumbnails at a time in carousel
     if (photos.length > 7) {
       if (photos.length - selectedPhoto > 7) {
         return avatars.slice(selectedPhoto, selectedPhoto + 7);
