@@ -70,19 +70,25 @@ Ensure that the following modules are installed before running `npm install`
 
 The seperate team member was in charge of the 4 main components seen on the app. Each team member utalized the above listed technologies.
 
-> Overview
+### Product Overview
 
-- For more information regarding the Overview portion for this app, please refer to the [ Overview README](documentation/Overview/README.md)
+> Changing Style
+![](documentation/Overview/changeStyles.gif)
 
-> Related
+> Add SKU to cart
+![](documentation/Overview/addToCart.gif)
 
-![](related-products.gif)
+> Carousel Demonstration
+![](documentation/Overview/carousel.gif)
 
-> Questions/Answers
+### Related
+![](documentation/Related/related-products.gif)
+
+### Questions/Answers
 
 - For more information regarding the Questions portion for this app, please refer to the [ Questions README](documentation/Questions/README.md)
 
-> Reviews
+### Reviews
 
 - For more information regarding the Reviews portion for this app, please refer to the [ Reviews README](documentation/Reviews/README.md)
 
