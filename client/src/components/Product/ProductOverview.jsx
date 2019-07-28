@@ -12,6 +12,7 @@ import {
 } from '../../actions/productActions';
 
 class ProductOverview extends Component {
+  // Dispatch Products and Styles actions after first mount
   componentDidMount() {
     const {
  getProducts, getStyles, getRatings, location 
@@ -21,6 +22,7 @@ class ProductOverview extends Component {
     getRatings(location.pathname);
   }
 
+  // Dispatch Products and Styles actions and reset store only after route changes 
   componentDidUpdate(prevProps) {
     const { location } = this.props;
     if (location !== prevProps.location) {
@@ -36,11 +38,13 @@ class ProductOverview extends Component {
 
   render() {
     const { data, expandedView } = this.props;
+    // Attempt to render component only if we have products data in store
     return !Object.keys(data).length ? (
       <h1>Loading Product</h1>
     ) : (
       <div style={{ margin: '2rem 0' }}>
         <Grid container spacing={3}>
+          {/* If expanded view, only display carousel and not details at all */}
           {expandedView ? (
             <Grid item container sm justify="center">
               <Carousel />

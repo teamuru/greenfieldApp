@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unused-state */
+// See https://codepen.io/robertkirsz/pen/ZvorjB for information on this component
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

@@ -41,7 +41,10 @@ class Sizes extends Component {
     const {
  skus, selectedSku, selectedQty, handleChangeSku, handleChangeQty 
 } = this.props;
+    // get total stock of every SKU for a specific style
     const styleStock = Object.values(skus).reduce((x, y) => x + y, 0);
+
+    // create array of [1 ... total stock or 15] (whichever is smaller)
     const skuStock = skus[selectedSku] || 1;
     const qty = new Array(Math.min(skuStock, 15)).fill(1);
     for (let i = 0; i < qty.length; i += 1) {
@@ -49,6 +52,7 @@ class Sizes extends Component {
     }
 
     const showButton = () => {
+      // only show button if the selected style has stock from any SKU
       if (styleStock) {
         if (selectedSku) {
           return (
@@ -58,6 +62,7 @@ class Sizes extends Component {
           );
         }
         return (
+          // Button is disabled until a SKU is selected
           <Button disabled variant="outlined" color="primary">
             Add To Cart
           </Button>
@@ -79,6 +84,7 @@ class Sizes extends Component {
                 <React.Fragment>
                   <InputLabel>Select Size</InputLabel>
                   <Select value={selectedSku} onChange={handleChangeSku} input={<OutlinedInput labelWidth={10} />}>
+                    {/* Only display a sku if there is stock for that skew */}
                     {Object.keys(skus).map(sku => (skus[sku] ? (
                       <MenuItem key={sku} value={sku}>
                         {sku}
@@ -92,6 +98,7 @@ class Sizes extends Component {
           <div style={{ width: '25%' }}>
             <FormControl variant="outlined" fullWidth>
               {selectedSku ? (
+                // Qty input starts at 1 once a SKU is selected. Map through qty array created
                 <React.Fragment>
                   <InputLabel>Qty</InputLabel>
                   <Select value={selectedQty} onChange={handleChangeQty} input={<OutlinedInput labelWidth={10} />}>
@@ -103,6 +110,7 @@ class Sizes extends Component {
                   </Select>
                 </React.Fragment>
               ) : (
+                // Qty input is disabled until a SKU is selected and shows '-'
                 <React.Fragment>
                   <InputLabel>-</InputLabel>
                   <Select disabled input={<OutlinedInput labelWidth={10} />} />
@@ -112,6 +120,7 @@ class Sizes extends Component {
           </div>
         </FormStyled>
         {showButton()}
+        {/* Snackbar is the message that displays when add to cart is pressed. Sizes Component is stateful to handle the snackbar */}
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
