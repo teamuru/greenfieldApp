@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid } from '@material-ui/core';
+
+// Import actions from the store
+import { fetchReviews, fetchMeta } from '../../actions/reviewsActions';
 
 // Child Components
 import Recommended from './Recommended.jsx';
@@ -12,8 +16,8 @@ import SelectControl from './Relevance';
 import AverageRev from './AverageRev';
 import ReviewCounter from './ReviewCounter';
 
-// Testing Form
-import Form from './Form/Form';
+// Testing Form: uncomment out to test form
+// import Form from './Form/Form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +32,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const RevParentComponent = () => {
+const RevParentComponent = (props) => {
   const classes = useStyles();
+
+  const {
+    fetchReviews,
+    fetchMeta,
+    location: { pathname }
+  } = props;
+
+  useEffect(() => {
+    fetchReviews(pathname), fetchMeta(pathname);
+  }, [pathname]);
 
   return (
     <div className={classes.root} id="reviews">
@@ -72,4 +86,23 @@ const RevParentComponent = () => {
   );
 };
 
-export default RevParentComponent;
+const mapStateToProps = (store) => ({
+  reviews: store.reviews,
+  meta: store.meta
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchReviews: (id) => {
+    dispatch(fetchReviews(id));
+  },
+  fetchMeta: (id) => {
+    dispatch(fetchMeta(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RevParentComponent);
+
+// export default RevParentComponent;

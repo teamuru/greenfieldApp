@@ -22,7 +22,6 @@ const style = {
 
 const ReviewSortControl = (props) => {
   const classes = useStyles();
-  console.log(props);
 
   const handleChange = (e) => {
     const { sortReviews } = props;

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
@@ -14,8 +12,6 @@ function getModalStyle() {
 
   return {
     position: 'absolute',
-    // top: '5%',
-    // bottom: '30%',
     left: `${side}%`,
     right: `${side}%`,
     overflow: 'scroll',
@@ -74,10 +70,6 @@ class AddReviewModal extends Component {
     );
   }
 }
-
-AddReviewModal.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 const SimpleModalWrapped = withStyles(styles)(AddReviewModal);
 

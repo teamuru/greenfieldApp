@@ -2,11 +2,9 @@ import { connect } from 'react-redux';
 import React from 'react';
 
 const ReviewCounter = ({ reviews, meta }) => {
-  console.log(`meta from counter`, meta);
-
   const countReviews = (ratings) => {
     const vals = Object.values(ratings);
-    console.log(`vals`, vals);
+
     return vals.reduce((a, b) => {
       return a + b;
     });

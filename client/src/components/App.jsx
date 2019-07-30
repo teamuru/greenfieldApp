@@ -14,7 +14,7 @@ import './App.css';
 import ProductOverview from './Product/ProductOverview';
 import Related from './Related/Related';
 import Questions from './Questions/Question';
-import ReviewsWrapper from './Reviews/ReviewsWrapper';
+import Reviews from './Reviews/RevParentComponent';
 
 const AppBarStyled = styled(AppBar)`
   padding: 1.5rem;
@@ -34,7 +34,7 @@ class App extends Component {
                 <Route path="/:id" component={ProductOverview} />
                 <Route path="/:id" component={Related} />
                 <Route path="/:id" component={Questions} />
-                <Route path="/:id" component={ReviewsWrapper} />
+                <Route path="/:id" component={Reviews} />
               </main>
             </Container>
           </Router>
