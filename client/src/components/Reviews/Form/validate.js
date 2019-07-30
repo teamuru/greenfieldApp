@@ -18,8 +18,6 @@ export const validate = (form, component, categories) => {
 
     if (!emailIsValid(form.email)) errors.email = 'a valid email address';
 
-    //if given characteristics is not equal to product characteristics, add error
-
     if (
       Object.keys(form.characteristics).length !==
       Object.keys(categories).length

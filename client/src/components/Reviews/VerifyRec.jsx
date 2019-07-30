@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Box } from '@material-ui/core';
 import Check from '@material-ui/icons/CheckCircle';
 
-function VerifyRec({ review }) {
+const VerifyRec = ({ review }) => {
   return (
     review.recommend === 0 && (
       <div>
@@ -21,6 +21,6 @@ function VerifyRec({ review }) {
       </div>
     )
   );
-}
+};
 
 export default VerifyRec;

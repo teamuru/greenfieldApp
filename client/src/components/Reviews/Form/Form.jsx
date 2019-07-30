@@ -6,20 +6,19 @@ import { green, red } from '@material-ui/core/colors';
 
 import {
   DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Button,
-  Box,
   Paper,
   Grid,
   Typography
 } from '@material-ui/core';
 
-import { ReviewSnackbar } from './Snackbar';
-import { validate } from './validate.js';
 import * as actions from '../../../actions/reviewsActions';
 
+// Validation function
+import { validate } from './validate.js';
+
+// Components for the Form
+import { ReviewSnackbar } from './Snackbar';
 import RevSummary from './ReviewHeader';
 import ReviewBody from './ReviewBody';
 import Username from './Username';
@@ -33,8 +32,6 @@ import Size from './Size';
 import Quality from './Quality';
 import Width from './Width';
 import Image from './Image';
-
-import ReviewsSnackbar from './Snackbar';
 
 const defaultForm = {
   rating: 0,
