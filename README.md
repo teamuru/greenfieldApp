@@ -1,12 +1,10 @@
 [![Build Status](https://travis-ci.org/teamuru/greenfieldApp.svg?branch=master)](https://travis-ci.org/teamuru/greenfieldApp)
 
-# Green Field App
+# Green Field App Documentation
 
 <!-- INSERT GIF OF OVERALL APP HERE -->
 
-A four person team created a mock shopping app focusing on the front-end using React-Redux. This project was built in two weeks using guidelines from a mock buisness requirements document. The given data supplied to the team from an API can be viewed at the individual components [README](#Components)
-
-Shopping app built with react and redux.
+A four person dev team created a mock shopping app focusing on the front-end using React-Redux as the primary libraries. Material-UI was leveraged for styling and icons. React-Router was used for client-side routing. This project was built in two weeks using guidelines from a mock buisness requirements document. The given data supplied to the team from an API can be viewed at the individual components [README](#Components)
 
 <p align="center">
 <img src="documentation/logos.png">
@@ -26,7 +24,7 @@ Shopping app built with react and redux.
 
 ## Installing-Dependencies
 
-> Navigate to the root directory
+> Navigate to the root directory and run the following scripts to run locally
 
 - `npm install` - install dependencies
 - `npm start` - start the server in production
@@ -45,6 +43,7 @@ Shopping app built with react and redux.
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Material-UI](https://material-ui.com/)
+- [React-Router](https://reacttraining.com/react-router/)
 
 > Back-End
 
