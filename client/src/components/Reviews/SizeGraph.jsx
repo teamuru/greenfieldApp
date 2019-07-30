@@ -23,8 +23,8 @@ const style = {
   }
 };
 
+// Uses the /meta route information to generate sliders based on whether the "characteristic" does exist
 const SizeGraph = ({ meta }) => {
-
   const classes = useStyles();
 
   const renderCat = (category) => {
@@ -71,7 +71,6 @@ const SizeGraph = ({ meta }) => {
                   // className="slider"
                   list="tickmarks"
                   value={`${number}`}
-
                   style={style.ft}
                   className="slider"
                 />

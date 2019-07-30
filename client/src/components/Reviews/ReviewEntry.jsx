@@ -35,11 +35,8 @@ const style = {
   userSum: {
     fontSize: 12,
     color: '#A9A9A9'
-    // ,
-    // spacing: 20
   },
   sum: {
-    // fontWeight: 700,
     fontSize: 17,
     padding: '10px 0px'
   },
@@ -104,8 +101,8 @@ const ReviewEntry = ({ review }) => {
             {review.body}
           </Grid>
           <Grid item style={style.recommend}>
-            <VerifyRec review={review} />
             {/* #recommended: {review.recommend} */}
+            <VerifyRec review={review} />
           </Grid>
           <Grid container style={style.bg}>
             <Grid item xs={9} style={style.resHead}>

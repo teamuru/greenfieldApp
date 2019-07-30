@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid } from '@material-ui/core';
+
+// Import actions from the store
+import { fetchReviews, fetchMeta } from '../../actions/reviewsActions';
 
 // Child Components
 import Recommended from './Recommended.jsx';
@@ -12,8 +16,8 @@ import SelectControl from './Relevance';
 import AverageRev from './AverageRev';
 import ReviewCounter from './ReviewCounter';
 
-// Testing Form
-import Form from './Form/Form';
+// Testing Form: uncomment out to test form
+// import Form from './Form/Form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +32,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const RevParentComponent = () => {
+const RevParentComponent = (props) => {
   const classes = useStyles();
+
+  const {
+    fetchReviews,
+    fetchMeta,
+    location: { pathname }
+  } = props;
+
+  useEffect(() => {
+    fetchReviews(pathname), fetchMeta(pathname);
+  }, [pathname]);
 
   return (
     <div className={classes.root} id="reviews">
+      {/* Data from the /meta route */}
       <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
@@ -41,19 +56,26 @@ const RevParentComponent = () => {
       <Grid container spacing={3}>
         <Grid item>
           <Paper className={classes.paper}>
+            {/* Calculating Average Rating */}
             <AverageRev />
           </Paper>
           <Paper className={classes.paper}>
+            {/* % users recommend */}
             <Recommended />
           </Paper>
+
+          {/* Graph out the list of Stars for the product */}
           <Paper className={classes.paper}>
             <StarGraphsList />
           </Paper>
+
+          {/* Characteristics */}
           <Paper className={classes.paper}>
             <SizeGraph />
           </Paper>
         </Grid>
 
+        {/* Information from hte reviews/list route */}
         <Grid item xs={9} style={{ fontSize: 20, fontWeight: 700 }}>
           <Grid
             container
@@ -72,4 +94,29 @@ const RevParentComponent = () => {
   );
 };
 
-export default RevParentComponent;
+const mapStateToProps = (store) => ({
+  reviews: store.reviews,
+  meta: store.meta
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchReviews: (id) => {
+    dispatch(fetchReviews(id));
+  },
+  fetchMeta: (id) => {
+    dispatch(fetchMeta(id));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RevParentComponent);
+
+// Reviews Structure:
+/*
+                      ReviewsParent
+    /     /     /         |         \         \
+Average Rec  StarGraph  SizeGraph  RevCounter List
+
+*/

@@ -20,9 +20,10 @@ const style = {
   }
 };
 
+// from /list route
+// Will eventually sort reviews based on whatever is selected
 const ReviewSortControl = (props) => {
   const classes = useStyles();
-  console.log(props);
 
   const handleChange = (e) => {
     const { sortReviews } = props;
@@ -54,3 +55,5 @@ export default connect(
   mapStateToProps,
   actions
 )(ReviewSortControl);
+
+

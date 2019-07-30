@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import API_URL from '../lib/API_URL';
 
-// GET REVIEWS
+// GET REVIEWS list
 export const fetchReviewsSuccess = reviews => ({
   type: 'FETCH_REVIEWS_SUCCESS',
   payload: reviews
@@ -28,7 +28,7 @@ export const fetchReviews = (productId, sort, count = 50) => async (
   });
 };
 
-// GET META
+// GET META data
 export const fetchMetaSuccess = meta => ({
   type: 'FETCH_META_SUCCESS',
   payload: meta
@@ -55,22 +55,17 @@ export const putHelpful = (reviewId) => {
   Axios.put(url, { reveiw_id: reviewId })
     .then(() => {
       console.log('sucessful put');
-      // dispatch(fetchReviews(prodId));
     })
     .catch((err) => {
       console.log('reviews - fail put helpful \n err => ', err);
     });
 };
 
-// Report
-
+// Report a review
 export const reportReview = (reviewId) => {
   // const url = `${API_URL}/reviews/report/${reviewId}`;
   const url = `http://18.222.40.124/reviews/helpful/${reviewId}`;
-  Axios.put(
-    url
-    // , { review_id: reviewId }
-  )
+  Axios.put(url)
     .then(() => {
       console.log('success put report answer ');
     })

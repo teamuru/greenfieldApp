@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Recs come in as 0 || 1 keys with # as values
+// This function calculates out the % of users that recommended the product
+// from /meta route
+
 const calcRec = (obj) => {
   const values = Object.values(obj).reduce((a, b) => {
     return a + b;
@@ -10,7 +14,6 @@ const calcRec = (obj) => {
 };
 
 const Recommended = (props) => {
-  // TODO: add some calculation for % of rec users
   const { meta } = props.reviews;
   return !meta ? (
     <h4>... Loading</h4>
