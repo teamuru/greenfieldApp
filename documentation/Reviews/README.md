@@ -1,4 +1,6 @@
-# Reviews Components
+# Reviews Components Documentation
+
+> Ensure that the installation directions and correct Node versioning specified in the [Green Field App Documentation](../README.md)
 
 <p align="center" width="80%" height="80%" >
 <img src="overview.png">
