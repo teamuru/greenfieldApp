@@ -26,7 +26,7 @@ Shopping app built with react and redux.
 
 ## Installing-Dependencies
 
-> Navigate to the root directory
+> Navigate to the root directory and run the following scripts to run locally
 
 - `npm install` - install dependencies
 - `npm start` - start the server in production
@@ -45,6 +45,7 @@ Shopping app built with react and redux.
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Material-UI](https://material-ui.com/)
+- [React-Router](https://reacttraining.com/react-router/)
 
 > Back-End
 
