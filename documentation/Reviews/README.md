@@ -53,8 +53,9 @@ The API also handles put requests to mark as helpful or report reviews.
 > The buisness requirements stated that an overview of the product be provided and render:
 >
 > - The Overall Rating (value and stars handling up to a quarter of a star)
-> - % of users that recommended the product,
-> - and overall average value from the different "characteristics" if they exist.
+> - % of users that recommended the product
+> - A Breakdown of 1 - 5 star ratings
+> - An overall average value from the different "characteristics" if they exist.
 
 <p align="center"  width="80%" height="80%">
 <img src="meta_gif.gif">
@@ -62,7 +63,22 @@ The API also handles put requests to mark as helpful or report reviews.
 
 ### reviews-list
 
+> For the list of reviews, the buisness requirements requested the following:
 >
+> - Total No. of reviews for that product
+> - Each Entry required:
+>   - A star rating submitted
+>   - Username
+>   - Date formatted
+>   - Summary
+>   - Body
+>   - If the user recommended the product, a checkmark and statement will render
+>   - Any responses to the review
+>   - An option for the client to mark a review as helpful
+>   - An option to report a review
+> - A default of 2 reviews listed on page load
+> - Upon clicking "More Reviews", 2 more reviews will load
+> - An option to "Add Review"
 
 <p align="center"  width="80%" height="80%">
 <img src="reviewslist_gif.gif">
