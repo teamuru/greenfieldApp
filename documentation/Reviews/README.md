@@ -22,11 +22,11 @@
 
 ## Sample-API
 
-To create the reviews component, GET requests needed to be made on a 2 routes. One route to get a list of all [reviews](#reviews-list) based on a productId and a second route to grab [meta-data](#meta-data-list) regarding that particular product.
+> To create the reviews component, GET requests needed to be made on a 2 routes. One route to get a list of all [reviews](#reviews-list) based on a productId and a second route to grab [meta-data](#meta-data-list) regarding that particular product.
 
-The buisness requirements also specified that users be able to post a new review that can take in the following [request body](#post-new-review).
+> The buisness requirements also specified that users be able to post a new review that can take in the following [request body](#post-new-review).
 
-The API also handles put requests to mark as helpful or report reviews.
+> The API also handles put requests to mark as helpful or report reviews.
 
 ### reviews-list
 
