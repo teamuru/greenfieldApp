@@ -3,7 +3,9 @@
 > Ensure that the installation directions and correct Node versioning specified in the [Green Field App Documentation](../../README.md).
 
 > The component was built based on specifications listed in a mock buisness requirements document as well as a mock up by a design team. Material-UI Higher Order Components were used as general templates while additional functionality and style were added on top of the components themselves.
+
 > The Redux store housed a reviews object containing information from the API as well as some values and actions that handled dynamic sorting and load more functionality.
+
 > React Hooks were used as part of this project and an emphasis was placed on refactoring any class based component to functional in order set components up to use hooks during a refactor as well as trying to create a more light weight application.
 
 <p align="center" width="80%" height="80%" >
