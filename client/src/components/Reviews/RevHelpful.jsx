@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+// Marking reviews as helful based on review id
+//  from /list route
 const RevHelpful = ({ reviewId, helpfulness }) => {
   const classes = useStyles();
 

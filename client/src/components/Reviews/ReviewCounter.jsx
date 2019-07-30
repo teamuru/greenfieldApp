@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 
+// from /meta route
 const ReviewCounter = ({ reviews, meta }) => {
   const countReviews = (ratings) => {
     const vals = Object.values(ratings);

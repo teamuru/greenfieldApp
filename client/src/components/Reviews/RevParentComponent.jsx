@@ -47,6 +47,7 @@ const RevParentComponent = (props) => {
 
   return (
     <div className={classes.root} id="reviews">
+      {/* Data from the /meta route */}
       <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>RATINGS AND REVIEWS</Paper>
@@ -55,19 +56,26 @@ const RevParentComponent = (props) => {
       <Grid container spacing={3}>
         <Grid item>
           <Paper className={classes.paper}>
+            {/* Calculating Average Rating */}
             <AverageRev />
           </Paper>
           <Paper className={classes.paper}>
+            {/* % users recommend */}
             <Recommended />
           </Paper>
+
+          {/* Graph out the list of Stars for the product */}
           <Paper className={classes.paper}>
             <StarGraphsList />
           </Paper>
+
+          {/* Characteristics */}
           <Paper className={classes.paper}>
             <SizeGraph />
           </Paper>
         </Grid>
 
+        {/* Information from hte reviews/list route */}
         <Grid item xs={9} style={{ fontSize: 20, fontWeight: 700 }}>
           <Grid
             container
@@ -105,4 +113,10 @@ export default connect(
   mapDispatchToProps
 )(RevParentComponent);
 
-// export default RevParentComponent;
+// Reviews Structure:
+/*
+                      ReviewsParent
+    /     /     /         |         \         \
+Average Rec  StarGraph  SizeGraph  RevCounter List
+
+*/

@@ -16,13 +16,11 @@ const style = {
   }
 };
 
+// Summary of the average rating alongside the stars
+// from /meta route
 class AverageRev extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      //
-    };
   }
 
   render() {
@@ -32,6 +30,7 @@ class AverageRev extends Component {
     ) : (
       <Grid container direction="row" justify="center" alignItems="flex-start">
         <span style={style.ft}>
+          {/*  Using a helper function to get the avg rating */}
           {calculateAverage(meta.ratings).toFixed(1)}
         </span>
         <span>

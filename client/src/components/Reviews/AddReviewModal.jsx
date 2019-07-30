@@ -29,6 +29,8 @@ const styles = (theme) => ({
   }
 });
 
+// Modal for the "Add Review" Form
+
 class AddReviewModal extends Component {
   constructor(props) {
     super(props);

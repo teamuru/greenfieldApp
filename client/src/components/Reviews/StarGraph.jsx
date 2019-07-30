@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
 
+// Styline for GraphsList
 const StarGraph = withStyles({
   root: {
     height: 12,
@@ -13,4 +14,4 @@ const StarGraph = withStyles({
   }
 })(LinearProgress);
 
-export default StarGraph
+export default StarGraph;
