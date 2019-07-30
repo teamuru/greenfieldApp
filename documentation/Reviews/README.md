@@ -50,11 +50,19 @@ The API also handles put requests to mark as helpful or report reviews.
 
 ### overview-section
 
+> The buisness requirements stated that an overview of the product be provided and render:
+>
+> - The Overall Rating (value and stars handling up to a quarter of a star)
+> - % of users that recommended the product,
+> - and overall average value from the different "characteristics" if they exist.
+
 <p align="center"  width="80%" height="80%">
 <img src="meta_gif.gif">
 </p>
 
 ### reviews-list
+
+>
 
 <p align="center"  width="80%" height="80%">
 <img src="reviewslist_gif.gif">
