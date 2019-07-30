@@ -1,5 +1,5 @@
 import React from 'react';
-import { putHelpful } from '../../actions/reviewsActions';
+import { putHelpful, fetchReviews } from '../../actions/reviewsActions';
 
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -29,6 +29,9 @@ const RevHelpful = ({ reviewId, helpfulness }) => {
   const handleClick = () => {
     putHelpful(reviewId);
     updateHelpful(helpful + 1);
+    setTimeout(function() {
+      fetchReviews(productId);
+    }, 300);
   };
 
   return (

@@ -29,7 +29,7 @@ Shopping app built with react and redux.
 > Navigate to the root directory
 
 - `npm install` - install dependencies
-- `npm start` - start the sevrer in production
+- `npm start` - start the server in production
 - `npm run build` - webpack build the front end
 
 > Alternatively run the following script to simultaneously run the server and build
@@ -73,15 +73,16 @@ The seperate team member was in charge of the 4 main components seen on the app.
 ### Product Overview
 
 > Changing Style
-![](documentation/Overview/changeStyles.gif)
+> ![](documentation/Overview/changeStyles.gif)
 
 > Add SKU to cart
-![](documentation/Overview/addToCart.gif)
+> ![](documentation/Overview/addToCart.gif)
 
 > Carousel Demonstration
-![](documentation/Overview/carousel.gif)
+> ![](documentation/Overview/carousel.gif)
 
 ### Related
+
 ![](documentation/Related/related-products.gif)
 
 ### Questions/Answers
