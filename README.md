@@ -96,4 +96,4 @@ The seperate team member was in charge of the 4 main components seen on the app.
 
 > **IMPORTANT: development vs. production**
 >
-> - Some notes go here
+> - NA
